@@ -1,0 +1,1330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 1 はじめまして</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,800;1,400&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#26323a; --muted:#6b7a85; --line:#d5e1e5;
+  --primary:#1d7a8a; --primary-dark:#145a66; --primary-soft:#e4f2f4;
+  --accent:#e2683f; --accent-soft:#fdece5;
+  --yellow:#fff5d9; --bg:#eaf0f2; --paper:#ffffff;
+  --jp:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif;
+  --en:"Nunito","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--en);font-size:17px;line-height:1.6}
+.toolbar{position:sticky;top:0;z-index:10;display:flex;gap:8px;justify-content:flex-end;align-items:center;padding:8px 16px;background:rgba(234,240,242,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.toolbar .tt{margin-right:auto;font-weight:800;color:var(--primary-dark)}
+.toolbar button,.toolbar a{font:600 14px var(--en);border:1px solid var(--primary);background:#fff;color:var(--primary-dark);padding:6px 12px;border-radius:999px;cursor:pointer;text-decoration:none}
+.toolbar button.on{background:var(--primary);color:#fff}
+.page{background:var(--paper);width:210mm;min-height:297mm;margin:24px auto;padding:16mm 13mm 14mm;border-radius:6px;box-shadow:0 2px 12px rgba(20,60,70,.10);position:relative;container-type:inline-size}
+.page.cont>:first-child{margin-top:0}
+.run{position:absolute;top:6.5mm;left:13mm;right:13mm;display:flex;justify-content:space-between;align-items:baseline;font:700 12px var(--en);color:var(--muted);letter-spacing:.04em}
+.run .pno{color:var(--primary);font-weight:800;font-size:15px}
+.toc .tp{margin-left:auto;font-weight:800;color:var(--primary);white-space:nowrap;padding-left:8px}
+.phones{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px;margin:8px 0 12px}
+.phones .ph{border:1.5px solid var(--line);border-radius:12px;padding:8px 6px;text-align:center;background:#fbfdfd}
+.phones .ph .k{font-family:var(--jp);font-weight:700;display:block}
+.phones .ph b{display:block;font-size:.92rem;letter-spacing:.02em;white-space:nowrap}
+h1,h2,h3{line-height:1.25;margin:0}
+.jp,.k{font-family:var(--jp)}
+/* ---------- part headers ---------- */
+.part-head{display:flex;align-items:center;gap:14px;border-bottom:3px solid var(--primary);padding-bottom:10px;margin-bottom:22px}
+.badge{background:var(--primary);color:#fff;font-weight:800;font-size:14px;padding:6px 12px;border-radius:10px;letter-spacing:.06em;white-space:nowrap}
+.part-head h2{font-family:var(--jp);font-size:28px}
+.part-head h2 small{font-family:var(--en);font-size:17px;color:var(--muted);font-weight:600;margin-left:8px}
+h3.sub{font-size:19px;color:var(--primary-dark);margin:30px 0 12px;display:flex;align-items:center;gap:10px}
+h3.sub .tag{font-size:12px;background:var(--accent);color:#fff;padding:3px 9px;border-radius:999px;letter-spacing:.05em}
+h3.practice{font-size:19px;color:var(--accent);margin:34px 0 10px;padding-top:18px;border-top:2px dashed var(--line);display:flex;gap:10px;align-items:center}
+h3.practice .tag{background:var(--accent);color:#fff;font-size:12px;padding:3px 9px;border-radius:999px;letter-spacing:.05em}
+.task{font-weight:700;color:var(--accent);margin:22px 0 8px}
+.task b{display:inline-block;min-width:1.6em}
+p{margin:.5em 0}
+.muted{color:var(--muted)}
+/* ---------- Japanese line with romaji under each chunk ---------- */
+.jl{display:flex;flex-wrap:wrap;column-gap:.6em;row-gap:.15em;align-items:flex-start}
+.ch{display:inline-flex;flex-direction:column}
+.ch .k{font-size:1.24rem;line-height:1.4;font-weight:500}
+.ch .r{font-size:.74rem;color:var(--muted);line-height:1.15;letter-spacing:.01em}
+body.no-romaji .ch .r{display:none}
+/* ---------- boxes ---------- */
+.formula{display:inline-flex;gap:28px;align-items:center;border:2px solid var(--primary);border-radius:12px;padding:12px 24px;margin:10px 0 14px;background:var(--primary-soft)}
+.formula .k{font-family:var(--jp);font-size:1.45rem;font-weight:700}
+.formula .k .hl{color:var(--accent)}
+.formula .e{font-style:italic;color:var(--primary-dark)}
+.ex{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:12px 24px;margin:8px 0 6px;align-items:start}
+.ex .e{font-style:italic;color:#44525c;padding-top:4px}
+.note{background:var(--yellow);border-radius:12px;padding:14px 18px;margin:16px 0}
+.note h4{margin:0 0 4px;font-size:15px;color:#9a6a00;letter-spacing:.04em}
+.tip{border-left:5px solid var(--accent);background:var(--accent-soft);border-radius:0 12px 12px 0;padding:12px 18px;margin:16px 0}
+.tip h4{margin:0 0 4px;font-size:15px;color:var(--accent)}
+.ng{color:#c0392b;font-weight:700}
+.ok{color:var(--primary);font-weight:700}
+/* ---------- tables ---------- */
+table{border-collapse:collapse;width:100%;margin:10px 0}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:center;vertical-align:middle}
+th{background:var(--primary-soft);color:var(--primary-dark);font-weight:700}
+td .k{font-size:1.08rem}
+td .r,th .r{display:block;font-size:.72rem;color:var(--muted);font-weight:600}
+th .k{display:block}
+body.no-romaji td .r,body.no-romaji th .r{display:none}
+.cast-table table{table-layout:fixed;font-size:13.5px}
+.cast-table th:first-child{width:76px}
+.cast-table th,.cast-table td{padding:6px 3px;overflow-wrap:anywhere}
+.cast-table .hint{font-size:.74rem}
+.cast-table th .k{font-size:.95rem}
+.hint{display:block;font-family:var(--jp);font-size:.85rem;color:var(--muted)}
+.irr{color:var(--accent);font-weight:700}
+.irr-cell{background:var(--accent-soft)}
+/* ---------- practice items ---------- */
+.example{display:flex;gap:14px;align-items:flex-start;background:#f6f9fa;border-radius:12px;padding:12px 16px;margin:8px 0 12px;flex-wrap:wrap}
+.example .lbl{font-size:12px;font-weight:800;color:var(--accent);border:1.5px solid var(--accent);border-radius:6px;padding:1px 7px;margin-top:6px}
+.example .arrow{color:var(--accent);font-size:1.3rem;margin-top:2px}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px 18px;margin:6px 0 4px;padding:0;list-style:none;counter-reset:it}
+.items.wide{grid-template-columns:repeat(auto-fill,minmax(330px,1fr))}
+.items.one{grid-template-columns:1fr}
+.items li{counter-increment:it;display:flex;gap:8px;align-items:flex-start}
+.items li::before{content:counter(it) ".";font-weight:800;color:var(--primary);min-width:1.4em;padding-top:3px}
+.blank{display:inline-block;min-width:7em;border-bottom:2px solid #9fb3ba;height:1.4em;vertical-align:bottom}
+.qa{display:grid;grid-template-columns:2em 1fr;gap:2px 6px;margin:4px 0}
+.qa .who{font-weight:800;color:var(--primary);padding-top:3px}
+/* ---------- dialogue ---------- */
+.dlg{margin:10px 0}
+.dlg .row{display:grid;grid-template-columns:7.2em 1fr;gap:6px;padding:7px 0;border-bottom:1px dotted var(--line)}
+.dlg .row:last-child{border-bottom:none}
+.dlg .sp{font-weight:700}
+/* ---------- characters ---------- */
+.cast{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin:12px 0}
+.cast.people{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.cast.people .card{display:grid;grid-template-columns:64px 1fr;gap:2px 10px;text-align:left;padding:10px}
+.cast.people .card .av{grid-row:1 / span 3}
+.cast.people .card .nm{margin-top:0;font-size:1rem}
+.cast.people .card .bio{grid-column:1 / -1;margin-top:4px}
+@container (max-width:600px){.cast.people{grid-template-columns:1fr}}
+.card{border:1.5px solid var(--line);border-radius:14px;padding:12px 10px 14px;text-align:center;background:#fbfdfd}
+.card .nm{font-family:var(--jp);font-weight:700;font-size:1.1rem;margin-top:4px}
+.card .rm{font-size:.8rem;color:var(--muted)}
+.card .bio{font-size:.84rem;margin-top:6px;line-height:1.45;text-align:left}
+.av svg{display:block;margin:0 auto}
+.scene{display:flex;justify-content:center;gap:26px;align-items:flex-end;margin:14px 0 6px;flex-wrap:wrap}
+.scene .person{display:flex;flex-direction:column;align-items:center}
+.bubble{font-family:var(--jp);background:#fff;border:2px solid var(--primary);border-radius:16px;padding:6px 14px;margin-bottom:6px;position:relative;font-size:1.05rem}
+.bubble::after{content:"";position:absolute;bottom:-9px;left:50%;margin-left:-8px;border:8px solid transparent;border-top-color:var(--primary);border-bottom:0}
+/* ---------- clocks ---------- */
+.clocks{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:14px 10px;margin:10px 0}
+.clocks .c{text-align:center}
+.clocks .c .k{font-family:var(--jp);font-size:1.05rem;display:block}
+.clocks .c .r{font-size:.72rem;color:var(--muted);display:block}
+body.no-romaji .clocks .c .r{display:none}
+.clocks .c.irr-c .k{color:var(--accent);font-weight:700}
+.clocks .num{font-weight:800;color:var(--primary)}
+.cities{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:12px 0}
+.city{border:1.5px solid var(--line);border-radius:14px;padding:10px;text-align:center;background:#fbfdfd}
+.city.home{border-color:var(--accent);background:var(--accent-soft)}
+.city .k{font-family:var(--jp);font-weight:700;font-size:1.1rem}
+.city .r{font-size:.75rem;color:var(--muted)}
+.city .ap{display:inline-block;margin-top:4px;font-weight:800;font-size:.8rem;padding:1px 8px;border-radius:999px;background:var(--primary);color:#fff}
+.city .ap.am{background:#f2b134;color:#3b2b00}
+/* ---------- cover ---------- */
+.cover{text-align:center;padding-top:10mm}
+.cover .course{letter-spacing:.3em;font-size:14px;font-weight:800;color:var(--primary)}
+.cover .lesson{font-size:22px;font-weight:800;margin-top:6px}
+.cover h1{font-family:var(--jp);font-size:56px;color:var(--primary-dark);margin:10px 0 2px}
+.cover .en{font-size:24px;color:var(--muted);font-weight:600}
+.goals{text-align:left;max-width:640px;margin:22px auto 0;background:var(--primary-soft);border-radius:16px;padding:20px 26px}
+.goals h3{color:var(--primary-dark);font-size:17px;margin-bottom:6px}
+.goals ul{margin:0;padding-left:1.2em}
+.toc{text-align:left;max-width:640px;margin:22px auto 0;columns:2;column-gap:28px;padding:0;list-style:none;font-size:15px}
+.toc li{break-inside:avoid;padding:2px 0;border-bottom:1px dotted var(--line)}
+.toc a{color:var(--ink);text-decoration:none}
+.toc a b{color:var(--primary);margin-right:6px}
+.legend{font-size:14px;color:var(--muted);margin-top:12px}
+/* ---------- bilingual: Japanese on top, English below ---------- */
+.bi{display:block}
+.bi>.ja,.bi>.en{display:block}
+.bi>.ja{font-family:var(--jp);font-weight:500}
+.bi>.en{font-size:.86em;color:#56646d;font-weight:400;margin-top:2px;font-style:normal}
+ruby rt{font-size:.5em;color:var(--muted);font-weight:400;font-family:var(--jp)}
+.task{display:flex;gap:6px;align-items:flex-start}
+.task .bi>.en{color:#c0704f;font-weight:600}
+h3 .bi>.en,h4 .bi>.en{font-size:.78em;font-weight:600;letter-spacing:0}
+.card .bio .bi>.ja{font-size:.86rem;line-height:1.6}
+.card .bio .bi>.en{font-size:.76rem}
+.goals li{margin:4px 0}
+.toc .bi>.en{font-size:.8em}
+th .bi>.en{font-size:.78em;font-weight:600;color:var(--primary-dark)}
+/* ---------- vocab ---------- */
+.vocab h3{margin:22px 0 4px;color:var(--primary-dark);font-size:17px;letter-spacing:.06em}
+.vocab table td{text-align:left;padding:5px 10px}
+.vocab table td:first-child{width:2.2em;text-align:center}
+.vocab td.kk{font-family:var(--jp);font-size:1.08rem;width:34%}
+.vocab td.rr{color:var(--muted);width:26%}
+body.no-romaji .vocab td.rr{color:transparent}
+.mk{font-weight:800}
+.mk.core{color:var(--accent)}
+.mk.add{color:var(--primary)}
+.mk.plus{color:#7a5cc2}
+/* ---------- answers ---------- */
+.ans h3{margin:22px 0 6px;color:var(--primary-dark);font-size:16px}
+.ans ol{margin:0;padding-left:1.6em}
+.ans li{margin:3px 0;break-inside:avoid}
+.ans ol.cols{columns:3;column-gap:28px}
+.ans .ch .k{font-size:1.02rem}
+.ans .ch .r{font-size:.68rem}
+/* ---------- responsive / print ---------- */
+@media (max-width:840px){
+  .page{width:auto;min-height:0;margin:10px 0;padding:46px 16px 26px;border-radius:0}
+  .run{top:14px;left:16px;right:16px}
+}
+.table-wrap{overflow-x:auto}
+@container (max-width:600px){
+  .ex{grid-template-columns:1fr;gap:2px}
+  .ex .e{padding:0 0 10px}
+  .dlg .row{grid-template-columns:1fr}
+  .cover h1{font-size:46px}
+  .toc{columns:1}
+  .formula{gap:12px;padding:10px 14px;flex-wrap:wrap}
+  .ans ol.cols{columns:2}
+}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .toolbar{display:none}
+  .page{margin:0;box-shadow:none;border-radius:0;width:210mm;height:297mm;min-height:0;overflow:hidden;break-after:page}
+  .page:last-of-type{break-after:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span class="tt">Lesson 1 · はじめまして</span>
+  <a href="#toc">Contents</a>
+  <button id="rmBtn" class="on" type="button">Romaji: ON</button>
+  <a href="lesson01.pdf" download>PDF</a>
+  <a href="./">All lessons</a>
+</div>
+
+<!-- =============================== COVER =============================== -->
+<section class="page cover" id="top">
+  <div class="course">ORIGINAL JAPANESE COURSE</div>
+  <div class="lesson">Lesson 1</div>
+  <h1>はじめまして</h1>
+  <div class="en">Nice to Meet You</div>
+  <div class="scene" style="margin-top:22px;gap:14px">
+    <div class="av" data-who="amina" data-size="80"></div>
+    <div class="av" data-who="lin" data-size="80"></div>
+    <div class="av" data-who="ogawa" data-size="80"></div>
+    <div class="av" data-who="raj" data-size="80"></div>
+    <div class="av" data-who="yuuki" data-size="80"></div>
+    <div class="av" data-who="lucas" data-size="80"></div>
+  </div>
+  <div class="goals">
+    <h3><span class="bi"><span class="ja">この課{か}で できるようになること</span><span class="en">In this lesson, you will learn to…</span></span></h3>
+    <ul>
+      <li><span class="bi"><span class="ja">自己紹介{じこしょうかい}をする</span><span class="en">introduce yourself</span></span></li>
+      <li><span class="bi"><span class="ja">名前{なまえ}・国籍{こくせき}・学校{がっこう}・専攻{せんこう}・学年{がくねん}・年齢{ねんれい}について 質問{しつもん}したり 答{こた}えたりする</span><span class="en">ask and answer about name, nationality, school, major, year, and age</span></span></li>
+      <li><span class="bi"><span class="ja">数字{すうじ}・電話番号{でんわばんごう}・時間{じかん}を 言{い}う</span><span class="en">say numbers, phone numbers, and the time</span></span></li>
+    </ul>
+  </div>
+  <ul class="toc" id="toc">
+    <li><a href="#cast" style="display:flex;gap:6px"><b>★</b><span class="bi"><span class="ja">登場人物{とうじょうじんぶつ}</span><span class="en">Meet the Characters</span></span></a></li>
+    <li><a href="#p0" style="display:flex;gap:6px"><b>0</b><span class="bi"><span class="ja">あいさつ</span><span class="en">Greetings</span></span></a></li>
+    <li><a href="#p1" style="display:flex;gap:6px"><b>1</b><span class="bi"><span class="ja">X は Y です</span><span class="en">X is Y</span></span></a></li>
+    <li><a href="#p2" style="display:flex;gap:6px"><b>2</b><span class="bi"><span class="ja">数字{すうじ}</span><span class="en">Numbers</span></span></a></li>
+    <li><a href="#p3" style="display:flex;gap:6px"><b>3</b><span class="bi"><span class="ja">〜ですか</span><span class="en">Questions</span></span></a></li>
+    <li><a href="#p4" style="display:flex;gap:6px"><b>4</b><span class="bi"><span class="ja">名詞{めいし}の 名詞{めいし}</span><span class="en">Noun の Noun</span></span></a></li>
+    <li><a href="#p5" style="display:flex;gap:6px"><b>5</b><span class="bi"><span class="ja">時間{じかん}</span><span class="en">Time</span></span></a></li>
+    <li><a href="#p6" style="display:flex;gap:6px"><b>6</b><span class="bi"><span class="ja">読{よ}み物{もの}</span><span class="en">Reading</span></span></a></li>
+    <li><a href="#p7" style="display:flex;gap:6px"><b>7</b><span class="bi"><span class="ja">まとめ</span><span class="en">Review</span></span></a></li>
+    <li><a href="#vocab" style="display:flex;gap:6px"><b>V</b><span class="bi"><span class="ja">単語{たんご}</span><span class="en">Vocabulary</span></span></a></li>
+    <li><a href="#answers" style="display:flex;gap:6px"><b>A</b><span class="bi"><span class="ja">答{こた}え</span><span class="en">Answer Key</span></span></a></li>
+  </ul>
+</section>
+
+<!-- =============================== CAST =============================== -->
+<section class="page" id="cast">
+  <div class="part-head"><span class="badge">CHARACTERS</span><h2>とうじょうじんぶつ<small>Meet the Characters</small></h2></div>
+  <p><span class="bi"><span class="ja">この人{ひと}たちは 毎回{まいかい} 出{で}てきます。日本{にほん}の「あおばだいがく」の 新入生{しんにゅうせい}オリエンテーションで 出会{であ}います。</span><span class="en">These people appear in every lesson. They meet at the orientation for new students at <b>Aoba University</b> in Japan.</span></span></p>
+  <div class="cast people">
+    <div class="card"><div class="av" data-who="lin" data-size="64"></div><div class="nm">ワン・リン</div><div class="rm">Wang Lin</div><div class="bio"><span class="bi"><span class="ja">中国{ちゅうごく}から 来{き}ました。あおばだいがくの 留学生{りゅうがくせい}です。経済{けいざい}を 勉強{べんきょう}しています。</span><span class="en">From China. An international student at Aoba University. Studies economics.</span></span></div></div>
+    <div class="card"><div class="av" data-who="yuuki" data-size="64"></div><div class="nm">もりた ゆうき</div><div class="rm">Morita Yuuki</div><div class="bio"><span class="bi"><span class="ja">日本人{にほんじん}です。あおばだいがくの 学生{がくせい}です。歴史{れきし}を 勉強{べんきょう}しています。</span><span class="en">Japanese. A student at Aoba University. Studies history.</span></span></div></div>
+    <div class="card"><div class="av" data-who="amina" data-size="64"></div><div class="nm">アミナ・ハッサン</div><div class="rm">Amina Hassan</div><div class="bio"><span class="bi"><span class="ja">エジプトから 来{き}ました。カイロ大学{だいがく}の 学生{がくせい}で、今{いま}は 日本{にほん}に 1年間{ねんかん} 留学{りゅうがく}しています。</span><span class="en">From Egypt. A student at Cairo University, now studying in Japan for one year.</span></span></div></div>
+    <div class="card"><div class="av" data-who="raj" data-size="64"></div><div class="nm">ラジ・クマール</div><div class="rm">Raj Kumar</div><div class="bio"><span class="bi"><span class="ja">インドから 来{き}ました。デリー大学{だいがく}の 学生{がくせい}で、今{いま}は 日本{にほん}に 1年間{ねんかん} 留学{りゅうがく}しています。</span><span class="en">From India. A student at Delhi University, now studying in Japan for one year.</span></span></div></div>
+    <div class="card"><div class="av" data-who="lucas" data-size="64"></div><div class="nm">ルーカス・ミラー</div><div class="rm">Lucas Miller</div><div class="bio"><span class="bi"><span class="ja">カナダから 来{き}ました。トロント大学{だいがく}の 学生{がくせい}で、今{いま}は 日本{にほん}に 1年間{ねんかん} 留学{りゅうがく}しています。</span><span class="en">From Canada. A student at the University of Toronto, now studying in Japan for one year.</span></span></div></div>
+    <div class="card"><div class="av" data-who="ogawa" data-size="64"></div><div class="nm">おがわせんせい</div><div class="rm">Ogawa sensee</div><div class="bio"><span class="bi"><span class="ja">日本人{にほんじん}です。あおばだいがくで 日本語{にほんご}を 教{おし}えています。</span><span class="en">Japanese. Teaches Japanese at Aoba University.</span></span></div></div>
+  </div>
+  <p class="legend" style="margin:14px 0 0"><span class="bi"><span class="ja">復習{ふくしゅう}するときは、上{うえ}の「Romaji」ボタンで ローマ字{じ}を かくせます。</span><span class="en">Tip: Use the <b>Romaji</b> button at the top to hide the romaji when you review.</span></span></p>
+  <h3 class="sub"><span class="bi"><span class="ja">人物{じんぶつ}の 表{ひょう}</span><span class="en">Character Chart</span></span></h3>
+  <div class="table-wrap"><div class="cast-table" data-rows="nat,school,year,age,major,phone"></div></div>
+
+  <div class="note">
+    <h4><span class="bi"><span class="ja">文化{ぶんか}ノート・日本人{にほんじん}の 名前{なまえ}</span><span class="en">CULTURE NOTE · Japanese names</span></span></h4>
+    <p><span class="bi"><span class="ja">日本語{にほんご}では、<b>名字{みょうじ}が 先{さき}</b>、名前{なまえ}が 後{あと}です。「もりた ゆうき」の「もりた」が 名字{みょうじ}、「ゆうき」が 名前{なまえ}です。ミドルネームは ありません。よくある 名字{みょうじ}：やまもと・なかむら・こばやし・わたなべ</span><span class="en">In Japanese, the <b>family name comes first</b>. In もりた ゆうき, <span class="jp">もりた</span> is the family name and <span class="jp">ゆうき</span> is the given name. There are no middle names. Some common family names: <span class="jp">やまもと・なかむら・こばやし・わたなべ</span>.</span></span></p>
+    <p><span class="bi"><span class="ja">大学{だいがく}の 友{とも}だちどうしは 下{した}の 名前{なまえ}で 呼{よ}ぶことが 多{おお}いので、この本{ほん}では「ゆうきさん」「リンさん」のように 呼{よ}びます。</span><span class="en">Friends at university often use given names, so in this book you will hear <span class="jp">ゆうきさん</span>, <span class="jp">リンさん</span>, and so on.</span></span></p>
+  </div>
+</section>
+
+<!-- =============================== PART 0 =============================== -->
+<section class="page" id="p0">
+  <div class="part-head"><span class="badge">PART 0</span><h2>あいさつ<small>Greetings</small></h2></div>
+  <p><span class="bi"><span class="ja">初{はじ}めて 会{あ}う 人{ひと}に 使{つか}う ことばから 始{はじ}めましょう。</span><span class="en">Let's start with the words you need when you meet someone for the first time.</span></span></p>
+  <div class="ex">
+    <div class="jl" data-j="こんにちは。=Konnichiwa."></div><div class="e">Hello. / Good afternoon.</div>
+    <div class="jl" data-j="はじめまして。=Hajimemashite."></div><div class="e">Nice to meet you. (only when you meet for the first time)</div>
+    <div class="jl" data-j="〜です。=… desu."></div><div class="e">I'm …</div>
+    <div class="jl" data-j="よろしく=Yoroshiku|おねがいします。=onegai shimasu."></div><div class="e">Nice to meet you. / I look forward to knowing you. (said at the end)</div>
+  </div>
+  <div class="scene">
+    <div class="person"><div class="bubble">はじめまして。</div><div class="av" data-who="lin" data-size="110"></div></div>
+    <div class="person"><div class="bubble">よろしくおねがいします。</div><div class="av" data-who="amina" data-size="110"></div></div>
+  </div>
+  <h3 class="sub"><span class="bi"><span class="ja">モデル</span><span class="en">Model</span></span></h3>
+  <div class="example" style="display:block">
+    <div class="jl" data-j="はじめまして。=Hajimemashite.|ワン・リンです。=Wan Rin desu.|よろしく=Yoroshiku|おねがいします。=onegai shimasu."></div>
+  </div>
+  <div class="tip">
+    <h4><span class="bi"><span class="ja">書{か}き方{かた}の 注意{ちゅうい}</span><span class="en">Spelling note</span></span></h4>
+    <p><span class="bi"><span class="ja">「こんにちは」は「は」と 書{か}きますが、「わ」と 読{よ}みます。この「は」は Part 1でも 出{で}てきます。</span><span class="en"><span class="jp">こんにちは</span> is written with <span class="jp">は</span>, but you say <b>wa</b>. You will see this <span class="jp">は</span> again in Part 1.</span></span></p>
+  </div>
+  <h3 class="practice"><span class="tag">PRACTICE 0</span><span class="bi"><span class="ja">先生{せんせい}と いっしょに</span><span class="en">With your teacher</span></span></h3>
+  <p class="task"><b>A.</b><span class="bi"><span class="ja">先生{せんせい}に あいさつして、モデルのように 自己紹介{じこしょうかい}しましょう。</span><span class="en">Greet your teacher and introduce yourself like the model.</span></span></p>
+  <div class="example" style="display:block">
+    <div class="jl" data-j="はじめまして。=Hajimemashite."></div>
+    <div style="margin:6px 0"><span class="blank" style="min-width:12em"></span> <span class="jp" style="font-size:1.24rem">です。</span></div>
+    <div class="jl" data-j="よろしく=Yoroshiku|おねがいします。=onegai shimasu."></div>
+  </div>
+</section>
+
+<!-- =============================== PART 1 =============================== -->
+<section class="page" id="p1">
+  <div class="part-head"><span class="badge">PART 1</span><h2>X は Y です<small>X is Y</small></h2></div>
+
+  <h3 class="sub"><span class="tag">GRAMMAR 1</span>〜です</h3>
+  <p><span class="bi"><span class="ja">「です」は 英語{えいご}の “am / is / are” のような ことばです。名詞{めいし}の 後{あと}に つけると、ていねいな 文{ぶん}に なります。</span><span class="en"><span class="jp">です</span> (<i>desu</i>) works like “am / is / are.” Put it after a noun to make a polite sentence.</span></span></p>
+  <div class="formula"><span class="k">〜<span class="hl">です</span>。</span><span class="e">(It) is … / (I) am …</span></div>
+  <div class="ex">
+    <div class="jl" data-j="がくせいです。=Gakusee desu."></div><div class="e">(I) am a student.</div>
+    <div class="jl" data-j="にほんじんです。=Nihonjin desu."></div><div class="e">(I) am Japanese.</div>
+    <div class="jl" data-j="にじはんです。=Niji han desu."></div><div class="e">(It) is half past two.</div>
+  </div>
+  <p><span class="bi"><span class="ja">この 文{ぶん}には「わたし」や「それ」が ありません。だれ・何{なに}の 話{はなし}か わかるときは、日本語{にほんご}では ふつう <b>主語{しゅご}を 言{い}いません</b>。</span><span class="en">Notice: these sentences have no “I” or “it.” In Japanese, we usually <b>leave out the subject</b> when it is clear who or what we are talking about.</span></span></p>
+
+  <p style="margin-top:20px"><span class="bi"><span class="ja">何{なに}について 話{はな}すか（トピック）を 示{しめ}したいときは、文{ぶん}の はじめに 言{い}って「は」を つけます。この「は」は「<b>わ</b>」と 読{よ}みます。</span><span class="en">When you want to show the topic — what you are talking about — put it first and add <span class="jp">は</span>. This <span class="jp">は</span> is pronounced <b>wa</b>.</span></span></p>
+  <div class="formula"><span class="k">X <span class="hl">は</span> Y <span class="hl">です</span>。</span><span class="e">X is Y. / As for X, it is Y.</span></div>
+  <div class="ex">
+    <div class="jl" data-j="わたしは=Watashi wa|ワン・リンです。=Wan Rin desu."></div><div class="e">I am Wang Lin.</div>
+    <div class="jl" data-j="ラジさんは=Raji san wa|インドじんです。=Indojin desu."></div><div class="e">Raj is Indian.</div>
+    <div class="jl" data-j="アミナさんは=Amina san wa|りゅうがくせいです。=ryuugakusee desu."></div><div class="e">Amina is an international student.</div>
+    <div class="jl" data-j="せんこうは=Senkoo wa|けいざいです。=keezai desu."></div><div class="e">(My) major is economics.</div>
+  </div>
+
+  <div class="note">
+    <h4><span class="bi"><span class="ja">「a」「the」も 複数形{ふくすうけい}も ない</span><span class="en">NO “A,” NO “THE,” NO PLURAL</span></span></h4>
+    <p><span class="bi"><span class="ja">「がくせい」は “a student” “the student” “students” の どれの 意味{いみ}にも なります。どれかは 文脈{ぶんみゃく}で わかります。</span><span class="en"><span class="jp">がくせい</span> can mean “a student,” “the student,” or “students.” The context tells you which.</span></span></p>
+  </div>
+
+  <h3 class="sub"><span class="bi"><span class="ja">ことばの 作{つく}り方{かた}：国{くに} ＋ じん／ご</span><span class="en">Word building: country ＋ じん / ご</span></span></h3>
+  <div class="table-wrap"><table>
+    <tr><th><span class="bi"><span class="ja">国{くに}</span><span class="en">Country</span></span></th><th><span class="bi"><span class="ja">＋ じん（人{ひと}）</span><span class="en">＋ じん (person)</span></span></th><th><span class="bi"><span class="ja">＋ ご（ことば）</span><span class="en">＋ ご (language)</span></span></th></tr>
+    <tr><td><span class="k">にほん</span><span class="r">Nihon · Japan</span></td><td><span class="k">にほんじん</span><span class="r">nihonjin</span></td><td><span class="k">にほんご</span><span class="r">nihongo</span></td></tr>
+    <tr><td><span class="k">ちゅうごく</span><span class="r">Chuugoku · China</span></td><td><span class="k">ちゅうごくじん</span><span class="r">chuugokujin</span></td><td><span class="k">ちゅうごくご</span><span class="r">chuugokugo</span></td></tr>
+    <tr><td><span class="k">かんこく</span><span class="r">Kankoku · Korea</span></td><td><span class="k">かんこくじん</span><span class="r">kankokujin</span></td><td><span class="k">かんこくご</span><span class="r">kankokugo</span></td></tr>
+    <tr><td><span class="k">アメリカ</span><span class="r">Amerika · U.S.A.</span></td><td><span class="k">アメリカじん</span><span class="r">Amerikajin</span></td><td class="muted">—</td></tr>
+    <tr><td><span class="k">エジプト</span><span class="r">Ejiputo · Egypt</span></td><td><span class="k">エジプトじん</span><span class="r">Ejiputojin</span></td><td class="muted">—</td></tr>
+  </table></div>
+
+  <div class="tip">
+    <h4>〜さん</h4>
+    <p><span class="bi"><span class="ja">「さん」は <b>ほかの 人{ひと}</b>の 名前{なまえ}（名字{みょうじ}でも 下{した}の 名前{なまえ}でも）の 後{あと}に つけます。自分{じぶん}には 使{つか}いません。</span><span class="en">Put <span class="jp">さん</span> after <b>other people's</b> names (given or family name). Never use it for yourself.</span></span></p>
+    <p><span class="ok">○</span> <span class="jp">わたしは リンです。</span>　<span class="ng">×</span> <span class="jp">わたしは リンさんです。</span></p>
+    <p><span class="bi"><span class="ja">先生{せんせい}には「さん」ではなく「せんせい」を 使{つか}います：おがわせんせい</span><span class="en">For teachers, use <span class="jp">せんせい</span> instead of <span class="jp">さん</span>: <span class="jp">おがわせんせい</span>.</span></span></p>
+  </div>
+
+  <h3 class="practice"><span class="tag">PRACTICE 1</span>X は Y です</h3>
+  <div class="table-wrap"><div class="cast-table" data-rows="nat,status,major"></div></div>
+
+  <p class="task"><b>A.</b><span class="bi"><span class="ja">表{ひょう}を 見{み}て、それぞれの 人{ひと}の 国籍{こくせき}を 言{い}いましょう。</span><span class="en">Look at the chart and say each person's nationality.</span></span></p>
+  <div class="example"><span class="lbl">Example</span><div class="jl" data-j="リンさん=Rin san"></div><span class="arrow">→</span><div class="jl" data-j="リンさんは=Rin san wa|ちゅうごくじんです。=chuugokujin desu."></div></div>
+  <ol class="items">
+    <li><div class="jl" data-j="ゆうきさん=Yuuki san"></div></li>
+    <li><div class="jl" data-j="アミナさん=Amina san"></div></li>
+    <li><div class="jl" data-j="ラジさん=Raji san"></div></li>
+    <li><div class="jl" data-j="おがわせんせい=Ogawa sensee"></div></li>
+    <li><div class="jl" data-j="ルーカスさん=Ruukasu san"></div></li>
+  </ol>
+
+  <p class="task"><b>B.</b><span class="bi"><span class="ja">その 人{ひと}に なって、自己紹介{じこしょうかい}しましょう。</span><span class="en">Be the character! Introduce yourself as each person.</span></span></p>
+  <div class="example"><span class="lbl">Example</span><div>
+    <div class="jl" style="margin-bottom:4px" data-j="（リン）=(Rin)"></div>
+    <div class="jl" data-j="わたしは=Watashi wa|ワン・リンです。=Wan Rin desu.|ちゅうごくじんです。=Chuugokujin desu."></div>
+    <div class="jl" data-j="りゅうがくせいです。=Ryuugakusee desu.|せんこうは=Senkoo wa|けいざいです。=keezai desu."></div>
+  </div></div>
+  <ol class="items">
+    <li><div class="jl" data-j="ゆうき=Yuuki"></div></li>
+    <li><div class="jl" data-j="アミナ=Amina"></div></li>
+    <li><div class="jl" data-j="ラジ=Raji"></div></li>
+    <li><div class="jl" data-j="ルーカス=Ruukasu"></div></li>
+  </ol>
+
+  <p class="task"><b>C.</b><span class="bi"><span class="ja">今度{こんど}は 自分{じぶん}のことを 先生{せんせい}に 話{はな}しましょう。</span><span class="en">Now tell your teacher about yourself.</span></span></p>
+  <div class="example" style="display:block;line-height:2.4">
+    <span class="jp" style="font-size:1.2rem">わたしは</span> <span class="blank"></span> <span class="jp" style="font-size:1.2rem">です。</span>
+    <span class="blank"></span> <span class="jp" style="font-size:1.2rem">じんです。</span><br>
+    <span class="blank"></span> <span class="jp" style="font-size:1.2rem">です。</span>
+    <span class="muted" style="font-size:.85rem">(がくせい / りゅうがくせい / かいしゃいん …)</span><br>
+    <span class="jp" style="font-size:1.2rem">せんこうは</span> <span class="blank"></span> <span class="jp" style="font-size:1.2rem">です。</span>
+    <span class="muted" style="font-size:.85rem"><span class="ja">（学生{がくせい}の 人{ひと}）</span> if you are a student</span>
+  </div>
+  <p class="muted" style="font-size:.9rem"><span class="bi"><span class="ja">仕事{しごと}や 専攻{せんこう}の ことばは、<a href="#vocab">単語{たんご}リスト</a>を 見{み}てください。</span><span class="en">Need a word for your job or major? Look at the <a href="#vocab">Vocabulary</a> page.</span></span></p>
+</section>
+
+<!-- =============================== PART 2 =============================== -->
+<section class="page" id="p2">
+  <div class="part-head"><span class="badge">PART 2</span><h2>すうじ<small>Numbers</small></h2></div>
+  <p><span class="bi"><span class="ja">日本語{にほんご}の 数字{すうじ}は かんたんです。0〜10を 覚{おぼ}えれば、99まで 全部{ぜんぶ} 言{い}えます。</span><span class="en">Japanese numbers are easy to build: once you know 0–10, you can make every number up to 99.</span></span></p>
+  <div class="table-wrap"><table>
+    <tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+    <tr>
+      <td class="irr-cell"><span class="k">ゼロ／れい</span><span class="r">zero / ree</span></td>
+      <td><span class="k">いち</span><span class="r">ichi</span></td>
+      <td><span class="k">に</span><span class="r">ni</span></td>
+      <td><span class="k">さん</span><span class="r">san</span></td>
+      <td class="irr-cell"><span class="k">よん／し</span><span class="r">yon / shi</span></td>
+      <td><span class="k">ご</span><span class="r">go</span></td>
+    </tr>
+    <tr><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>100</th></tr>
+    <tr>
+      <td><span class="k">ろく</span><span class="r">roku</span></td>
+      <td class="irr-cell"><span class="k">なな／しち</span><span class="r">nana / shichi</span></td>
+      <td><span class="k">はち</span><span class="r">hachi</span></td>
+      <td class="irr-cell"><span class="k">きゅう／く</span><span class="r">kyuu / ku</span></td>
+      <td><span class="k">じゅう</span><span class="r">juu</span></td>
+      <td><span class="k">ひゃく</span><span class="r">hyaku</span></td>
+    </tr>
+  </table></div>
+  <p class="muted" style="font-size:.9rem"><span class="bi"><span class="ja">色{いろ}のついた 数字{すうじ}は 読{よ}み方{かた}が 2つ あります。数{かぞ}えるときは「<b>よん・なな・きゅう</b>」を 使{つか}いましょう。（時間{じかん}では ほかの 読{よ}み方{かた}も 使{つか}います → Part 5）</span><span class="en">Colored boxes have two readings. In this lesson, use <b>よん, なな, きゅう</b> for counting. (For the time, we use some of the other readings — see Part 5.)</span></span></p>
+
+  <h3 class="sub"><span class="bi"><span class="ja">11〜99：組{く}み合{あ}わせるだけ</span><span class="en">11–99: just put the pieces together</span></span></h3>
+  <div class="ex">
+    <div class="jl" data-j="11　じゅういち=juuichi"></div><div class="e">10 ＋ 1</div>
+    <div class="jl" data-j="17　じゅうなな=juunana"></div><div class="e">10 ＋ 7</div>
+    <div class="jl" data-j="20　にじゅう=nijuu"></div><div class="e">2 × 10</div>
+    <div class="jl" data-j="35　さんじゅうご=sanjuugo"></div><div class="e">3 × 10 ＋ 5</div>
+    <div class="jl" data-j="48　よんじゅうはち=yonjuuhachi"></div><div class="e">4 × 10 ＋ 8</div>
+    <div class="jl" data-j="99　きゅうじゅうきゅう=kyuujuukyuu"></div><div class="e">9 × 10 ＋ 9</div>
+  </div>
+
+  <h3 class="practice"><span class="tag">PRACTICE 2</span>Numbers</h3>
+  <p class="task"><b>A.</b><span class="bi"><span class="ja">数字{すうじ}を 声{こえ}に 出{だ}して 読{よ}みましょう。</span><span class="en">Read these numbers aloud.</span></span></p>
+  <ol class="items" style="grid-template-columns:repeat(auto-fill,minmax(100px,1fr))">
+    <li>7</li><li>14</li><li>23</li><li>36</li><li>40</li><li>59</li><li>64</li><li>71</li><li>88</li><li>92</li><li>100</li>
+  </ol>
+
+  <p class="task"><b>B.</b><span class="bi"><span class="ja">電話番号{でんわばんごう}：数字{すうじ}を 1つずつ 読{よ}みます。「－」は「の」と 読{よ}みます。</span><span class="en">Phone numbers. Read each number one digit at a time. The dash (－) is read as <span class="jp">の</span> (<i>no</i>).</span></span></p>
+  <div class="example"><span class="lbl">Example</span><div>
+    <div style="font-weight:800;font-size:1.1rem">090-4417-2583</div>
+    <div class="jl" data-j="ゼロきゅうゼロの=zero kyuu zero no|よんよんいちななの=yon yon ichi nana no|にいごうはちさん=nii goo hachi san"></div>
+  </div></div>
+  <div class="tip">
+    <h4><span class="bi"><span class="ja">短{みじか}い 数字{すうじ}は のばして 言{い}う</span><span class="en">Short numbers get longer</span></span></h4>
+    <p><span class="bi"><span class="ja">電話番号{でんわばんごう}では「に」「ご」を「にい」「ごう」と のばして 言{い}うことが よく あります。聞{き}き取{と}りやすく なるからです。</span><span class="en">In phone numbers, <span class="jp">に</span> and <span class="jp">ご</span> are often stretched: <span class="jp">にい</span> (<i>nii</i>) and <span class="jp">ごう</span> (<i>goo</i>). This makes them easier to hear.</span></span></p>
+  </div>
+  <ol class="items wide">
+    <li><div><div class="jl" data-j="リンさん=Rin san"></div><b>080-2943-7651</b></div></li>
+    <li><div><div class="jl" data-j="ゆうきさん=Yuuki san"></div><b>080-7325-1968</b></div></li>
+    <li><div><div class="jl" data-j="アミナさん=Amina san"></div><b>070-6158-3492</b></div></li>
+    <li><div><div class="jl" data-j="ラジさん=Raji san"></div><b>090-3816-5027</b></div></li>
+    <li><div><div class="jl" data-j="ルーカスさん=Ruukasu san"></div><b>080-5172-4836</b></div></li>
+  </ol>
+  <p class="task"><b>C.</b><span class="bi"><span class="ja">先生{せんせい}が 電話番号{でんわばんごう}を 読{よ}みます。書{か}きましょう。</span><span class="en">Your teacher reads a phone number. Write it down.</span></span></p>
+  <ol class="items wide">
+    <li><span class="blank" style="min-width:12em"></span></li>
+    <li><span class="blank" style="min-width:12em"></span></li>
+    <li><span class="blank" style="min-width:12em"></span></li>
+  </ol>
+</section>
+
+<!-- =============================== PART 3 =============================== -->
+<section class="page" id="p3">
+  <div class="part-head"><span class="badge">PART 3</span><h2>〜ですか<small>Questions</small></h2></div>
+
+  <h3 class="sub"><span class="tag">GRAMMAR 2</span><span class="bi"><span class="ja">はい／いいえで 答{こた}える 質問{しつもん}</span><span class="en">Yes / No questions</span></span></h3>
+  <p><span class="bi"><span class="ja">質問{しつもん}にするときは、文{ぶん}の 最後{さいご}に「か」を つけるだけです。最後{さいご}は 少{すこ}し 上{あ}げて 言{い}います。日本語{にほんご}では ふつう「？」ではなく「。」を 書{か}きます。</span><span class="en">To make a question, just add <span class="jp">か</span> to the end of the sentence. Raise your voice a little at the end. In Japanese, we usually write <span class="jp">。</span> instead of a question mark.</span></span></p>
+  <div class="formula"><span class="k">X は Y です<span class="hl">か</span>。</span><span class="e">Is X Y?</span></div>
+  <div class="ex">
+    <div class="jl" data-j="リンさんは=Rin san wa|りゅうがくせいですか。=ryuugakusee desu ka."></div><div class="e">Is Lin an international student?</div>
+  </div>
+  <p><span class="bi"><span class="ja">答{こた}え方{かた}</span><span class="en">To answer:</span></span></p>
+  <div class="ex">
+    <div class="jl" data-j="はい、=Hai,|そうです。=soo desu."></div><div class="e">Yes, that's right.</div>
+    <div class="jl" data-j="いいえ、=Iie,|にほんじんです。=nihonjin desu."></div><div class="e">No, (he) is Japanese. ← say the correct information</div>
+  </div>
+
+  <h3 class="sub"><span class="tag">GRAMMAR 2</span><span class="bi"><span class="ja">「なん」を 使{つか}う 質問{しつもん}</span><span class="en">Questions with “what”</span></span></h3>
+  <p><span class="bi"><span class="ja">答{こた}えが 入{はい}る ところに 疑問詞{ぎもんし}を 入{い}れます。語順{ごじゅん}は 変{か}わりません。</span><span class="en">Put the question word where the answer will go. The word order does not change.</span></span></p>
+  <div class="table-wrap"><table>
+    <tr><th><span class="bi"><span class="ja">疑問詞{ぎもんし}</span><span class="en">Question word</span></span></th><th><span class="bi"><span class="ja">意味{いみ}</span><span class="en">Meaning</span></span></th><th><span class="bi"><span class="ja">答{こた}えの 例{れい}</span><span class="en">Answer example</span></span></th></tr>
+    <tr><td><span class="k">なん</span><span class="r">nan</span></td><td>what</td><td><span class="k">けいざい</span><span class="r">keezai</span></td></tr>
+    <tr><td><span class="k">なんさい</span><span class="r">nansai</span></td><td>how old</td><td><span class="k">じゅうきゅうさい</span><span class="r">juukyuusai</span></td></tr>
+    <tr><td><span class="k">なんねんせい</span><span class="r">nannensee</span></td><td>what year (in school)</td><td><span class="k">にねんせい</span><span class="r">ninensee</span></td></tr>
+    <tr><td><span class="k">なんばん</span><span class="r">nanban</span></td><td>what number</td><td><span class="k">080-2943-7651</span></td></tr>
+    <tr><td><span class="k">なにじん</span><span class="r">nanijin</span></td><td>what nationality</td><td><span class="k">エジプトじん</span><span class="r">Ejiputojin</span></td></tr>
+  </table></div>
+  <div class="ex">
+    <div class="qa"><span class="who">A</span><div class="jl" data-j="せんこうは=Senkoo wa|なんですか。=nan desu ka."></div><span class="who">B</span><div class="jl" data-j="こうがくです。=Koogaku desu."></div></div>
+    <div class="e">What is your major? — It's engineering.</div>
+    <div class="qa"><span class="who">A</span><div class="jl" data-j="なんねんせいですか。=Nannensee desu ka."></div><span class="who">B</span><div class="jl" data-j="いちねんせいです。=Ichinensee desu."></div></div>
+    <div class="e">What year are you in? — I'm a first-year student.</div>
+    <div class="qa"><span class="who">A</span><div class="jl" data-j="でんわばんごうは=Denwa bangoo wa|なんばんですか。=nanban desu ka."></div><span class="who">B</span><div class="jl" data-j="070-6158-3492です。=Zero nana zero no … desu."></div></div>
+    <div class="e">What is your phone number? — It's 070-6158-3492.</div>
+  </div>
+  <div class="note">
+    <h4><span class="bi"><span class="ja">「なん」と「なに」</span><span class="en">なん or なに?</span></span></h4>
+    <p><span class="bi"><span class="ja">どちらも “what” の 意味{いみ}です。「です」の 前{まえ}や、「さい・ねんせい・ばん・じ」など 数{かぞ}えることばの 前{まえ}では「なん」を 使{つか}います。「なにじん」は 特別{とくべつ}です。</span><span class="en">Both mean “what.” Use <span class="jp">なん</span> before <span class="jp">です</span> and before counting words like <span class="jp">さい・ねんせい・ばん・じ</span>. The word <span class="jp">なにじん</span> is a special case.</span></span></p>
+  </div>
+
+  <div class="tip">
+    <h4><span class="bi"><span class="ja">便利{べんり}な 表現{ひょうげん}</span><span class="en">Useful expressions</span></span></h4>
+    <div class="ex" style="margin:0">
+      <div class="jl" data-j="あのう=Anoo"></div><div class="e">Um… (a soft way to start a question)</div>
+      <div class="jl" data-j="そうですか。=Soo desu ka."></div><div class="e">I see. (said with a falling voice)</div>
+      <div class="jl" data-j="〜さんは？=… san wa?"></div><div class="e">And you, …? (to return the same question)</div>
+    </div>
+  </div>
+  <div class="tip">
+    <h4><span class="bi"><span class="ja">「あなた」は あまり 使{つか}わない</span><span class="en">Don't say “you” (あなた)</span></span></h4>
+    <p><span class="bi"><span class="ja">日本語{にほんご}では「あなた」は あまり 使{つか}いません。相手{あいて}の 名前{なまえ}＋「さん」「せんせい」を 使{つか}うか、何{なに}も 言{い}わないのが ふつうです。</span><span class="en">Japanese speakers rarely say <span class="jp">あなた</span> (“you”). Use the person's name with <span class="jp">さん</span> or <span class="jp">せんせい</span>, or just leave it out.</span></span></p>
+    <p><span class="ok">○</span> <span class="jp">ラジさんは インドじんですか。</span>　<span class="ng">△</span> <span class="jp">あなたは インドじんですか。</span></p>
+  </div>
+
+  <h3 class="practice"><span class="tag">PRACTICE 3</span>〜ですか</h3>
+  <div class="table-wrap"><div class="cast-table" data-rows="nat,status,year,age"></div></div>
+
+  <p class="task"><b>A.</b><span class="bi"><span class="ja">ヒントを 使{つか}って 質問{しつもん}と 答{こた}えを しましょう。先生{せんせい}が 聞{き}いて、あなたが 答{こた}えます。そのあと 交代{こうたい}します。</span><span class="en">Ask and answer using the cues. Your teacher asks, you answer — then switch.</span></span></p>
+  <div class="example"><span class="lbl">Example 1</span><div>
+    <div class="jl" data-j="リンさん／ちゅうごくじん=Rin san / chuugokujin"></div>
+    <div class="qa"><span class="who">Q</span><div class="jl" data-j="リンさんは=Rin san wa|ちゅうごくじんですか。=chuugokujin desu ka."></div><span class="who">A</span><div class="jl" data-j="はい、=Hai,|そうです。=soo desu."></div></div>
+  </div></div>
+  <div class="example"><span class="lbl">Example 2</span><div>
+    <div class="jl" data-j="ゆうきさん／りゅうがくせい=Yuuki san / ryuugakusee"></div>
+    <div class="qa"><span class="who">Q</span><div class="jl" data-j="ゆうきさんは=Yuuki san wa|りゅうがくせいですか。=ryuugakusee desu ka."></div><span class="who">A</span><div class="jl" data-j="いいえ、=Iie,|にほんじんです。=nihonjin desu."></div></div>
+  </div></div>
+  <ol class="items wide">
+    <li><div class="jl" data-j="アミナさん／エジプトじん=Amina san / Ejiputojin"></div></li>
+    <li><div class="jl" data-j="ラジさん／にほんじん=Raji san / nihonjin"></div></li>
+    <li><div class="jl" data-j="ゆうきさん／にねんせい=Yuuki san / ninensee"></div></li>
+    <li><div class="jl" data-j="アミナさん／よねんせい=Amina san / yonensee"></div></li>
+    <li><div class="jl" data-j="ラジさん／りゅうがくせい=Raji san / ryuugakusee"></div></li>
+    <li><div class="jl" data-j="おがわせんせい／にほんじん=Ogawa sensee / nihonjin"></div></li>
+    <li><div class="jl" data-j="ルーカスさん／アメリカじん=Ruukasu san / Amerikajin"></div></li>
+  </ol>
+
+  <p class="task"><b>B.</b><span class="bi"><span class="ja">年齢{ねんれい}：まず「〜さい」の 言{い}い方{かた}を 覚{おぼ}えましょう。</span><span class="en">Age. First learn how to say ages with <span class="jp">〜さい</span>.</span></span></p>
+  <div class="table-wrap"><table>
+    <tr><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+    <tr>
+      <td class="irr-cell"><span class="k">いっさい</span><span class="r">issai</span></td>
+      <td><span class="k">にさい</span><span class="r">nisai</span></td>
+      <td><span class="k">さんさい</span><span class="r">sansai</span></td>
+      <td><span class="k">よんさい</span><span class="r">yonsai</span></td>
+      <td><span class="k">ごさい</span><span class="r">gosai</span></td>
+    </tr>
+    <tr><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
+    <tr>
+      <td><span class="k">ろくさい</span><span class="r">rokusai</span></td>
+      <td><span class="k">ななさい</span><span class="r">nanasai</span></td>
+      <td class="irr-cell"><span class="k">はっさい</span><span class="r">hassai</span></td>
+      <td><span class="k">きゅうさい</span><span class="r">kyuusai</span></td>
+      <td class="irr-cell"><span class="k">じゅっさい</span><span class="r">jussai</span></td>
+    </tr>
+  </table></div>
+  <div class="ex">
+    <div class="jl" data-j="18　じゅうはっさい=juuhassai"></div><div class="e"><span class="bi"><span class="ja">8で 終{お}わる → はっさい</span><span class="en">ends in 8 → <span class="jp">はっさい</span></span></span></div>
+    <div class="jl" data-j="20　はたち=hatachi"></div><div class="e"><span class="bi"><span class="ja">20さいの 特別{とくべつ}な 言{い}い方{かた}（「にじゅっさい」も OK）</span><span class="en">special word for 20 years old (<span class="jp">にじゅっさい</span> is also OK)</span></span></div>
+    <div class="jl" data-j="21　にじゅういっさい=nijuuissai"></div><div class="e"><span class="bi"><span class="ja">1で 終{お}わる → いっさい</span><span class="en">ends in 1 → <span class="jp">いっさい</span></span></span></div>
+    <div class="jl" data-j="30　さんじゅっさい=sanjussai"></div><div class="e"><span class="bi"><span class="ja">0で 終{お}わる → じゅっさい</span><span class="en">ends in 0 → <span class="jp">じゅっさい</span></span></span></div>
+  </div>
+  <div class="example"><span class="lbl">Example</span><div>
+    <div class="jl" data-j="リンさん=Rin san"></div>
+    <div class="qa"><span class="who">Q</span><div class="jl" data-j="リンさんは=Rin san wa|なんさいですか。=nansai desu ka."></div><span class="who">A</span><div class="jl" data-j="じゅうきゅうさいです。=Juukyuusai desu."></div></div>
+  </div></div>
+  <ol class="items">
+    <li><div class="jl" data-j="ゆうきさん=Yuuki san"></div></li>
+    <li><div class="jl" data-j="アミナさん=Amina san"></div></li>
+    <li><div class="jl" data-j="ラジさん=Raji san"></div></li>
+    <li><div class="jl" data-j="おがわせんせい=Ogawa sensee"></div></li>
+    <li><div class="jl" data-j="ルーカスさん=Ruukasu san"></div></li>
+  </ol>
+
+  <p class="task"><b>C.</b><span class="bi"><span class="ja">学年{がくねん}：「〜ねんせい」を 覚{おぼ}えて、質問{しつもん}と 答{こた}えを しましょう。</span><span class="en">Year in school. Learn <span class="jp">〜ねんせい</span>, then ask and answer.</span></span></p>
+  <div class="table-wrap"><table>
+    <tr><th>1st</th><th>2nd</th><th>3rd</th><th>4th</th><th>5th</th><th>6th</th></tr>
+    <tr>
+      <td><span class="k">いちねんせい</span><span class="r">ichinensee</span></td>
+      <td><span class="k">にねんせい</span><span class="r">ninensee</span></td>
+      <td><span class="k">さんねんせい</span><span class="r">sannensee</span></td>
+      <td class="irr-cell"><span class="k">よねんせい</span><span class="r">yonensee</span></td>
+      <td><span class="k">ごねんせい</span><span class="r">gonensee</span></td>
+      <td><span class="k">ろくねんせい</span><span class="r">rokunensee</span></td>
+    </tr>
+  </table></div>
+  <p class="muted" style="font-size:.9rem"><span class="bi"><span class="ja">注意{ちゅうい}：4年生{ねんせい}は「よんねんせい」ではなく「<span class="irr">よねんせい</span>」です。</span><span class="en">Careful: 4th year is <span class="jp irr">よねんせい</span>, not よんねんせい.</span></span></p>
+  <div class="example"><span class="lbl">Example</span><div>
+    <div class="jl" data-j="リンさん=Rin san"></div>
+    <div class="qa"><span class="who">Q</span><div class="jl" data-j="リンさんは=Rin san wa|なんねんせいですか。=nannensee desu ka."></div><span class="who">A</span><div class="jl" data-j="にねんせいです。=Ninensee desu."></div></div>
+  </div></div>
+  <ol class="items">
+    <li><div class="jl" data-j="ゆうきさん=Yuuki san"></div></li>
+    <li><div class="jl" data-j="アミナさん=Amina san"></div></li>
+    <li><div class="jl" data-j="ラジさん=Raji san"></div></li>
+    <li><div class="jl" data-j="ルーカスさん=Ruukasu san"></div></li>
+  </ol>
+
+  <p class="task"><b>D.</b><span class="bi"><span class="ja">ロールプレイ：あなたは 下{した}の 人{ひと}の 一人{ひとり}です。先生{せんせい}に 電話番号{でんわばんごう}を 聞{き}かれたら 答{こた}えましょう。そのあと 交代{こうたい}して、あなたが 聞{き}いて、番号{ばんごう}を くり返{かえ}して 確認{かくにん}します。</span><span class="en">Role play. You are one of the people below. When your teacher asks your phone number, answer. Then switch: you ask, and check the number by repeating it.</span></span></p>
+  <div class="phones" id="rolePhones"></div>
+  <div class="example"><span class="lbl">Example</span><div>
+    <div class="qa">
+      <span class="who">You</span><div class="jl" data-j="アミナさん、=Amina san,|でんわばんごうは=denwa bangoo wa|なんばんですか。=nanban desu ka."></div>
+      <span class="who"></span><div class="muted" style="font-size:.9rem"><span class="ja">（先生{せんせい}が 答{こた}えます）</span> / your teacher answers</div>
+      <span class="who">You</span><div class="jl" data-j="070-6158-3492ですか。=… desu ka."></div>
+      <span class="who"></span><div class="jl" data-j="はい、=Hai,|そうです。=soo desu."></div>
+    </div>
+  </div></div>
+  <p class="muted" style="font-size:.9rem"><span class="bi"><span class="ja">番号{ばんごう}を「〜ですか」で くり返{かえ}して 確認{かくにん}するのは、とても 自然{しぜん}な 言{い}い方{かた}です。</span><span class="en">Checking a number by repeating it with <span class="jp">〜ですか</span> is very natural in Japanese.</span></span></p>
+</section>
+
+<!-- =============================== PART 4 =============================== -->
+<section class="page" id="p4">
+  <div class="part-head"><span class="badge">PART 4</span><h2>Noun の Noun<small>Linking two nouns</small></h2></div>
+
+  <h3 class="sub"><span class="tag">GRAMMAR 3</span>の</h3>
+  <p><span class="bi"><span class="ja">「の」は 名詞{めいし}と 名詞{めいし}を つなぎます。<b>後{あと}の 名詞{めいし}が 中心{ちゅうしん}</b>で、前{まえ}の 名詞{めいし}が「だれの」「どこの」「どんな」を 説明{せつめい}します。</span><span class="en"><span class="jp">の</span> links two nouns. The <b>second noun is the main thing</b>. The first noun tells you <i>whose</i>, <i>where</i>, or <i>what kind</i>.</span></span></p>
+  <div class="formula"><span class="k">Noun₁ <span class="hl">の</span> Noun₂</span><span class="e">Noun₁ describes · Noun₂ = the main thing</span></div>
+  <div class="ex">
+    <div class="jl" data-j="わたしの=watashi no|ともだち=tomodachi"></div><div class="e">my friend</div>
+    <div class="jl" data-j="リンさんの=Rin san no|せんこう=senkoo"></div><div class="e">Lin's major</div>
+    <div class="jl" data-j="あおばだいがくの=Aoba daigaku no|がくせい=gakusee"></div><div class="e">a student at Aoba University</div>
+    <div class="jl" data-j="にほんごの=nihongo no|せんせい=sensee"></div><div class="e">a teacher of Japanese</div>
+    <div class="jl" data-j="ちゅうごくの=Chuugoku no|だいがく=daigaku"></div><div class="e">a university in China</div>
+  </div>
+  <p><span class="bi"><span class="ja">「名詞{めいし}の 名詞{めいし}」は 1つの 大{おお}きな 名詞{めいし}のように「X は Y です」の 中{なか}で 使{つか}えます。</span><span class="en">A “Noun の Noun” phrase works like one big noun, so you can use it in <span class="jp">X は Y です</span>:</span></span></p>
+  <div class="example" style="display:block">
+    <div class="jl" style="column-gap:.4em" data-j="［ラジさんの=[Raji san no|せんこう］は=senkoo] wa|［コンピューター］です。=[konpyuutaa] desu."></div>
+    <div class="e muted" style="font-style:italic;margin-top:4px">Raj's major is computer science.</div>
+    <div class="jl" style="column-gap:.4em;margin-top:10px" data-j="［おがわせんせい］は=[Ogawa sensee] wa|［あおばだいがくの=[Aoba daigaku no|せんせい］です。=sensee] desu."></div>
+    <div class="e muted" style="font-style:italic;margin-top:4px">Ms. Ogawa is a teacher at Aoba University.</div>
+  </div>
+
+  <h3 class="practice"><span class="tag">PRACTICE 4</span>Noun の Noun</h3>
+  <p class="task"><b>A.</b><span class="bi"><span class="ja">「の」を 使{つか}って 日本語{にほんご}で 言{い}いましょう。</span><span class="en">Say these in Japanese using <span class="jp">の</span>.</span></span></p>
+  <div class="example"><span class="lbl">Example</span><span>Amina's friend</span><span class="arrow">→</span><div class="jl" data-j="アミナさんの=Amina san no|ともだち=tomodachi"></div></div>
+  <ol class="items wide">
+    <li>my name</li>
+    <li>Yuuki's major</li>
+    <li>Lin's phone number</li>
+    <li>a student at Aoba University</li>
+    <li>a high school teacher</li>
+    <li>a university in Japan</li>
+    <li>a student of economics</li>
+    <li>my friend's name</li>
+  </ol>
+
+  <p class="task"><b>B.</b><span class="bi"><span class="ja">表{ひょう}を 見{み}て、それぞれの 人{ひと}について 文{ぶん}を 2つ 言{い}いましょう：(a) 学校{がっこう}　(b) 専攻{せんこう}</span><span class="en">Look at the chart. Say two sentences about each person: (a) school, (b) major.</span></span></p>
+  <div class="table-wrap"><div class="cast-table" data-rows="school,major"></div></div>
+  <div class="example"><span class="lbl">Example</span><div>
+    <div class="jl" data-j="リンさん=Rin san"></div>
+    <div class="qa"><span class="who">(a)</span><div class="jl" data-j="リンさんは=Rin san wa|あおばだいがくの=Aoba daigaku no|がくせいです。=gakusee desu."></div>
+    <span class="who">(b)</span><div class="jl" data-j="リンさんの=Rin san no|せんこうは=senkoo wa|けいざいです。=keezai desu."></div></div>
+  </div></div>
+  <ol class="items">
+    <li><div class="jl" data-j="ゆうきさん=Yuuki san"></div></li>
+    <li><div class="jl" data-j="アミナさん=Amina san"></div></li>
+    <li><div class="jl" data-j="ラジさん=Raji san"></div></li>
+    <li><div class="jl" data-j="ルーカスさん=Ruukasu san"></div></li>
+  </ol>
+
+  <p class="task"><b>C.</b><span class="bi"><span class="ja">上{うえ}の 表{ひょう}を 見{み}て、質問{しつもん}に 答{こた}えましょう。</span><span class="en">Answer the questions. Use the chart above.</span></span></p>
+  <ol class="items one">
+    <li><div class="jl" data-j="ゆうきさんの=Yuuki san no|せんこうは=senkoo wa|れきしですか。=rekishi desu ka."></div></li>
+    <li><div class="jl" data-j="アミナさんは=Amina san wa|カイロだいがくの=Kairo daigaku no|がくせいですか。=gakusee desu ka."></div></li>
+    <li><div class="jl" data-j="ラジさんの=Raji san no|せんこうは=senkoo wa|ビジネスですか。=bijinesu desu ka."></div></li>
+    <li><div class="jl" data-j="リンさんの=Rin san no|せんこうは=senkoo wa|なんですか。=nan desu ka."></div></li>
+    <li><div class="jl" data-j="ラジさんは=Raji san wa|デリーだいがくの=Derii daigaku no|せんせいですか。=sensee desu ka."></div></li>
+    <li><div class="jl" data-j="おがわせんせいは=Ogawa sensee wa|なんの=nan no|せんせいですか。=sensee desu ka."></div></li>
+    <li><div class="jl" data-j="ルーカスさんの=Ruukasu san no|せんこうは=senkoo wa|けいざいですか。=keezai desu ka."></div></li>
+  </ol>
+
+  <p class="task"><b>D.</b><span class="bi"><span class="ja">ゆうきさんの 家族{かぞく}です。表{ひょう}を 見{み}て、質問{しつもん}に 答{こた}えましょう。</span><span class="en">This is Yuuki's family. Look at the chart and answer the questions.</span></span></p>
+  <div class="cast" style="grid-template-columns:repeat(4,minmax(0,1fr))">
+    <div class="card"><div class="av" data-who="father" data-size="80"></div><div class="nm" style="font-size:1rem">おとうさん</div><div class="rm">otoosan · father</div></div>
+    <div class="card"><div class="av" data-who="mother" data-size="80"></div><div class="nm" style="font-size:1rem">おかあさん</div><div class="rm">okaasan · mother</div></div>
+    <div class="card"><div class="av" data-who="sister" data-size="80"></div><div class="nm" style="font-size:1rem">おねえさん</div><div class="rm">oneesan · older sister</div></div>
+    <div class="card"><div class="av" data-who="brother" data-size="80"></div><div class="nm" style="font-size:1rem">おとうと</div><div class="rm">otooto · younger brother</div></div>
+  </div>
+  <div class="table-wrap"><table>
+    <tr><th></th><th>father</th><th>mother</th><th>older sister</th><th>younger brother</th></tr>
+    <tr><th><span class="bi"><span class="ja">仕事{しごと}／学校{がっこう}</span><span class="en">Job / School</span></span></th>
+      <td>office worker<span class="hint">かいしゃいん</span></td>
+      <td>doctor<span class="hint">いしゃ</span></td>
+      <td>lawyer<span class="hint">べんごし</span></td>
+      <td>high school student<span class="hint">こうこうせい</span></td></tr>
+    <tr><th><span class="bi"><span class="ja">年齢{ねんれい}</span><span class="en">Age</span></span></th><td>50</td><td>48</td><td>26</td><td>16</td></tr>
+  </table></div>
+  <ol class="items wide">
+    <li><div class="jl" data-j="おとうさんは=Otoosan wa|かいしゃいんですか。=kaishain desu ka."></div></li>
+    <li><div class="jl" data-j="おとうさんは=Otoosan wa|なんさいですか。=nansai desu ka."></div></li>
+    <li><div class="jl" data-j="おかあさんは=Okaasan wa|かんごしですか。=kangoshi desu ka."></div></li>
+    <li><div class="jl" data-j="おかあさんは=Okaasan wa|なんさいですか。=nansai desu ka."></div></li>
+    <li><div class="jl" data-j="おねえさんは=Oneesan wa|べんごしですか。=bengoshi desu ka."></div></li>
+    <li><div class="jl" data-j="おねえさんは=Oneesan wa|なんさいですか。=nansai desu ka."></div></li>
+    <li><div class="jl" data-j="おとうとは=Otooto wa|だいがくせいですか。=daigakusee desu ka."></div></li>
+    <li><div class="jl" data-j="おとうとは=Otooto wa|なんさいですか。=nansai desu ka."></div></li>
+  </ol>
+  <div class="note">
+    <h4><span class="bi"><span class="ja">家族{かぞく}の ことば</span><span class="en">FAMILY WORDS</span></span></h4>
+    <p><span class="bi"><span class="ja">この 課{か}では、このまま 覚{おぼ}えましょう。あとの 課{か}で、<b>自分{じぶん}の 家族{かぞく}</b>と <b>ほかの 人{ひと}の 家族{かぞく}</b>では 言{い}い方{かた}が 違{ちが}うことを 勉強{べんきょう}します。</span><span class="en">In this lesson, just learn these words as they are. In a later lesson, you will learn that Japanese has different family words for <b>your own</b> family and <b>other people's</b> families.</span></span></p>
+  </div>
+</section>
+
+<!-- =============================== PART 5 =============================== -->
+<section class="page" id="p5">
+  <div class="part-head"><span class="badge">PART 5</span><h2>じかん<small>Time</small></h2></div>
+
+  <h3 class="sub"><span class="bi"><span class="ja">〜時{じ}</span><span class="en">Hours: 〜じ</span></span></h3>
+  <p><span class="bi"><span class="ja">数字{すうじ}＋「じ」で「〜時{じ}」です。<b>4・7・9</b>に 注意{ちゅうい}しましょう。</span><span class="en">Number ＋ <span class="jp">じ</span> = … o'clock. Watch out for <b>4, 7, 9</b>.</span></span></p>
+  <div class="clocks" id="hoursTable"></div>
+
+  <h3 class="sub"><span class="bi"><span class="ja">〜分{ふん}：ふん／ぷん</span><span class="en">Minutes: 〜ふん / 〜ぷん</span></span></h3>
+  <p><span class="bi"><span class="ja">「ふん」の 前{まえ}で 音{おと}が 変{か}わる 数字{すうじ}が あります。色{いろ}のついたものが 特別{とくべつ}な 言{い}い方{かた}です。</span><span class="en">Some numbers change their sound before <span class="jp">ふん</span>. The colored ones are special.</span></span></p>
+  <div class="table-wrap"><table>
+    <tr><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+    <tr>
+      <td class="irr-cell"><span class="k">いっぷん</span><span class="r">ippun</span></td>
+      <td><span class="k">にふん</span><span class="r">nifun</span></td>
+      <td class="irr-cell"><span class="k">さんぷん</span><span class="r">sanpun</span></td>
+      <td class="irr-cell"><span class="k">よんぷん</span><span class="r">yonpun</span></td>
+      <td><span class="k">ごふん</span><span class="r">gofun</span></td>
+    </tr>
+    <tr><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
+    <tr>
+      <td class="irr-cell"><span class="k">ろっぷん</span><span class="r">roppun</span></td>
+      <td><span class="k">ななふん</span><span class="r">nanafun</span></td>
+      <td class="irr-cell"><span class="k">はっぷん</span><span class="r">happun</span></td>
+      <td><span class="k">きゅうふん</span><span class="r">kyuufun</span></td>
+      <td class="irr-cell"><span class="k">じゅっぷん</span><span class="r">juppun</span></td>
+    </tr>
+    <tr><th>15</th><th>20</th><th>30</th><th>40</th><th>45</th></tr>
+    <tr>
+      <td><span class="k">じゅうごふん</span><span class="r">juugofun</span></td>
+      <td class="irr-cell"><span class="k">にじゅっぷん</span><span class="r">nijuppun</span></td>
+      <td class="irr-cell"><span class="k">さんじゅっぷん</span><span class="r">sanjuppun</span></td>
+      <td class="irr-cell"><span class="k">よんじゅっぷん</span><span class="r">yonjuppun</span></td>
+      <td><span class="k">よんじゅうごふん</span><span class="r">yonjuugofun</span></td>
+    </tr>
+  </table></div>
+  <p class="muted" style="font-size:.9rem"><span class="bi"><span class="ja">「じゅっぷん」は「じっぷん」とも 言{い}います。8分{ふん}は「はちふん」とも 言{い}います。</span><span class="en"><span class="jp">じゅっぷん</span> is also said <span class="jp">じっぷん</span>, and 8 minutes can also be <span class="jp">はちふん</span>.</span></span></p>
+
+  <h3 class="sub"><span class="bi"><span class="ja">合{あ}わせて 言{い}う</span><span class="en">Putting it together</span></span></h3>
+  <div class="ex">
+    <div class="jl" data-j="くじ=kuji|じゅうごふん=juugofun"></div><div class="e">9:15</div>
+    <div class="jl" data-j="にじはん=niji han"></div><div class="e"><span class="bi"><span class="ja">2:30（「はん」＝ 半分{はんぶん}）</span><span class="en">2:30 (<span class="jp">はん</span> = half)</span></span></div>
+    <div class="jl" data-j="ごぜん=gozen|しちじ=shichiji"></div><div class="e"><span class="bi"><span class="ja">午前{ごぜん} 7:00（「ごぜん」は 時間{じかん}の <b>前{まえ}</b>）</span><span class="en">7:00 A.M. (<span class="jp">ごぜん</span> comes <b>before</b> the time)</span></span></div>
+    <div class="jl" data-j="ごご=gogo|よじ=yoji|じゅっぷん=juppun"></div><div class="e">4:10 P.M.</div>
+  </div>
+  <div class="formula"><span class="k">いま なんじですか。</span><span class="e">What time is it now?</span></div>
+
+  <h3 class="practice"><span class="tag">PRACTICE 5</span>じかん</h3>
+  <p class="task"><b>A.</b><span class="bi"><span class="ja">何時{なんじ}ですか。</span><span class="en">What time is it?</span></span></p>
+  <div class="example"><span class="lbl">Example</span><span class="clk" data-t="2:30" data-size="70"></span><span class="arrow">→</span><div class="jl" data-j="にじはんです。=Niji han desu."></div></div>
+  <div class="clocks" id="practiceClocks"></div>
+
+  <p class="task"><b>B.</b><span class="bi"><span class="ja">時間{じかん}を 聞{き}く：先生{せんせい}と 会話{かいわ}を 読{よ}みましょう。そのあと、Aの 時計{とけい}について 聞{き}きましょう。</span><span class="en">Asking the time. Read the dialogue with your teacher. Then ask about the clocks in A.</span></span></p>
+  <div class="example" style="display:block">
+    <div class="qa">
+      <span class="who">A</span><div class="jl" data-j="すみません。=Sumimasen.|いま=Ima|なんじですか。=nanji desu ka."></div>
+      <span class="who">B</span><div class="jl" data-j="しちじはんです。=Shichiji han desu."></div>
+      <span class="who">A</span><div class="jl" data-j="ありがとう=Arigatoo|ございます。=gozaimasu."></div>
+      <span class="who">B</span><div class="jl" data-j="いいえ。=Iie."></div>
+    </div>
+  </div>
+  <div class="tip">
+    <h4>すみません · いいえ</h4>
+    <p><span class="bi"><span class="ja">「すみません」は 人{ひと}に 声{こえ}を かけるときに 使{つか}います。「ありがとう」の 後{あと}の「いいえ」は「どういたしまして」の 意味{いみ}です。</span><span class="en"><span class="jp">すみません</span> = “Excuse me.” Use it to get someone's attention. <span class="jp">いいえ</span> after “thank you” means “You're welcome / Not at all.”</span></span></p>
+  </div>
+
+  <p class="task"><b>C.</b><span class="bi"><span class="ja">世界{せかい}の 時間{じかん}：今{いま}、東京{とうきょう}は <b>午後{ごご}10時{じ}</b>です。それぞれの 都市{とし}は 何時{なんじ}ですか。（標準時{ひょうじゅんじ}・サマータイムなし）</span><span class="en">World time. It is <b>10:00 P.M. in Tokyo</b> now. What time is it in each city? (standard time, no summer time)</span></span></p>
+  <div class="example"><span class="lbl">Example</span><div class="qa">
+    <span class="who">Q</span><div class="jl" data-j="ペキンは=Pekin wa|いま=ima|なんじですか。=nanji desu ka."></div>
+    <span class="who">A</span><div class="jl" data-j="ごご=Gogo|くじです。=kuji desu."></div>
+  </div></div>
+  <div class="cities" id="cities"></div>
+</section>
+
+<!-- =============================== PART 6 =============================== -->
+<section class="page" id="p6">
+  <div class="part-head"><span class="badge">PART 6</span><h2>よみもの<small>Reading</small></h2></div>
+  <p><span class="bi"><span class="ja">Part 1〜5で 勉強{べんきょう}したことを 使{つか}って、長{なが}い 文章{ぶんしょう}を 読{よ}みましょう。</span><span class="en">Now let's read longer texts using everything from Parts 1–5.</span></span></p>
+
+  <h3 class="sub"><span class="tag">READING Ⅰ</span><span class="bi"><span class="ja">オリエンテーションで</span><span class="en">At the orientation</span></span></h3>
+  <p class="muted"><span class="bi"><span class="ja">留学生{りゅうがくせい}の オリエンテーションで、リンさんが ラジさんの となりに 座{すわ}ります。</span><span class="en">Lin sits down next to Raj at the orientation for new international students.</span></span></p>
+  <div class="scene">
+    <div class="person"><div class="bubble">こんにちは。</div><div class="av" data-who="raj" data-size="104"></div></div>
+    <div class="person"><div class="bubble">はじめまして。</div><div class="av" data-who="lin" data-size="104"></div></div>
+  </div>
+  <div class="dlg">
+    <div class="row"><div class="sp jl" data-j="ラジ：=Raji"></div><div class="jl" data-j="こんにちは。=Konnichiwa."></div></div>
+    <div class="row"><div class="sp jl" data-j="リン：=Rin"></div><div class="jl" data-j="こんにちは。=Konnichiwa.|はじめまして。=Hajimemashite.|ワン・リンです。=Wan Rin desu."></div></div>
+    <div class="row"><div class="sp jl" data-j="ラジ：=Raji"></div><div class="jl" data-j="ラジ・クマールです。=Raji Kumaaru desu.|インドじんです。=Indojin desu."></div></div>
+    <div class="row"><div class="sp jl" data-j="リン：=Rin"></div><div class="jl" data-j="そうですか。=Soo desu ka.|わたしは=Watashi wa|ちゅうごくじんです。=chuugokujin desu."></div></div>
+    <div class="row"><div class="sp"></div><div class="jl" data-j="あのう、=Anoo,|ラジさんの=Raji san no|せんこうは=senkoo wa|なんですか。=nan desu ka."></div></div>
+    <div class="row"><div class="sp jl" data-j="ラジ：=Raji"></div><div class="jl" data-j="コンピューターです。=Konpyuutaa desu.|リンさんは？=Rin san wa?"></div></div>
+    <div class="row"><div class="sp jl" data-j="リン：=Rin"></div><div class="jl" data-j="けいざいです。=Keezai desu."></div></div>
+    <div class="row"><div class="sp jl" data-j="ラジ：=Raji"></div><div class="jl" data-j="なんねんせいですか。=Nannensee desu ka."></div></div>
+    <div class="row"><div class="sp jl" data-j="リン：=Rin"></div><div class="jl" data-j="にねんせいです。=Ninensee desu."></div></div>
+    <div class="row"><div class="sp jl" data-j="ラジ：=Raji"></div><div class="jl" data-j="わたしは=Watashi wa|デリーだいがくの=Derii daigaku no|よねんせいです。=yonensee desu."></div></div>
+    <div class="row"><div class="sp jl" data-j="リン：=Rin"></div><div class="jl" data-j="そうですか。=Soo desu ka.|よろしく=Yoroshiku|おねがいします。=onegai shimasu."></div></div>
+    <div class="row"><div class="sp jl" data-j="ラジ：=Raji"></div><div class="jl" data-j="よろしく=Yoroshiku|おねがいします。=onegai shimasu."></div></div>
+  </div>
+  <p class="task"><span class="bi"><span class="ja">質問{しつもん}</span><span class="en">Questions</span></span></p>
+  <ol class="items one">
+    <li><div class="jl" data-j="ラジさんは=Raji san wa|なにじんですか。=nanijin desu ka."></div></li>
+    <li><div class="jl" data-j="ラジさんの=Raji san no|せんこうは=senkoo wa|なんですか。=nan desu ka."></div></li>
+    <li><div class="jl" data-j="リンさんは=Rin san wa|なんねんせいですか。=nannensee desu ka."></div></li>
+    <li><div class="jl" data-j="ラジさんは=Raji san wa|あおばだいがくの=Aoba daigaku no|よねんせいですか。=yonensee desu ka."></div></li>
+  </ol>
+
+  <h3 class="sub" style="margin-top:40px"><span class="tag">READING Ⅱ</span><span class="bi"><span class="ja">アミナさんの 自己紹介{じこしょうかい}</span><span class="en">Amina's self-introduction</span></span></h3>
+  <p class="muted"><span class="bi"><span class="ja">オリエンテーションで、新{あたら}しい 学生{がくせい}が 一人{ひとり}ずつ 自己紹介{じこしょうかい}します。</span><span class="en">At the orientation, each new student introduces themselves to everyone.</span></span></p>
+  <div style="display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap">
+    <div class="av" data-who="amina" data-size="112"></div>
+    <div style="flex:1;min-width:260px;display:flex;flex-direction:column;gap:8px">
+      <div class="jl" data-j="はじめまして。=Hajimemashite.|アミナ・ハッサンです。=Amina Hassan desu."></div>
+      <div class="jl" data-j="エジプトじんです。=Ejiputojin desu."></div>
+      <div class="jl" data-j="カイロだいがくの=Kairo daigaku no|いちねんせいです。=ichinensee desu."></div>
+      <div class="jl" data-j="いま、=Ima,|あおばだいがくの=Aoba daigaku no|りゅうがくせいです。=ryuugakusee desu."></div>
+      <div class="jl" data-j="せんこうは=Senkoo wa|こうがくです。=koogaku desu.|じゅうはっさいです。=Juuhassai desu."></div>
+      <div class="jl" data-j="よろしく=Yoroshiku|おねがいします。=onegai shimasu."></div>
+    </div>
+  </div>
+  <p class="task"><span class="bi"><span class="ja">質問{しつもん}</span><span class="en">Questions</span></span></p>
+  <ol class="items one">
+    <li><div class="jl" data-j="アミナさんは=Amina san wa|なにじんですか。=nanijin desu ka."></div></li>
+    <li><div class="jl" data-j="アミナさんは=Amina san wa|なんねんせいですか。=nannensee desu ka."></div></li>
+    <li><div class="jl" data-j="アミナさんの=Amina san no|せんこうは=senkoo wa|なんですか。=nan desu ka."></div></li>
+    <li><div class="jl" data-j="アミナさんは=Amina san wa|なんさいですか。=nansai desu ka."></div></li>
+    <li><div class="jl" data-j="アミナさんは=Amina san wa|あおばだいがくの=Aoba daigaku no|せんせいですか。=sensee desu ka."></div></li>
+  </ol>
+</section>
+
+<!-- =============================== PART 7 =============================== -->
+<section class="page" id="p7">
+  <div class="part-head"><span class="badge">PART 7</span><h2>まとめ<small>Review</small></h2></div>
+
+  <p class="task"><b>A.</b><span class="bi"><span class="ja">インタビュー：先生{せんせい}に 質問{しつもん}して、表{ひょう}に 書{か}きましょう。そのあと、先生{せんせい}が あなたに 質問{しつもん}します。</span><span class="en">Interview. Ask your teacher these questions and fill in the chart. Then your teacher asks you.</span></span></p>
+  <div class="ex">
+    <div class="jl" data-j="おなまえは？=Onamae wa?"></div><div class="e">What is your name?</div>
+    <div class="jl" data-j="おくには？=Okuni wa?"></div><div class="e">Where are you from? (lit. Your country?)</div>
+    <div class="jl" data-j="おしごとは？=Oshigoto wa?"></div><div class="e">What is your job?</div>
+    <div class="jl" data-j="せんこうは=Senkoo wa|なんですか。=nan desu ka."></div><div class="e">What is your major? (for students)</div>
+    <div class="jl" data-j="なんねんせいですか。=Nannensee desu ka."></div><div class="e">What year are you in? (for students)</div>
+  </div>
+  <p class="muted" style="font-size:.9rem"><span class="bi"><span class="ja">ことばの 前{まえ}の「お」は ていねいな 言{い}い方{かた}です。<b>ほかの 人{ひと}</b>のことを 聞{き}くときに 使{つか}い、自分{じぶん}には 使{つか}いません。</span><span class="en"><span class="jp">お</span> at the start makes the word polite. Use it when you ask about <b>other people</b>, not yourself.</span></span></p>
+  <div class="table-wrap"><table>
+    <tr><th></th><th><span class="bi"><span class="ja">名前{なまえ}</span><span class="en">Name</span></span></th><th><span class="bi"><span class="ja">国{くに}</span><span class="en">Country</span></span></th><th><span class="bi"><span class="ja">仕事{しごと}／学校{がっこう}</span><span class="en">Job / School</span></span></th><th><span class="bi"><span class="ja">専攻{せんこう}</span><span class="en">Major</span></span></th><th><span class="bi"><span class="ja">学年{がくねん}</span><span class="en">Year</span></span></th></tr>
+    <tr><th><span class="bi"><span class="ja">先生{せんせい}</span><span class="en">Teacher</span></span></th><td style="height:46px"></td><td></td><td></td><td></td><td></td></tr>
+    <tr><th><span class="bi"><span class="ja">わたし</span><span class="en">Me</span></span></th><td style="height:46px"></td><td></td><td></td><td></td><td></td></tr>
+  </table></div>
+
+  <p class="task"><b>B.</b><span class="bi"><span class="ja">ロールプレイ：パーティーで 初{はじ}めて 先生{せんせい}に 会{あ}いました。Reading Ⅰを モデルにして、質問{しつもん}を <b>3つ以上{いじょう}</b> しましょう。</span><span class="en">Role play. You meet your teacher for the first time at a party. Use Reading Ⅰ as a model. Ask at least <b>three</b> questions.</span></span></p>
+
+  <p class="task"><b>C.</b><span class="bi"><span class="ja">自己紹介{じこしょうかい}：Reading Ⅱを モデルにして 自己紹介{じこしょうかい}を 書{か}き、見{み}ないで 言{い}ってみましょう。</span><span class="en">Self-introduction. Use Reading Ⅱ as a model. Write your introduction, then say it without looking.</span></span></p>
+  <div class="example" style="display:block;line-height:2.5">
+    <span class="jp" style="font-size:1.2rem">はじめまして。</span> <span class="blank" style="min-width:10em"></span> <span class="jp" style="font-size:1.2rem">です。</span><br>
+    <span class="blank"></span> <span class="jp" style="font-size:1.2rem">じんです。</span><br>
+    <span class="blank"></span> <span class="jp" style="font-size:1.2rem">の</span> <span class="blank"></span> <span class="jp" style="font-size:1.2rem">です。</span><br>
+    <span class="jp" style="font-size:1.2rem">せんこうは</span> <span class="blank"></span> <span class="jp" style="font-size:1.2rem">です。</span><br>
+    <span class="jp" style="font-size:1.2rem">よろしくおねがいします。</span>
+  </div>
+
+  <div class="note" style="margin-top:28px">
+    <h4><span class="bi"><span class="ja">チェックリスト・できるかな？</span><span class="en">CHECKLIST · Can you…?</span></span></h4>
+    <div style="display:grid;gap:8px"><div style="display:flex;gap:8px"><span>☐</span><span class="bi"><span class="ja">自己紹介{じこしょうかい}が できる（名前{なまえ}・国{くに}・仕事{しごと}か 学校{がっこう}）</span><span class="en">introduce yourself (name, country, job or school)</span></span></div><div style="display:flex;gap:8px"><span>☐</span><span class="bi"><span class="ja">「XはYですか」と 聞{き}いて、はい／いいえで 答{こた}えられる</span><span class="en">ask “Is X Y?” and answer はい / いいえ</span></span></div><div style="display:flex;gap:8px"><span>☐</span><span class="bi"><span class="ja">専攻{せんこう}・学年{がくねん}・年齢{ねんれい}を 聞{き}ける</span><span class="en">ask someone's major, year, and age</span></span></div><div style="display:flex;gap:8px"><span>☐</span><span class="bi"><span class="ja">0〜100の 数字{すうじ}と 電話番号{でんわばんごう}が 言{い}える</span><span class="en">say numbers from 0 to 100 and read a phone number</span></span></div><div style="display:flex;gap:8px"><span>☐</span><span class="bi"><span class="ja">時間{じかん}を 聞{き}いたり 言{い}ったり できる</span><span class="en">ask and tell the time</span></span></div></div>
+  </div>
+</section>
+
+<!-- =============================== VOCAB =============================== -->
+<section class="page vocab" id="vocab">
+  <div class="part-head"><span class="badge">VOCABULARY</span><h2>たんご<small>Words in Lesson 1</small></h2></div>
+  <div class="muted" style="font-size:.92rem;display:grid;gap:6px"><div style="display:flex;gap:8px"><span class="mk core">★</span><span class="bi"><span class="ja">必{かなら}ず 覚{おぼ}える</span><span class="en">must learn</span></span></div><div style="display:flex;gap:8px"><span class="mk plus">＋</span><span class="bi"><span class="ja">必{かなら}ず 覚{おぼ}える（このテキストで 追加{ついか}）</span><span class="en">must learn (added in this course)</span></span></div><div style="display:flex;gap:8px"><span class="mk add">◆</span><span class="bi"><span class="ja">自分{じぶん}のことを 話{はな}すのに 必要{ひつよう}な ものを 覚{おぼ}える</span><span class="en">extra words — learn the ones you need to talk about yourself</span></span></div></div>
+  <div id="vocabList"></div>
+</section>
+
+<!-- =============================== ANSWERS =============================== -->
+<section class="page ans" id="answers">
+  <div class="part-head"><span class="badge">ANSWER KEY</span><h2>こたえ<small>Answers</small></h2></div>
+  <div id="answerList"></div>
+</section>
+
+<script>
+/* ============ characters ============ */
+var CAST = [
+  {id:'lin',   call:'リンさん', callR:'Rin san',
+   nat:['Chinese','ちゅうごくじん'], school:['Aoba Univ.','あおばだいがく'], status:['international student','りゅうがくせい'],
+   year:['2nd year','にねんせい'], age:'19', major:['economics','けいざい'], phone:'080-2943-7651'},
+  {id:'yuuki', call:'ゆうきさん', callR:'Yuuki san',
+   nat:['Japanese','にほんじん'], school:['Aoba Univ.','あおばだいがく'], status:['college student','だいがくせい'],
+   year:['3rd year','さんねんせい'], age:'20', major:['history','れきし'], phone:'080-7325-1968'},
+  {id:'amina', call:'アミナさん', callR:'Amina san',
+   nat:['Egyptian','エジプトじん'], school:['Cairo Univ.','カイロだいがく'], status:['international student','りゅうがくせい'],
+   year:['1st year','いちねんせい'], age:'18', major:['engineering','こうがく'], phone:'070-6158-3492'},
+  {id:'raj',   call:'ラジさん', callR:'Raji san',
+   nat:['Indian','インドじん'], school:['Delhi Univ.','デリーだいがく'], status:['international student','りゅうがくせい'],
+   year:['4th year','よねんせい'], age:'22', major:['computer science','コンピューター'], phone:'090-3816-5027'},
+  {id:'lucas', call:'ルーカスさん', callR:'Ruukasu san',
+   nat:['Canadian','カナダじん'], school:['Univ. of Toronto','トロントだいがく'], status:['international student','りゅうがくせい'],
+   year:['3rd year','さんねんせい'], age:'21', major:['politics','せいじ'], phone:'080-5172-4836'},
+  {id:'ogawa', call:'おがわせんせい', callR:'Ogawa sensee',
+   nat:['Japanese','にほんじん'], school:['Aoba Univ.','あおばだいがく'], status:['teacher','せんせい'],
+   year:null, age:'52', major:['(Japanese teacher)',''], phone:null}
+];
+var ROWS = {nat:['国籍{こくせき}','Nationality'], school:['学校{がっこう}','School'], status:['立場{たちば}','Status'], year:['学年{がくねん}','Year'], age:['年齢{ねんれい}','Age'], major:['専攻{せんこう}','Major'], phone:['電話{でんわ}','Phone']};
+
+/* ============ avatar drawing (original SVG) ============ */
+var LOOK = {
+  lin:    {skin:'#f3d3bd', hair:'#1e1a19', style:'long',  shirt:'#e2683f'},
+  yuuki:  {skin:'#f0ceb2', hair:'#3a2a20', style:'short', shirt:'#3a86a6'},
+  amina:  {skin:'#c58a63', style:'hijab', scarf:'#2e8f82', shirt:'#2e8f82'},
+  raj:    {skin:'#9c6644', hair:'#141414', style:'wavy',  shirt:'#f2b134'},
+  ogawa:  {skin:'#efcfb5', hair:'#8f8f8f', style:'bob',   shirt:'#5d6f7e', glasses:true},
+  father: {skin:'#efcdb1', hair:'#2a2a2a', style:'short', shirt:'#4a6fa5', glasses:true, tie:true},
+  mother: {skin:'#f2d0b8', hair:'#3a2a20', style:'bun',   shirt:'#d46a8a'},
+  sister: {skin:'#f2d0b8', hair:'#4a3426', style:'long',  shirt:'#8e6cc0'},
+  brother:{skin:'#f0ceb2', hair:'#222222', style:'short', shirt:'#3fa66b'},
+  lucas:  {skin:'#fbe3d3', hair:'#c8973f', style:'short', shirt:'#7f9c3a'}
+};
+function avatar(who, size){
+  var o = LOOK[who], s = o.skin, h = o.hair, out = [];
+  out.push('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" width="'+size+'" height="'+Math.round(size*140/120)+'" role="img" aria-label="'+who+'">');
+  out.push('<circle cx="60" cy="72" r="58" fill="#e4f2f4"/>');
+  // back hair
+  if(o.style==='long') out.push('<path d="M30 60 Q27 24 60 24 Q93 24 90 60 L94 110 Q60 120 26 110Z" fill="'+h+'"/>');
+  if(o.style==='bun')  out.push('<circle cx="60" cy="24" r="12" fill="'+h+'"/>');
+  if(o.style==='bob')  out.push('<path d="M30 62 Q27 26 60 26 Q93 26 90 62 L91 88 Q84 92 78 88 L42 88 Q36 92 29 88Z" fill="'+h+'"/>');
+  // body
+  out.push('<path d="M16 140 Q18 104 60 100 Q102 104 104 140Z" fill="'+o.shirt+'"/>');
+  if(o.style==='hijab'){
+    out.push('<path d="M26 68 Q22 22 60 22 Q98 22 94 68 Q98 102 112 140 L8 140 Q22 102 26 68Z" fill="'+o.scarf+'"/>');
+    out.push('<ellipse cx="60" cy="64" rx="24" ry="27" fill="#ffffff" opacity=".18"/>');
+    out.push('<ellipse cx="60" cy="65" rx="21.5" ry="24.5" fill="'+s+'"/>');
+  } else {
+    out.push('<path d="M50 104 L60 116 L70 104Z" fill="#ffffff" opacity=".85"/>');
+    out.push('<rect x="52" y="84" width="16" height="20" rx="6" fill="'+s+'"/>');
+    out.push('<circle cx="33" cy="66" r="5.5" fill="'+s+'"/><circle cx="87" cy="66" r="5.5" fill="'+s+'"/>');
+    out.push('<ellipse cx="60" cy="62" rx="27" ry="30" fill="'+s+'"/>');
+  }
+  if(o.tie) out.push('<path d="M57 104 L63 104 L65 124 L60 130 L55 124Z" fill="#c0392b"/>');
+  // front hair
+  if(o.style==='short') out.push('<path d="M32 62 Q29 29 60 28 Q91 29 88 62 Q86 47 77 43 Q66 50 50 45 Q40 48 32 62Z" fill="'+h+'"/>');
+  if(o.style==='wavy')  out.push('<path d="M32 62 Q29 29 60 28 Q91 29 88 62 Q85 49 78 46 Q73 52 67 46 Q61 52 55 46 Q49 52 43 46 Q37 50 32 62Z" fill="'+h+'"/>');
+  if(o.style==='long' || o.style==='bun') out.push('<path d="M32 60 Q31 29 60 29 Q89 29 88 60 Q80 43 63 41 Q46 41 32 60Z" fill="'+h+'"/>');
+  if(o.style==='bob')   out.push('<path d="M31 62 Q30 30 60 30 Q90 30 89 62 Q86 46 70 44 Q60 50 48 44 Q36 48 31 62Z" fill="'+h+'"/>');
+  // face
+  var ex = (o.style==='hijab') ? 9.5 : 11;
+  out.push('<path d="M'+(60-ex-5)+' 56 q5 -3.5 10 0 M'+(60+ex-5)+' 56 q5 -3.5 10 0" stroke="#3a2a20" stroke-width="2" fill="none" stroke-linecap="round" opacity=".75"/>');
+  out.push('<circle cx="'+(60-ex)+'" cy="65" r="3.3" fill="#2b2b2b"/><circle cx="'+(60+ex)+'" cy="65" r="3.3" fill="#2b2b2b"/>');
+  out.push('<circle cx="'+(61-ex)+'" cy="64" r="1" fill="#fff"/><circle cx="'+(61+ex)+'" cy="64" r="1" fill="#fff"/>');
+  out.push('<ellipse cx="'+(60-ex-5)+'" cy="74" rx="5" ry="3" fill="#ef8f80" opacity=".45"/><ellipse cx="'+(60+ex+5)+'" cy="74" rx="5" ry="3" fill="#ef8f80" opacity=".45"/>');
+  out.push('<path d="M60 67 q-2 5 1 6" stroke="#000" stroke-opacity=".25" stroke-width="1.6" fill="none" stroke-linecap="round"/>');
+  out.push('<path d="M53 77 Q60 84 67 77 Q60 80 53 77Z" fill="#b5483a" stroke="#b5483a" stroke-width="1.5" stroke-linejoin="round"/>');
+  if(o.glasses) out.push('<g stroke="#333" stroke-width="1.8" fill="none"><circle cx="'+(60-ex)+'" cy="65" r="7"/><circle cx="'+(60+ex)+'" cy="65" r="7"/><path d="M'+(60-ex+7)+' 65 L'+(60+ex-7)+' 65"/></g>');
+  out.push('</svg>');
+  return out.join('');
+}
+
+/* ============ clock drawing ============ */
+function clock(h, m, size){
+  var c = 50, out = ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="'+size+'" height="'+size+'" role="img" aria-label="clock '+h+':'+(m<10?'0':'')+m+'">'];
+  out.push('<circle cx="50" cy="50" r="46" fill="#fff" stroke="#26323a" stroke-width="3"/>');
+  for(var i=0;i<12;i++){
+    var a = i*30*Math.PI/180, r1 = (i%3===0)?36:39, r2 = 43;
+    out.push('<line x1="'+(c+r1*Math.sin(a)).toFixed(1)+'" y1="'+(c-r1*Math.cos(a)).toFixed(1)+'" x2="'+(c+r2*Math.sin(a)).toFixed(1)+'" y2="'+(c-r2*Math.cos(a)).toFixed(1)+'" stroke="#26323a" stroke-width="'+((i%3===0)?3:1.5)+'"/>');
+  }
+  [[12,0],[3,90],[6,180],[9,270]].forEach(function(p){
+    var a=p[1]*Math.PI/180, r=27;
+    out.push('<text x="'+(c+r*Math.sin(a)).toFixed(1)+'" y="'+(c-r*Math.cos(a)+4.5).toFixed(1)+'" font-size="13" font-weight="700" text-anchor="middle" fill="#6b7a85" font-family="Nunito,Arial">'+p[0]+'</text>');
+  });
+  var ha = ((h%12)+m/60)*30*Math.PI/180, ma = m*6*Math.PI/180;
+  out.push('<line x1="50" y1="50" x2="'+(c+22*Math.sin(ha)).toFixed(1)+'" y2="'+(c-22*Math.cos(ha)).toFixed(1)+'" stroke="#e2683f" stroke-width="5.5" stroke-linecap="round"/>');
+  out.push('<line x1="50" y1="50" x2="'+(c+34*Math.sin(ma)).toFixed(1)+'" y2="'+(c-34*Math.cos(ma)).toFixed(1)+'" stroke="#26323a" stroke-width="3.2" stroke-linecap="round"/>');
+  out.push('<circle cx="50" cy="50" r="3.5" fill="#26323a"/></svg>');
+  return out.join('');
+}
+
+/* ============ Japanese line renderer: "かな=romaji|かな=romaji" ============ */
+function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function jl(src){
+  return src.split('|').map(function(ch){
+    var p = ch.split('=');
+    return '<span class="ch"><span class="k">'+esc(p[0])+'</span>'+(p[1]?'<span class="r">'+esc(p[1])+'</span>':'')+'</span>';
+  }).join('');
+}
+
+/* ============ data for generated parts ============ */
+var HOURS = [['いちじ','ichiji'],['にじ','niji'],['さんじ','sanji'],['よじ','yoji',1],['ごじ','goji'],['ろくじ','rokuji'],
+             ['しちじ','shichiji',1],['はちじ','hachiji'],['くじ','kuji',1],['じゅうじ','juuji'],['じゅういちじ','juuichiji'],['じゅうにじ','juuniji']];
+var PCLOCKS = [[3,0],[7,30],[9,15],[4,10],[11,45],[6,20],[12,5],[8,40]];
+var CITIES = [
+  ['とうきょう','Tookyoo',10,0,'P.M.',1],
+  ['ペキン','Pekin (Beijing)',9,0,'P.M.',0,1],
+  ['デリー','Derii (Delhi)',6,30,'P.M.'],
+  ['カイロ','Kairo (Cairo)',3,0,'P.M.'],
+  ['ロンドン','Rondon (London)',1,0,'P.M.'],
+  ['ニューヨーク','Nyuuyooku (New York)',8,0,'A.M.'],
+  ['シドニー','Shidonii (Sydney)',11,0,'P.M.'],
+  ['サンパウロ','Sanpauro (São Paulo)',10,0,'A.M.']
+];
+
+/* mark: c = ★ GENKI core, a = ◆ GENKI additional, p = ＋ added in this course */
+var VOCAB = [
+ ['あいさつ・表現{ひょうげん}|Greetings & Expressions',[
+  ['p','こんにちは','konnichiwa','hello; good afternoon'],
+  ['p','はじめまして','hajimemashite','nice to meet you (first meeting)'],
+  ['p','よろしくおねがいします','yoroshiku onegai shimasu','nice to meet you; I look forward to knowing you'],
+  ['c','あのう','anoo','um…'],
+  ['c','はい','hai','yes'],
+  ['p','いいえ','iie','no; not at all (you\'re welcome)'],
+  ['c','そうです','soo desu','that\'s right'],
+  ['c','そうですか','soo desu ka','I see.; Is that so?'],
+  ['p','すみません','sumimasen','excuse me'],
+  ['p','ありがとうございます','arigatoo gozaimasu','thank you'] ]],
+ ['学校{がっこう}|School',[
+  ['c','だいがく','daigaku','college; university'],
+  ['c','こうこう','kookoo','high school'],
+  ['c','がくせい','gakusee','student'],
+  ['c','だいがくせい','daigakusee','college student'],
+  ['c','りゅうがくせい','ryuugakusee','international student'],
+  ['c','せんせい','sensee','teacher; Professor …'],
+  ['c','〜ねんせい','… nensee','… year student'],
+  ['c','いちねんせい','ichinensee','first-year student'],
+  ['c','せんこう','senkoo','major'],
+  ['a','だいがくいんせい','daigakuinsee','graduate student'],
+  ['a','こうこうせい','kookoosee','high school student'] ]],
+ ['人{ひと}|People',[
+  ['c','わたし','watashi','I'],
+  ['c','ともだち','tomodachi','friend'],
+  ['c','〜さん','… san','Mr./Ms. …'],
+  ['c','〜じん','… jin','… people (nationality)'],
+  ['c','にほんじん','nihonjin','Japanese people'],
+  ['c','なまえ','namae','name'] ]],
+ ['国{くに}・ことば|Countries & Languages',[
+  ['c','にほん','Nihon','Japan'],
+  ['c','アメリカ','Amerika','U.S.A.'],
+  ['c','〜ご','… go','… language'],
+  ['c','にほんご','nihongo','Japanese language'],
+  ['p','くに','kuni','country'],
+  ['a','イギリス','Igirisu','Britain'],
+  ['a','オーストラリア','Oosutoraria','Australia'],
+  ['a','かんこく','Kankoku','Korea'],
+  ['a','カナダ','Kanada','Canada'],
+  ['a','ちゅうごく','Chuugoku','China'],
+  ['a','インド','Indo','India'],
+  ['a','エジプト','Ejiputo','Egypt'],
+  ['a','フィリピン','Firipin','Philippines'] ]],
+ ['専攻{せんこう}|Majors',[
+  ['a','アジアけんきゅう','ajia kenkyuu','Asian studies'],
+  ['a','けいざい','keezai','economics'],
+  ['a','こうがく','koogaku','engineering'],
+  ['a','こくさいかんけい','kokusaikankee','international relations'],
+  ['a','コンピューター','konpyuutaa','computer (science)'],
+  ['a','せいじ','seeji','politics'],
+  ['a','せいぶつがく','seebutsugaku','biology'],
+  ['a','ビジネス','bijinesu','business'],
+  ['a','ぶんがく','bungaku','literature'],
+  ['a','れきし','rekishi','history'] ]],
+ ['仕事{しごと}|Jobs',[
+  ['p','しごと','shigoto','job; work'],
+  ['a','いしゃ','isha','doctor'],
+  ['a','かいしゃいん','kaishain','office worker'],
+  ['a','かんごし','kangoshi','nurse'],
+  ['a','しゅふ','shufu','homemaker'],
+  ['a','べんごし','bengoshi','lawyer'] ]],
+ ['家族{かぞく}|Family',[
+  ['a','おかあさん','okaasan','mother'],
+  ['a','おとうさん','otoosan','father'],
+  ['a','おねえさん','oneesan','older sister'],
+  ['a','おにいさん','oniisan','older brother'],
+  ['a','いもうと','imooto','younger sister'],
+  ['a','おとうと','otooto','younger brother'] ]],
+ ['数字{すうじ}・時間{じかん}|Numbers & Time',[
+  ['c','いま','ima','now'],
+  ['c','ごぜん','gozen','A.M.'],
+  ['c','ごご','gogo','P.M.'],
+  ['c','〜じ','… ji','… o\'clock'],
+  ['c','いちじ','ichiji','one o\'clock'],
+  ['c','はん','han','half'],
+  ['c','にじはん','niji han','half past two'],
+  ['p','〜ふん／〜ぷん','… fun / … pun','… minutes'],
+  ['c','〜さい','… sai','… years old'],
+  ['p','はたち','hatachi','20 years old'],
+  ['p','ひゃく','hyaku','hundred'],
+  ['c','でんわ','denwa','telephone'],
+  ['c','ばんごう','bangoo','number'],
+  ['c','〜ばん','… ban','number …'],
+  ['c','なん／なに','nan / nani','what'] ]]
+];
+
+var ANSWERS = [
+ ['Practice 1-A',[
+  'ゆうきさんは=Yuuki san wa|にほんじんです。=nihonjin desu.',
+  'アミナさんは=Amina san wa|エジプトじんです。=Ejiputojin desu.',
+  'ラジさんは=Raji san wa|インドじんです。=Indojin desu.',
+  'おがわせんせいは=Ogawa sensee wa|にほんじんです。=nihonjin desu.',
+  'ルーカスさんは=Ruukasu san wa|カナダじんです。=Kanadajin desu.']],
+ ['Practice 1-B',[
+  'わたしは=Watashi wa|もりた ゆうきです。=Morita Yuuki desu.|にほんじんです。=Nihonjin desu.|だいがくせいです。=Daigakusee desu.|せんこうは=Senkoo wa|れきしです。=rekishi desu.',
+  'わたしは=Watashi wa|アミナ・ハッサンです。=Amina Hassan desu.|エジプトじんです。=Ejiputojin desu.|りゅうがくせいです。=Ryuugakusee desu.|せんこうは=Senkoo wa|こうがくです。=koogaku desu.',
+  'わたしは=Watashi wa|ラジ・クマールです。=Raji Kumaaru desu.|インドじんです。=Indojin desu.|りゅうがくせいです。=Ryuugakusee desu.|せんこうは=Senkoo wa|コンピューターです。=konpyuutaa desu.',
+  'わたしは=Watashi wa|ルーカス・ミラーです。=Ruukasu Miraa desu.|カナダじんです。=Kanadajin desu.|りゅうがくせいです。=Ryuugakusee desu.|せんこうは=Senkoo wa|せいじです。=seeji desu.']],
+ ['Practice 2-A',[
+  'なな=nana', 'じゅうよん=juuyon', 'にじゅうさん=nijuusan', 'さんじゅうろく=sanjuuroku', 'よんじゅう=yonjuu', 'ごじゅうきゅう=gojuukyuu',
+  'ろくじゅうよん=rokujuuyon', 'ななじゅういち=nanajuuichi', 'はちじゅうはち=hachijuuhachi', 'きゅうじゅうに=kyuujuuni', 'ひゃく=hyaku']],
+ ['Practice 2-B',[
+  'ゼロはちゼロの=zero hachi zero no|にいきゅうよんさんの=nii kyuu yon san no|ななろくごういち=nana roku goo ichi',
+  'ゼロはちゼロの=zero hachi zero no|ななさんにいごうの=nana san nii goo no|いちきゅうろくはち=ichi kyuu roku hachi',
+  'ゼロななゼロの=zero nana zero no|ろくいちごうはちの=roku ichi goo hachi no|さんよんきゅうにい=san yon kyuu nii',
+  'ゼロきゅうゼロの=zero kyuu zero no|さんはちいちろくの=san hachi ichi roku no|ごうゼロにいなな=goo zero nii nana',
+  'ゼロはちゼロの=zero hachi zero no|ごういちななにいの=goo ichi nana nii no|よんはちさんろく=yon hachi san roku']],
+ ['Practice 3-A',[
+  'Q: アミナさんは=Amina san wa|エジプトじんですか。=Ejiputojin desu ka.|A: はい、=Hai,|そうです。=soo desu.',
+  'Q: ラジさんは=Raji san wa|にほんじんですか。=nihonjin desu ka.|A: いいえ、=Iie,|インドじんです。=Indojin desu.',
+  'Q: ゆうきさんは=Yuuki san wa|にねんせいですか。=ninensee desu ka.|A: いいえ、=Iie,|さんねんせいです。=sannensee desu.',
+  'Q: アミナさんは=Amina san wa|よねんせいですか。=yonensee desu ka.|A: いいえ、=Iie,|いちねんせいです。=ichinensee desu.',
+  'Q: ラジさんは=Raji san wa|りゅうがくせいですか。=ryuugakusee desu ka.|A: はい、=Hai,|そうです。=soo desu.',
+  'Q: おがわせんせいは=Ogawa sensee wa|にほんじんですか。=nihonjin desu ka.|A: はい、=Hai,|そうです。=soo desu.',
+  'Q: ルーカスさんは=Ruukasu san wa|アメリカじんですか。=Amerikajin desu ka.|A: いいえ、=Iie,|カナダじんです。=Kanadajin desu.']],
+ ['Practice 3-B',[
+  'はたちです。=Hatachi desu.|（にじゅっさいです。）=(Nijussai desu.)',
+  'じゅうはっさいです。=Juuhassai desu.',
+  'にじゅうにさいです。=Nijuunisai desu.',
+  'ごじゅうにさいです。=Gojuunisai desu.',
+  'にじゅういっさいです。=Nijuuissai desu.']],
+ ['Practice 3-C',[
+  'さんねんせいです。=Sannensee desu.',
+  'いちねんせいです。=Ichinensee desu.',
+  'よねんせいです。=Yonensee desu.',
+  'さんねんせいです。=Sannensee desu.']],
+ ['Practice 4-A',[
+  'わたしの=watashi no|なまえ=namae',
+  'ゆうきさんの=Yuuki san no|せんこう=senkoo',
+  'リンさんの=Rin san no|でんわばんごう=denwa bangoo',
+  'あおばだいがくの=Aoba daigaku no|がくせい=gakusee',
+  'こうこうの=kookoo no|せんせい=sensee',
+  'にほんの=Nihon no|だいがく=daigaku',
+  'けいざいの=keezai no|がくせい=gakusee',
+  'わたしの=watashi no|ともだちの=tomodachi no|なまえ=namae']],
+ ['Practice 4-B',[
+  '(a) ゆうきさんは=Yuuki san wa|あおばだいがくの=Aoba daigaku no|がくせいです。=gakusee desu.|(b) ゆうきさんの=Yuuki san no|せんこうは=senkoo wa|れきしです。=rekishi desu.',
+  '(a) アミナさんは=Amina san wa|カイロだいがくの=Kairo daigaku no|がくせいです。=gakusee desu.|(b) アミナさんの=Amina san no|せんこうは=senkoo wa|こうがくです。=koogaku desu.',
+  '(a) ラジさんは=Raji san wa|デリーだいがくの=Derii daigaku no|がくせいです。=gakusee desu.|(b) ラジさんの=Raji san no|せんこうは=senkoo wa|コンピューターです。=konpyuutaa desu.',
+  '(a) ルーカスさんは=Ruukasu san wa|トロントだいがくの=Toronto daigaku no|がくせいです。=gakusee desu.|(b) ルーカスさんの=Ruukasu san no|せんこうは=senkoo wa|せいじです。=seeji desu.']],
+ ['Practice 4-C',[
+  'はい、=Hai,|そうです。=soo desu.',
+  'はい、=Hai,|そうです。=soo desu.',
+  'いいえ、=Iie,|コンピューターです。=konpyuutaa desu.',
+  'けいざいです。=Keezai desu.',
+  'いいえ、=Iie,|がくせいです。=gakusee desu.',
+  'にほんごの=Nihongo no|せんせいです。=sensee desu.',
+  'いいえ、=Iie,|せいじです。=seeji desu.']],
+ ['Practice 4-D',[
+  'はい、=Hai,|そうです。=soo desu.',
+  'ごじゅっさいです。=Gojussai desu.',
+  'いいえ、=Iie,|いしゃです。=isha desu.',
+  'よんじゅうはっさいです。=Yonjuuhassai desu.',
+  'はい、=Hai,|そうです。=soo desu.',
+  'にじゅうろくさいです。=Nijuurokusai desu.',
+  'いいえ、=Iie,|こうこうせいです。=kookoosee desu.',
+  'じゅうろくさいです。=Juurokusai desu.']],
+ ['Practice 5-A',[
+  'さんじです。=Sanji desu.',
+  'しちじはんです。=Shichiji han desu.',
+  'くじ=Kuji|じゅうごふんです。=juugofun desu.',
+  'よじ=Yoji|じゅっぷんです。=juppun desu.',
+  'じゅういちじ=Juuichiji|よんじゅうごふんです。=yonjuugofun desu.',
+  'ろくじ=Rokuji|にじゅっぷんです。=nijuppun desu.',
+  'じゅうにじ=Juuniji|ごふんです。=gofun desu.',
+  'はちじ=Hachiji|よんじゅっぷんです。=yonjuppun desu.']],
+ ['Practice 5-C',[
+  'デリー：=Derii:|ごご=gogo|ろくじはんです。=rokuji han desu.',
+  'カイロ：=Kairo:|ごご=gogo|さんじです。=sanji desu.',
+  'ロンドン：=Rondon:|ごご=gogo|いちじです。=ichiji desu.',
+  'ニューヨーク：=Nyuuyooku:|ごぜん=gozen|はちじです。=hachiji desu.',
+  'シドニー：=Shidonii:|ごご=gogo|じゅういちじです。=juuichiji desu.',
+  'サンパウロ：=Sanpauro:|ごぜん=gozen|じゅうじです。=juuji desu.']],
+ ['Reading Ⅰ',[
+  'インドじんです。=Indojin desu.',
+  'コンピューターです。=Konpyuutaa desu.',
+  'にねんせいです。=Ninensee desu.',
+  'いいえ、=Iie,|デリーだいがくの=Derii daigaku no|よねんせいです。=yonensee desu.']],
+ ['Reading Ⅱ',[
+  'エジプトじんです。=Ejiputojin desu.',
+  'いちねんせいです。=Ichinensee desu.',
+  'こうがくです。=Koogaku desu.',
+  'じゅうはっさいです。=Juuhassai desu.',
+  'いいえ、=Iie,|りゅうがくせいです。=ryuugakusee desu.']]
+];
+
+/* ============ render ============ */
+function castTable(rows){
+  var people = CAST, h = '<table><tr><th></th>';
+  people.forEach(function(p){ h += '<th><div class="av">'+avatar(p.id,44)+'</div><span class="k jp">'+p.call+'</span><span class="r">'+p.callR+'</span></th>'; });
+  h += '</tr>';
+  rows.forEach(function(r){
+    h += '<tr><th><span class="bi"><span class="ja">'+ROWS[r][0]+'</span><span class="en">'+ROWS[r][1]+'</span></span></th>';
+    people.forEach(function(p){
+      var v = p[r];
+      if(v===null || v===undefined){ h += '<td style="background:repeating-linear-gradient(135deg,#fff 0 6px,#f1f5f6 6px 12px)"></td>'; return; }
+      if(typeof v==='string'){ h += '<td style="white-space:nowrap">'+v+'</td>'; return; }
+      h += '<td>'+v[0]+(v[1]?'<span class="hint">'+v[1]+'</span>':'')+'</td>';
+    });
+    h += '</tr>';
+  });
+  return h + '</table>';
+}
+
+document.querySelectorAll('[data-j]').forEach(function(el){ el.innerHTML = jl(el.getAttribute('data-j')); });
+document.querySelectorAll('.av[data-who]').forEach(function(el){ el.innerHTML = avatar(el.dataset.who, +(el.dataset.size||90)); });
+document.querySelectorAll('.clk[data-t]').forEach(function(el){ var t=el.dataset.t.split(':'); el.innerHTML = clock(+t[0], +t[1], +(el.dataset.size||80)); });
+document.querySelectorAll('.cast-table').forEach(function(el){ el.innerHTML = castTable(el.dataset.rows.split(',')); });
+
+document.getElementById('hoursTable').innerHTML = HOURS.map(function(x,i){
+  return '<div class="c'+(x[2]?' irr-c':'')+'">'+clock(i+1,0,76)+'<span class="k">'+x[0]+'</span><span class="r">'+x[1]+'</span></div>';
+}).join('');
+document.getElementById('practiceClocks').innerHTML = PCLOCKS.map(function(x,i){
+  return '<div class="c"><span class="num">('+(i+1)+')</span><br>'+clock(x[0],x[1],86)+'</div>';
+}).join('');
+document.getElementById('cities').innerHTML = CITIES.map(function(c,i){
+  return '<div class="city'+(c[5]?' home':'')+'"><div class="k">'+(c[5]?'':(c[6]?'e.g. ':(i-1)+'. '))+c[0]+'</div><div class="r">'+c[1]+'</div>'+clock(c[2],c[3],74)+'<br><span class="ap'+(c[4]==='A.M.'?' am':'')+'">'+c[4]+'</span>'+(c[5]?'<div class="r" style="margin-top:4px">ごご じゅうじ</div>':'')+'</div>';
+}).join('');
+
+var MK = {c:['core','★'], a:['add','◆'], p:['plus','＋']};
+document.getElementById('vocabList').innerHTML = VOCAB.map(function(g){
+  var t = g[0].split('|');
+  return '<h3><span class="bi"><span class="ja">'+t[0]+'</span><span class="en">'+t[1]+'</span></span></h3><table>'+g[1].map(function(w){
+    return '<tr><td><span class="mk '+MK[w[0]][0]+'">'+MK[w[0]][1]+'</span></td><td class="kk">'+w[1]+'</td><td class="rr">'+w[2]+'</td><td>'+w[3]+'</td></tr>';
+  }).join('')+'</table>';
+}).join('');
+
+document.getElementById('answerList').innerHTML = ANSWERS.map(function(g){
+  var short = g[1].every(function(a){ return a.length < 45; });
+  return '<h3>'+g[0]+'</h3><ol'+(short?' class="cols"':'')+'>'+g[1].map(function(a){ return '<li><div class="jl">'+jl(a)+'</div></li>'; }).join('')+'</ol>';
+}).join('');
+
+document.getElementById('rolePhones').innerHTML = CAST.filter(function(p){ return p.phone; }).map(function(p){
+  return '<div class="ph">'+avatar(p.id,48)+'<span class="k">'+p.call+'</span><b>'+p.phone+'</b></div>';
+}).join('');
+
+/* ============ furigana: 漢字{かんじ} → ruby ============ */
+document.querySelectorAll('.ja').forEach(function(el){
+  el.innerHTML = el.innerHTML.replace(/([\u3400-\u9fff\u3005]+)\{([^}]+)\}/g, '<ruby>$1<rt>$2</rt></ruby>');
+});
+
+/* ============ romaji toggle (remembered per viewer) ============ */
+var btn = document.getElementById('rmBtn');
+function setRomaji(on){
+  document.body.classList.toggle('no-romaji', !on);
+  btn.classList.toggle('on', on);
+  btn.textContent = 'Romaji: ' + (on ? 'ON' : 'OFF');
+  try{ localStorage.setItem('l1-romaji', on ? '1' : '0'); }catch(e){}
+}
+var saved = null; try{ saved = localStorage.getItem('l1-romaji'); }catch(e){}
+setRomaji(saved !== '0');
+btn.addEventListener('click', function(){ setRomaji(document.body.classList.contains('no-romaji')); });
+
+/* ============ pagination: split each part into A4 pages and number them ============
+   Measured at the fixed A4 width with romaji shown, so page numbers are the same
+   on a computer, on a phone, and in the printed PDF. */
+/* PAGE_BREAKS: fixed break points (index of the child that starts each new page), written by tools/fix_pages.sh.
+   Using fixed points keeps page numbers identical on every device. Empty = measure in this browser. */
+var PAGE_BREAKS = {"top":[],"cast":[4,6],"p0":[7],"p1":[8,12,18],"p2":[6,13],"p3":[9,11,14,16,22,28],"p4":[7,11,15,17,21],"p5":[6,11,17],"p6":[5,8],"p7":[5],"vocab":[4,8,10,14],"answers":[7,15,23]};
+function paginate(){
+  var MM = 96/25.4, MAXH = Math.floor((297-16-14)*MM) - 24;
+  var useFixed = Object.keys(PAGE_BREAKS).length > 0 && !/[?&]measure/.test(location.search), found = {};
+  var body = document.body, romajiOff = body.classList.contains('no-romaji');
+  body.classList.remove('no-romaji');
+  var measure = document.createElement('section');
+  measure.style.cssText = 'position:absolute;left:-10000px;top:0;visibility:hidden;width:210mm;min-height:0;margin:0;padding:16mm 13mm 14mm';
+  body.appendChild(measure);
+  var isHead = function(el){ return /^H[2-4]$/.test(el.tagName) || el.classList.contains('task') || el.classList.contains('part-head'); };
+  /* keep a chart / example / list of questions together on one page */
+  var block = function(el){ return el.classList.contains('table-wrap') || el.classList.contains('example') || el.classList.contains('cast') || el.classList.contains('phones') || el.classList.contains('items') || el.classList.contains('clocks') || el.classList.contains('cities'); };
+  var glue = function(prev, next){ return block(prev) && block(next); };
+  var pages = [];
+  Array.prototype.slice.call(document.querySelectorAll('section.page')).forEach(function(sec){
+    ['vocabList','answerList'].forEach(function(id){
+      var c = sec.querySelector('#'+id);
+      if(c){ while(c.firstChild) c.parentNode.insertBefore(c.firstChild, c); c.parentNode.removeChild(c); }
+    });
+    var badge = sec.querySelector('.badge'), h2 = sec.querySelector('h2');
+    var label = badge ? badge.textContent + (h2 && h2.firstChild ? ' · ' + h2.firstChild.textContent.trim() : '') : '';
+    measure.className = sec.className;
+    var kids = Array.prototype.slice.call(sec.children);
+    kids.forEach(function(k){ measure.appendChild(k); });
+    var top = function(el){ return el.offsetTop - parseFloat(getComputedStyle(el).marginTop || 0); };
+    var groups = [], start = 0, base = kids.length ? top(kids[0]) : 0;
+    if(useFixed){
+      (PAGE_BREAKS[sec.id] || []).forEach(function(b){ groups.push(kids.slice(start, b)); start = b; });
+      groups.push(kids.slice(start));
+    } else {
+    for(var i = 0; i < kids.length; i++){
+      var el = kids[i], bottom = el.offsetTop + el.offsetHeight + parseFloat(getComputedStyle(el).marginBottom || 0);
+      if(bottom - base > MAXH && i > start){
+        var b = i; while(b - 1 > start && (isHead(kids[b-1]) || glue(kids[b-1], kids[b]))) b--;
+        groups.push(kids.slice(start, b)); start = b; base = top(kids[b]);
+        i = b;  // the element that starts the new page always fits
+      }
+    }
+    groups.push(kids.slice(start));
+    }
+    var idx = 0; found[sec.id] = groups.slice(0, -1).map(function(g){ idx += g.length; return idx; });
+    var prev = sec;
+    groups.forEach(function(g, gi){
+      var pg = sec;
+      if(gi > 0){
+        pg = document.createElement('section');
+        pg.className = sec.className.replace(/\bcover\b/, '') + ' cont';
+        prev.parentNode.insertBefore(pg, prev.nextSibling);
+      }
+      g.forEach(function(k){ pg.appendChild(k); });
+      pg.dataset.label = label;
+      pages.push(pg); prev = pg;
+    });
+  });
+  body.removeChild(measure);
+  if(romajiOff) body.classList.add('no-romaji');
+  window.FOUND_BREAKS = found;
+  if(/[?&]measure/.test(location.search)) document.title = 'BREAKS ' + JSON.stringify(found);
+  pages.forEach(function(pg, i){
+    pg.dataset.page = i + 1;
+    if(i === 0) return;
+    var run = document.createElement('div');
+    run.className = 'run';
+    run.innerHTML = '<span>Lesson 1' + (pg.dataset.label ? ' · ' + pg.dataset.label : '') + '</span><span class="pno">p. ' + (i + 1) + '</span>';
+    pg.appendChild(run);
+  });
+  document.querySelectorAll('.toc a[href^="#"]').forEach(function(a){
+    var t = document.getElementById(a.getAttribute('href').slice(1));
+    if(t && t.dataset.page) a.insertAdjacentHTML('beforeend', '<span class="tp">p. ' + t.dataset.page + '</span>');
+  });
+}
+(document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(paginate);
+</script>
+</body>
+</html>
