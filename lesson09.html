@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="ja" translate="no" class="notranslate">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 9 コンサート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,800;1,400&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#26323a; --muted:#6b7a85; --line:#d5e1e5;
+  --primary:#1d7a8a; --primary-dark:#145a66; --primary-soft:#e4f2f4;
+  --accent:#e2683f; --accent-soft:#fdece5;
+  --yellow:#fff5d9; --bg:#eaf0f2; --paper:#ffffff;
+  --jp:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif;
+  --en:"Nunito","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--en);font-size:17px;line-height:1.6}
+.toolbar{position:sticky;top:0;z-index:10;display:flex;gap:8px;justify-content:flex-end;align-items:center;padding:8px 16px;background:rgba(234,240,242,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.toolbar .tt{margin-right:auto;font-weight:800;color:var(--primary-dark)}
+.toolbar button,.toolbar a{font:600 14px var(--en);border:1px solid var(--primary);background:#fff;color:var(--primary-dark);padding:6px 12px;border-radius:999px;cursor:pointer;text-decoration:none}
+.toolbar button.on{background:var(--primary);color:#fff}
+.page{background:var(--paper);width:210mm;min-height:297mm;margin:24px auto;padding:16mm 13mm 14mm;border-radius:6px;box-shadow:0 2px 12px rgba(20,60,70,.10);position:relative;container-type:inline-size}
+.page.cont>:first-child{margin-top:0}
+.run{position:absolute;top:6.5mm;left:13mm;right:13mm;display:flex;justify-content:space-between;align-items:baseline;font:700 12px var(--en);color:var(--muted);letter-spacing:.04em}
+.run .pno{color:var(--primary);font-weight:800;font-size:15px}
+.toc .tp{margin-left:auto;font-weight:800;color:var(--primary);white-space:nowrap;padding-left:8px}
+.phones{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px;margin:8px 0 12px}
+.phones .ph{border:1.5px solid var(--line);border-radius:12px;padding:8px 6px;text-align:center;background:#fbfdfd}
+.phones .ph .k{font-family:var(--jp);font-weight:700;display:block}
+.phones .ph b{display:block;font-size:.92rem;letter-spacing:.02em;white-space:nowrap}
+h1,h2,h3{line-height:1.25;margin:0}
+.jp,.k{font-family:var(--jp)}
+/* ---------- part headers ---------- */
+.part-head{display:flex;align-items:center;gap:14px;border-bottom:3px solid var(--primary);padding-bottom:10px;margin-bottom:22px}
+.badge{background:var(--primary);color:#fff;font-weight:800;font-size:14px;padding:6px 12px;border-radius:10px;letter-spacing:.06em;white-space:nowrap}
+.part-head h2{font-family:var(--jp);font-size:28px}
+.part-head h2 small{font-family:var(--en);font-size:17px;color:var(--muted);font-weight:600;margin-left:8px}
+h3.sub{font-size:19px;color:var(--primary-dark);margin:30px 0 12px;display:flex;align-items:center;gap:10px}
+h3.sub .tag{font-size:12px;background:var(--accent);color:#fff;padding:3px 9px;border-radius:999px;letter-spacing:.05em}
+h3.practice{font-size:19px;color:var(--accent);margin:34px 0 10px;padding-top:18px;border-top:2px dashed var(--line);display:flex;gap:10px;align-items:center}
+h3.practice .tag{background:var(--accent);color:#fff;font-size:12px;padding:3px 9px;border-radius:999px;letter-spacing:.05em}
+.task{font-weight:700;color:var(--accent);margin:22px 0 8px}
+.task b{display:inline-block;min-width:1.6em}
+p{margin:.5em 0}
+.muted{color:var(--muted)}
+/* ---------- Japanese line with romaji under each chunk ---------- */
+.jl{display:flex;flex-wrap:wrap;column-gap:.6em;row-gap:.15em;align-items:flex-start}
+.ch{display:inline-flex;flex-direction:column}
+.ch .k{font-size:1.24rem;line-height:1.4;font-weight:500}
+.ch .r{font-size:.74rem;color:var(--muted);line-height:1.15;letter-spacing:.01em}
+body.no-romaji .ch .r{display:none}
+/* ---------- boxes ---------- */
+.formula{display:inline-flex;gap:28px;align-items:center;border:2px solid var(--primary);border-radius:12px;padding:12px 24px;margin:10px 0 14px;background:var(--primary-soft)}
+.formula .k{font-family:var(--jp);font-size:1.45rem;font-weight:700}
+.formula .k .hl{color:var(--accent)}
+.formula .e{font-style:italic;color:var(--primary-dark)}
+.ex{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:12px 24px;margin:8px 0 6px;align-items:start}
+.ex .e{font-style:italic;color:#44525c;padding-top:4px}
+.note{background:var(--yellow);border-radius:12px;padding:14px 18px;margin:16px 0}
+.note h4{margin:0 0 4px;font-size:15px;color:#9a6a00;letter-spacing:.04em}
+.tip{border-left:5px solid var(--accent);background:var(--accent-soft);border-radius:0 12px 12px 0;padding:12px 18px;margin:16px 0}
+.tip h4{margin:0 0 4px;font-size:15px;color:var(--accent)}
+.ng{color:#c0392b;font-weight:700}
+.ok{color:var(--primary);font-weight:700}
+/* ---------- tables ---------- */
+table{border-collapse:collapse;width:100%;margin:10px 0}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:center;vertical-align:middle}
+th{background:var(--primary-soft);color:var(--primary-dark);font-weight:700}
+td .k{font-size:1.08rem}
+td .r,th .r{display:block;font-size:.72rem;color:var(--muted);font-weight:600}
+th .k{display:block}
+body.no-romaji td .r,body.no-romaji th .r{display:none}
+.cast-table table{table-layout:fixed;font-size:13.5px}
+.cast-table th:first-child{width:76px}
+.cast-table th,.cast-table td{padding:6px 3px;overflow-wrap:anywhere}
+.cast-table .hint{font-size:.74rem}
+.cast-table th .k{font-size:.95rem}
+.hint{display:block;font-family:var(--jp);font-size:.85rem;color:var(--muted)}
+.irr{color:var(--accent);font-weight:700}
+.irr-cell{background:var(--accent-soft)}
+/* ---------- practice items ---------- */
+.example{display:flex;gap:14px;align-items:flex-start;background:#f6f9fa;border-radius:12px;padding:12px 16px;margin:8px 0 12px;flex-wrap:wrap}
+.example .lbl{font-size:12px;font-weight:800;color:var(--accent);border:1.5px solid var(--accent);border-radius:6px;padding:1px 7px;margin-top:6px}
+.example .arrow{color:var(--accent);font-size:1.3rem;margin-top:2px}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px 18px;margin:6px 0 4px;padding:0;list-style:none;counter-reset:it}
+.items.wide{grid-template-columns:repeat(auto-fill,minmax(330px,1fr))}
+.items.one{grid-template-columns:1fr}
+.items li{counter-increment:it;display:flex;gap:8px;align-items:flex-start}
+.items li::before{content:counter(it) ".";font-weight:800;color:var(--primary);min-width:1.4em;padding-top:3px}
+.blank{display:inline-block;min-width:7em;border-bottom:2px solid #9fb3ba;height:1.4em;vertical-align:bottom}
+.qa{display:grid;grid-template-columns:2em 1fr;gap:2px 6px;margin:4px 0}
+.qa .who{font-weight:800;color:var(--primary);padding-top:3px}
+/* ---------- dialogue ---------- */
+.dlg{margin:10px 0}
+.dlg .row{display:grid;grid-template-columns:7.2em 1fr;gap:6px;padding:7px 0;border-bottom:1px dotted var(--line)}
+.dlg .row:last-child{border-bottom:none}
+.dlg .sp{font-weight:700}
+/* ---------- characters ---------- */
+.cast{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin:12px 0}
+.cast.people{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.cast.people .card{display:grid;grid-template-columns:64px 1fr;gap:2px 10px;text-align:left;padding:10px}
+.cast.people .card .av{grid-row:1 / span 3}
+.cast.people .card .nm{margin-top:0;font-size:1rem}
+.cast.people .card .bio{grid-column:1 / -1;margin-top:4px}
+@container (max-width:600px){.cast.people{grid-template-columns:1fr}}
+.card{border:1.5px solid var(--line);border-radius:14px;padding:12px 10px 14px;text-align:center;background:#fbfdfd}
+.card .nm{font-family:var(--jp);font-weight:700;font-size:1.1rem;margin-top:4px}
+.card .rm{font-size:.8rem;color:var(--muted)}
+.card .bio{font-size:.84rem;margin-top:6px;line-height:1.45;text-align:left}
+.av svg{display:block;margin:0 auto}
+.scene{display:flex;justify-content:center;gap:26px;align-items:flex-end;margin:14px 0 6px;flex-wrap:wrap}
+.scene .person{display:flex;flex-direction:column;align-items:center}
+.bubble{font-family:var(--jp);background:#fff;border:2px solid var(--primary);border-radius:16px;padding:6px 14px;margin-bottom:6px;position:relative;font-size:1.05rem}
+.bubble::after{content:"";position:absolute;bottom:-9px;left:50%;margin-left:-8px;border:8px solid transparent;border-top-color:var(--primary);border-bottom:0}
+/* ---------- clocks ---------- */
+.clocks{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:14px 10px;margin:10px 0}
+.clocks .c{text-align:center}
+.clocks .c .k{font-family:var(--jp);font-size:1.05rem;display:block}
+.clocks .c .r{font-size:.72rem;color:var(--muted);display:block}
+body.no-romaji .clocks .c .r{display:none}
+.clocks .c.irr-c .k{color:var(--accent);font-weight:700}
+.clocks .num{font-weight:800;color:var(--primary)}
+.cities{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:12px 0}
+.city{border:1.5px solid var(--line);border-radius:14px;padding:10px;text-align:center;background:#fbfdfd}
+.city.home{border-color:var(--accent);background:var(--accent-soft)}
+.city .k{font-family:var(--jp);font-weight:700;font-size:1.1rem}
+.city .r{font-size:.75rem;color:var(--muted)}
+.city .ap{display:inline-block;margin-top:4px;font-weight:800;font-size:.8rem;padding:1px 8px;border-radius:999px;background:var(--primary);color:#fff}
+.city .ap.am{background:#f2b134;color:#3b2b00}
+/* ---------- cover ---------- */
+.cover{text-align:center;padding-top:10mm}
+.cover .course{letter-spacing:.3em;font-size:14px;font-weight:800;color:var(--primary)}
+.cover .lesson{font-size:22px;font-weight:800;margin-top:6px}
+.cover h1{font-family:var(--jp);font-size:56px;color:var(--primary-dark);margin:10px 0 2px}
+.cover .en{font-size:24px;color:var(--muted);font-weight:600}
+.goals{text-align:left;max-width:640px;margin:22px auto 0;background:var(--primary-soft);border-radius:16px;padding:20px 26px}
+.goals h3{color:var(--primary-dark);font-size:17px;margin-bottom:6px}
+.goals ul{margin:0;padding-left:1.2em}
+.toc{text-align:left;max-width:640px;margin:22px auto 0;columns:2;column-gap:28px;padding:0;list-style:none;font-size:15px}
+.toc li{break-inside:avoid;padding:2px 0;border-bottom:1px dotted var(--line)}
+.toc a{color:var(--ink);text-decoration:none}
+.toc a b{color:var(--primary);margin-right:6px}
+.legend{font-size:14px;color:var(--muted);margin-top:12px}
+/* ---------- bilingual: Japanese on top, English below ---------- */
+.bi{display:block}
+.bi>.ja,.bi>.en{display:block}
+.bi>.ja{font-family:var(--jp);font-weight:500}
+.bi>.en{font-size:.86em;color:#56646d;font-weight:400;margin-top:2px;font-style:normal}
+ruby rt{font-size:.5em;color:var(--muted);font-weight:400;font-family:var(--jp)}
+.task{display:flex;gap:6px;align-items:flex-start}
+.task .bi>.en{color:#c0704f;font-weight:600}
+h3 .bi>.en,h4 .bi>.en{font-size:.78em;font-weight:600;letter-spacing:0}
+.card .bio .bi>.ja{font-size:.86rem;line-height:1.6}
+.card .bio .bi>.en{font-size:.76rem}
+.goals li{margin:4px 0}
+.toc .bi>.en{font-size:.8em}
+th .bi>.en{font-size:.78em;font-weight:600;color:var(--primary-dark)}
+/* ---------- vocab ---------- */
+.vocab h3{margin:22px 0 4px;color:var(--primary-dark);font-size:17px;letter-spacing:.06em}
+.vocab table td{text-align:left;padding:5px 10px}
+.vocab table td:first-child{width:2.2em;text-align:center}
+.vocab td.kk{font-family:var(--jp);font-size:1.08rem;width:34%}
+.vocab td.rr{color:var(--muted);width:26%}
+body.no-romaji .vocab td.rr{color:transparent}
+.mk{font-weight:800}
+.mk.core{color:var(--accent)}
+.mk.add{color:var(--primary)}
+.mk.plus{color:#7a5cc2}
+/* ---------- answers ---------- */
+.ans h3{margin:22px 0 6px;color:var(--primary-dark);font-size:16px}
+.ans ol{margin:0;padding-left:1.6em}
+.ans li{margin:3px 0;break-inside:avoid}
+.ans ol.cols{columns:3;column-gap:28px}
+.ans .ch .k{font-size:1.02rem}
+.ans .ch .r{font-size:.68rem}
+/* ---------- responsive / print ---------- */
+@media (max-width:840px){
+  .page{width:auto;min-height:0;margin:10px 0;padding:46px 16px 26px;border-radius:0}
+  .run{top:14px;left:16px;right:16px}
+}
+.table-wrap{overflow-x:auto}
+@container (max-width:600px){
+  .ex{grid-template-columns:1fr;gap:2px}
+  .ex .e{padding:0 0 10px}
+  .dlg .row{grid-template-columns:1fr}
+  .cover h1{font-size:46px}
+  .toc{columns:1}
+  .formula{gap:12px;padding:10px 14px;flex-wrap:wrap}
+  .ans ol.cols{columns:2}
+}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .toolbar{display:none}
+  .page{margin:0;box-shadow:none;border-radius:0;width:210mm;height:297mm;min-height:0;overflow:hidden;break-after:page}
+  .page:last-of-type{break-after:auto}
+}
+
+/* ===== shared additions (practice pictures) (same palette and shapes as Lesson 1) ===== */
+.s{font-family:var(--jp);font-size:1.12rem;line-height:1.95}
+.page p{margin:.35em 0}
+.page .ex{gap:6px 20px}
+.page .items{gap:4px 18px}
+.page .example{padding:8px 14px;margin:6px 0 8px}
+.page .tip,.page .note{padding:10px 16px;margin:10px 0}
+.page h3.sub{margin:20px 0 8px}
+.page .task{margin:14px 0 6px}
+ruby rt{font-size:.5em}
+body.no-furi rt{visibility:hidden}
+.ex .s{line-height:2}
+table.forms td,table.forms th{padding:6px 8px}
+table.forms td{font-family:var(--jp);font-size:1.08rem;line-height:2}
+.stage{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.05em;border-radius:999px;padding:3px 10px;margin-right:6px;vertical-align:middle}
+.stage.chk{background:#e4f2f4;color:var(--primary-dark)}
+.stage.talk{background:var(--accent);color:#fff}
+h3.talk{font-size:19px;color:var(--accent);margin:20px 0 6px;padding-top:12px;border-top:2px dashed var(--line);display:flex;gap:10px;align-items:center}
+h3.check{font-size:18px;color:var(--primary-dark);margin:26px 0 8px;display:flex;gap:10px;align-items:center}
+.you{background:#fff7e0;border:2px solid #f2c75c;border-radius:14px;padding:14px 18px;margin:14px 0}
+.you h4{margin:0 0 6px;color:#9a6a00;font-size:16px}
+.you ol{margin:4px 0 0;padding-left:1.4em}
+.you li{font-family:var(--jp);font-size:1.06rem;line-height:1.95}
+.hint{background:#f6f9fa;border:1.5px dashed #9fb3ba;border-radius:12px;padding:8px 14px;margin:10px 0;font-family:var(--jp);line-height:2.1}
+.hint b{font-family:var(--en);color:var(--muted);font-size:13px;margin-right:8px}
+.icon svg{display:block}
+.pcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:10px 0}
+.pcard{border:1.5px solid var(--line);border-radius:14px;padding:10px;text-align:center;background:#fbfdfd}
+.pcard .lbl{font-weight:800;color:var(--primary);font-size:14px}
+.pcard .props{display:flex;justify-content:center;gap:6px;margin-top:6px}
+.signs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:10px 0}
+.sign{border:1.5px solid var(--line);border-radius:14px;padding:8px;text-align:center;background:#fff}
+.sign .n{font-weight:800;color:var(--primary);font-size:13px;text-align:left}
+.sign .place{font-family:var(--jp);font-size:.98rem;line-height:2}
+.icards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:10px 0}
+.icard{display:flex;gap:10px;align-items:center;border:1.5px solid var(--line);border-radius:12px;padding:8px 10px;background:#fbfdfd}
+.icard .t{font-family:var(--jp);font-size:1rem;line-height:1.9}
+.chat{max-width:560px;margin:8px auto;background:#dfeef1;border-radius:18px;padding:10px 14px;display:flex;flex-direction:column;gap:6px}
+.chat .m{display:flex;gap:8px;align-items:flex-end}
+.chat .m.r{flex-direction:row-reverse}
+.chat .b{background:#fff;border-radius:16px;padding:3px 14px;font-family:var(--jp);font-size:1.02rem;line-height:1.9;max-width:78%}
+.chat .m.r .b{background:#c9f0a8}
+.chat .who{font-size:11px;color:var(--muted);text-align:center;font-weight:700}
+.tv{background:#26323a;border-radius:18px;padding:12px;max-width:600px;margin:10px auto}
+.tv .scr{background:#e4f2f4;border-radius:10px;padding:10px;display:flex;gap:12px;align-items:center}
+.tv .days{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;flex:1}
+.tv .day{background:#fff;border-radius:10px;padding:6px;text-align:center;font-family:var(--jp);line-height:1.9}
+.tv .day .deg{font-family:var(--en);font-weight:800;font-size:1.1rem;color:var(--accent)}
+.tv .title{color:#fff;font-family:var(--jp);font-weight:700;text-align:center;margin-bottom:6px}
+.bubbles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:10px 0}
+.bub{display:flex;flex-direction:column;align-items:center}
+.bub .say{background:#fff;border:2px solid var(--primary);border-radius:14px;padding:4px 10px;font-family:var(--jp);font-size:1rem;line-height:2;position:relative;margin-bottom:8px;text-align:center}
+.bub .say::after{content:"";position:absolute;bottom:-9px;left:50%;margin-left:-8px;border:8px solid transparent;border-top-color:var(--primary);border-bottom:0}
+.bub .nm{font-family:var(--jp);font-weight:700;font-size:.95rem;line-height:2}
+table.hobby td{padding:6px}
+.mark{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;color:#fff;font-weight:800;font-size:15px}
+.mark.like{background:#e25d7f}.mark.dislike{background:#5d6f7e}.mark.good{background:#f2b134;color:#3b2b00}.mark.poor{background:#3a86a6}
+.legend2{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--jp);line-height:2;margin:6px 0}
+.party{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:10px 0;background:#fdf3e7;border-radius:16px;padding:12px}
+.party .p{position:relative;text-align:center}
+.party .p .act{position:absolute;right:2px;top:52px}
+.party .p .nm{font-family:var(--jp);font-weight:700;line-height:2}
+.bags{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:10px 0}
+.bag{text-align:center}
+.bag .in{margin:6px auto 0;width:100%;min-height:92px;border:3px solid #8a6a4a;border-top-width:10px;border-radius:6px 6px 22px 22px;background:#fbf2e6;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px;padding:6px}
+.bag .nm{font-family:var(--jp);font-weight:700;line-height:2}
+.grid12{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:10px 0}
+.grid12 .g{text-align:center;border:1.5px solid var(--line);border-radius:12px;padding:6px 2px;background:#fff}
+.grid12 .g .t{font-family:var(--jp);font-size:.9rem;line-height:1.9}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border:2px solid var(--primary);border-radius:10px;overflow:hidden;margin:10px 0}
+.cal div{border-right:1px solid var(--line);text-align:center;min-height:70px;font-family:var(--jp);line-height:1.9;padding:4px 2px;font-size:.95rem}
+.cal div:last-child{border-right:none}
+.cover .goals ul{columns:2;column-gap:24px}
+.cover .goals li{break-inside:avoid}
+.cover .toc{columns:3;max-width:none}
+.vt td{white-space:nowrap;font-size:1rem}
+.gt{table-layout:fixed}
+.gt th:first-child{width:16%}
+.gt td:nth-child(3){width:36%;white-space:nowrap;text-align:left;padding-left:14px}
+.gt td{line-height:1.9}
+.gt .bi>.en{font-size:.8em}
+@container (max-width:600px){.cover .goals ul{columns:1}.cover .toc{columns:1}}
+.cal .d{display:block;background:var(--primary-soft);color:var(--primary-dark);font-weight:700;margin:-4px -2px 4px}
+.tcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:10px 0}
+.tcard{border:2px solid var(--accent);border-radius:14px;padding:10px;background:#fff;font-family:var(--jp);line-height:2}
+.tcard .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-family:var(--en);margin-right:6px}
+.teacher{border:2px dashed var(--primary);border-radius:14px;padding:12px 16px;margin:12px 0}
+.teacher h4{margin:0 0 6px;color:var(--primary-dark)}
+.teacher li{line-height:2;font-family:var(--jp)}
+@container (max-width:600px){
+  .pcards,.bubbles,.bags,.icards,.tcards{grid-template-columns:1fr 1fr}
+  .signs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid12{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .party{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .cal{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <span class="tt">Lesson 9 · コンサート</span>
+  <a href="#toc">Contents</a>
+  <button id="furiBtn" class="on" type="button">ふりがな: ON</button>
+  <a href="lesson09.pdf" download>PDF</a>
+  <a href="./">All lessons</a>
+</div>
+
+<section class="page cover" id="top">
+  <div class="course">ORIGINAL JAPANESE COURSE</div>
+  <div class="lesson">Lesson 9</div>
+  <h1>コンサート</h1>
+  <div class="en">The Concert</div>
+  <div class="scene" style="margin-top:22px;gap:14px"><div class="av" data-who="amina" data-size="80"></div><div class="av" data-who="lin" data-size="80"></div><div class="av" data-who="ogawa" data-size="80"></div><div class="av" data-who="raj" data-size="80"></div><div class="av" data-who="yuuki" data-size="80"></div><div class="av" data-who="lucas" data-size="80"></div></div>
+  <div class="goals">
+    <h3><span class="bi"><span class="ja">この課{か}で できるようになること</span><span class="en">In this lesson, you will learn to…</span></span></h3>
+    <ul>
+      <li><span class="bi"><span class="ja">過去{かこ}のことを くだけた話{はな}し方{かた}で 話{はな}す</span><span class="en">talk casually about the past</span></span></li>
+      <li><span class="bi"><span class="ja">過去{かこ}のことについて 考{かんが}えを 言{い}う</span><span class="en">say what you think happened</span></span></li>
+      <li><span class="bi"><span class="ja">人{ひと}が 言{い}ったことを 伝{つた}える</span><span class="en">report what someone said</span></span></li>
+      <li><span class="bi"><span class="ja">「〜ている人{ひと}」で 人{ひと}を 説明{せつめい}する</span><span class="en">describe people by what they are doing</span></span></li>
+      <li><span class="bi"><span class="ja">理由{りゆう}を 言{い}う・店{みせ}で 注文{ちゅうもん}する</span><span class="en">give reasons and order at a shop</span></span></li>
+    </ul>
+  </div>
+  <ul class="toc" id="toc"><li><a href="#cast" style="display:flex;gap:6px"><b>★</b><span class="bi"><span class="ja">登場人物{とうじょうじんぶつ}</span><span class="en">Characters</span></span></a></li><li><a href="#p1" style="display:flex;gap:6px"><b>1</b><span class="bi"><span class="ja">普通形{ふつうけい}の過去{かこ}</span><span class="en">Past short forms</span></span></a></li><li><a href="#p2" style="display:flex;gap:6px"><b>2</b><span class="bi"><span class="ja">くだけた話{はな}し方{かた}</span><span class="en">Casual speech</span></span></a></li><li><a href="#p3" style="display:flex;gap:6px"><b>3</b><span class="bi"><span class="ja">〜たと思{おも}います</span><span class="en">I think … did</span></span></a></li><li><a href="#p4" style="display:flex;gap:6px"><b>4</b><span class="bi"><span class="ja">〜たと言{い}っていました</span><span class="en">They said … did</span></span></a></li><li><a href="#p5" style="display:flex;gap:6px"><b>5</b><span class="bi"><span class="ja">〜ている人{ひと}</span><span class="en">The person who is …</span></span></a></li><li><a href="#p6" style="display:flex;gap:6px"><b>6</b><span class="bi"><span class="ja">もう・まだ</span><span class="en">Already / not yet</span></span></a></li><li><a href="#p7" style="display:flex;gap:6px"><b>7</b><span class="bi"><span class="ja">〜から、〜</span><span class="en">Reasons</span></span></a></li><li><a href="#p8" style="display:flex;gap:6px"><b>8</b><span class="bi"><span class="ja">一{ひと}つ・二{ふた}つ</span><span class="en">Counting things</span></span></a></li><li><a href="#p9" style="display:flex;gap:6px"><b>9</b><span class="bi"><span class="ja">読{よ}み物{もの}</span><span class="en">Reading</span></span></a></li><li><a href="#p10" style="display:flex;gap:6px"><b>10</b><span class="bi"><span class="ja">まとめ</span><span class="en">Review</span></span></a></li><li><a href="#vocab" style="display:flex;gap:6px"><b>V</b><span class="bi"><span class="ja">単語{たんご}</span><span class="en">Vocabulary</span></span></a></li><li><a href="#answers" style="display:flex;gap:6px"><b>A</b><span class="bi"><span class="ja">解答例{かいとうれい}</span><span class="en">Model answers</span></span></a></li></ul>
+</section>
+
+<section class="page" id="cast">
+<div class="part-head"><span class="badge">CHARACTERS</span><h2>登場人物{とうじょうじんぶつ}<small>Characters</small></h2></div>
+<p><span class="bi"><span class="ja">このテキストには 毎回{まいかい}、この6人{にん}が 出{で}てきます。</span><span class="en">These six people appear in every lesson of this book.</span></span></p><div class="cast people"><div class="card"><div class="av" data-who="lin" data-size="64"></div><div class="nm">ワン・リン</div><div class="rm">Wang Lin</div><div class="bio"><span class="bi"><span class="ja">中国{ちゅうごく}から来{き}た 留学生{りゅうがくせい}。あおばだいがくの2年生{ねんせい}。</span><span class="en">An international student from China. 2nd year at Aoba University.</span></span></div></div><div class="card"><div class="av" data-who="yuuki" data-size="64"></div><div class="nm">もりた ゆうき</div><div class="rm">Morita Yuuki</div><div class="bio"><span class="bi"><span class="ja">あおばだいがくの3年生{ねんせい}。日本人{にほんじん}。</span><span class="en">A 3rd-year student at Aoba University. Japanese.</span></span></div></div><div class="card"><div class="av" data-who="amina" data-size="64"></div><div class="nm">アミナ・ハッサン</div><div class="rm">Amina Hassan</div><div class="bio"><span class="bi"><span class="ja">エジプトから来{き}た 留学生{りゅうがくせい}。1年生{ねんせい}。</span><span class="en">An international student from Egypt. 1st year.</span></span></div></div><div class="card"><div class="av" data-who="raj" data-size="64"></div><div class="nm">ラジ・クマール</div><div class="rm">Raj Kumar</div><div class="bio"><span class="bi"><span class="ja">インドから来{き}た 留学生{りゅうがくせい}。4年生{ねんせい}。</span><span class="en">An international student from India. 4th year.</span></span></div></div><div class="card"><div class="av" data-who="lucas" data-size="64"></div><div class="nm">ルーカス・ミラー</div><div class="rm">Lucas Miller</div><div class="bio"><span class="bi"><span class="ja">カナダから来{き}た 留学生{りゅうがくせい}。日本{にほん}の家族{かぞく}のうちに 住{す}んでいる。</span><span class="en">An international student from Canada. Lives with a Japanese host family.</span></span></div></div><div class="card"><div class="av" data-who="ogawa" data-size="64"></div><div class="nm">おがわ先生{せんせい}</div><div class="rm">Ogawa sensee</div><div class="bio"><span class="bi"><span class="ja">あおばだいがくの 日本語{にほんご}の先生{せんせい}。</span><span class="en">A Japanese teacher at Aoba University.</span></span></div></div></div>
+<p class="legend" style="margin:14px 0 0"><span class="bi"><span class="ja">復習{ふくしゅう}するときは、上{うえ}の「ふりがな」ボタンで ふりがなを かくせます。</span><span class="en">Tip: Use the <b>Furigana</b> button at the top to hide the furigana when you review.</span></span></p>
+</section>
+
+<section class="page" id="p1">
+<div class="part-head"><span class="badge">PART 1</span><h2>普通形{ふつうけい}の過去{かこ}<small>Past short forms</small></h2></div>
+<h3 class="sub"><span class="tag">GRAMMAR 1</span><span class="bi"><span class="ja">普通形{ふつうけい}の 過去{かこ}</span><span class="en">Past tense short forms</span></span></h3>
+<p><span class="bi"><span class="ja">第{だい}8課{か}で 普通形{ふつうけい}の「今{いま}」の形{かたち}を 勉強{べんきょう}しました。この課{か}では「過去{かこ}」の形{かたち}を 勉強{べんきょう}します。覚{おぼ}えることは 3つだけです。</span><span class="en">In Lesson 8 you learned present short forms. Now we learn the past short forms. There are only three rules.</span></span></p>
+<div class="table-wrap"><table class="forms"><tr><th></th><th><span class="bi"><span class="ja">過去{かこ}</span><span class="en">past</span></span></th><th><span class="bi"><span class="ja">過去{かこ}の否定{ひてい}</span><span class="en">past negative</span></span></th></tr><tr><th><span class="bi"><span class="ja">動詞{どうし}</span><span class="en">verb</span></span></th><td><b>食{た}べ<u>た</u>　読{よ}ん<u>だ</u></b></td><td><b>食{た}べな<u>かった</u></b></td></tr><tr><th><span class="bi"><span class="ja">い形容詞{けいようし}</span><span class="en">い-adj.</span></span></th><td><b>高{たか}<u>かった</u></b></td><td><b>高{たか}くな<u>かった</u></b></td></tr><tr><th><span class="bi"><span class="ja">いい</span><span class="en">exception</span></span></th><td><b><u>よかった</u></b></td><td><b><u>よくなかった</u></b></td></tr><tr><th><span class="bi"><span class="ja">な形容詞{けいようし}</span><span class="en">な-adj.</span></span></th><td><b>元気{げんき}<u>だった</u></b></td><td><b>元気{げんき}じゃな<u>かった</u></b></td></tr><tr><th><span class="bi"><span class="ja">名詞{めいし}</span><span class="en">noun</span></span></th><td><b>学生{がくせい}<u>だった</u></b></td><td><b>学生{がくせい}じゃな<u>かった</u></b></td></tr></table></div>
+<div class="note"><h4><span class="bi"><span class="ja">3つのルール</span><span class="en">Three rules</span></span></h4><div style="display:grid;gap:6px"><div class="s">① 動詞{どうし}：て形{けい}の「て・で」を「た・だ」に する（食{た}べて → 食{た}べた、読{よ}んで → 読{よ}んだ）</div><div class="s">② い形容詞{けいようし}：「い」を「かった」に する（高{たか}い → 高{たか}かった）</div><div class="s">③ な形容詞{けいようし}・名詞{めいし}：「でした」を「だった」に する（元気{げんき}でした → 元気{げんき}だった）</div><div class="s">否定{ひてい}は ぜんぶ同{おな}じ：「ない」を「なかった」に する（食{た}べない → 食{た}べなかった）</div></div></div>
+<h3 class="check"><span class="stage chk">ミニ確認{かくにん}</span><span class="bi"><span class="ja">過去{かこ}の 普通形{ふつうけい}に しましょう（肯定{こうてい}と否定{ひてい}）。</span><span class="en">Make the past short form, affirmative and negative.</span></span></h3>
+<div class="example"><span class="lbl">Example</span><div class="s">行{い}く → 行{い}った／行{い}かなかった</div></div>
+<ol class="items "><li><div class="s">飲{の}む</div></li><li><div class="s">来{く}る</div></li><li><div class="s">弾{ひ}く</div></li><li><div class="s">覚{おぼ}える</div></li><li><div class="s">寂{さび}しい</div></li><li><div class="s">病気{びょうき}</div></li></ol>
+</section>
+
+<section class="page" id="p2">
+<div class="part-head"><span class="badge">PART 2</span><h2>くだけた話{はな}し方{かた}<small>Casual speech</small></h2></div>
+<h3 class="sub"><span class="tag">GRAMMAR 2</span><span class="bi"><span class="ja">くだけた話{はな}し方{かた}（過去{かこ}）</span><span class="en">Past short forms in casual speech</span></span></h3>
+<p><span class="bi"><span class="ja">友{とも}だちとは、過去{かこ}のことも 普通形{ふつうけい}で 話{はな}します。質問{しつもん}の「か」は 言{い}いません。「だった」は 省略{しょうりゃく}しません。</span><span class="en">With friends, talk about the past in short forms too. Drop the question か. Unlike だ, だった is not dropped.</span></span></p>
+<div class="ex"><div class="s">A：きのう、何{なに}を した？↗<br>B：映画{えいが}を 見{み}た。</div><div class="e">What did you do yesterday? — I saw a movie.</div><div class="s">A：先週{せんしゅう}、忙{いそが}しかった？<br>B：ううん、忙{いそが}しくなかった。ひまだった。</div><div class="e">Were you busy last week? — No, I was free.</div><div class="s">A：どうだった？<br>B：楽{たの}しかったよ。</div><div class="e">How was it? — It was fun.</div></div>
+<h3 class="check"><span class="stage chk">ミニ確認{かくにん}</span><span class="bi"><span class="ja">「うん」と「ううん」で 答{こた}えましょう。</span><span class="en">Answer both ways.</span></span></h3>
+<ol class="items one"><li><div class="s">きのう、運動{うんどう}した？</div></li><li><div class="s">けさ、朝{あさ}ご飯{はん} 食{た}べた？</div></li><li><div class="s">子供{こども}の時{とき}、いい子{こ}だった？</div></li></ol>
+<h3 class="talk"><span class="stage talk">話{はな}してみよう</span><span class="bi"><span class="ja">週末{しゅうまつ}、何{なに}した？</span><span class="en">What did you do on the weekend?</span></span></h3>
+<p class="task"><b>A.</b><span class="bi"><span class="ja">先生{せんせい}と 友{とも}だちの話{はな}し方{かた}で 話{はな}しましょう。カードを 見{み}て 質問{しつもん}して、答{こた}えを 聞{き}いたら「どうだった？」と 聞{き}きましょう。</span><span class="en">Talk casually with your teacher. Ask with the cards, then follow up with どうだった？</span></span></p>
+<div class="icards"><div class="icard"><span class="icon" data-icon="ticket" data-size="44"></span><span class="t">コンサートに 行{い}く</span></div><div class="icard"><span class="icon" data-icon="dog" data-size="44"></span><span class="t">散歩{さんぽ}する</span></div><div class="icard"><span class="icon" data-icon="ball" data-size="44"></span><span class="t">運動{うんどう}する</span></div><div class="icard"><span class="icon" data-icon="pizza" data-size="44"></span><span class="t">ピザを 食{た}べる</span></div><div class="icard"><span class="icon" data-icon="guitar" data-size="44"></span><span class="t">ギターを 弾{ひ}く</span></div><div class="icard"><span class="icon" data-icon="letter" data-size="44"></span><span class="t">手紙{てがみ}を 書{か}く</span></div></div>
+<div class="example"><span class="lbl">Example</span><div class="s">A：週末{しゅうまつ}、コンサートに 行{い}った？　B：うん、行{い}った。<br>A：どうだった？　B：すごく よかった。</div></div>
+<p class="task"><b>B.</b><span class="bi"><span class="ja">「子供{こども}の時{とき}」について、くだけた話{はな}し方{かた}で 聞{き}き合{あ}いましょう。</span><span class="en">Ask each other about your childhood, casually.</span></span></p>
+<div class="you"><h4><span class="bi"><span class="ja">子供{こども}の時{とき}</span><span class="en">When you were a child</span></span></h4><ol><li>子供{こども}の時{とき}、いい子{こ}だった？</li><li>子供{こども}の時{とき}、ピアノを 弾{ひ}いた？</li><li>子供{こども}の時{とき}、よく 何{なに}をして 遊{あそ}んだ？</li><li>高校{こうこう}の時{とき}、試験{しけん}は 難{むずか}しかった？</li></ol></div>
+</section>
+
+<section class="page" id="p3">
+<div class="part-head"><span class="badge">PART 3</span><h2>〜たと思{おも}います<small>I think … did</small></h2></div>
+<h3 class="sub"><span class="tag">GRAMMAR 3</span><span class="bi"><span class="ja">〜たと思{おも}います</span><span class="en">I think … happened</span></span></h3>
+<p><span class="bi"><span class="ja">過去{かこ}のことについて 考{かんが}えを 言{い}うときも、「普通形{ふつうけい}＋と思{おも}います」です。普通形{ふつうけい}を 過去{かこ}にします。</span><span class="en">To say what you think happened, use the past short form ＋ と思います.</span></span></p>
+<div class="formula"><span class="k">過去{かこ}の普通形{ふつうけい} ＋ <span class="hl">と思{おも}います</span></span><span class="e">I think (someone) did … / (something) was …</span></div>
+<div class="ex"><div class="s">A：あ、わたしの ピザが ない！<br>B：ラジさんが 食{た}べたと思{おも}います。</div><div class="e">Hey, my pizza is gone! — I think Raj ate it.</div><div class="s">おがわ先生{せんせい}は 子供{こども}の時{とき}、いい子{こ}だったと思{おも}います。</div><div class="e">I think Ms. Ogawa was a good child.</div><div class="s">きのうの 試験{しけん}は あまり 難{むずか}しくなかったと思{おも}います。</div><div class="e">I don't think yesterday's exam was very difficult.</div></div>
+<h3 class="check"><span class="stage chk">ミニ確認{かくにん}</span><span class="bi"><span class="ja">「〜たと思{おも}います」で 言{い}いましょう。</span><span class="en">Say it with 〜たと思います.</span></span></h3>
+<ol class="items one"><li><div class="s">ゆうきさんは きのう 運動{うんどう}した</div></li><li><div class="s">コンサートは 九時{くじ}に 終{お}わった</div></li><li><div class="s">あの人{ひと}は 若{わか}い時{とき}、人気{にんき}が あった</div></li></ol>
+<h3 class="talk"><span class="stage talk">話{はな}してみよう</span><span class="bi"><span class="ja">きのう、何{なに}を したと思{おも}いますか</span><span class="en">What do you think they did yesterday?</span></span></h3>
+<p class="task"><b>A.</b><span class="bi"><span class="ja">今日{きょう}の みんなの 様子{ようす}です。きのう 何{なに}を したと思{おも}いますか。理由{りゆう}も 言{い}いましょう。答{こた}えは 1つでは ありません。</span><span class="en">This is how everyone looks today. What do you think they did yesterday? Give a reason. There is no single answer.</span></span></p>
+<div class="pcards" style="grid-template-columns:repeat(4,minmax(0,1fr))"><div class="pcard"><div class="lbl">ラジ</div><div class="av" data-who="raj" data-size="80"></div><div class="props"><span class="icon" data-icon="sleep" data-size="38"></span><span class="icon" data-icon="game" data-size="38"></span></div></div><div class="pcard"><div class="lbl">アミナ</div><div class="av" data-who="amina" data-size="80"></div><div class="props"><span class="icon" data-icon="medicine" data-size="38"></span><span class="icon" data-icon="bed" data-size="38"></span></div></div><div class="pcard"><div class="lbl">ゆうき</div><div class="av" data-who="yuuki" data-size="80"></div><div class="props"><span class="icon" data-icon="ticket" data-size="38"></span><span class="icon" data-icon="music" data-size="38"></span></div></div><div class="pcard"><div class="lbl">ルーカス</div><div class="av" data-who="lucas" data-size="80"></div><div class="props"><span class="icon" data-icon="ski" data-size="38"></span><span class="icon" data-icon="bag" data-size="38"></span></div></div></div>
+<div class="hint"><b>Hint</b>遅{おそ}くまで ゲームを した　／　病気{びょうき}だった　／　薬{くすり}を 飲{の}んだ　／　コンサートに 行{い}った　／　踊{おど}った　／　スキーに 行{い}った</div>
+<div class="example"><span class="lbl">Example</span><div class="s">ラジさんは きのう 遅{おそ}くまで ゲームを したと思{おも}います。今日{きょう}、元気{げんき}じゃないですから。</div></div>
+<p class="task"><b>B.</b><span class="bi"><span class="ja">おがわ先生{せんせい}は 高校{こうこう}の時{とき}、どんな学生{がくせい}だったと思{おも}いますか。先生{せんせい}に 言{い}って、本当{ほんとう}か 聞{き}きましょう。</span><span class="en">What kind of high school student do you think your teacher was? Say it, then ask if you were right.</span></span></p>
+<div class="hint"><b>Hint</b>いい学生{がくせい}だった　／　人気{にんき}が あった　／　よく 勉強{べんきょう}した　／　ピアノを 弾{ひ}いた　／　運動{うんどう}するのが 好{す}きだった　／　意地悪{いじわる}だった？</div>
+<div class="example"><span class="lbl">Example</span><div class="s">先生{せんせい}は 高校{こうこう}の時{とき}、人気{にんき}が あったと思{おも}います。……本当{ほんとう}ですか。</div></div>
+</section>
+
+<section class="page" id="p4">
+<div class="part-head"><span class="badge">PART 4</span><h2>〜たと言{い}っていました<small>They said … did</small></h2></div>
+<h3 class="sub"><span class="tag">GRAMMAR 4</span><span class="bi"><span class="ja">〜たと言{い}っていました</span><span class="en">They said … happened</span></span></h3>
+<p><span class="bi"><span class="ja">人{ひと}が 過去{かこ}のことを 言{い}ったら、伝{つた}えるときも 過去{かこ}の普通形{ふつうけい}を 使{つか}います。もとの文{ぶん}が「今{いま}」なら、「今{いま}」の形{かたち}のままです。</span><span class="en">If someone talked about the past, report it with the past short form. If they talked about the present, keep the present form.</span></span></p>
+<div class="ex"><div class="s">アミナ：「先週{せんしゅう}、病気{びょうき}でした。」<br>→ アミナさんは、先週{せんしゅう} 病気{びょうき}だったと 言{い}っていました。</div><div class="e">Amina said she was sick last week.</div><div class="s">アミナ：「今{いま}、薬{くすり}を 飲{の}んでいます。」<br>→ アミナさんは、今{いま} 薬{くすり}を 飲{の}んでいると 言{い}っていました。</div><div class="e">Amina said she is taking medicine now.</div></div>
+<h3 class="check"><span class="stage chk">ミニ確認{かくにん}</span><span class="bi"><span class="ja">みんなが 言{い}ったことを 伝{つた}えましょう。</span><span class="en">Report what each person said.</span></span></h3>
+<div class="bubbles"><div class="bub"><div class="say">先週{せんしゅう}、スキーに 行{い}きました。楽{たの}しかったです。</div><div class="av" data-who="lucas" data-size="66"></div><div class="nm">ルーカス</div></div><div class="bub"><div class="say">先月{せんげつ}、歌舞伎{かぶき}を 見{み}ました。</div><div class="av" data-who="raj" data-size="66"></div><div class="nm">ラジ</div></div><div class="bub"><div class="say">去年{きょねん}は 日本語{にほんご}が 上手{じょうず}じゃなかったです。</div><div class="av" data-who="lin" data-size="66"></div><div class="nm">リン</div></div></div>
+<h3 class="talk"><span class="stage talk">話{はな}してみよう</span><span class="bi"><span class="ja">インタビューして 伝{つた}えよう</span><span class="en">Interview and report</span></span></h3>
+<p class="task"><b>A.</b><span class="bi"><span class="ja">先生{せんせい}に 質問{しつもん}して、答{こた}えを メモしましょう。そのあと、ゆうきさんに 伝{つた}えるつもりで「先生{せんせい}は〜と言{い}っていました」と 言{い}いましょう。</span><span class="en">Interview your teacher and take notes. Then report it as if telling Yuuki: 先生は〜と言っていました.</span></span></p>
+<div class="table-wrap"><table><tr><th style="width:55%"><span class="bi"><span class="ja">質問{しつもん}</span><span class="en">question</span></span></th><th><span class="bi"><span class="ja">メモ</span><span class="en">notes</span></span></th></tr><tr><td class="s" style="text-align:left">先週{せんしゅう}、何{なに}を しましたか。どうでしたか。</td><td style="height:44px"></td></tr><tr><td class="s" style="text-align:left">子供{こども}の時{とき}、どんな 子供{こども}でしたか。</td><td style="height:44px"></td></tr><tr><td class="s" style="text-align:left">去年{きょねん}、どこに 行{い}きましたか。</td><td style="height:44px"></td></tr><tr><td class="s" style="text-align:left">高校{こうこう}の時{とき}、よく 何{なに}を しましたか。</td><td style="height:44px"></td></tr></table></div>
+<p class="task"><b>B.</b><span class="bi"><span class="ja">次{つぎ}は 先生{せんせい}が あなたに 同{おな}じ質問{しつもん}を して、あなたの答{こた}えを 伝{つた}えます。正{ただ}しいか 確認{かくにん}してください。</span><span class="en">Now your teacher asks you the same questions and reports your answers. Check if they are right.</span></span></p>
+</section>
+
+<section class="page" id="p5">
+<div class="part-head"><span class="badge">PART 5</span><h2>〜ている人{ひと}<small>The person who is …</small></h2></div>
+<h3 class="sub"><span class="tag">GRAMMAR 5</span><span class="bi"><span class="ja">〜ている人{ひと}</span><span class="en">Describing people: 〜ている人</span></span></h3>
+<p><span class="bi"><span class="ja">「どの人{ひと}ですか」と 聞{き}かれたら、「〜ている人{ひと}です」で 答{こた}えます。説明{せつめい}の ことばは 名詞{めいし}の 前{まえ}に 置{お}きます。</span><span class="en">To say which person, put the description before 人: 〜ている人です.</span></span></p>
+<div class="table-wrap"><table class="forms"><tr><td>[ めがねを かけている ]</td><td>人{ひと}</td><td style="text-align:left">the person who wears glasses</td></tr><tr><td>[ ギターを 弾{ひ}いている ]</td><td>人{ひと}</td><td style="text-align:left">the person who is playing the guitar</td></tr><tr><td>[ 赤{あか}い Tシャツを 着{き}ている ]</td><td>人{ひと}</td><td style="text-align:left">the person who is wearing a red T-shirt</td></tr><tr><td>[ 髪{かみ}が 長{なが}い ]</td><td>人{ひと}</td><td style="text-align:left">the person who has long hair</td></tr></table></div>
+<div class="ex"><div class="s">A：やまださんは どの人{ひと}ですか。<br>B：ギターを 弾{ひ}いている人{ひと}です。</div><div class="e">Which one is Yamada? — The one playing the guitar.</div><div class="s">あそこで 写真{しゃしん}を 撮{と}っている人{ひと}は なかむらさんです。</div><div class="e">The person taking pictures over there is Nakamura.</div></div>
+<h3 class="talk"><span class="stage talk">話{はな}してみよう</span><span class="bi"><span class="ja">パーティーで だれが だれ？</span><span class="en">Who is who at the party?</span></span></h3>
+<p class="task"><b>A.</b><span class="bi"><span class="ja">パーティーの絵{え}です。名前{なまえ}が ない人{ひと}が 3人{にん} います（たなかさん・なかむらさん・わたなべさん）。「〜さんは どの人{ひと}ですか」と 先生{せんせい}に 聞{き}いて、名前{なまえ}を 書{か}きましょう。先生{せんせい}も あなたに 聞{き}きます。</span><span class="en">Three people at the party have no name. Ask your teacher "〜さんはどの人ですか" and write the names. Your teacher will ask you about the others.</span></span></p>
+<div class="party" style="grid-template-columns:repeat(6,minmax(0,1fr))"><div class="p"><div class="av" data-who="pA" data-size="84"></div><span class="act"><span class="icon" data-icon="guitar" data-size="40"></span></span><div class="nm">やまだ</div></div><div class="p"><div class="av" data-who="pB" data-size="84"></div><span class="act"><span class="icon" data-icon="music" data-size="40"></span></span><div class="nm"><span class="blank" style="min-width:4.5em"></span></div></div><div class="p"><div class="av" data-who="pC" data-size="84"></div><span class="act"><span class="icon" data-icon="pizza" data-size="40"></span></span><div class="nm">すずき</div></div><div class="p"><div class="av" data-who="pD" data-size="84"></div><span class="act"><span class="icon" data-icon="camera" data-size="40"></span></span><div class="nm"><span class="blank" style="min-width:4.5em"></span></div></div><div class="p"><div class="av" data-who="pE" data-size="84"></div><span class="act"><span class="icon" data-icon="phone" data-size="40"></span></span><div class="nm">こばやし</div></div><div class="p"><div class="av" data-who="pF" data-size="84"></div><span class="act"><span class="icon" data-icon="coffee" data-size="40"></span></span><div class="nm"><span class="blank" style="min-width:4.5em"></span></div></div></div>
+<div class="hint"><b>Hint</b>めがねを かけている　／　赤{あか}い／青{あお}い／黒{くろ}い Tシャツを 着{き}ている　／　髪{かみ}が 長{なが}い　／　踊{おど}っている　／　電話{でんわ}している　／　コーヒーを 飲{の}んでいる</div>
+<div class="example"><span class="lbl">Example</span><div class="s">A：たなかさんは どの人{ひと}ですか。<br>B：踊{おど}っている人{ひと}です。青{あお}い Tシャツを 着{き}ています。</div></div>
+<p class="task"><b>B.</b><span class="bi"><span class="ja">あなたの 家族{かぞく}や 友{とも}だちの 写真{しゃしん}を 先生{せんせい}に 見{み}せて、「〜ている人{ひと}が 〜です」と 説明{せつめい}しましょう。</span><span class="en">Show your teacher a photo of your family or friends and explain who is who with 〜ている人.</span></span></p>
+<div class="example"><span class="lbl">Example</span><div class="s">めがねを かけている人{ひと}が 父{ちち}です。白{しろ}い 犬{いぬ}と 遊{あそ}んでいる人{ひと}が 妹{いもうと}です。</div></div>
+</section>
+
+<section class="page" id="p6">
+<div class="part-head"><span class="badge">PART 6</span><h2>もう・まだ<small>Already / not yet</small></h2></div>
+<h3 class="sub"><span class="tag">GRAMMAR 6</span><span class="bi"><span class="ja">もう〜ました・まだ〜ていません</span><span class="en">Already / not yet</span></span></h3>
+<p><span class="bi"><span class="ja">「もう」は “already”。終{お}わったことは「もう〜ました」と 言{い}います。まだ 終{お}わっていないことは「まだ〜ていません」と 言{い}います。「まだ〜ませんでした」とは 言{い}いません。</span><span class="en">もう〜ました = have already done. まだ〜ていません = have not done yet. Don't say まだ〜ませんでした.</span></span></p>
+<div class="ex"><div class="s">A：もう 昼{ひる}ご飯{はん}を 食{た}べましたか。<br>B：はい、もう 食{た}べました。／いいえ、まだ 食{た}べていません。</div><div class="e">Have you eaten lunch yet? — Yes, already. / No, not yet.</div></div>
+<h3 class="check"><span class="stage chk">ミニ確認{かくにん}</span><span class="bi"><span class="ja">リンさんの パーティーの 準備{じゅんび}です。答{こた}えましょう。</span><span class="en">Lin is getting ready for her party. Answer.</span></span></h3>
+<div class="note" style="max-width:420px"><h4><span class="bi"><span class="ja">リンさんの「することリスト」</span><span class="en">Lin's to-do list</span></span></h4><div style="display:grid;gap:4px"><div class="s">☑ 部屋{へや}を 掃除{そうじ}する</div><div class="s">☑ 飲{の}み物{もの}を 買{か}う</div><div class="s">☐ ピザを 作{つく}る</div><div class="s">☑ みんなに メールを 書{か}く</div><div class="s">☐ 花{はな}を 買{か}う</div><div class="s">☐ はしを 洗{あら}う</div></div></div>
+<div class="example"><span class="lbl">Example</span><div class="s">もう 部屋{へや}を 掃除{そうじ}しましたか。→ はい、もう 掃除{そうじ}しました。</div></div>
+<ol class="items one"><li><div class="s">もう 飲{の}み物{もの}を 買{か}いましたか。</div></li><li><div class="s">もう ピザを 作{つく}りましたか。</div></li><li><div class="s">もう みんなに メールを 書{か}きましたか。</div></li><li><div class="s">もう 花{はな}を 買{か}いましたか。</div></li></ol>
+<h3 class="talk"><span class="stage talk">話{はな}してみよう</span><span class="bi"><span class="ja">もう 〜ましたか</span><span class="en">Have you … yet?</span></span></h3>
+<p class="task"><b>A.</b><span class="bi"><span class="ja">新{あたら}しい 映画{えいが}・店{みせ}・ゲームの 名前{なまえ}を 入{い}れて、先生{せんせい}に 聞{き}きましょう。「まだ」なら「いっしょに 行{い}きませんか」と 言{い}って、「もう」なら どうだったか 聞{き}きましょう。</span><span class="en">Fill in a new movie, shop, or game, and ask your teacher. If "not yet," invite them. If "already," ask how it was.</span></span></p>
+<div class="hint" style="display:grid;gap:4px"><div>1. 新{あたら}しい 映画{えいが}：<span class="blank" style="min-width:10em"></span> を 見{み}る</div><div>2. 新{あたら}しい 店{みせ}：<span class="blank" style="min-width:10em"></span> に 行{い}く</div><div>3. 新{あたら}しい ゲーム：<span class="blank" style="min-width:10em"></span> を する</div></div>
+<div class="example"><span class="lbl">Example</span><div class="s">A：もう ○○を 見{み}ましたか。　B：いいえ、まだ 見{み}ていません。<br>A：わたしも まだです。よかったら、いっしょに 見{み}に 行{い}きませんか。</div></div>
+<div class="you"><h4><span class="bi"><span class="ja">あなたは？</span><span class="en">About you</span></span></h4><ol><li>もう 今日{きょう}の 宿題{しゅくだい}を しましたか。</li><li>もう 第{だい}9課{か}の 単語{たんご}を 覚{おぼ}えましたか。</li><li>もう 晩{ばん}ご飯{はん}を 食{た}べましたか。</li><li>もう 日本{にほん}に 行{い}きましたか。</li></ol></div>
+</section>
+
+<section class="page" id="p7">
+<div class="part-head"><span class="badge">PART 7</span><h2>〜から、〜<small>Reasons</small></h2></div>
+<h3 class="sub"><span class="tag">GRAMMAR 7</span><span class="bi"><span class="ja">〈理由{りゆう}〉から、〈結果{けっか}〉</span><span class="en">Reason から, result</span></span></h3>
+<p><span class="bi"><span class="ja">第{だい}6課{か}では「〜です。〜ですから。」と 理由{りゆう}を 後{あと}に 言{い}いました。「から」を 使{つか}って、1つの文{ぶん}に できます。理由{りゆう}が 先{さき}、結果{けっか}が 後{あと}です。</span><span class="en">You can join a reason and a result in one sentence with から. The reason comes first.</span></span></p>
+<div class="formula"><span class="k">〈理由{りゆう}〉<span class="hl">から</span>、〈結果{けっか}〉。</span><span class="e">(Because) reason, (so) result.</span></div>
+<div class="ex"><div class="s">あした 試験{しけん}が あるから、今晩{こんばん} 勉強{べんきょう}します。</div><div class="e">I will study tonight because I have an exam tomorrow.</div><div class="s">寒{さむ}かったから、出{で}かけませんでした。</div><div class="e">It was cold, so I didn't go out.</div><div class="s">チケットが ありますから、いっしょに 行{い}きましょう。</div><div class="e">I have tickets, so let's go together.</div></div>
+<div class="tip"><h4><span class="bi"><span class="ja">「から」の前{まえ}</span><span class="en">Before から</span></span></h4><p><span class="bi"><span class="ja">「から」の前{まえ}は 普通形{ふつうけい}（あるから）でも、ていねい形{けい}（ありますから）でも いいです。お願{ねが}いや 誘{さそ}う時{とき}は、ていねい形{けい}のほうが ていねいです。</span><span class="en">Both short and long forms can come before から. The long form is more polite, especially in requests and invitations.</span></span></p></div>
+<h3 class="check"><span class="stage chk">ミニ確認{かくにん}</span><span class="bi"><span class="ja">理由{りゆう}を 考{かんが}えて、文{ぶん}を 完成{かんせい}させましょう。</span><span class="en">Think of a reason and complete the sentences.</span></span></h3>
+<ol class="items one"><li><div class="s">＿＿＿＿から、きのう 学校{がっこう}を 休{やす}みました。</div></li><li><div class="s">＿＿＿＿から、日本語{にほんご}を 勉強{べんきょう}しています。</div></li><li><div class="s">＿＿＿＿から、花{はな}を 買{か}いました。</div></li></ol>
+<h3 class="talk"><span class="stage talk">話{はな}してみよう</span><span class="bi"><span class="ja">どうしてですか</span><span class="en">Why?</span></span></h3>
+<p class="task"><b>A.</b><span class="bi"><span class="ja">みんなの 絵{え}を 見{み}て、「〜から、〜」で 理由{りゆう}と いっしょに 説明{せつめい}しましょう。</span><span class="en">Look at the pictures and explain each one with 〜から、〜.</span></span></p>
+<div class="pcards" style="grid-template-columns:repeat(4,minmax(0,1fr))"><div class="pcard"><div class="lbl">1</div><div class="av" data-who="amina" data-size="70"></div><div class="props"><span class="icon" data-icon="medicine" data-size="40"></span> → <span class="icon" data-icon="house" data-size="40"></span></div></div><div class="pcard"><div class="lbl">2</div><div class="av" data-who="lin" data-size="70"></div><div class="props"><span class="icon" data-icon="exam" data-size="40"></span> → <span class="icon" data-icon="book" data-size="40"></span></div></div><div class="pcard"><div class="lbl">3</div><div class="av" data-who="yuuki" data-size="70"></div><div class="props"><span class="icon" data-icon="ticket" data-size="40"></span> → <span class="icon" data-icon="friends" data-size="40"></span></div></div><div class="pcard"><div class="lbl">4</div><div class="av" data-who="raj" data-size="70"></div><div class="props"><span class="icon" data-icon="sun" data-size="40"></span> → <span class="icon" data-icon="dog" data-size="40"></span></div></div></div>
+<div class="example"><span class="lbl">Example</span><div class="s">アミナさんは 病気{びょうき}だったから、うちに いました。</div></div>
+<div class="you"><h4><span class="bi"><span class="ja">あなたは？</span><span class="en">About you</span></span></h4><ol><li>どうして 日本語{にほんご}を 勉強{べんきょう}していますか。</li><li>きのうは 忙{いそが}しかったですか。どうしてですか。</li><li>好{す}きな 色{いろ}は 何{なん}ですか。どうしてですか。</li><li>あなたの 国{くに}では、どんな スポーツが 人気{にんき}が ありますか。</li></ol></div>
+</section>
+
+<section class="page" id="p8">
+<div class="part-head"><span class="badge">PART 8</span><h2>一{ひと}つ・二{ふた}つ<small>Counting things</small></h2></div>
+<h3 class="sub"><span class="tag">COUNTING</span><span class="bi"><span class="ja">物{もの}の 数{かぞ}え方{かた}</span><span class="en">Counting things</span></span></h3>
+<p><span class="bi"><span class="ja">小{ちい}さい物{もの}を 数{かぞ}えるときは「一{ひと}つ、二{ふた}つ……」を 使{つか}います。「を」の後{あと}に 置{お}きます：コーヒーを 二{ふた}つ ください。</span><span class="en">Use ひとつ, ふたつ … to count small things. Put the number after を: コーヒーを二つください.</span></span></p>
+<div class="table-wrap"><table class="forms"><tr><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr><tr><td>一{ひと}つ</td><td>二{ふた}つ</td><td>三{みっ}つ</td><td>四{よっ}つ</td><td>五{いつ}つ</td><td>六{むっ}つ</td><td>七{なな}つ</td><td>八{やっ}つ</td><td>九{ここの}つ</td><td>十{とお}</td></tr></table></div>
+<div class="ex"><div class="s">お弁当{べんとう}を 二{ふた}つ ください。</div><div class="e">Two box lunches, please.</div><div class="s">お茶{ちゃ}を 一{ひと}つと コーヒーを 一{ひと}つ。</div><div class="e">One tea and one coffee.</div><div class="s">いくつ ですか。</div><div class="e">How many?</div></div>
+<h3 class="talk"><span class="stage talk">話{はな}してみよう</span><span class="bi"><span class="ja">お店{みせ}で 注文{ちゅうもん}しよう</span><span class="en">Order at a shop</span></span></h3>
+<p class="task"><b>A.</b><span class="bi"><span class="ja">ロールプレイ：あなたは お客{きゃく}さんです。先生{せんせい}は 店{みせ}の人{ひと}です。メニューから 2〜3つ 注文{ちゅうもん}しましょう。次{つぎ}は あなたが 店{みせ}の人{ひと}に なって、いくらか 計算{けいさん}して 言{い}いましょう。</span><span class="en">Role play: you are a customer, your teacher works at the shop. Order 2–3 things. Then switch: you are the clerk and tell the total.</span></span></p>
+<div class="grid12"><div class="g"><span class="icon" data-icon="bento" data-size="52"></span><div class="t" style="font-weight:700">お弁当{べんとう}</div><div style="font-weight:800;color:var(--accent)">¥600</div></div><div class="g"><span class="icon" data-icon="pizza" data-size="52"></span><div class="t" style="font-weight:700">ピザ</div><div style="font-weight:800;color:var(--accent)">¥500</div></div><div class="g"><span class="icon" data-icon="hamburger" data-size="52"></span><div class="t" style="font-weight:700">ハンバーガー</div><div style="font-weight:800;color:var(--accent)">¥300</div></div><div class="g"><span class="icon" data-icon="bread" data-size="52"></span><div class="t" style="font-weight:700">パン</div><div style="font-weight:800;color:var(--accent)">¥150</div></div><div class="g"><span class="icon" data-icon="coffee" data-size="52"></span><div class="t" style="font-weight:700">コーヒー</div><div style="font-weight:800;color:var(--accent)">¥250</div></div><div class="g"><span class="icon" data-icon="tea" data-size="52"></span><div class="t" style="font-weight:700">お茶{ちゃ}</div><div style="font-weight:800;color:var(--accent)">¥200</div></div></div>
+<div class="example"><span class="lbl">Example</span><div class="s">客{きゃく}：すみません。お弁当{べんとう}を 二{ふた}つ ください。それから、お茶{ちゃ}を 二{ふた}つ。<br>店{みせ}の人{ひと}：はい。千六百円{せんろっぴゃくえん}です。ありがとうございました。</div></div>
+<div class="you"><h4><span class="bi"><span class="ja">あなたは？</span><span class="en">About you</span></span></h4><ol><li>かばんの中{なか}に ペンが いくつ ありますか。</li><li>あなたの 部屋{へや}に いすが いくつ ありますか。</li><li>きのう、何{なに}を いくつ 食{た}べましたか。</li></ol></div>
+</section>
+
+<section class="page" id="p9">
+<div class="part-head"><span class="badge">PART 9</span><h2>読{よ}み物{もの}<small>Reading</small></h2></div>
+<p><span class="bi"><span class="ja">Part 1〜8で 勉強{べんきょう}したことを 使{つか}って、会話{かいわ}を 読{よ}みましょう。</span><span class="en">Now read conversations that use everything from Parts 1–8.</span></span></p>
+<h3 class="sub"><span class="tag">READING Ⅰ</span><span class="bi"><span class="ja">大学{だいがく}で</span><span class="en">At the university</span></span></h3>
+<div class="dlg"><div class="row"><div class="sp s">リン：</div><div class="s">ルーカスさん、ピアノの コンサートは 好{す}きですか。</div></div><div class="row"><div class="sp s">ルーカス：</div><div class="s">ピアノですか。あまり 知{し}りません。でも、ゆうきさんは 先月{せんげつ}の コンサートは よかったと 言{い}っていました。</div></div><div class="row"><div class="sp s">リン：</div><div class="s">コンサートの チケットを 二枚{にまい} もらったから、いっしょに 行{い}きませんか。</div></div><div class="row"><div class="sp s">ルーカス：</div><div class="s">ええ、ぜひ。いつですか。</div></div><div class="row"><div class="sp s">リン：</div><div class="s">今度{こんど}の 土曜日{どようび}です。六時{ろくじ}から 八時{はちじ}までです。</div></div></div>
+<h3 class="sub"><span class="tag">READING Ⅱ</span><span class="bi"><span class="ja">コンサートの 休{やす}み時間{じかん}に（くだけた話{はな}し方{かた}）</span><span class="en">During the intermission (casual)</span></span></h3>
+<div class="dlg"><div class="row"><div class="sp s">ルーカス：</div><div class="s">きれいだったね。</div></div><div class="row"><div class="sp s">リン：</div><div class="s">うん。ピアノを 弾{ひ}いている人{ひと}、若{わか}かったね。</div></div><div class="row"><div class="sp s">ルーカス：</div><div class="s">まだ 大学生{だいがくせい}だと思{おも}う。</div></div><div class="row"><div class="sp s">リン：</div><div class="s">へえ、そう。ところで、もう 晩{ばん}ご飯{はん} 食{た}べた？</div></div><div class="row"><div class="sp s">ルーカス：</div><div class="s">ううん、まだ 食{た}べていない。</div></div><div class="row"><div class="sp s">リン：</div><div class="s">じゃあ、何{なに}か 買{か}いに 行{い}かない？</div></div></div>
+<h3 class="sub"><span class="tag">READING Ⅲ</span><span class="bi"><span class="ja">お店{みせ}で</span><span class="en">At the shop</span></span></h3>
+<div class="dlg"><div class="row"><div class="sp s">ルーカス：</div><div class="s">すみません。お弁当{べんとう}を 二{ふた}つ ください。</div></div><div class="row"><div class="sp s">店{みせ}の人{ひと}：</div><div class="s">はい。</div></div><div class="row"><div class="sp s">ルーカス：</div><div class="s">それから、お茶{ちゃ}を 一{ひと}つと コーヒーを 一{ひと}つ。</div></div><div class="row"><div class="sp s">店{みせ}の人{ひと}：</div><div class="s">千六百五十円{せんろっぴゃくごじゅうえん}です。ありがとうございました。</div></div></div>
+<p class="task"><span class="bi"><span class="ja">質問{しつもん}</span><span class="en">Questions</span></span></p>
+<ol class="items one"><li><div class="s">ゆうきさんは 先月{せんげつ}の コンサートについて 何{なん}と 言{い}っていましたか。</div></li><li><div class="s">リンさんは どうして ルーカスさんと コンサートに 行{い}きますか。</div></li><li><div class="s">コンサートは 何時{なんじ}から 何時{なんじ}までですか。</div></li><li><div class="s">ピアノを 弾{ひ}いている人{ひと}は どんな人{ひと}でしたか。</div></li><li><div class="s">ルーカスさんは もう 晩{ばん}ご飯{はん}を 食{た}べましたか。</div></li><li><div class="s">ルーカスさんは 何{なに}を いくつ 買{か}いましたか。</div></li></ol>
+</section>
+
+<section class="page" id="p10">
+<div class="part-head"><span class="badge">PART 10</span><h2>まとめ<small>Review</small></h2></div>
+<p class="task"><b>A.</b><span class="bi"><span class="ja">トークカード：1枚{まい} えらんで、1分{ぷん}ぐらい 話{はな}しましょう。先生{せんせい}が いろいろ 質問{しつもん}します。</span><span class="en">Talk cards: choose one and talk for about one minute. Your teacher asks follow-up questions.</span></span></p>
+<div class="tcards"><div class="tcard"><span class="n">1</span><span class="icon" data-icon="ticket" data-size="40"></span><br>先月{せんげつ}行{い}った 楽{たの}しい所{ところ}</div><div class="tcard"><span class="n">2</span><span class="icon" data-icon="kid" data-size="40"></span><br>子供{こども}の時{とき}の あなた</div><div class="tcard"><span class="n">3</span><span class="icon" data-icon="suitcase" data-size="40"></span><br>去年{きょねん}、したこと</div><div class="tcard"><span class="n">4</span><span class="icon" data-icon="friends" data-size="40"></span><br>友{とも}だちが 言{い}っていたこと</div><div class="tcard"><span class="n">5</span><span class="icon" data-icon="music" data-size="40"></span><br>好{す}きな 音楽{おんがく}・コンサート</div><div class="tcard"><span class="n">6</span><span class="icon" data-icon="ball" data-size="40"></span><br>あなたの 国{くに}で 人気{にんき}が あるもの</div></div>
+<p class="task"><b>B.</b><span class="bi"><span class="ja">ロールプレイ：あなたは コンサートの チケットを 二枚{にまい} もらいました。Reading Ⅰを モデルに して、先生{せんせい}を 誘{さそ}いましょう。日{ひ}と 時間{じかん}（〜から〜まで）も 言{い}ってください。</span><span class="en">Role play: you got two concert tickets. Using Reading Ⅰ as a model, invite your teacher. Say the day and time (〜から〜まで).</span></span></p>
+<p class="task"><b>C.</b><span class="bi"><span class="ja">今日{きょう}の レッスンで 先生{せんせい}が 言{い}ったことを 3つ、「先生{せんせい}は〜と言{い}っていました」で 言{い}いましょう。</span><span class="en">Report 3 things your teacher said today with 先生は〜と言っていました.</span></span></p>
+<div class="note" style="margin-top:18px"><h4><span class="bi"><span class="ja">チェックリスト・できるかな？</span><span class="en">CHECKLIST · Can you…?</span></span></h4><div style="display:grid;gap:8px"><div style="display:flex;gap:8px"><span>☐</span><span class="bi"><span class="ja">過去{かこ}の 普通形{ふつうけい}を 作{つく}れる</span><span class="en">make past short forms</span></span></div><div style="display:flex;gap:8px"><span>☐</span><span class="bi"><span class="ja">友{とも}だちと 過去{かこ}のことを 話{はな}せる</span><span class="en">chat casually about the past</span></span></div><div style="display:flex;gap:8px"><span>☐</span><span class="bi"><span class="ja">「〜たと思{おも}います」「〜たと言{い}っていました」が 使{つか}える</span><span class="en">use 〜たと思います and 〜たと言っていました</span></span></div><div style="display:flex;gap:8px"><span>☐</span><span class="bi"><span class="ja">「〜ている人{ひと}」で 人{ひと}を 説明{せつめい}できる</span><span class="en">describe people with 〜ている人</span></span></div><div style="display:flex;gap:8px"><span>☐</span><span class="bi"><span class="ja">「もう」「まだ」が 使{つか}える</span><span class="en">use もう and まだ</span></span></div><div style="display:flex;gap:8px"><span>☐</span><span class="bi"><span class="ja">理由{りゆう}を 言{い}って、お店{みせ}で 注文{ちゅうもん}できる</span><span class="en">give reasons and order at a shop</span></span></div></div></div>
+</section>
+
+<section class="page vocab" id="vocab">
+<div class="part-head"><span class="badge">VOCABULARY</span><h2>単語{たんご}<small>Words in Lesson 9</small></h2></div>
+<p class="muted"><span class="bi"><span class="ja">★は 覚{おぼ}える単語{たんご}です。「カ」のカタカナのことばは、意味{いみ}がわかれば 大丈夫{だいじょうぶ}です。</span><span class="en">★ = words to learn. For the katakana words (カ), it is enough to understand them.</span></span></p><div class="tip"><h4><span class="bi"><span class="ja">色{いろ}のことば</span><span class="en">Color words</span></span></h4><p><span class="bi"><span class="ja">青{あお}い・赤{あか}い・黒{くろ}い・白{しろ}い は い形容詞{けいようし}です：赤{あか}い かばん。「色{いろ}」を 聞{き}くときは「何色{なにいろ}ですか」と 言{い}います。</span><span class="en">あおい, あかい, くろい, しろい are い-adjectives: あかいかばん. To ask the color, say なにいろですか.</span></span></p></div><div id="vocabList"></div>
+</section>
+
+<section class="page ans" id="answers">
+<div class="part-head"><span class="badge">MODEL ANSWERS</span><h2>解答例{かいとうれい}<small>Model answers</small></h2></div>
+<p class="muted"><span class="bi"><span class="ja">「話{はな}してみよう」は 答{こた}えが 1つではありません。これは 例{れい}です。</span><span class="en">The speaking tasks have many possible answers. These are only examples.</span></span></p><div id="answerList"></div>
+</section>
+
+<section class="page" id="teacher">
+<div class="part-head"><span class="badge">TEACHER</span><h2>先生用{せんせいよう}<small>For the teacher</small></h2></div>
+<div class="teacher"><h4><span class="bi"><span class="ja">Part 5 A：パーティーの 人{ひと}の 名前{なまえ}</span><span class="en">Part 5 A: names of the people at the party</span></span></h4><div class="party" style="grid-template-columns:repeat(6,minmax(0,1fr))"><div class="p"><div class="av" data-who="pA" data-size="70"></div><span class="act"><span class="icon" data-icon="guitar" data-size="34"></span></span><div class="nm">やまだ</div></div><div class="p"><div class="av" data-who="pB" data-size="70"></div><span class="act"><span class="icon" data-icon="music" data-size="34"></span></span><div class="nm">たなか</div></div><div class="p"><div class="av" data-who="pC" data-size="70"></div><span class="act"><span class="icon" data-icon="pizza" data-size="34"></span></span><div class="nm">すずき</div></div><div class="p"><div class="av" data-who="pD" data-size="70"></div><span class="act"><span class="icon" data-icon="camera" data-size="34"></span></span><div class="nm">なかむら</div></div><div class="p"><div class="av" data-who="pE" data-size="70"></div><span class="act"><span class="icon" data-icon="phone" data-size="34"></span></span><div class="nm">こばやし</div></div><div class="p"><div class="av" data-who="pF" data-size="70"></div><span class="act"><span class="icon" data-icon="coffee" data-size="34"></span></span><div class="nm">わたなべ</div></div></div><p class="s" style="margin:0">やまだ：めがね・ギター　たなか：青{あお}い Tシャツ・踊{おど}っている　すずき：ピザ　なかむら：赤{あか}い Tシャツ・写真{しゃしん}　こばやし：髪{かみ}が長{なが}い・電話{でんわ}　わたなべ：黒{くろ}い Tシャツ・コーヒー</p></div><div class="teacher"><h4><span class="bi"><span class="ja">話{はな}す時間{じかん}を のばす 質問{しつもん}の例{れい}</span><span class="en">Follow-up questions to keep the student talking</span></span></h4><ul><li>どうだった？／どうでしたか。</li><li>どうしてですか。</li><li>だれと 行{い}きましたか。</li><li>それから、何{なに}を しましたか。</li><li>本当{ほんとう}？　わたしは〜と思{おも}う。</li><li>〇〇さんの 国{くに}では どうですか。</li></ul></div>
+</section>
+
+<script>
+/* ============ avatar drawing (original SVG) ============ */
+var LOOK = {
+  lin:    {skin:'#f3d3bd', hair:'#1e1a19', style:'long',  shirt:'#e2683f'},
+  yuuki:  {skin:'#f0ceb2', hair:'#3a2a20', style:'short', shirt:'#3a86a6'},
+  amina:  {skin:'#c58a63', style:'hijab', scarf:'#2e8f82', shirt:'#2e8f82'},
+  raj:    {skin:'#9c6644', hair:'#141414', style:'wavy',  shirt:'#f2b134'},
+  ogawa:  {skin:'#efcfb5', hair:'#8f8f8f', style:'bob',   shirt:'#5d6f7e', glasses:true},
+  father: {skin:'#efcdb1', hair:'#2a2a2a', style:'short', shirt:'#4a6fa5', glasses:true, tie:true},
+  mother: {skin:'#f2d0b8', hair:'#3a2a20', style:'bun',   shirt:'#d46a8a'},
+  sister: {skin:'#f2d0b8', hair:'#4a3426', style:'long',  shirt:'#8e6cc0'},
+  brother:{skin:'#f0ceb2', hair:'#222222', style:'short', shirt:'#3fa66b'},
+  lucas:  {skin:'#fbe3d3', hair:'#c8973f', style:'short', shirt:'#7f9c3a'},
+  strA:   {skin:'#f6d5c0', hair:'#6b4226', style:'long',  shirt:'#5aa0d8'},
+  strB:   {skin:'#e8c19f', hair:'#2a2a2a', style:'short', shirt:'#3d4f63', tie:true},
+  strC:   {skin:'#f0d0b8', hair:'#b9b9b9', style:'bun',   shirt:'#8fbf6a', glasses:true},
+  caster: {skin:'#f2d0b8', hair:'#3a2a20', style:'bob',   shirt:'#e2683f'},
+  pA: {skin:'#efcdb1', hair:'#2a2a2a', style:'short', shirt:'#8fbf6a', glasses:true},
+  pB: {skin:'#f0ceb2', hair:'#3a2a20', style:'wavy',  shirt:'#3a86a6'},
+  pC: {skin:'#f2d0b8', hair:'#5a3a26', style:'bob',   shirt:'#f2b134'},
+  pD: {skin:'#e8c19f', hair:'#222222', style:'short', shirt:'#d64541'},
+  pE: {skin:'#f6d5c0', hair:'#3a2a20', style:'long',  shirt:'#b9a7d8'},
+  pF: {skin:'#efcfb5', hair:'#7a7a7a', style:'bun',   shirt:'#26323a'}
+};
+function avatar(who, size){
+  var o = LOOK[who], s = o.skin, h = o.hair, out = [];
+  out.push('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" width="'+size+'" height="'+Math.round(size*140/120)+'" role="img" aria-label="'+who+'">');
+  out.push('<circle cx="60" cy="72" r="58" fill="#e4f2f4"/>');
+  // back hair
+  if(o.style==='long') out.push('<path d="M30 60 Q27 24 60 24 Q93 24 90 60 L94 110 Q60 120 26 110Z" fill="'+h+'"/>');
+  if(o.style==='bun')  out.push('<circle cx="60" cy="24" r="12" fill="'+h+'"/>');
+  if(o.style==='bob')  out.push('<path d="M30 62 Q27 26 60 26 Q93 26 90 62 L91 88 Q84 92 78 88 L42 88 Q36 92 29 88Z" fill="'+h+'"/>');
+  // body
+  out.push('<path d="M16 140 Q18 104 60 100 Q102 104 104 140Z" fill="'+o.shirt+'"/>');
+  if(o.style==='hijab'){
+    out.push('<path d="M26 68 Q22 22 60 22 Q98 22 94 68 Q98 102 112 140 L8 140 Q22 102 26 68Z" fill="'+o.scarf+'"/>');
+    out.push('<ellipse cx="60" cy="64" rx="24" ry="27" fill="#ffffff" opacity=".18"/>');
+    out.push('<ellipse cx="60" cy="65" rx="21.5" ry="24.5" fill="'+s+'"/>');
+  } else {
+    out.push('<path d="M50 104 L60 116 L70 104Z" fill="#ffffff" opacity=".85"/>');
+    out.push('<rect x="52" y="84" width="16" height="20" rx="6" fill="'+s+'"/>');
+    out.push('<circle cx="33" cy="66" r="5.5" fill="'+s+'"/><circle cx="87" cy="66" r="5.5" fill="'+s+'"/>');
+    out.push('<ellipse cx="60" cy="62" rx="27" ry="30" fill="'+s+'"/>');
+  }
+  if(o.tie) out.push('<path d="M57 104 L63 104 L65 124 L60 130 L55 124Z" fill="#c0392b"/>');
+  // front hair
+  if(o.style==='short') out.push('<path d="M32 62 Q29 29 60 28 Q91 29 88 62 Q86 47 77 43 Q66 50 50 45 Q40 48 32 62Z" fill="'+h+'"/>');
+  if(o.style==='wavy')  out.push('<path d="M32 62 Q29 29 60 28 Q91 29 88 62 Q85 49 78 46 Q73 52 67 46 Q61 52 55 46 Q49 52 43 46 Q37 50 32 62Z" fill="'+h+'"/>');
+  if(o.style==='long' || o.style==='bun') out.push('<path d="M32 60 Q31 29 60 29 Q89 29 88 60 Q80 43 63 41 Q46 41 32 60Z" fill="'+h+'"/>');
+  if(o.style==='bob')   out.push('<path d="M31 62 Q30 30 60 30 Q90 30 89 62 Q86 46 70 44 Q60 50 48 44 Q36 48 31 62Z" fill="'+h+'"/>');
+  // face
+  var ex = (o.style==='hijab') ? 9.5 : 11;
+  out.push('<path d="M'+(60-ex-5)+' 56 q5 -3.5 10 0 M'+(60+ex-5)+' 56 q5 -3.5 10 0" stroke="#3a2a20" stroke-width="2" fill="none" stroke-linecap="round" opacity=".75"/>');
+  out.push('<circle cx="'+(60-ex)+'" cy="65" r="3.3" fill="#2b2b2b"/><circle cx="'+(60+ex)+'" cy="65" r="3.3" fill="#2b2b2b"/>');
+  out.push('<circle cx="'+(61-ex)+'" cy="64" r="1" fill="#fff"/><circle cx="'+(61+ex)+'" cy="64" r="1" fill="#fff"/>');
+  out.push('<ellipse cx="'+(60-ex-5)+'" cy="74" rx="5" ry="3" fill="#ef8f80" opacity=".45"/><ellipse cx="'+(60+ex+5)+'" cy="74" rx="5" ry="3" fill="#ef8f80" opacity=".45"/>');
+  out.push('<path d="M60 67 q-2 5 1 6" stroke="#000" stroke-opacity=".25" stroke-width="1.6" fill="none" stroke-linecap="round"/>');
+  out.push('<path d="M53 77 Q60 84 67 77 Q60 80 53 77Z" fill="#b5483a" stroke="#b5483a" stroke-width="1.5" stroke-linejoin="round"/>');
+  if(o.glasses) out.push('<g stroke="#333" stroke-width="1.8" fill="none"><circle cx="'+(60-ex)+'" cy="65" r="7"/><circle cx="'+(60+ex)+'" cy="65" r="7"/><path d="M'+(60-ex+7)+' 65 L'+(60+ex-7)+' 65"/></g>');
+  out.push('</svg>');
+  return out.join('');
+}
+
+
+/* ============ icons (same flat style and palette as the characters) ============ */
+var ICON = {
+  hamburger:'<path d="M14 30q0-14 18-14t18 14z" fill="#e6b06a"/><rect x="13" y="30" width="38" height="5" rx="2" fill="#3fa66b"/><rect x="14" y="35" width="36" height="6" rx="3" fill="#8a4a2a"/><path d="M14 41h36v3a5 5 0 0 1-5 5H19a5 5 0 0 1-5-5z" fill="#e6b06a"/>',
+  tea:'<path d="M16 26h32v6a16 16 0 0 1-32 0z" fill="#fff" stroke="#26323a" stroke-width="2.5"/><ellipse cx="32" cy="26" rx="16" ry="3" fill="#7fae5a"/><path d="M27 14q3 4 0 8M35 13q3 4 0 8" stroke="#9fb3ba" stroke-width="2.5" fill="none" stroke-linecap="round"/>',
+  sleep:'<path d="M38 14a18 18 0 1 0 12 30a14 14 0 0 1-12-30z" fill="#f2b134"/><text x="42" y="26" font-size="10" font-weight="800" fill="#3a86a6" font-family="Arial">z</text><text x="48" y="18" font-size="8" font-weight="800" fill="#3a86a6" font-family="Arial">z</text>',
+  dog:'<ellipse cx="34" cy="40" rx="15" ry="10" fill="#c99a6a"/><circle cx="20" cy="30" r="9" fill="#c99a6a"/><path d="M14 24q-4 6 0 12M24 24q5 4 2 10" stroke="#8a6a4a" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="18" cy="30" r="1.5" fill="#26323a"/><circle cx="13" cy="33" r="2" fill="#26323a"/><path d="M48 36q6-6 6-10" stroke="#c99a6a" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M24 48v6M42 48v6" stroke="#c99a6a" stroke-width="4" stroke-linecap="round"/>',
+  house:'<path d="M10 32L32 14l22 18z" fill="#e2683f"/><rect x="16" y="32" width="32" height="20" fill="#fff" stroke="#26323a" stroke-width="2.5"/><rect x="28" y="38" width="8" height="14" fill="#8a6a4a"/><rect x="19" y="36" width="7" height="6" fill="#9ccbd6"/>',
+  bread:'<path d="M14 30q0-12 18-12t18 12v16a4 4 0 0 1-4 4H18a4 4 0 0 1-4-4z" fill="#e6b06a"/><path d="M14 30q0-12 18-12t18 12" fill="none" stroke="#c99a2e" stroke-width="2.5"/><path d="M24 30v12M32 28v14M40 30v12" stroke="#c99a2e" stroke-width="1.6" opacity=".6"/>',
+  game:'<rect x="10" y="24" width="44" height="22" rx="11" fill="#5d6f7e"/><path d="M20 31v8M16 35h8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="42" cy="32" r="3" fill="#e2683f"/><circle cx="48" cy="38" r="3" fill="#f2b134"/>',
+  kid:'<circle cx="32" cy="24" r="10" fill="#f0ceb2"/><path d="M22 22q2-10 10-10t10 10q-5-4-10-3t-10 3z" fill="#3a2a20"/><path d="M20 54q0-16 12-16t12 16z" fill="#f2b134"/><circle cx="28" cy="24" r="1.5" fill="#26323a"/><circle cx="36" cy="24" r="1.5" fill="#26323a"/>',
+  guitar:'<path d="M40 10l8 8-14 14" stroke="#8a6a4a" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M22 28a9 9 0 0 1 12 10a8 8 0 0 1-4 12a10 10 0 0 1-14-14a8 8 0 0 1 6-8z" fill="#e2683f"/><circle cx="26" cy="40" r="3" fill="#26323a"/>',
+  piano:'<rect x="10" y="20" width="44" height="26" rx="2" fill="#26323a"/><rect x="13" y="30" width="38" height="13" fill="#fff"/><g fill="#26323a"><rect x="17" y="30" width="3" height="8"/><rect x="24" y="30" width="3" height="8"/><rect x="34" y="30" width="3" height="8"/><rect x="41" y="30" width="3" height="8"/></g>',
+  pizza:'<path d="M14 18q18-8 36 0L32 54z" fill="#f2b134"/><path d="M14 18q18-8 36 0" stroke="#c99a2e" stroke-width="5" fill="none"/><circle cx="28" cy="26" r="3.5" fill="#c0392b"/><circle cx="38" cy="30" r="3.5" fill="#c0392b"/><circle cx="32" cy="40" r="3" fill="#c0392b"/>',
+  bento:'<rect x="10" y="20" width="44" height="28" rx="4" fill="#26323a"/><rect x="14" y="24" width="18" height="20" rx="2" fill="#fff"/><circle cx="23" cy="34" r="3" fill="#c0392b"/><rect x="35" y="24" width="15" height="9" rx="2" fill="#3fa66b"/><rect x="35" y="35" width="15" height="9" rx="2" fill="#f2b134"/>',
+  medicine:'<rect x="18" y="24" width="28" height="16" rx="8" transform="rotate(-35 32 32)" fill="#fff" stroke="#26323a" stroke-width="2.5"/><path d="M27 39l10-14" stroke="#26323a" stroke-width="2"/><path d="M24 20q-4 6 0 10" fill="#e25d7f" opacity="0"/>',
+  bed:'<rect x="10" y="30" width="44" height="12" rx="3" fill="#9ccbd6"/><rect x="10" y="26" width="12" height="8" rx="3" fill="#fff" stroke="#26323a" stroke-width="2"/><path d="M10 22v26M54 34v14" stroke="#8a6a4a" stroke-width="4" stroke-linecap="round"/>',
+  letter:'<rect x="12" y="18" width="40" height="28" rx="3" fill="#fff" stroke="#26323a" stroke-width="2.5"/><path d="M12 20l20 14 20-14" fill="none" stroke="#e2683f" stroke-width="2.5"/>',
+  ticket:'<path d="M10 22h44v7a4 4 0 0 0 0 8v7H10v-7a4 4 0 0 0 0-8z" fill="#f2b134"/><path d="M40 22v22" stroke="#fff" stroke-width="2" stroke-dasharray="3 3"/><path d="M18 30h14M18 36h10" stroke="#8a6a4a" stroke-width="2.5" stroke-linecap="round"/>',
+  ski:'<path d="M10 44l44-14M12 50l44-14" stroke="#3a86a6" stroke-width="4" stroke-linecap="round"/><path d="M24 14l6 26M38 12l4 24" stroke="#5d6f7e" stroke-width="2.5" stroke-linecap="round"/>',
+  music:'<path d="M26 44V18l20-5v26" stroke="#26323a" stroke-width="3" fill="none"/><ellipse cx="21" cy="44" rx="6" ry="4.5" fill="#e2683f"/><ellipse cx="41" cy="39" rx="6" ry="4.5" fill="#e2683f"/>',
+  exam:'<rect x="16" y="12" width="32" height="40" rx="3" fill="#fff" stroke="#26323a" stroke-width="2.5"/><path d="M22 22h20M22 30h20M22 38h12" stroke="#9fb3ba" stroke-width="2.5"/><circle cx="42" cy="44" r="8" fill="none" stroke="#d64541" stroke-width="3"/>',
+  book:'<rect x="16" y="15" width="32" height="35" rx="3" fill="#3a86a6"/><rect x="16" y="15" width="6" height="35" fill="#2b6b85"/><rect x="28" y="23" width="14" height="3" rx="1.5" fill="#fff" opacity=".85"/><rect x="28" y="29" width="10" height="3" rx="1.5" fill="#fff" opacity=".6"/>',
+  racket:'<ellipse cx="38" cy="24" rx="12" ry="14" fill="#fff" stroke="#e2683f" stroke-width="4"/><path d="M38 12v24M27 24h22M30 17h16M30 31h16M32 13v22M44 13v22" stroke="#e2683f" stroke-width="1" opacity=".45"/><path d="M31 36L19 52" stroke="#5d6f7e" stroke-width="6" stroke-linecap="round"/>',
+  camera:'<rect x="12" y="22" width="40" height="26" rx="5" fill="#26323a"/><rect x="22" y="17" width="12" height="7" rx="2" fill="#26323a"/><circle cx="32" cy="35" r="9" fill="#9ccbd6"/><circle cx="32" cy="35" r="5" fill="#1d7a8a"/><circle cx="45" cy="27" r="2" fill="#f2b134"/>',
+  laptop:'<rect x="16" y="18" width="32" height="22" rx="2" fill="#5d6f7e"/><rect x="19" y="21" width="26" height="16" fill="#9ccbd6"/><path d="M10 42h44l-4 6H14z" fill="#8a9aa6"/>',
+  coffee:'<path d="M42 28h4a6 6 0 0 1 0 12h-4" fill="none" stroke="#26323a" stroke-width="3"/><path d="M18 24h24v16a10 10 0 0 1-10 10h-4a10 10 0 0 1-10-10z" fill="#fff" stroke="#26323a" stroke-width="3"/><path d="M20 27h20" stroke="#8a6a4a" stroke-width="4"/><path d="M25 12q3 4 0 8M33 11q3 4 0 8" stroke="#9fb3ba" stroke-width="2.5" fill="none" stroke-linecap="round"/>',
+  suitcase:'<rect x="26" y="15" width="12" height="10" rx="2" fill="none" stroke="#26323a" stroke-width="3"/><rect x="13" y="23" width="38" height="28" rx="4" fill="#e2683f"/><path d="M22 23v28M42 23v28" stroke="#b5483a" stroke-width="3"/>',
+  phone:'<rect x="22" y="11" width="20" height="42" rx="4" fill="#26323a"/><rect x="25" y="15" width="14" height="30" fill="#9ccbd6"/><circle cx="32" cy="49" r="1.8" fill="#fff"/>',
+  cup:'<path d="M21 18h22l-3 34H24z" fill="#f2b134"/><path d="M21 18h22l-1 7H22z" fill="#fff" opacity=".6"/><path d="M37 8l-4 14" stroke="#e2683f" stroke-width="3" stroke-linecap="round"/>',
+  pan:'<path d="M43 35h14" stroke="#8a6a4a" stroke-width="5" stroke-linecap="round"/><ellipse cx="27" cy="37" rx="17" ry="9" fill="#26323a"/><ellipse cx="27" cy="35" rx="14" ry="6" fill="#5d6f7e"/><circle cx="23" cy="34" r="3" fill="#f2b134"/><circle cx="31" cy="35" r="3" fill="#e2683f"/><path d="M21 20q3 4 0 8M29 18q3 4 0 8" stroke="#9fb3ba" stroke-width="2.5" fill="none" stroke-linecap="round"/>',
+  mic:'<rect x="25" y="9" width="14" height="23" rx="7" fill="#5d6f7e"/><path d="M20 26a12 12 0 0 0 24 0" fill="none" stroke="#26323a" stroke-width="3"/><path d="M32 38v12M24 52h16" stroke="#26323a" stroke-width="3" stroke-linecap="round"/><path d="M47 13l5-4M49 22h6" stroke="#e2683f" stroke-width="2.5" stroke-linecap="round"/>',
+  broom:'<path d="M42 9L31 35" stroke="#8a6a4a" stroke-width="4" stroke-linecap="round"/><path d="M21 33h20l5 19H16z" fill="#f2b134"/><path d="M23 39l-3 13M30 39v13M37 39l3 13" stroke="#c99a2e" stroke-width="2"/>',
+  shirt:'<path d="M23 14l-11 8 5 8 5-3v25h20V27l5 3 5-8-11-8q-4.5 5-9 0z" fill="#9ccbd6"/><circle cx="17" cy="50" r="3.5" fill="#fff" stroke="#1d7a8a" stroke-width="1.5"/><circle cx="49" cy="12" r="3" fill="#fff" stroke="#1d7a8a" stroke-width="1.5"/><circle cx="53" cy="20" r="2" fill="#fff" stroke="#1d7a8a" stroke-width="1.5"/>',
+  swim:'<circle cx="32" cy="23" r="8" fill="#f0ceb2"/><path d="M24 21h16" stroke="#26323a" stroke-width="3"/><path d="M9 35q5.5-5 11.5 0t11.5 0 11.5 0 11.5 0" stroke="#1d7a8a" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M9 45q5.5-5 11.5 0t11.5 0 11.5 0 11.5 0" stroke="#3a86a6" stroke-width="4" fill="none" stroke-linecap="round"/>',
+  car:'<path d="M11 38l5-12q2-4 6-4h20q4 0 6 4l5 12v8H11z" fill="#e2683f"/><path d="M20 26h24l3 8H17z" fill="#9ccbd6"/><circle cx="21" cy="46" r="5" fill="#26323a"/><circle cx="43" cy="46" r="5" fill="#26323a"/>',
+  alarm:'<circle cx="18" cy="17" r="6" fill="#f2b134"/><circle cx="46" cy="17" r="6" fill="#f2b134"/><path d="M21 51l-4 5M43 51l4 5" stroke="#26323a" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="35" r="17" fill="#fff" stroke="#26323a" stroke-width="3"/><path d="M32 35V24M32 35l7 4" stroke="#e2683f" stroke-width="3" stroke-linecap="round"/>',
+  ball:'<circle cx="32" cy="32" r="17" fill="#fff" stroke="#26323a" stroke-width="2.5"/><path d="M32 23l8 6-3 9h-10l-3-9z" fill="#26323a"/>',
+  bag:'<path d="M24 24v-4a8 8 0 0 1 16 0v4" fill="none" stroke="#26323a" stroke-width="3"/><path d="M15 24h34l-3 28H18z" fill="#3fa66b"/>',
+  food:'<path d="M41 8L31 30M47 11L35 30" stroke="#8a6a4a" stroke-width="3" stroke-linecap="round"/><path d="M12 32h40a20 17 0 0 1-40 0z" fill="#e2683f"/><ellipse cx="32" cy="32" rx="20" ry="4" fill="#fff"/>',
+  chopsticks:'<path d="M18 52L46 12M24 54L52 16" stroke="#8a6a4a" stroke-width="4" stroke-linecap="round"/>',
+  wash:'<path d="M14 50L38 14M20 52L44 18" stroke="#8a6a4a" stroke-width="4" stroke-linecap="round"/><path d="M48 30q-4 6 0 9q4-3 0-9zM40 42q-3 5 0 7q3-2 0-7zM52 44q-3 5 0 7q3-2 0-7z" fill="#3a86a6"/>',
+  tv:'<rect x="10" y="15" width="44" height="31" rx="4" fill="#26323a"/><rect x="14" y="19" width="36" height="23" fill="#9ccbd6"/><path d="M26 53h12M32 46v7" stroke="#26323a" stroke-width="3" stroke-linecap="round"/>',
+  bath:'<path d="M14 34V19a5 5 0 0 1 10 0" fill="none" stroke="#26323a" stroke-width="2.5"/><path d="M10 34h44v6a12 12 0 0 1-12 12H22a12 12 0 0 1-12-12z" fill="#fff" stroke="#26323a" stroke-width="2.5"/><circle cx="34" cy="28" r="3" fill="#9ccbd6"/><circle cx="42" cy="23" r="4" fill="#9ccbd6"/><circle cx="27" cy="27" r="2.5" fill="#9ccbd6"/>',
+  shoes:'<path d="M10 40q0-8 6-10l9-2 5 6q6 2 13 2 11 0 11 6v5H10z" fill="#8a6a4a"/><path d="M10 47h44" stroke="#26323a" stroke-width="3"/>',
+  cigarette:'<rect x="11" y="34" width="34" height="8" fill="#fff" stroke="#26323a" stroke-width="2"/><rect x="37" y="34" width="8" height="8" fill="#f2b134"/><path d="M50 30q-4-5 0-10q4-5 0-10" stroke="#9fb3ba" stroke-width="2.5" fill="none"/>',
+  bottle:'<rect x="26" y="12" width="12" height="7" rx="1" fill="#1d7a8a"/><path d="M25 19h14l3 9v24a3 3 0 0 1-3 3H25a3 3 0 0 1-3-3V28z" fill="#9ccbd6"/><rect x="22" y="33" width="20" height="9" fill="#fff" opacity=".7"/>',
+  window:'<rect x="14" y="12" width="36" height="40" rx="2" fill="#9ccbd6" stroke="#26323a" stroke-width="3"/><path d="M32 12v40M14 32h36" stroke="#26323a" stroke-width="3"/>',
+  aircon:'<rect x="9" y="16" width="46" height="17" rx="4" fill="#fff" stroke="#26323a" stroke-width="2.5"/><path d="M15 28h34" stroke="#9fb3ba" stroke-width="2"/><path d="M20 39q3 4 0 9M32 39q3 4 0 9M44 39q3 4 0 9" stroke="#3a86a6" stroke-width="2.5" fill="none" stroke-linecap="round"/>',
+  friends:'<circle cx="23" cy="25" r="8" fill="#f0ceb2"/><circle cx="41" cy="25" r="8" fill="#c58a63"/><path d="M11 53q0-15 12-15t12 15z" fill="#3a86a6"/><path d="M29 53q0-15 12-15t12 15z" fill="#f2b134"/>',
+  sun:'<g stroke="#f2b134" stroke-width="3.5" stroke-linecap="round"><path d="M32 9v7M32 48v7M9 32h7M48 32h7M16 16l5 5M43 43l5 5M16 48l5-5M43 21l5-5"/></g><circle cx="32" cy="32" r="11" fill="#f2b134"/>',
+  cloud:'<path d="M17 43a9 9 0 0 1 2-18 12 12 0 0 1 23-2 9 9 0 0 1 3 20z" fill="#9fb3ba"/>',
+  rain:'<path d="M17 37a9 9 0 0 1 2-18 12 12 0 0 1 23-2 9 9 0 0 1 3 20z" fill="#8a9aa6"/><path d="M22 44l-3 8M32 44l-3 8M42 44l-3 8" stroke="#3a86a6" stroke-width="3.5" stroke-linecap="round"/>',
+  snow:'<path d="M17 37a9 9 0 0 1 2-18 12 12 0 0 1 23-2 9 9 0 0 1 3 20z" fill="#9fb3ba"/><g fill="#fff" stroke="#3a86a6" stroke-width="1.5"><circle cx="21" cy="47" r="3.5"/><circle cx="32" cy="51" r="3.5"/><circle cx="43" cy="47" r="3.5"/></g>'
+};
+function icon(name, size, sign){
+  var out = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="'+size+'" height="'+size+'" role="img" aria-label="'+name+'">';
+  out += '<circle cx="32" cy="32" r="30" fill="'+(sign ? '#ffffff' : '#e4f2f4')+'"/>' + (ICON[name] || '');
+  if(sign) out += '<circle cx="32" cy="32" r="27" fill="none" stroke="#d64541" stroke-width="5"/><path d="M13 13L51 51" stroke="#d64541" stroke-width="5" stroke-linecap="round"/>';
+  return out + '</svg>';
+}
+
+
+/* ============ vocabulary (GENKI Lesson 9: all 55 words) ============ */
+var VOCAB = [
+ ['人{ひと}・物{もの}・こと|People, things & events',[
+  ['c','単語{たんご}','word; vocabulary'],['c','作文{さくぶん}','essay; composition'],['c','試験{しけん}','exam'],['c','手紙{てがみ}','letter'],['c','歌舞伎{かぶき}','Kabuki'],
+  ['c','お弁当{べんとう}','boxed lunch'],['c','病気{びょうき}','illness; sickness'],['c','薬{くすり}','medicine'],['c','いい子{こ}','good child'],['c','色{いろ}','color']]],
+ ['カタカナのことば|Katakana words (just understand them)',[
+  ['k','メール','e-mail'],['k','ギター','guitar'],['k','ピアノ','piano'],['k','コンサート','concert'],['k','チケット','ticket'],['k','スキー','ski'],['k','ピザ','pizza']]],
+ ['時{とき}|Time',[['c','今度{こんど}','near future; next time'],['c','先月{せんげつ}','last month'],['c','去年{きょねん}','last year']]],
+ ['形容詞{けいようし}|Adjectives',[
+  ['c','青{あお}い','blue'],['c','赤{あか}い','red'],['c','黒{くろ}い','black'],['c','白{しろ}い','white'],['c','寂{さび}しい','lonely'],['c','若{わか}い','young'],['c','意地悪{いじわる}（な）','mean-spirited']]],
+ ['動詞{どうし}|Verbs',[
+  ['c','踊{おど}る','to dance · う'],['c','終{お}わる','(something) ends (〜が) · う'],['c','薬{くすり}を飲{の}む','to take medicine · う'],['c','人気{にんき}がある','to be popular · う'],['c','始{はじ}まる','(something) begins (〜が) · う'],
+  ['c','弾{ひ}く','to play (piano, guitar) (〜を) · う'],['c','もらう','to get (from someone) (人に 物を) · う'],['c','覚{おぼ}える','to memorize (〜を) · る'],['c','出{で}る','to appear; to attend (〜に) / to exit (〜を) · る'],
+  ['c','運動{うんどう}する','to exercise · irr.'],['c','散歩{さんぽ}する','to take a walk · irr.']]],
+ ['そのほか|Other words',[
+  ['c','そう','(I think) so'],['c','〜から','from …'],['c','〜まで','to … (place / time)'],['c','ぜひ','by all means'],['c','ところで','by the way'],['c','みんな','all; everyone'],['c','もう','already']]],
+ ['数{かず}（小{ちい}さい物{もの}）|Numbers (small items)',[
+  ['c','一{ひと}つ','one'],['c','二{ふた}つ','two'],['c','三{みっ}つ','three'],['c','四{よっ}つ','four'],['c','五{いつ}つ','five'],['c','六{むっ}つ','six'],['c','七{なな}つ','seven'],['c','八{やっ}つ','eight'],['c','九{ここの}つ','nine'],['c','十{とお}','ten']]]
+];
+
+var ANSWERS = [
+ ['Part 1 ミニ確認{かくにん}',['飲{の}んだ／飲{の}まなかった','来{き}た／来{こ}なかった','弾{ひ}いた／弾{ひ}かなかった','覚{おぼ}えた／覚{おぼ}えなかった','寂{さび}しかった／寂{さび}しくなかった','病気{びょうき}だった／病気{びょうき}じゃなかった']],
+ ['Part 2 ミニ確認{かくにん}',['うん、した。／ううん、しなかった。','うん、食{た}べた。／ううん、食{た}べなかった。','うん、いい子{こ}だった。／ううん、いい子{こ}じゃなかった。']],
+ ['Part 3 ミニ確認{かくにん}',['ゆうきさんは きのう 運動{うんどう}したと思{おも}います。','コンサートは 九時{くじ}に 終{お}わったと思{おも}います。','あの人{ひと}は 若{わか}い時{とき}、人気{にんき}が あったと思{おも}います。']],
+ ['Part 3 A（例{れい}）',['ラジさんは 遅{おそ}くまで ゲームを したと思{おも}います。','アミナさんは 病気{びょうき}だったと思{おも}います。薬{くすり}を 飲{の}んで 寝{ね}たと思{おも}います。','ゆうきさんは コンサートに 行{い}ったと思{おも}います。踊{おど}ったと思{おも}います。','ルーカスさんは スキーに 行{い}ったと思{おも}います。']],
+ ['Part 4 ミニ確認{かくにん}',['ルーカスさんは、先週{せんしゅう} スキーに 行{い}ったと 言{い}っていました。楽{たの}しかったと 言{い}っていました。','ラジさんは、先月{せんげつ} 歌舞伎{かぶき}を 見{み}たと 言{い}っていました。','リンさんは、去年{きょねん}は 日本語{にほんご}が 上手{じょうず}じゃなかったと 言{い}っていました。']],
+ ['Part 5 A（先生用{せんせいよう}ページを 参照{さんしょう}）',['たなかさんは 踊{おど}っている人{ひと}です。','なかむらさんは 写真{しゃしん}を 撮{と}っている人{ひと}です。','わたなべさんは コーヒーを 飲{の}んでいる人{ひと}です。']],
+ ['Part 6 ミニ確認{かくにん}',['はい、もう 買{か}いました。','いいえ、まだ 作{つく}っていません。','はい、もう 書{か}きました。','いいえ、まだ 買{か}っていません。']],
+ ['Part 7 ミニ確認{かくにん}（例{れい}）',['病気{びょうき}だったから、','日本{にほん}の 歌{うた}が 好{す}きだから、','友{とも}だちの 誕生日{たんじょうび}だったから、']],
+ ['Part 7 A（例{れい}）',['アミナさんは 病気{びょうき}だったから、うちに いました。','リンさんは あした 試験{しけん}が あるから、勉強{べんきょう}しています。','ゆうきさんは チケットを もらったから、友{とも}だちと コンサートに 行{い}きます。','天気{てんき}が いいから、ラジさんは 犬{いぬ}と 散歩{さんぽ}しています。']],
+ ['Reading',['よかったと 言{い}っていました。','チケットを 二枚{にまい} もらったからです。','六時{ろくじ}から 八時{はちじ}までです。','若{わか}い人{ひと}でした。','いいえ、まだ 食{た}べていません。','お弁当{べんとう}を 二{ふた}つと、お茶{ちゃ}を 一{ひと}つと、コーヒーを 一{ひと}つ 買{か}いました。']]
+];
+
+/* ============ render ============ */
+document.querySelectorAll('.av[data-who]').forEach(function(el){ el.innerHTML = avatar(el.dataset.who, +(el.dataset.size||90)); });
+document.querySelectorAll('.icon[data-icon]').forEach(function(el){ el.innerHTML = icon(el.dataset.icon, +(el.dataset.size||48), !!el.dataset.sign); });
+var MK = {c:['core','★'], k:['add','カ']};
+document.getElementById('vocabList').innerHTML = VOCAB.map(function(g){
+  var t = g[0].split('|');
+  return '<h3><span class="bi"><span class="ja">'+t[0]+'</span><span class="en">'+t[1]+'</span></span></h3><table>'+g[1].map(function(w){
+    return '<tr><td><span class="mk '+MK[w[0]][0]+'">'+MK[w[0]][1]+'</span></td><td class="kk" style="width:44%;line-height:2.1">'+w[1]+'</td><td>'+w[2]+'</td></tr>';
+  }).join('')+'</table>';
+}).join('');
+document.getElementById('answerList').innerHTML = ANSWERS.map(function(g){
+  var short = g[1].every(function(a){ return a.replace(/\{[^}]*\}/g,'').length < 16; });
+  return '<h3>'+g[0]+'</h3><ol'+(short?' class="cols"':'')+'>'+g[1].map(function(a){ return '<li class="s" style="font-size:1.02rem">'+a+'</li>'; }).join('')+'</ol>';
+}).join('');
+
+/* ============ furigana: 漢字{かんじ} → ruby (all pages) ============ */
+document.querySelectorAll('section.page').forEach(function(sec){
+  sec.innerHTML = sec.innerHTML.replace(/([㐀-鿿々]+)\{([^}]+)\}/g, '<ruby>$1<rt>$2</rt></ruby>');
+});
+
+/* ============ furigana toggle (remembered per viewer) ============ */
+var btn = document.getElementById('furiBtn');
+function setFuri(on){
+  document.body.classList.toggle('no-furi', !on);
+  btn.classList.toggle('on', on);
+  btn.textContent = 'ふりがな: ' + (on ? 'ON' : 'OFF');
+  try{ localStorage.setItem('l9-furi', on ? '1' : '0'); }catch(e){}
+}
+var saved = null; try{ saved = localStorage.getItem('l9-furi'); }catch(e){}
+setFuri(saved !== '0');
+btn.addEventListener('click', function(){ setFuri(document.body.classList.contains('no-furi')); });
+
+/* ============ pagination: split each part into A4 pages and number them ============
+   Measured at the fixed A4 width with romaji shown, so page numbers are the same
+   on a computer, on a phone, and in the printed PDF. */
+/* PAGE_BREAKS: fixed break points (index of the child that starts each new page), written by tools/fix_pages.sh.
+   Using fixed points keeps page numbers identical on every device. Empty = measure in this browser. */
+var PAGE_BREAKS = {"top":[],"cast":[],"p1":[3,5],"p2":[6],"p3":[7],"p4":[6],"p5":[5],"p6":[8],"p7":[8],"p8":[5],"p9":[6],"p10":[3],"vocab":[5,9,11,13],"answers":[10,20],"teacher":[]};
+function paginate(){
+  var MM = 96/25.4, MAXH = Math.floor((297-16-14)*MM) - 24;
+  var useFixed = Object.keys(PAGE_BREAKS).length > 0 && !/[?&]measure/.test(location.search), found = {};
+  var body = document.body, romajiOff = body.classList.contains('no-furi');
+  body.classList.remove('no-furi');
+  var measure = document.createElement('section');
+  measure.style.cssText = 'position:absolute;left:-10000px;top:0;visibility:hidden;width:210mm;min-height:0;margin:0;padding:16mm 13mm 14mm';
+  body.appendChild(measure);
+  var isHead = function(el){ return /^H[2-4]$/.test(el.tagName) || el.classList.contains('task') || el.classList.contains('part-head'); };
+  /* keep a chart / example / list of questions together on one page */
+  var block = function(el){ return el.classList.contains('table-wrap') || el.classList.contains('example') || el.classList.contains('cast') || el.classList.contains('phones') || el.classList.contains('items') || el.classList.contains('clocks') || el.classList.contains('cities') || ['pcards','signs','icards','chat','tv','bubbles','party','bags','grid12','tcards','cal','hint','you','legend2','note'].some(function(c){ return el.classList.contains(c); }); };
+  var glue = function(prev, next){ return block(prev) && block(next); };
+  var pages = [];
+  Array.prototype.slice.call(document.querySelectorAll('section.page')).forEach(function(sec){
+    ['vocabList','answerList'].forEach(function(id){
+      var c = sec.querySelector('#'+id);
+      if(c){ while(c.firstChild) c.parentNode.insertBefore(c.firstChild, c); c.parentNode.removeChild(c); }
+    });
+    var badge = sec.querySelector('.badge'), h2 = sec.querySelector('h2');
+    var h2c = h2 ? h2.cloneNode(true) : null; if(h2c) h2c.querySelectorAll('rt,small').forEach(function(x){ x.remove(); });
+    var label = badge ? badge.textContent + (h2c ? ' · ' + h2c.textContent.trim() : '') : '';
+    measure.className = sec.className;
+    var kids = Array.prototype.slice.call(sec.children);
+    kids.forEach(function(k){ measure.appendChild(k); });
+    var top = function(el){ return el.offsetTop - parseFloat(getComputedStyle(el).marginTop || 0); };
+    var groups = [], start = 0, base = kids.length ? top(kids[0]) : 0;
+    if(useFixed){
+      (PAGE_BREAKS[sec.id] || []).forEach(function(b){ groups.push(kids.slice(start, b)); start = b; });
+      groups.push(kids.slice(start));
+    } else {
+    for(var i = 0; i < kids.length; i++){
+      var el = kids[i], bottom = el.offsetTop + el.offsetHeight + parseFloat(getComputedStyle(el).marginBottom || 0);
+      if(bottom - base > MAXH && i > start){
+        var b = i; while(b - 1 > start && (isHead(kids[b-1]) || glue(kids[b-1], kids[b]))) b--;
+        groups.push(kids.slice(start, b)); start = b; base = top(kids[b]);
+        i = b;  // the element that starts the new page always fits
+      }
+    }
+    groups.push(kids.slice(start));
+    }
+    var idx = 0; found[sec.id] = groups.slice(0, -1).map(function(g){ idx += g.length; return idx; });
+    var prev = sec;
+    groups.forEach(function(g, gi){
+      var pg = sec;
+      if(gi > 0){
+        pg = document.createElement('section');
+        pg.className = sec.className.replace(/\bcover\b/, '') + ' cont';
+        prev.parentNode.insertBefore(pg, prev.nextSibling);
+      }
+      g.forEach(function(k){ pg.appendChild(k); });
+      pg.dataset.label = label;
+      pages.push(pg); prev = pg;
+    });
+  });
+  body.removeChild(measure);
+  if(romajiOff) body.classList.add('no-furi');
+  window.FOUND_BREAKS = found;
+  if(/[?&]measure/.test(location.search)) document.title = 'BREAKS ' + JSON.stringify(found);
+  pages.forEach(function(pg, i){
+    pg.dataset.page = i + 1;
+    if(i === 0) return;
+    var run = document.createElement('div');
+    run.className = 'run';
+    run.innerHTML = '<span>Lesson 9' + (pg.dataset.label ? ' · ' + pg.dataset.label : '') + '</span><span class="pno">p. ' + (i + 1) + '</span>';
+    pg.appendChild(run);
+  });
+  document.querySelectorAll('.toc a[href^="#"]').forEach(function(a){
+    var t = document.getElementById(a.getAttribute('href').slice(1));
+    if(t && t.dataset.page) a.insertAdjacentHTML('beforeend', '<span class="tp">p. ' + t.dataset.page + '</span>');
+  });
+}
+(function(){
+  if(!document.fonts || !document.fonts.load) return paginate();
+  var txt = document.body.innerText;
+  Promise.all(['500 17px "Zen Maru Gothic"','700 17px "Zen Maru Gothic"','400 17px Nunito','800 17px Nunito'].map(function(f){ return document.fonts.load(f, txt).catch(function(){}); }))
+    .then(function(){ return document.fonts.ready; }).then(paginate, paginate);
+})();
+</script>
+</body>
+</html>
