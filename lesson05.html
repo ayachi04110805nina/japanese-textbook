@@ -1,0 +1,744 @@
+<!doctype html>
+<html lang="ja" translate="no" class="notranslate">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 5 北海道旅行</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,800;1,400&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#26323a; --muted:#6b7a85; --line:#d5e1e5;
+  --primary:#1d7a8a; --primary-dark:#145a66; --primary-soft:#e4f2f4;
+  --accent:#e2683f; --accent-soft:#fdece5;
+  --yellow:#fff5d9; --bg:#eaf0f2; --paper:#ffffff;
+  --jp:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif;
+  --en:"Nunito","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--en);font-size:17px;line-height:1.6}
+.toolbar{position:sticky;top:0;z-index:10;display:flex;gap:8px;justify-content:flex-end;align-items:center;padding:8px 16px;background:rgba(234,240,242,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.toolbar .tt{margin-right:auto;font-weight:800;color:var(--primary-dark)}
+.toolbar button,.toolbar a{font:600 14px var(--en);border:1px solid var(--primary);background:#fff;color:var(--primary-dark);padding:6px 12px;border-radius:999px;cursor:pointer;text-decoration:none}
+.toolbar button.on{background:var(--primary);color:#fff}
+.page{background:var(--paper);width:210mm;min-height:297mm;margin:24px auto;padding:16mm 13mm 14mm;border-radius:6px;box-shadow:0 2px 12px rgba(20,60,70,.10);position:relative;container-type:inline-size}
+.page.cont>:first-child{margin-top:0}
+.run{position:absolute;top:6.5mm;left:13mm;right:13mm;display:flex;justify-content:space-between;align-items:baseline;font:700 12px var(--en);color:var(--muted);letter-spacing:.04em}
+.run .pno{color:var(--primary);font-weight:800;font-size:15px}
+.toc .tp{margin-left:auto;font-weight:800;color:var(--primary);white-space:nowrap;padding-left:8px}
+.phones{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px;margin:8px 0 12px}
+.phones .ph{border:1.5px solid var(--line);border-radius:12px;padding:8px 6px;text-align:center;background:#fbfdfd}
+.phones .ph .k{font-family:var(--jp);font-weight:700;display:block}
+.phones .ph b{display:block;font-size:.92rem;letter-spacing:.02em;white-space:nowrap}
+h1,h2,h3{line-height:1.25;margin:0}
+.jp,.k{font-family:var(--jp)}
+/* ---------- part headers ---------- */
+.part-head{display:flex;align-items:center;gap:14px;border-bottom:3px solid var(--primary);padding-bottom:10px;margin-bottom:22px}
+.badge{background:var(--primary);color:#fff;font-weight:800;font-size:14px;padding:6px 12px;border-radius:10px;letter-spacing:.06em;white-space:nowrap}
+.part-head h2{font-family:var(--jp);font-size:28px}
+.part-head h2 small{font-family:var(--en);font-size:17px;color:var(--muted);font-weight:600;margin-left:8px}
+h3.sub{font-size:19px;color:var(--primary-dark);margin:30px 0 12px;display:flex;align-items:center;gap:10px}
+h3.sub .tag{font-size:12px;background:var(--accent);color:#fff;padding:3px 9px;border-radius:999px;letter-spacing:.05em}
+h3.practice{font-size:19px;color:var(--accent);margin:34px 0 10px;padding-top:18px;border-top:2px dashed var(--line);display:flex;gap:10px;align-items:center}
+h3.practice .tag{background:var(--accent);color:#fff;font-size:12px;padding:3px 9px;border-radius:999px;letter-spacing:.05em}
+.task{font-weight:700;color:var(--accent);margin:22px 0 8px}
+.task b{display:inline-block;min-width:1.6em}
+p{margin:.5em 0}
+.muted{color:var(--muted)}
+/* ---------- Japanese line with romaji under each chunk ---------- */
+.jl{display:flex;flex-wrap:wrap;column-gap:.6em;row-gap:.15em;align-items:flex-start}
+.ch{display:inline-flex;flex-direction:column}
+.ch .k{font-size:1.24rem;line-height:1.4;font-weight:500}
+.ch .r{font-size:.74rem;color:var(--muted);line-height:1.15;letter-spacing:.01em}
+body.no-romaji .ch .r{display:none}
+/* ---------- boxes ---------- */
+.formula{display:inline-flex;gap:28px;align-items:center;border:2px solid var(--primary);border-radius:12px;padding:12px 24px;margin:10px 0 14px;background:var(--primary-soft)}
+.formula .k{font-family:var(--jp);font-size:1.45rem;font-weight:700}
+.formula .k .hl{color:var(--accent)}
+.formula .e{font-style:italic;color:var(--primary-dark)}
+.ex{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:12px 24px;margin:8px 0 6px;align-items:start}
+.ex .e{font-style:italic;color:#44525c;padding-top:4px}
+.note{background:var(--yellow);border-radius:12px;padding:14px 18px;margin:16px 0}
+.note h4{margin:0 0 4px;font-size:15px;color:#9a6a00;letter-spacing:.04em}
+.tip{border-left:5px solid var(--accent);background:var(--accent-soft);border-radius:0 12px 12px 0;padding:12px 18px;margin:16px 0}
+.tip h4{margin:0 0 4px;font-size:15px;color:var(--accent)}
+.ng{color:#c0392b;font-weight:700}
+.ok{color:var(--primary);font-weight:700}
+/* ---------- tables ---------- */
+table{border-collapse:collapse;width:100%;margin:10px 0}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:center;vertical-align:middle}
+th{background:var(--primary-soft);color:var(--primary-dark);font-weight:700}
+td .k{font-size:1.08rem}
+td .r,th .r{display:block;font-size:.72rem;color:var(--muted);font-weight:600}
+th .k{display:block}
+body.no-romaji td .r,body.no-romaji th .r{display:none}
+.cast-table table{table-layout:fixed;font-size:13.5px}
+.cast-table th:first-child{width:76px}
+.cast-table th,.cast-table td{padding:6px 3px;overflow-wrap:anywhere}
+.cast-table .hint{font-size:.74rem}
+.cast-table th .k{font-size:.95rem}
+.hint{display:block;font-family:var(--jp);font-size:.85rem;color:var(--muted)}
+.irr{color:var(--accent);font-weight:700}
+.irr-cell{background:var(--accent-soft)}
+/* ---------- practice items ---------- */
+.example{display:flex;gap:14px;align-items:flex-start;background:#f6f9fa;border-radius:12px;padding:12px 16px;margin:8px 0 12px;flex-wrap:wrap}
+.example .lbl{font-size:12px;font-weight:800;color:var(--accent);border:1.5px solid var(--accent);border-radius:6px;padding:1px 7px;margin-top:6px}
+.example .arrow{color:var(--accent);font-size:1.3rem;margin-top:2px}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px 18px;margin:6px 0 4px;padding:0;list-style:none;counter-reset:it}
+.items.wide{grid-template-columns:repeat(auto-fill,minmax(330px,1fr))}
+.items.one{grid-template-columns:1fr}
+.items li{counter-increment:it;display:flex;gap:8px;align-items:flex-start}
+.items li::before{content:counter(it) ".";font-weight:800;color:var(--primary);min-width:1.4em;padding-top:3px}
+.blank{display:inline-block;min-width:7em;border-bottom:2px solid #9fb3ba;height:1.4em;vertical-align:bottom}
+.qa{display:grid;grid-template-columns:2em 1fr;gap:2px 6px;margin:4px 0}
+.qa .who{font-weight:800;color:var(--primary);padding-top:3px}
+/* ---------- dialogue ---------- */
+.dlg{margin:10px 0}
+.dlg .row{display:grid;grid-template-columns:7.2em 1fr;gap:6px;padding:7px 0;border-bottom:1px dotted var(--line)}
+.dlg .row:last-child{border-bottom:none}
+.dlg .sp{font-weight:700}
+/* ---------- characters ---------- */
+.cast{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin:12px 0}
+.cast.people{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.cast.people .card{display:grid;grid-template-columns:64px 1fr;gap:2px 10px;text-align:left;padding:10px}
+.cast.people .card .av{grid-row:1 / span 3}
+.cast.people .card .nm{margin-top:0;font-size:1rem}
+.cast.people .card .bio{grid-column:1 / -1;margin-top:4px}
+@container (max-width:600px){.cast.people{grid-template-columns:1fr}}
+.card{border:1.5px solid var(--line);border-radius:14px;padding:12px 10px 14px;text-align:center;background:#fbfdfd}
+.card .nm{font-family:var(--jp);font-weight:700;font-size:1.1rem;margin-top:4px}
+.card .rm{font-size:.8rem;color:var(--muted)}
+.card .bio{font-size:.84rem;margin-top:6px;line-height:1.45;text-align:left}
+.av svg{display:block;margin:0 auto}
+.scene{display:flex;justify-content:center;gap:26px;align-items:flex-end;margin:14px 0 6px;flex-wrap:wrap}
+.scene .person{display:flex;flex-direction:column;align-items:center}
+.bubble{font-family:var(--jp);background:#fff;border:2px solid var(--primary);border-radius:16px;padding:6px 14px;margin-bottom:6px;position:relative;font-size:1.05rem}
+.bubble::after{content:"";position:absolute;bottom:-9px;left:50%;margin-left:-8px;border:8px solid transparent;border-top-color:var(--primary);border-bottom:0}
+/* ---------- clocks ---------- */
+.clocks{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:14px 10px;margin:10px 0}
+.clocks .c{text-align:center}
+.clocks .c .k{font-family:var(--jp);font-size:1.05rem;display:block}
+.clocks .c .r{font-size:.72rem;color:var(--muted);display:block}
+body.no-romaji .clocks .c .r{display:none}
+.clocks .c.irr-c .k{color:var(--accent);font-weight:700}
+.clocks .num{font-weight:800;color:var(--primary)}
+.cities{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:12px 0}
+.city{border:1.5px solid var(--line);border-radius:14px;padding:10px;text-align:center;background:#fbfdfd}
+.city.home{border-color:var(--accent);background:var(--accent-soft)}
+.city .k{font-family:var(--jp);font-weight:700;font-size:1.1rem}
+.city .r{font-size:.75rem;color:var(--muted)}
+.city .ap{display:inline-block;margin-top:4px;font-weight:800;font-size:.8rem;padding:1px 8px;border-radius:999px;background:var(--primary);color:#fff}
+.city .ap.am{background:#f2b134;color:#3b2b00}
+/* ---------- cover ---------- */
+.cover{text-align:center;padding-top:10mm}
+.cover .course{letter-spacing:.3em;font-size:14px;font-weight:800;color:var(--primary)}
+.cover .lesson{font-size:22px;font-weight:800;margin-top:6px}
+.cover h1{font-family:var(--jp);font-size:56px;color:var(--primary-dark);margin:10px 0 2px}
+.cover .en{font-size:24px;color:var(--muted);font-weight:600}
+.goals{text-align:left;max-width:640px;margin:22px auto 0;background:var(--primary-soft);border-radius:16px;padding:20px 26px}
+.goals h3{color:var(--primary-dark);font-size:17px;margin-bottom:6px}
+.goals ul{margin:0;padding-left:1.2em}
+.toc{text-align:left;max-width:640px;margin:22px auto 0;columns:2;column-gap:28px;padding:0;list-style:none;font-size:15px}
+.toc li{break-inside:avoid;padding:2px 0;border-bottom:1px dotted var(--line)}
+.toc a{color:var(--ink);text-decoration:none}
+.toc a b{color:var(--primary);margin-right:6px}
+.legend{font-size:14px;color:var(--muted);margin-top:12px}
+/* ---------- bilingual: Japanese on top, English below ---------- */
+.bi{display:block}
+.bi>.ja,.bi>.en{display:block}
+.bi>.ja{font-family:var(--jp);font-weight:500}
+.bi>.en{font-size:.86em;color:#56646d;font-weight:400;margin-top:2px;font-style:normal}
+ruby rt{font-size:.5em;color:var(--muted);font-weight:400;font-family:var(--jp)}
+.task{display:flex;gap:6px;align-items:flex-start}
+.task .bi>.en{color:#c0704f;font-weight:600}
+h3 .bi>.en,h4 .bi>.en{font-size:.78em;font-weight:600;letter-spacing:0}
+.card .bio .bi>.ja{font-size:.86rem;line-height:1.6}
+.card .bio .bi>.en{font-size:.76rem}
+.goals li{margin:4px 0}
+.toc .bi>.en{font-size:.8em}
+th .bi>.en{font-size:.78em;font-weight:600;color:var(--primary-dark)}
+/* ---------- vocab ---------- */
+.vocab h3{margin:22px 0 4px;color:var(--primary-dark);font-size:17px;letter-spacing:.06em}
+.vocab table td{text-align:left;padding:5px 10px}
+.vocab table td:first-child{width:2.2em;text-align:center}
+.vocab td.kk{font-family:var(--jp);font-size:1.08rem;width:34%}
+.vocab td.rr{color:var(--muted);width:26%}
+body.no-romaji .vocab td.rr{color:transparent}
+.mk{font-weight:800}
+.mk.core{color:var(--accent)}
+.mk.add{color:var(--primary)}
+.mk.plus{color:#7a5cc2}
+/* ---------- answers ---------- */
+.ans h3{margin:22px 0 6px;color:var(--primary-dark);font-size:16px}
+.ans ol{margin:0;padding-left:1.6em}
+.ans li{margin:3px 0;break-inside:avoid}
+.ans ol.cols{columns:3;column-gap:28px}
+.ans .ch .k{font-size:1.02rem}
+.ans .ch .r{font-size:.68rem}
+/* ---------- responsive / print ---------- */
+@media (max-width:840px){
+  .page{width:auto;min-height:0;margin:10px 0;padding:46px 16px 26px;border-radius:0}
+  .run{top:14px;left:16px;right:16px}
+}
+.table-wrap{overflow-x:auto}
+@container (max-width:600px){
+  .ex{grid-template-columns:1fr;gap:2px}
+  .ex .e{padding:0 0 10px}
+  .dlg .row{grid-template-columns:1fr}
+  .cover h1{font-size:46px}
+  .toc{columns:1}
+  .formula{gap:12px;padding:10px 14px;flex-wrap:wrap}
+  .ans ol.cols{columns:2}
+}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .toolbar{display:none}
+  .page{margin:0;box-shadow:none;border-radius:0;width:210mm;height:297mm;min-height:0;overflow:hidden;break-after:page}
+  .page:last-of-type{break-after:auto}
+}
+
+/* ===== shared additions (practice pictures) (same palette and shapes as Lesson 1) ===== */
+.s{font-family:var(--jp);font-size:1.12rem;line-height:1.95}
+.page p{margin:.35em 0}
+.page .ex{gap:6px 20px}
+.page .items{gap:4px 18px}
+.page .example{padding:8px 14px;margin:6px 0 8px}
+.page .tip,.page .note{padding:10px 16px;margin:10px 0}
+.page h3.sub{margin:20px 0 8px}
+.page .task{margin:14px 0 6px}
+ruby rt{font-size:.5em}
+body.no-furi rt{visibility:hidden}
+.ex .s{line-height:2}
+table.forms td,table.forms th{padding:6px 8px}
+table.forms td{font-family:var(--jp);font-size:1.08rem;line-height:2}
+.stage{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.05em;border-radius:999px;padding:3px 10px;margin-right:6px;vertical-align:middle}
+.stage.chk{background:#e4f2f4;color:var(--primary-dark)}
+.stage.talk{background:var(--accent);color:#fff}
+h3.talk{font-size:19px;color:var(--accent);margin:20px 0 6px;padding-top:12px;border-top:2px dashed var(--line);display:flex;gap:10px;align-items:center}
+h3.check{font-size:18px;color:var(--primary-dark);margin:26px 0 8px;display:flex;gap:10px;align-items:center}
+.you{background:#fff7e0;border:2px solid #f2c75c;border-radius:14px;padding:14px 18px;margin:14px 0}
+.you h4{margin:0 0 6px;color:#9a6a00;font-size:16px}
+.you ol{margin:4px 0 0;padding-left:1.4em}
+.you li{font-family:var(--jp);font-size:1.06rem;line-height:1.95}
+.hint{background:#f6f9fa;border:1.5px dashed #9fb3ba;border-radius:12px;padding:8px 14px;margin:10px 0;font-family:var(--jp);line-height:2.1}
+.hint b{font-family:var(--en);color:var(--muted);font-size:13px;margin-right:8px}
+.icon svg{display:block}
+.pcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:10px 0}
+.pcard{border:1.5px solid var(--line);border-radius:14px;padding:10px;text-align:center;background:#fbfdfd}
+.pcard .lbl{font-weight:800;color:var(--primary);font-size:14px}
+.pcard .props{display:flex;justify-content:center;gap:6px;margin-top:6px}
+.signs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:10px 0}
+.sign{border:1.5px solid var(--line);border-radius:14px;padding:8px;text-align:center;background:#fff}
+.sign .n{font-weight:800;color:var(--primary);font-size:13px;text-align:left}
+.sign .place{font-family:var(--jp);font-size:.98rem;line-height:2}
+.icards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:10px 0}
+.icard{display:flex;gap:10px;align-items:center;border:1.5px solid var(--line);border-radius:12px;padding:8px 10px;background:#fbfdfd}
+.icard .t{font-family:var(--jp);font-size:1rem;line-height:1.9}
+.chat{max-width:560px;margin:8px auto;background:#dfeef1;border-radius:18px;padding:10px 14px;display:flex;flex-direction:column;gap:6px}
+.chat .m{display:flex;gap:8px;align-items:flex-end}
+.chat .m.r{flex-direction:row-reverse}
+.chat .b{background:#fff;border-radius:16px;padding:3px 14px;font-family:var(--jp);font-size:1.02rem;line-height:1.9;max-width:78%}
+.chat .m.r .b{background:#c9f0a8}
+.chat .who{font-size:11px;color:var(--muted);text-align:center;font-weight:700}
+.tv{background:#26323a;border-radius:18px;padding:12px;max-width:600px;margin:10px auto}
+.tv .scr{background:#e4f2f4;border-radius:10px;padding:10px;display:flex;gap:12px;align-items:center}
+.tv .days{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;flex:1}
+.tv .day{background:#fff;border-radius:10px;padding:6px;text-align:center;font-family:var(--jp);line-height:1.9}
+.tv .day .deg{font-family:var(--en);font-weight:800;font-size:1.1rem;color:var(--accent)}
+.tv .title{color:#fff;font-family:var(--jp);font-weight:700;text-align:center;margin-bottom:6px}
+.bubbles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:10px 0}
+.bub{display:flex;flex-direction:column;align-items:center}
+.bub .say{background:#fff;border:2px solid var(--primary);border-radius:14px;padding:4px 10px;font-family:var(--jp);font-size:1rem;line-height:2;position:relative;margin-bottom:8px;text-align:center}
+.bub .say::after{content:"";position:absolute;bottom:-9px;left:50%;margin-left:-8px;border:8px solid transparent;border-top-color:var(--primary);border-bottom:0}
+.bub .nm{font-family:var(--jp);font-weight:700;font-size:.95rem;line-height:2}
+table.hobby td{padding:6px}
+.mark{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;color:#fff;font-weight:800;font-size:15px}
+.mark.like{background:#e25d7f}.mark.dislike{background:#5d6f7e}.mark.good{background:#f2b134;color:#3b2b00}.mark.poor{background:#3a86a6}
+.legend2{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--jp);line-height:2;margin:6px 0}
+.party{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:10px 0;background:#fdf3e7;border-radius:16px;padding:12px}
+.party .p{position:relative;text-align:center}
+.party .p .act{position:absolute;right:2px;top:52px}
+.party .p .nm{font-family:var(--jp);font-weight:700;line-height:2}
+.bags{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:10px 0}
+.bag{text-align:center}
+.bag .in{margin:6px auto 0;width:100%;min-height:92px;border:3px solid #8a6a4a;border-top-width:10px;border-radius:6px 6px 22px 22px;background:#fbf2e6;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px;padding:6px}
+.bag .nm{font-family:var(--jp);font-weight:700;line-height:2}
+.grid12{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:10px 0}
+.grid12 .g{text-align:center;border:1.5px solid var(--line);border-radius:12px;padding:6px 2px;background:#fff}
+.grid12 .g .t{font-family:var(--jp);font-size:.9rem;line-height:1.9}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border:2px solid var(--primary);border-radius:10px;overflow:hidden;margin:10px 0}
+.cal div{border-right:1px solid var(--line);text-align:center;min-height:70px;font-family:var(--jp);line-height:1.9;padding:4px 2px;font-size:.95rem}
+.cal div:last-child{border-right:none}
+.cover .goals ul{columns:2;column-gap:24px}
+.cover .goals li{break-inside:avoid}
+.cover .toc{columns:3;max-width:none}
+.vt td{white-space:nowrap;font-size:1rem}
+.gt{table-layout:fixed}
+.gt th:first-child{width:16%}
+.gt td:nth-child(3){width:36%;white-space:nowrap;text-align:left;padding-left:14px}
+.gt td{line-height:1.9}
+.gt .bi>.en{font-size:.8em}
+@container (max-width:600px){.cover .goals ul{columns:1}.cover .toc{columns:1}}
+.cal .d{display:block;background:var(--primary-soft);color:var(--primary-dark);font-weight:700;margin:-4px -2px 4px}
+.tcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:10px 0}
+.tcard{border:2px solid var(--accent);border-radius:14px;padding:10px;background:#fff;font-family:var(--jp);line-height:2}
+.tcard .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-family:var(--en);margin-right:6px}
+.teacher{border:2px dashed var(--primary);border-radius:14px;padding:12px 16px;margin:12px 0}
+.teacher h4{margin:0 0 6px;color:var(--primary-dark)}
+.teacher li{line-height:2;font-family:var(--jp)}
+@container (max-width:600px){
+  .pcards,.bubbles,.bags,.icards,.tcards{grid-template-columns:1fr 1fr}
+  .signs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid12{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .party{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .cal{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <span class="tt">Lesson 5 · 北海道旅行</span>
+  <a href="#toc">Contents</a>
+  <button id="furiBtn" class="on" type="button">ふりがな: ON</button>
+  <a href="lesson05.pdf" download>PDF</a>
+  <a href="./">All lessons</a>
+</div>
+
+<section class="page cover" id="top">
+  <div class="course">ORIGINAL JAPANESE COURSE</div>
+  <div class="lesson">Lesson 5</div>
+  <h1>北海道{ほっかいどう}旅行{りょこう}</h1>
+  <div class="en">A Trip to Hokkaido</div>
+  <div class="scene" style="margin-top:22px;gap:14px"><div class="av" data-who="amina" data-size="80"></div><div class="av" data-who="lin" data-size="80"></div><div class="av" data-who="ogawa" data-size="80"></div><div class="av" data-who="raj" data-size="80"></div><div class="av" data-who="yuuki" data-size="80"></div><div class="av" data-who="lucas" data-size="80"></div></div>
+  <div class="goals">
+    <h3><span class="bi"><span class="ja">この課{か}で できるようになること</span><span class="en">In this lesson, you will learn to…</span></span></h3>
+    <ul>
+      <li><span class="bi"><span class="ja">人{ひと}や 物{もの}や 町{まち}を 説明{せつめい}する</span><span class="en">describe people, things, and places</span></span></li>
+      <li><span class="bi"><span class="ja">旅行{りょこう}や 休{やす}みのことを 話{はな}す</span><span class="en">talk about a trip or a holiday</span></span></li>
+      <li><span class="bi"><span class="ja">好{す}きな物{もの}・きらいな物{もの}を 話{はな}す</span><span class="en">talk about likes and dislikes</span></span></li>
+      <li><span class="bi"><span class="ja">「〜ましょう」と 誘{さそ}う・申{もう}し出{で}る</span><span class="en">make invitations and offers</span></span></li>
+    </ul>
+  </div>
+  <ul class="toc" id="toc"><li><a href="#cast" style="display:flex;gap:6px"><b>★</b><span class="bi"><span class="ja">登場人物{とうじょうじんぶつ}</span><span class="en">Characters</span></span></a></li><li><a href="#p1" style="display:flex;gap:6px"><b>1</b><span class="bi"><span class="ja">形容詞{けいようし}</span><span class="en">Adjectives</span></span></a></li><li><a href="#p2" style="display:flex;gap:6px"><b>2</b><span class="bi"><span class="ja">形容詞{けいようし}の過去{かこ}</span><span class="en">Adjectives: past</span></span></a></li><li><a href="#p3" style="display:flex;gap:6px"><b>3</b><span class="bi"><span class="ja">形容詞{けいようし}＋名詞{めいし}</span><span class="en">Adjective + noun</span></span></a></li><li><a href="#p4" style="display:flex;gap:6px"><b>4</b><span class="bi"><span class="ja">好{す}き・きらい</span><span class="en">Likes and dislikes</span></span></a></li><li><a href="#p5" style="display:flex;gap:6px"><b>5</b><span class="bi"><span class="ja">〜ましょう</span><span class="en">Let's …</span></span></a></li><li><a href="#p6" style="display:flex;gap:6px"><b>6</b><span class="bi"><span class="ja">〜枚{まい}</span><span class="en">Counting flat things</span></span></a></li><li><a href="#p7" style="display:flex;gap:6px"><b>7</b><span class="bi"><span class="ja">読{よ}み物{もの}</span><span class="en">Reading</span></span></a></li><li><a href="#p8" style="display:flex;gap:6px"><b>8</b><span class="bi"><span class="ja">まとめ</span><span class="en">Review</span></span></a></li><li><a href="#vocab" style="display:flex;gap:6px"><b>V</b><span class="bi"><span class="ja">単語{たんご}</span><span class="en">Vocabulary</span></span></a></li><li><a href="#answers" style="display:flex;gap:6px"><b>A</b><span class="bi"><span class="ja">解答例{かいとうれい}</span><span class="en">Model answers</span></span></a></li></ul>
+</section>
+
+<section class="page" id="cast">
+<div class="part-head"><span class="badge">CHARACTERS</span><h2>登場人物{とうじょうじんぶつ}<small>Characters</small></h2></div>
+<p><span class="bi"><span class="ja">このテキストには 毎回{まいかい}、この6人{にん}が 出{で}てきます。</span><span class="en">These six people appear in every lesson of this book.</span></span></p><div class="cast people"><div class="card"><div class="av" data-who="lin" data-size="64"></div><div class="nm">ワン・リン</div><div class="rm">Wang Lin</div><div class="bio"><span class="bi"><span class="ja">中国{ちゅうごく}から来{き}た 留学生{りゅうがくせい}。あおばだいがくの2年生{ねんせい}。</span><span class="en">An international student from China. 2nd year at Aoba University.</span></span></div></div><div class="card"><div class="av" data-who="yuuki" data-size="64"></div><div class="nm">もりた ゆうき</div><div class="rm">Morita Yuuki</div><div class="bio"><span class="bi"><span class="ja">あおばだいがくの3年生{ねんせい}。日本人{にほんじん}。</span><span class="en">A 3rd-year student at Aoba University. Japanese.</span></span></div></div><div class="card"><div class="av" data-who="amina" data-size="64"></div><div class="nm">アミナ・ハッサン</div><div class="rm">Amina Hassan</div><div class="bio"><span class="bi"><span class="ja">エジプトから来{き}た 留学生{りゅうがくせい}。1年生{ねんせい}。</span><span class="en">An international student from Egypt. 1st year.</span></span></div></div><div class="card"><div class="av" data-who="raj" data-size="64"></div><div class="nm">ラジ・クマール</div><div class="rm">Raj Kumar</div><div class="bio"><span class="bi"><span class="ja">インドから来{き}た 留学生{りゅうがくせい}。4年生{ねんせい}。</span><span class="en">An international student from India. 4th year.</span></span></div></div><div class="card"><div class="av" data-who="lucas" data-size="64"></div><div class="nm">ルーカス・ミラー</div><div class="rm">Lucas Miller</div><div class="bio"><span class="bi"><span class="ja">カナダから来{き}た 留学生{りゅうがくせい}。日本{にほん}の家族{かぞく}のうちに 住{す}んでいる。</span><span class="en">An international student from Canada. Lives with a Japanese host family.</span></span></div></div><div class="card"><div class="av" data-who="ogawa" data-size="64"></div><div class="nm">おがわ先生{せんせい}</div><div class="rm">Ogawa sensee</div><div class="bio"><span class="bi"><span class="ja">あおばだいがくの 日本語{にほんご}の先生{せんせい}。</span><span class="en">A Japanese teacher at Aoba University.</span></span></div></div></div>
+<p class="legend" style="margin:14px 0 0"><span class="bi"><span class="ja">復習{ふくしゅう}するときは、上{うえ}の「ふりがな」ボタンで ふりがなを かくせます。</span><span class="en">Tip: Use the <b>Furigana</b> button at the top to hide the furigana when you review.</span></span></p>
+</section>
+
+<section class="page" id="p1">
+<div class="part-head"><span class="badge">PART 1</span><h2>形容詞{けいようし}<small>Adjectives</small></h2></div>
+<h3 class="sub"><span class="tag">GRAMMAR 1</span><span class="bi"><span class="ja">形容詞{けいようし}（今{いま}）</span><span class="en">Adjectives (present)</span></span></h3>
+<p><span class="bi"><span class="ja">日本語{にほんご}の 形容詞{けいようし}には「い形容詞{けいようし}」と「な形容詞{けいようし}」の 2つが あります。否定{ひてい}の 作{つく}り方{かた}が ちがいます。</span><span class="en">Japanese has two kinds of adjectives: い-adjectives and な-adjectives. They make the negative differently.</span></span></p>
+<div class="table-wrap"><table class="forms"><tr><th></th><th><span class="bi"><span class="ja">肯定{こうてい}</span><span class="en">affirmative</span></span></th><th><span class="bi"><span class="ja">否定{ひてい}</span><span class="en">negative</span></span></th></tr><tr><th><span class="bi"><span class="ja">い形容詞{けいようし}</span><span class="en">い-adj.</span></span><br><span class="jp">寒{さむ}い</span></th><td>寒{さむ}い<b>です</b></td><td>寒{さむ}<b>くないです</b></td></tr><tr><th><span class="bi"><span class="ja">な形容詞{けいようし}</span><span class="en">な-adj.</span></span><br><span class="jp">元気{げんき}（な）</span></th><td>元気{げんき}<b>です</b></td><td>元気{げんき}<b>じゃないです</b></td></tr><tr><th><span class="bi"><span class="ja">いい（特別{とくべつ}）</span><span class="en">いい (irregular)</span></span></th><td>いいです</td><td><b>よくないです</b></td></tr></table></div>
+<div class="note"><h4><span class="bi"><span class="ja">注意{ちゅうい}</span><span class="en">Careful</span></span></h4><p><span class="bi"><span class="ja">× 寒{さむ}いじゃないです　○ 寒{さむ}くないです。　かっこいい も「いい」と 同{おな}じ：かっこよくないです。　「とても・すごく・ちょっと」を 前{まえ}に つけられます：とても 寒{さむ}いです。</span><span class="en">Never say 寒いじゃないです. かっこいい follows いい: かっこよくないです. You can add とても, すごく, or ちょっと before an adjective.</span></span></p></div>
+<h3 class="check"><span class="stage chk">ミニ確認{かくにん}</span><span class="bi"><span class="ja">否定{ひてい}に しましょう。</span><span class="en">Make them negative.</span></span></h3>
+<ol class="items "><li><div class="s">高{たか}いです</div></li><li><div class="s">静{しず}かです</div></li><li><div class="s">おもしろいです</div></li><li><div class="s">ひまです</div></li><li><div class="s">いいです</div></li><li><div class="s">かっこいいです</div></li></ol>
+<h3 class="talk"><span class="stage talk">話{はな}してみよう</span><span class="bi"><span class="ja">絵{え}を 見{み}て 言{い}おう</span><span class="en">Describe the pictures</span></span></h3>
+<p class="task"><b>A.</b><span class="bi"><span class="ja">絵{え}を 見{み}て、形容詞{けいようし}を 使{つか}って 言{い}いましょう。「とても」「ちょっと」も 使{つか}いましょう。</span><span class="en">Describe each picture with an adjective. Add とても or ちょっと.</span></span></p>
+<div class="pcards" style="grid-template-columns:repeat(4,minmax(0,1fr))"><div class="pcard"><div class="lbl">1</div><span class="icon" data-icon="clock2" data-size="60"></span><div class="t" style="font-weight:800;color:var(--accent);line-height:2">¥100,000</div></div><div class="pcard"><div class="lbl">2</div><span class="icon" data-icon="bag" data-size="60"></span><div class="t" style="font-weight:800;color:var(--accent);line-height:2">¥500</div></div><div class="pcard"><div class="lbl">3</div><span class="icon" data-icon="sun" data-size="60"></span><div class="t" style="font-weight:800;color:var(--accent);line-height:2">35°C</div></div><div class="pcard"><div class="lbl">4</div><span class="icon" data-icon="cloud" data-size="60"></span><div class="t" style="font-weight:800;color:var(--accent);line-height:2">2°C</div></div><div class="pcard"><div class="lbl">5</div><span class="icon" data-icon="temple" data-size="60"></span><div class="t" style="font-weight:800;color:var(--accent);line-height:2">800 years</div></div><div class="pcard"><div class="lbl">6</div><span class="icon" data-icon="house" data-size="60"></span><div class="t" style="font-weight:800;color:var(--accent);line-height:2">new!</div></div><div class="pcard"><div class="lbl">7</div><span class="icon" data-icon="hamburger" data-size="60"></span><div class="t" style="font-weight:800;color:var(--accent);line-height:2">XL</div></div><div class="pcard"><div class="lbl">8</div><span class="icon" data-icon="exam" data-size="60"></span><div class="t" style="font-weight:800;color:var(--accent);line-height:2">0 / 100</div></div></div>
+<div class="hint"><b>Hint</b>高{たか}い　／　安{やす}い　／　暑{あつ}い　／　寒{さむ}い　／　古{ふる}い　／　新{あたら}しい　／　大{おお}きい　／　難{むずか}しい</div>
+<div class="example"><span class="lbl">Example</span><div class="s">1. この時計{とけい}は とても 高{たか}いです。</div></div>
+<p class="task"><b>B.</b><span class="bi"><span class="ja">あなたの まわりについて、「〜は〜です。でも、〜は〜じゃないです／〜くないです」と 言{い}いましょう。先生{せんせい}にも 聞{き}きましょう。</span><span class="en">Talk about things around you, using affirmative and negative. Ask your teacher too.</span></span></p>
+<div class="you"><h4><span class="bi"><span class="ja">あなたは？</span><span class="en">About you</span></span></h4><ol><li>日本語{にほんご}の 宿題{しゅくだい}は 難{むずか}しいですか。</li><li>あなたの 部屋{へや}は きれいですか。大{おお}きいですか。</li><li>あなたの 町{まち}は 静{しず}かですか。にぎやかですか。</li><li>今日{きょう}は 忙{いそが}しいですか。ひまですか。</li><li>日本{にほん}の 食{た}べ物{もの}は 高{たか}いですか。</li></ol></div>
+</section>
+
+<section class="page" id="p2">
+<div class="part-head"><span class="badge">PART 2</span><h2>形容詞{けいようし}の過去{かこ}<small>Adjectives: past</small></h2></div>
+<h3 class="sub"><span class="tag">GRAMMAR 2</span><span class="bi"><span class="ja">形容詞{けいようし}の 過去{かこ}</span><span class="en">Adjectives (past)</span></span></h3>
+<div class="table-wrap"><table class="forms"><tr><th></th><th><span class="bi"><span class="ja">肯定{こうてい}</span><span class="en">affirmative</span></span></th><th><span class="bi"><span class="ja">否定{ひてい}</span><span class="en">negative</span></span></th></tr><tr><th><span class="bi"><span class="ja">い形容詞{けいようし}</span><span class="en">い-adj.</span></span></th><td>寒{さむ}<b>かったです</b></td><td>寒{さむ}<b>くなかったです</b></td></tr><tr><th><span class="bi"><span class="ja">な形容詞{けいようし}</span><span class="en">な-adj.</span></span></th><td>元気{げんき}<b>でした</b></td><td>元気{げんき}<b>じゃなかったです</b></td></tr><tr><th><span class="bi"><span class="ja">いい</span><span class="en">いい</span></span></th><td><b>よかったです</b></td><td><b>よくなかったです</b></td></tr></table></div>
+<div class="note"><h4><span class="bi"><span class="ja">注意{ちゅうい}</span><span class="en">Careful</span></span></h4><p><span class="bi"><span class="ja">× 寒{さむ}いでした　○ 寒{さむ}かったです。　な形容詞{けいようし}は 名詞{めいし}と 同{おな}じ 形{かたち}です（学生{がくせい}でした・元気{げんき}でした）。</span><span class="en">Never say 寒いでした. な-adjectives work like nouns: 元気でした.</span></span></p></div>
+<div class="ex"><div class="s">A：テストは 難{むずか}しかったですか。<br>B：いいえ、ぜんぜん 難{むずか}しくなかったです。</div><div class="e">Was the test difficult? — No, not at all.</div><div class="s">A：その町{まち}は にぎやかでしたか。<br>B：いいえ、にぎやかじゃなかったです。</div><div class="e">Was the town lively? — No.</div></div>
+<h3 class="check"><span class="stage chk">ミニ確認{かくにん}</span><span class="bi"><span class="ja">過去{かこ}に しましょう（肯定{こうてい}と 否定{ひてい}）。</span><span class="en">Make the past, affirmative and negative.</span></span></h3>
+<ol class="items "><li><div class="s">楽{たの}しい</div></li><li><div class="s">ひま（な）</div></li><li><div class="s">いい</div></li><li><div class="s">きれい（な）</div></li></ol>
+<h3 class="talk"><span class="stage talk">話{はな}してみよう</span><span class="bi"><span class="ja">リンさんの 旅行{りょこう}メモ</span><span class="en">Lin's travel memo</span></span></h3>
+<p class="task"><b>A.</b><span class="bi"><span class="ja">リンさんは 北海道{ほっかいどう}に 行{い}きました。メモを 見{み}て、旅行{りょこう}は どうだったか 言{い}いましょう。</span><span class="en">Lin went to Hokkaido. Look at her memo and say how the trip was.</span></span></p>
+<div class="note" style="max-width:560px"><h4><span class="bi"><span class="ja">リンさんの メモ（北海道{ほっかいどう}）</span><span class="en">Lin's memo (Hokkaido)</span></span></h4><div style="display:grid;gap:4px"><div class="s" style="display:flex;gap:8px;align-items:center"><span class="icon" data-icon="cloud" data-size="34"></span>天気{てんき}：寒{さむ}い</div><div class="s" style="display:flex;gap:8px;align-items:center"><span class="icon" data-icon="fish" data-size="34"></span>魚{さかな}：おいしい</div><div class="s" style="display:flex;gap:8px;align-items:center"><span class="icon" data-icon="hotel" data-size="34"></span>ホテル：新{あたら}しい・高{たか}くない</div><div class="s" style="display:flex;gap:8px;align-items:center"><span class="icon" data-icon="house" data-size="34"></span>町{まち}：静{しず}か</div><div class="s" style="display:flex;gap:8px;align-items:center"><span class="icon" data-icon="swim" data-size="34"></span>海{うみ}：とても きれい</div><div class="s" style="display:flex;gap:8px;align-items:center"><span class="icon" data-icon="bus" data-size="34"></span>バス：ちょっと 古{ふる}い</div><div class="s" style="display:flex;gap:8px;align-items:center"><span class="icon" data-icon="gift" data-size="34"></span>お土産{みやげ}：安{やす}くない</div></div></div>
+<div class="example"><span class="lbl">Example</span><div class="s">北海道{ほっかいどう}は 寒{さむ}かったです。魚{さかな}は おいしかったです。</div></div>
+<p class="task"><b>B.</b><span class="bi"><span class="ja">ロールプレイ：先生{せんせい}は 休{やす}みに 旅行{りょこう}に 行{い}きました。「どうでしたか」と 聞{き}いて、いろいろ 質問{しつもん}しましょう。次{つぎ}は あなたの 休{やす}みについて、先生{せんせい}が 聞{き}きます。</span><span class="en">Role play: your teacher went on a trip. Ask どうでしたか and more questions. Then your teacher asks about your holiday.</span></span></p>
+<div class="hint"><b>Hint</b>天気{てんき}は どうでしたか　／　ホテルは 高{たか}かったですか　／　食{た}べ物{もの}は どうでしたか　／　町{まち}は にぎやかでしたか　／　だれと 行{い}きましたか</div>
+<div class="example"><span class="lbl">Example</span><div class="s">A：休{やす}みに 京都{きょうと}に 行{い}きました。　B：そうですか。どうでしたか。<br>A：とても 楽{たの}しかったです。でも、ちょっと 暑{あつ}かったです。</div></div>
+</section>
+
+<section class="page" id="p3">
+<div class="part-head"><span class="badge">PART 3</span><h2>形容詞{けいようし}＋名詞{めいし}<small>Adjective + noun</small></h2></div>
+<h3 class="sub"><span class="tag">GRAMMAR 3</span><span class="bi"><span class="ja">形容詞{けいようし}＋名詞{めいし}</span><span class="en">Adjectives before nouns</span></span></h3>
+<p><span class="bi"><span class="ja">形容詞{けいようし}を 名詞{めいし}の 前{まえ}に 置{お}きます。な形容詞{けいようし}は「な」が つきます。</span><span class="en">Put the adjective before the noun. な-adjectives take な.</span></span></p>
+<div class="table-wrap"><table class="forms"><tr><th><span class="bi"><span class="ja">い形容詞{けいようし}</span><span class="en">い-adj.</span></span></th><td>おもしろい 映画{えいが}</td><td>an interesting movie</td></tr><tr><th><span class="bi"><span class="ja">な形容詞{けいようし}</span><span class="en">な-adj.</span></span></th><td>きれい<b>な</b> 写真{しゃしん}</td><td>a beautiful picture</td></tr></table></div>
+<div class="ex"><div class="s">きのう、おもしろい 映画{えいが}を 見{み}ました。</div><div class="e">I saw an interesting movie yesterday.</div><div class="s">おがわ先生{せんせい}は やさしい 先生{せんせい}です。</div><div class="e">Ms. Ogawa is a kind teacher.</div><div class="s">ここは とても にぎやか<b>な</b> 町{まち}です。</div><div class="e">This is a very lively town.</div><div class="s">A：ルーカスさんは どんな人{ひと}ですか。<br>B：元気{げんき}な人{ひと}です。</div><div class="e">What kind of person is Lucas? — An energetic person.</div></div>
+<h3 class="check"><span class="stage chk">ミニ確認{かくにん}</span><span class="bi"><span class="ja">「〜ですね」と 言{い}いましょう。</span><span class="en">Comment with 〜ですね.</span></span></h3>
+<div class="example"><span class="lbl">Example</span><div class="s">時計{とけい}／高{たか}い → 高{たか}い 時計{とけい}ですね。</div></div>
+<ol class="items "><li><div class="s">ホテル／新{あたら}しい</div></li><li><div class="s">部屋{へや}／きれい</div></li><li><div class="s">宿題{しゅくだい}／難{むずか}しい</div></li><li><div class="s">町{まち}／静{しず}か</div></li></ol>
+<h3 class="talk"><span class="stage talk">話{はな}してみよう</span><span class="bi"><span class="ja">どんな人{ひと}？ どんな町{まち}？</span><span class="en">What kind of person? What kind of town?</span></span></h3>
+<p class="task"><b>A.</b><span class="bi"><span class="ja">このテキストの 登場人物{とうじょうじんぶつ}は どんな人{ひと}だと 思{おも}いますか。自由{じゆう}に 言{い}いましょう。</span><span class="en">What kind of people do you think the characters are? Say freely.</span></span></p>
+<div class="party" style="grid-template-columns:repeat(6,minmax(0,1fr))"><div class="p"><div class="av" data-who="lin" data-size="72"></div><div class="nm">リン</div></div><div class="p"><div class="av" data-who="yuuki" data-size="72"></div><div class="nm">ゆうき</div></div><div class="p"><div class="av" data-who="amina" data-size="72"></div><div class="nm">アミナ</div></div><div class="p"><div class="av" data-who="raj" data-size="72"></div><div class="nm">ラジ</div></div><div class="p"><div class="av" data-who="lucas" data-size="72"></div><div class="nm">ルーカス</div></div><div class="p"><div class="av" data-who="ogawa" data-size="72"></div><div class="nm">おがわ先生{せんせい}</div></div></div>
+<div class="hint"><b>Hint</b>やさしい　／　おもしろい　／　元気{げんき}な　／　かっこいい　／　静{しず}かな　／　こわい　／　きれいな</div>
+<div class="example"><span class="lbl">Example</span><div class="s">Q：ラジさんは どんな人{ひと}ですか。　A：おもしろい人{ひと}です。</div></div>
+<p class="task"><b>B.</b><span class="bi"><span class="ja">あなたの 家族{かぞく}・友{とも}だち・先生{せんせい}・町{まち}・学校{がっこう}について、「どんな〜ですか」と 聞{き}き合{あ}いましょう。</span><span class="en">Ask each other "どんな〜ですか" about your family, friends, teachers, town, and school.</span></span></p>
+<div class="example"><span class="lbl">Example</span><div class="s">A：お母{かあ}さんは どんな人{ひと}ですか。　B：やさしい人{ひと}です。でも、ちょっと こわいです。　A：そうですか。</div></div>
+<div class="you"><h4><span class="bi"><span class="ja">あなたは？</span><span class="en">About you</span></span></h4><ol><li>あなたの 町{まち}は どんな町{まち}ですか。</li><li>あなたの 学校{がっこう}は どんな学校{がっこう}ですか。</li><li>あなたの 部屋{へや}は どんな部屋{へや}ですか。</li><li>きのう、どんな 食{た}べ物{もの}を 食{た}べましたか。</li></ol></div>
+</section>
+
+<section class="page" id="p4">
+<div class="part-head"><span class="badge">PART 4</span><h2>好{す}き・きらい<small>Likes and dislikes</small></h2></div>
+<h3 class="sub"><span class="tag">GRAMMAR 4</span><span class="bi"><span class="ja">好{す}き・きらい</span><span class="en">Likes and dislikes</span></span></h3>
+<p><span class="bi"><span class="ja">「好{す}き（な）」「きらい（な）」は な形容詞{けいようし}です。好{す}きな物{もの}・きらいな物{もの}には「が」を つけます。</span><span class="en">好き and きらい are な-adjectives. The thing you like or dislike takes が.</span></span></p>
+<div class="formula"><span class="k">〈人{ひと}〉は 〈物{もの}〉<span class="hl">が</span> 好{す}きです／きらいです</span><span class="e">(Person) likes / dislikes (thing).</span></div>
+<div class="legend2"><span>大好{だいす}き ♥♥</span><span>好{す}き ♥</span><span>好{す}きでも きらいでもない △</span><span>あまり 好{す}きじゃない ▽</span><span>きらい ✕</span><span>大{だい}きらい ✕✕</span></div>
+<div class="ex"><div class="s">ゆうきさんは 魚{さかな}が 大好{だいす}きです。</div><div class="e">Yuuki loves fish.</div><div class="s">A：コーヒーが 好{す}きですか。<br>B：いいえ、あまり 好{す}きじゃないです。</div><div class="e">Do you like coffee? — No, not very much.</div><div class="s">これは わたしの 好{す}き<b>な</b> 本{ほん}です。</div><div class="e">This is my favorite book.</div></div>
+<h3 class="check"><span class="stage chk">ミニ確認{かくにん}</span><span class="bi"><span class="ja">「〜が 好{す}きですか」と 聞{き}いて、答{こた}えましょう。</span><span class="en">Ask and answer.</span></span></h3>
+<ol class="items "><li><div class="s">肉{にく}</div></li><li><div class="s">テスト</div></li><li><div class="s">日本{にほん}の 音楽{おんがく}</div></li><li><div class="s">果物{くだもの}</div></li></ol>
+<h3 class="talk"><span class="stage talk">話{はな}してみよう</span><span class="bi"><span class="ja">みんなの 好{す}きな物{もの}</span><span class="en">What everyone likes</span></span></h3>
+<p class="task"><b>A.</b><span class="bi"><span class="ja">表{ひょう}を 見{み}て、みんなの 好{す}きな物{もの}・きらいな物{もの}を 言{い}いましょう。</span><span class="en">Look at the chart and say what everyone likes and dislikes.</span></span></p>
+<div class="table-wrap"><table class="hobby"><tr><th><div class="av" data-who="lin" data-size="52"></div><div class="jp">リン</div></th><th><div class="av" data-who="yuuki" data-size="52"></div><div class="jp">ゆうき</div></th><th><div class="av" data-who="amina" data-size="52"></div><div class="jp">アミナ</div></th><th><div class="av" data-who="raj" data-size="52"></div><div class="jp">ラジ</div></th><th><div class="av" data-who="lucas" data-size="52"></div><div class="jp">ルーカス</div></th></tr><tr><td><div style="display:flex;align-items:center;justify-content:center;gap:6px;margin:4px 0"><span class="icon" data-icon="fish" data-size="46"></span><b style="color:var(--accent)">♥♥</b></div><div style="display:flex;align-items:center;justify-content:center;gap:6px;margin:4px 0"><span class="icon" data-icon="coffee" data-size="46"></span><b style="color:var(--accent)">✕</b></div></td><td><div style="display:flex;align-items:center;justify-content:center;gap:6px;margin:4px 0"><span class="icon" data-icon="meat" data-size="46"></span><b style="color:var(--accent)">♥</b></div><div style="display:flex;align-items:center;justify-content:center;gap:6px;margin:4px 0"><span class="icon" data-icon="veg" data-size="46"></span><b style="color:var(--accent)">✕✕</b></div></td><td><div style="display:flex;align-items:center;justify-content:center;gap:6px;margin:4px 0"><span class="icon" data-icon="fruit" data-size="46"></span><b style="color:var(--accent)">♥♥</b></div><div style="display:flex;align-items:center;justify-content:center;gap:6px;margin:4px 0"><span class="icon" data-icon="exam" data-size="46"></span><b style="color:var(--accent)">✕</b></div></td><td><div style="display:flex;align-items:center;justify-content:center;gap:6px;margin:4px 0"><span class="icon" data-icon="game" data-size="46"></span><b style="color:var(--accent)">♥♥</b></div><div style="display:flex;align-items:center;justify-content:center;gap:6px;margin:4px 0"><span class="icon" data-icon="tea" data-size="46"></span><b style="color:var(--accent)">△</b></div></td><td><div style="display:flex;align-items:center;justify-content:center;gap:6px;margin:4px 0"><span class="icon" data-icon="ball" data-size="46"></span><b style="color:var(--accent)">♥</b></div><div style="display:flex;align-items:center;justify-content:center;gap:6px;margin:4px 0"><span class="icon" data-icon="music" data-size="46"></span><b style="color:var(--accent)">▽</b></div></td></tr></table></div>
+<div class="hint"><b>Hint</b>魚{さかな}　／　コーヒー　／　肉{にく}　／　野菜{やさい}　／　果物{くだもの}　／　テスト　／　ゲーム　／　お茶{ちゃ}　／　スポーツ　／　音楽{おんがく}</div>
+<div class="example"><span class="lbl">Example</span><div class="s">リンさんは 魚{さかな}が 大好{だいす}きです。でも、コーヒーが きらいです。</div></div>
+<p class="task"><b>B.</b><span class="bi"><span class="ja">「どんな〜が 好{す}きですか」と 先生{せんせい}と 聞{き}き合{あ}いましょう。答{こた}えたら「〜さんは？」と 聞{き}き返{かえ}しましょう。</span><span class="en">Ask your teacher "どんな〜が好きですか" and ask back with 〜さんは？</span></span></p>
+<div class="icards"><div class="icard"><span class="icon" data-icon="food" data-size="44"></span><span class="t">どんな 食{た}べ物{もの}</span></div><div class="icard"><span class="icon" data-icon="cup" data-size="44"></span><span class="t">どんな 飲{の}み物{もの}</span></div><div class="icard"><span class="icon" data-icon="fruit" data-size="44"></span><span class="t">どんな 果物{くだもの}</span></div><div class="icard"><span class="icon" data-icon="ball" data-size="44"></span><span class="t">どんな スポーツ</span></div><div class="icard"><span class="icon" data-icon="music" data-size="44"></span><span class="t">どんな 音楽{おんがく}</span></div><div class="icard"><span class="icon" data-icon="tv" data-size="44"></span><span class="t">どんな 映画{えいが}</span></div></div>
+<div class="example"><span class="lbl">Example</span><div class="s">A：どんな 飲{の}み物{もの}が 好{す}きですか。　B：お茶{ちゃ}が 大好{だいす}きです。先生{せんせい}は？</div></div>
+</section>
+
+<section class="page" id="p5">
+<div class="part-head"><span class="badge">PART 5</span><h2>〜ましょう<small>Let's …</small></h2></div>
+<h3 class="sub"><span class="tag">GRAMMAR 5</span><span class="bi"><span class="ja">〜ましょう・〜ましょうか</span><span class="en">Let's … / Shall we …?</span></span></h3>
+<p><span class="bi"><span class="ja">「ます」を「ましょう」に すると “Let's …” に なります。「ましょうか」は “Shall we …?” “Shall I …?” です。</span><span class="en">Change ます to ましょう for "Let's …," and to ましょうか for "Shall we / Shall I …?"</span></span></p>
+<div class="ex"><div class="s">いっしょに 図書館{としょかん}で 勉強{べんきょう}しましょう。</div><div class="e">Let's study in the library together.</div><div class="s">あそこで コーヒーを 飲{の}みましょうか。</div><div class="e">Shall we drink coffee over there?</div><div class="s">A：暑{あつ}いですね。<br>B：そうですね。海{うみ}で 泳{およ}ぎましょうか。</div><div class="e">It's hot, isn't it? — Yes. Shall we swim in the sea?</div></div>
+<div class="tip"><h4><span class="bi"><span class="ja">答{こた}え方{かた}</span><span class="en">How to answer</span></span></h4><p><span class="bi"><span class="ja">いいですね。／そうしましょう。（OK）　ちょっと……。（No, politely）</span><span class="en">いいですね / そうしましょう = OK. ちょっと…… = a polite no.</span></span></p></div>
+<h3 class="check"><span class="stage chk">ミニ確認{かくにん}</span><span class="bi"><span class="ja">「〜ましょう」に しましょう。</span><span class="en">Make them into ましょう sentences.</span></span></h3>
+<ol class="items "><li><div class="s">バスに 乗{の}る</div></li><li><div class="s">お土産{みやげ}を 買{か}う</div></li><li><div class="s">一緒{いっしょ}に 帰{かえ}る</div></li><li><div class="s">出{で}かける</div></li></ol>
+<h3 class="talk"><span class="stage talk">話{はな}してみよう</span><span class="bi"><span class="ja">どうしましょうか</span><span class="en">What shall we do?</span></span></h3>
+<p class="task"><b>A.</b><span class="bi"><span class="ja">こんな時{とき}、何{なに}を しましょうか。先生{せんせい}が 文{ぶん}を 言{い}います。あなたは「〜ましょうか」で 提案{ていあん}しましょう。答{こた}えは いろいろ あります。</span><span class="en">Your teacher says the sentence. You make a suggestion with 〜ましょうか. Many answers are possible.</span></span></p>
+<div class="pcards" style="grid-template-columns:repeat(4,minmax(0,1fr))"><div class="pcard"><div class="lbl">1</div><span class="icon" data-icon="sun" data-size="60"></span><div class="t" style="font-weight:800;color:var(--accent);line-height:2">暑{あつ}いですね。</div></div><div class="pcard"><div class="lbl">2</div><span class="icon" data-icon="cloud" data-size="60"></span><div class="t" style="font-weight:800;color:var(--accent);line-height:2">寒{さむ}いですね。</div></div><div class="pcard"><div class="lbl">3</div><span class="icon" data-icon="clock2" data-size="60"></span><div class="t" style="font-weight:800;color:var(--accent);line-height:2">十二時{じゅうにじ}ですね。</div></div><div class="pcard"><div class="lbl">4</div><span class="icon" data-icon="exam" data-size="60"></span><div class="t" style="font-weight:800;color:var(--accent);line-height:2">あしたは テストですね。</div></div><div class="pcard"><div class="lbl">5</div><span class="icon" data-icon="gift" data-size="60"></span><div class="t" style="font-weight:800;color:var(--accent);line-height:2">あしたは 先生{せんせい}の 誕生日{たんじょうび}ですよ。</div></div><div class="pcard"><div class="lbl">6</div><span class="icon" data-icon="book" data-size="60"></span><div class="t" style="font-weight:800;color:var(--accent);line-height:2">この宿題{しゅくだい}は 難{むずか}しいですね。</div></div><div class="pcard"><div class="lbl">7</div><span class="icon" data-icon="restaurant" data-size="60"></span><div class="t" style="font-weight:800;color:var(--accent);line-height:2">あの レストランは おいしいですよ。</div></div><div class="pcard"><div class="lbl">8</div><span class="icon" data-icon="friends" data-size="60"></span><div class="t" style="font-weight:800;color:var(--accent);line-height:2">今日{きょう}は ひまですね。</div></div></div>
+<div class="example"><span class="lbl">Example</span><div class="s">先生{せんせい}：寒{さむ}いですね。　あなた：お茶{ちゃ}を 飲{の}みましょうか。　先生{せんせい}：そうしましょう。</div></div>
+<p class="task"><b>B.</b><span class="bi"><span class="ja">先生{せんせい}と 週末{しゅうまつ}の 予定{よてい}を 決{き}めましょう。「どこに 行{い}きましょうか」「何{なに}を しましょうか」と 話{はな}して、メモに 書{か}きましょう。</span><span class="en">Plan the weekend with your teacher: where to go and what to do. Write it in the memo.</span></span></p>
+<div class="hint" style="display:grid;gap:6px"><div>いつ： <span class="blank" style="min-width:10em"></span></div><div>どこ： <span class="blank" style="min-width:10em"></span></div><div>何{なに}を する： <span class="blank" style="min-width:10em"></span></div><div>何時{なんじ}に 会{あ}う： <span class="blank" style="min-width:10em"></span></div></div>
+<div class="example"><span class="lbl">Example</span><div class="s">A：土曜日{どようび}に 出{で}かけませんか。　B：いいですね。どこに 行{い}きましょうか。<br>A：海{うみ}は どうですか。　B：いいですね。何時{なんじ}に 会{あ}いましょうか。</div></div>
+</section>
+
+<section class="page" id="p6">
+<div class="part-head"><span class="badge">PART 6</span><h2>〜枚{まい}<small>Counting flat things</small></h2></div>
+<h3 class="sub"><span class="tag">COUNTING</span><span class="bi"><span class="ja">〜枚{まい}</span><span class="en">Counting flat things</span></span></h3>
+<p><span class="bi"><span class="ja">紙{かみ}・Tシャツ・写真{しゃしん}・チケットなど、うすい物{もの}は「〜枚{まい}」で 数{かぞ}えます。数{かず}は「を」の 後{あと}に 置{お}きます。</span><span class="en">Use 〜枚 for thin, flat things: paper, T-shirts, photos. Put the number after を.</span></span></p>
+<div class="formula"><span class="k">Tシャツ<span class="hl">を 三枚{さんまい}</span> 買{か}いました。</span><span class="e">I bought three T-shirts.</span></div>
+<div class="table-wrap"><table class="forms"><tr><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><td>いちまい</td><td>にまい</td><td>さんまい</td><td>よんまい</td><td>ごまい</td></tr><tr><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr><tr><td>ろくまい</td><td>ななまい</td><td>はちまい</td><td>きゅうまい</td><td>じゅうまい</td></tr></table></div>
+<p class="muted"><span class="bi"><span class="ja">何枚{なんまい}ですか。＝ How many (flat things)?</span><span class="en">Ask with 何枚.</span></span></p>
+<h3 class="talk"><span class="stage talk">話{はな}してみよう</span><span class="bi"><span class="ja">お土産{みやげ}の 店{みせ}で</span><span class="en">At the souvenir shop</span></span></h3>
+<p class="task"><b>A.</b><span class="bi"><span class="ja">ロールプレイ：あなたは 北海道{ほっかいどう}の お土産{みやげ}の 店{みせ}に います。先生{せんせい}は 店{みせ}の人{ひと}です。値段{ねだん}と サイズを 聞{き}いて、Tシャツや 写真{しゃしん}を 買{か}いましょう。何枚{なんまい} 買{か}うか 言{い}いましょう。</span><span class="en">Role play at a souvenir shop. Ask prices and sizes, and buy T-shirts or photo postcards. Say how many.</span></span></p>
+<div class="grid12" style="grid-template-columns:repeat(4,minmax(0,1fr))"><div class="g"><span class="icon" data-icon="shirt" data-size="52"></span><div class="t" style="font-weight:700">Tシャツ</div><div style="font-weight:800;color:var(--accent)">¥1,800</div><div class="t">S・M・L</div></div><div class="g"><span class="icon" data-icon="shirt" data-size="52"></span><div class="t" style="font-weight:700">Tシャツ（大{おお}きい）</div><div style="font-weight:800;color:var(--accent)">¥2,000</div><div class="t">LL</div></div><div class="g"><span class="icon" data-icon="camera" data-size="52"></span><div class="t" style="font-weight:700">写真{しゃしん}</div><div style="font-weight:800;color:var(--accent)">¥150</div><div class="t"></div></div><div class="g"><span class="icon" data-icon="hat" data-size="52"></span><div class="t" style="font-weight:700">ぼうし</div><div style="font-weight:800;color:var(--accent)">¥2,500</div><div class="t">M・L</div></div></div>
+<div class="example"><span class="lbl">Example</span><div class="s">客{きゃく}：すみません、この Tシャツは いくらですか。　店{みせ}の人{ひと}：千八百円{せんはっぴゃくえん}です。<br>客{きゃく}：Lサイズが ありますか。　店{みせ}の人{ひと}：はい、ありますよ。　客{きゃく}：じゃあ、Lサイズを 二枚{にまい} ください。</div></div>
+<div class="you"><h4><span class="bi"><span class="ja">あなたは？</span><span class="en">About you</span></span></h4><ol><li>旅行{りょこう}で よく お土産{みやげ}を 買{か}いますか。どんな お土産{みやげ}を 買{か}いますか。</li><li>旅行{りょこう}で、写真{しゃしん}を 何枚{なんまい}ぐらい 撮{と}りますか。</li><li>きのう、写真{しゃしん}を 何枚{なんまい} 撮{と}りましたか。</li></ol></div>
+</section>
+
+<section class="page" id="p7">
+<div class="part-head"><span class="badge">PART 7</span><h2>読{よ}み物{もの}<small>Reading</small></h2></div>
+<p><span class="bi"><span class="ja">Part 1〜6で 勉強{べんきょう}したことを 使{つか}って、会話{かいわ}を 読{よ}みましょう。</span><span class="en">Now read conversations that use everything from Parts 1–6.</span></span></p>
+<h3 class="sub"><span class="tag">READING Ⅰ</span><span class="bi"><span class="ja">北海道{ほっかいどう}で</span><span class="en">In Hokkaido</span></span></h3>
+<div class="dlg"><div class="row"><div class="sp s">リン：</div><div class="s">いい 天気{てんき}ですね。</div></div><div class="row"><div class="sp s">アミナ：</div><div class="s">そうですね。でも、すごく 寒{さむ}いですね。</div></div><div class="row"><div class="sp s">リン：</div><div class="s">ええ。わあ、きれいな 海{うみ}！</div></div><div class="row"><div class="sp s">アミナ：</div><div class="s">写真{しゃしん}を 撮{と}りましょう。</div></div><div class="row"><div class="sp s"></div><div class="s">＊　　＊　　＊</div></div><div class="row"><div class="sp s">アミナ：</div><div class="s">リンさんは どんな 食{た}べ物{もの}が 好{す}きですか。</div></div><div class="row"><div class="sp s">リン：</div><div class="s">魚{さかな}が 大好{だいす}きです。今晩{こんばん}、一緒{いっしょ}に 魚{さかな}の レストランに 行{い}きましょうか。</div></div><div class="row"><div class="sp s">アミナ：</div><div class="s">でも、高{たか}くないですか。</div></div><div class="row"><div class="sp s">リン：</div><div class="s">大丈夫{だいじょうぶ}ですよ。</div></div></div>
+<h3 class="sub"><span class="tag">READING Ⅱ</span><span class="bi"><span class="ja">お土産{みやげ}の 店{みせ}で</span><span class="en">At the souvenir shop</span></span></h3>
+<div class="dlg"><div class="row"><div class="sp s">アミナ：</div><div class="s">すみません。この Tシャツは いくらですか。</div></div><div class="row"><div class="sp s">店{みせ}の人{ひと}：</div><div class="s">二千円{にせんえん}です。</div></div><div class="row"><div class="sp s">アミナ：</div><div class="s">あのう、Lサイズが ありますか。</div></div><div class="row"><div class="sp s">店{みせ}の人{ひと}：</div><div class="s">はい、ありますよ。</div></div><div class="row"><div class="sp s">アミナ：</div><div class="s">じゃあ、Lサイズを 二枚{にまい} ください。</div></div></div>
+<h3 class="sub"><span class="tag">READING Ⅲ</span><span class="bi"><span class="ja">月曜日{げつようび}、大学{だいがく}で</span><span class="en">On Monday, at the university</span></span></h3>
+<div class="dlg"><div class="row"><div class="sp s">ゆうき：</div><div class="s">アミナさん、旅行{りょこう}は 楽{たの}しかったですか。</div></div><div class="row"><div class="sp s">アミナ：</div><div class="s">ええ。北海道{ほっかいどう}の 海{うみ}は とても きれいでしたよ。</div></div><div class="row"><div class="sp s">ゆうき：</div><div class="s">よかったですね。僕{ぼく}も 海{うみ}が 大好{だいす}きです。ホテルは 高{たか}かったですか。</div></div><div class="row"><div class="sp s">アミナ：</div><div class="s">いいえ、あまり 高{たか}くなかったです。これ、お土産{みやげ}です。</div></div><div class="row"><div class="sp s">ゆうき：</div><div class="s">わあ、かっこいい Tシャツですね。ありがとう。</div></div><div class="row"><div class="sp s">アミナ：</div><div class="s">ゆうきさんの 週末{しゅうまつ}は どうでしたか。</div></div><div class="row"><div class="sp s">ゆうき：</div><div class="s">……宿題{しゅくだい}でした。</div></div></div>
+<p class="task"><span class="bi"><span class="ja">質問{しつもん}</span><span class="en">Questions</span></span></p>
+<ol class="items one"><li><div class="s">北海道{ほっかいどう}の 天気{てんき}は どうでしたか。</div></li><li><div class="s">リンさんは どんな 食{た}べ物{もの}が 好{す}きですか。</div></li><li><div class="s">アミナさんは Tシャツを 何枚{なんまい} 買{か}いましたか。いくらでしたか。</div></li><li><div class="s">北海道{ほっかいどう}の ホテルは 高{たか}かったですか。</div></li><li><div class="s">ゆうきさんは 何{なに}が 大好{だいす}きですか。</div></li><li><div class="s">ゆうきさんの 週末{しゅうまつ}は 楽{たの}しかったですか。</div></li></ol>
+</section>
+
+<section class="page" id="p8">
+<div class="part-head"><span class="badge">PART 8</span><h2>まとめ<small>Review</small></h2></div>
+<p class="task"><b>A.</b><span class="bi"><span class="ja">旅行{りょこう}の 写真{しゃしん}を 先生{せんせい}に 見{み}せて、話{はな}しましょう。どこに 行{い}きましたか。どうでしたか。そのあと、先生{せんせい}が いろいろ 質問{しつもん}します。</span><span class="en">Show your teacher a photo from a trip and talk about it: where you went and how it was. Then your teacher asks questions.</span></span></p>
+<div class="hint"><b>Hint</b>どこに 行{い}きましたか　／　天気{てんき}は どうでしたか　／　だれと 行{い}きましたか　／　ホテルは いくらでしたか　／　食{た}べ物{もの}は おいしかったですか　／　お土産{みやげ}を 買{か}いましたか</div>
+<p class="task"><b>B.</b><span class="bi"><span class="ja">トークカード：1枚{まい} えらんで、1分{ぷん}ぐらい 話{はな}しましょう。</span><span class="en">Talk cards: choose one and talk for about one minute.</span></span></p>
+<div class="tcards"><div class="tcard"><span class="n">1</span><span class="icon" data-icon="house" data-size="40"></span><br>わたしの 町{まち}</div><div class="tcard"><span class="n">2</span><span class="icon" data-icon="friends" data-size="40"></span><br>わたしの 好{す}きな人{ひと}（家族{かぞく}・友{とも}だち）</div><div class="tcard"><span class="n">3</span><span class="icon" data-icon="food" data-size="40"></span><br>好{す}きな 食{た}べ物{もの}・きらいな 食{た}べ物{もの}</div><div class="tcard"><span class="n">4</span><span class="icon" data-icon="suitcase" data-size="40"></span><br>休{やす}みの 旅行{りょこう}</div><div class="tcard"><span class="n">5</span><span class="icon" data-icon="book" data-size="40"></span><br>日本語{にほんご}の クラス</div><div class="tcard"><span class="n">6</span><span class="icon" data-icon="tv" data-size="40"></span><br>おもしろい 映画{えいが}</div></div>
+<p class="task"><b>C.</b><span class="bi"><span class="ja">ロールプレイ：「どんな 音楽{おんがく}／スポーツが 好{す}きですか」と 聞{き}いて、同{おな}じなら「一緒{いっしょ}に 〜ましょうか」と 誘{さそ}いましょう。日{ひ}と 時間{じかん}も 決{き}めましょう。</span><span class="en">Role play: ask what music or sports your teacher likes. If you like the same thing, invite them with 一緒に〜ましょうか, and decide the day and time.</span></span></p>
+<div class="example"><span class="lbl">Example</span><div class="s">A：どんな スポーツが 好{す}きですか。　B：テニスが 好{す}きです。<br>A：わたしも 好{す}きです。一緒{いっしょ}に テニスを しましょうか。　B：いいですね。</div></div>
+<div class="note" style="margin-top:18px"><h4><span class="bi"><span class="ja">チェックリスト・できるかな？</span><span class="en">CHECKLIST · Can you…?</span></span></h4><div style="display:grid;gap:8px"><div style="display:flex;gap:8px"><span>☐</span><span class="bi"><span class="ja">い形容詞{けいようし}・な形容詞{けいようし}を 正{ただ}しく 使{つか}える</span><span class="en">use い- and な-adjectives correctly</span></span></div><div style="display:flex;gap:8px"><span>☐</span><span class="bi"><span class="ja">旅行{りょこう}や 休{やす}みが どうだったか 話{はな}せる</span><span class="en">talk about how a trip or holiday was</span></span></div><div style="display:flex;gap:8px"><span>☐</span><span class="bi"><span class="ja">人{ひと}や 町{まち}を 説明{せつめい}できる</span><span class="en">describe people and places</span></span></div><div style="display:flex;gap:8px"><span>☐</span><span class="bi"><span class="ja">好{す}きな物{もの}・きらいな物{もの}を 話{はな}せる</span><span class="en">talk about likes and dislikes</span></span></div><div style="display:flex;gap:8px"><span>☐</span><span class="bi"><span class="ja">「〜ましょう」「〜ましょうか」で 誘{さそ}える</span><span class="en">suggest and offer with 〜ましょう(か)</span></span></div><div style="display:flex;gap:8px"><span>☐</span><span class="bi"><span class="ja">店{みせ}で「〜を 〜枚{まい} ください」と 言{い}える</span><span class="en">buy things and say how many</span></span></div></div></div>
+</section>
+
+<section class="page vocab" id="vocab">
+<div class="part-head"><span class="badge">VOCABULARY</span><h2>単語{たんご}<small>Words in Lesson 5</small></h2></div>
+<p class="muted"><span class="bi"><span class="ja">★は 覚{おぼ}える単語{たんご}です。「カ」のカタカナのことばは、意味{いみ}がわかれば 大丈夫{だいじょうぶ}です。</span><span class="en">★ = words to learn. For the katakana words (カ), it is enough to understand them.</span></span></p><div class="tip"><h4><span class="bi"><span class="ja">「あつい」は 2つ</span><span class="en">Two kinds of あつい</span></span></h4><p><span class="bi"><span class="ja">暑{あつ}い＝天気{てんき}・部屋{へや}（今日{きょう}は 暑{あつ}い）　熱{あつ}い＝物{もの}（このお茶{ちゃ}は 熱{あつ}い）。寒{さむ}い は 天気{てんき}だけに 使{つか}います。　忙{いそが}しい は 人{ひと}・日{ひ}、にぎやか は 町{まち}・場所{ばしょ}に 使{つか}います。</span><span class="en">暑い = weather; 熱い = things. 寒い is only for weather. 忙しい is for people and days; にぎやか is for places.</span></span></p></div><div id="vocabList"></div>
+</section>
+
+<section class="page ans" id="answers">
+<div class="part-head"><span class="badge">MODEL ANSWERS</span><h2>解答例{かいとうれい}<small>Model answers</small></h2></div>
+<p class="muted"><span class="bi"><span class="ja">「話{はな}してみよう」は 答{こた}えが 1つではありません。これは 例{れい}です。</span><span class="en">The speaking tasks have many possible answers. These are only examples.</span></span></p><div id="answerList"></div>
+</section>
+
+<section class="page" id="teacher">
+<div class="part-head"><span class="badge">TEACHER</span><h2>先生用{せんせいよう}<small>For the teacher</small></h2></div>
+<div class="teacher"><h4><span class="bi"><span class="ja">Part 2 B：先生{せんせい}の 旅行{りょこう}（例{れい}）</span><span class="en">Part 2 B: your trip (sample — use your own)</span></span></h4><ul><li>休{やす}みに 京都{きょうと}に 行{い}きました。</li><li>友{とも}だちと 行{い}きました。</li><li>お寺{てら}は とても きれいでした。</li><li>ちょっと 暑{あつ}かったです。</li><li>ホテルは 新{あたら}しかったです。でも、高{たか}かったです。</li></ul></div><div class="teacher"><h4><span class="bi"><span class="ja">話{はな}す時間{じかん}を のばす 質問{しつもん}の例{れい}</span><span class="en">Follow-up questions to keep the student talking</span></span></h4><ul><li>どうでしたか。</li><li>どんな〜ですか。</li><li>だれと 行{い}きましたか。</li><li>ほかに 何{なに}が 好{す}きですか。</li><li>一緒{いっしょ}に 〜ましょうか。</li><li>〇〇さんの 国{くに}では どうですか。</li></ul></div>
+</section>
+
+<script>
+/* ============ avatar drawing (original SVG) ============ */
+var LOOK = {
+  lin:    {skin:'#f3d3bd', hair:'#1e1a19', style:'long',  shirt:'#e2683f'},
+  yuuki:  {skin:'#f0ceb2', hair:'#3a2a20', style:'short', shirt:'#3a86a6'},
+  amina:  {skin:'#c58a63', style:'hijab', scarf:'#2e8f82', shirt:'#2e8f82'},
+  raj:    {skin:'#9c6644', hair:'#141414', style:'wavy',  shirt:'#f2b134'},
+  ogawa:  {skin:'#efcfb5', hair:'#8f8f8f', style:'bob',   shirt:'#5d6f7e', glasses:true},
+  father: {skin:'#efcdb1', hair:'#2a2a2a', style:'short', shirt:'#4a6fa5', glasses:true, tie:true},
+  mother: {skin:'#f2d0b8', hair:'#3a2a20', style:'bun',   shirt:'#d46a8a'},
+  sister: {skin:'#f2d0b8', hair:'#4a3426', style:'long',  shirt:'#8e6cc0'},
+  brother:{skin:'#f0ceb2', hair:'#222222', style:'short', shirt:'#3fa66b'},
+  lucas:  {skin:'#fbe3d3', hair:'#c8973f', style:'short', shirt:'#7f9c3a'},
+  strA:   {skin:'#f6d5c0', hair:'#6b4226', style:'long',  shirt:'#5aa0d8'},
+  strB:   {skin:'#e8c19f', hair:'#2a2a2a', style:'short', shirt:'#3d4f63', tie:true},
+  strC:   {skin:'#f0d0b8', hair:'#b9b9b9', style:'bun',   shirt:'#8fbf6a', glasses:true},
+  caster: {skin:'#f2d0b8', hair:'#3a2a20', style:'bob',   shirt:'#e2683f'}
+};
+function avatar(who, size){
+  var o = LOOK[who], s = o.skin, h = o.hair, out = [];
+  out.push('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" width="'+size+'" height="'+Math.round(size*140/120)+'" role="img" aria-label="'+who+'">');
+  out.push('<circle cx="60" cy="72" r="58" fill="#e4f2f4"/>');
+  // back hair
+  if(o.style==='long') out.push('<path d="M30 60 Q27 24 60 24 Q93 24 90 60 L94 110 Q60 120 26 110Z" fill="'+h+'"/>');
+  if(o.style==='bun')  out.push('<circle cx="60" cy="24" r="12" fill="'+h+'"/>');
+  if(o.style==='bob')  out.push('<path d="M30 62 Q27 26 60 26 Q93 26 90 62 L91 88 Q84 92 78 88 L42 88 Q36 92 29 88Z" fill="'+h+'"/>');
+  // body
+  out.push('<path d="M16 140 Q18 104 60 100 Q102 104 104 140Z" fill="'+o.shirt+'"/>');
+  if(o.style==='hijab'){
+    out.push('<path d="M26 68 Q22 22 60 22 Q98 22 94 68 Q98 102 112 140 L8 140 Q22 102 26 68Z" fill="'+o.scarf+'"/>');
+    out.push('<ellipse cx="60" cy="64" rx="24" ry="27" fill="#ffffff" opacity=".18"/>');
+    out.push('<ellipse cx="60" cy="65" rx="21.5" ry="24.5" fill="'+s+'"/>');
+  } else {
+    out.push('<path d="M50 104 L60 116 L70 104Z" fill="#ffffff" opacity=".85"/>');
+    out.push('<rect x="52" y="84" width="16" height="20" rx="6" fill="'+s+'"/>');
+    out.push('<circle cx="33" cy="66" r="5.5" fill="'+s+'"/><circle cx="87" cy="66" r="5.5" fill="'+s+'"/>');
+    out.push('<ellipse cx="60" cy="62" rx="27" ry="30" fill="'+s+'"/>');
+  }
+  if(o.tie) out.push('<path d="M57 104 L63 104 L65 124 L60 130 L55 124Z" fill="#c0392b"/>');
+  // front hair
+  if(o.style==='short') out.push('<path d="M32 62 Q29 29 60 28 Q91 29 88 62 Q86 47 77 43 Q66 50 50 45 Q40 48 32 62Z" fill="'+h+'"/>');
+  if(o.style==='wavy')  out.push('<path d="M32 62 Q29 29 60 28 Q91 29 88 62 Q85 49 78 46 Q73 52 67 46 Q61 52 55 46 Q49 52 43 46 Q37 50 32 62Z" fill="'+h+'"/>');
+  if(o.style==='long' || o.style==='bun') out.push('<path d="M32 60 Q31 29 60 29 Q89 29 88 60 Q80 43 63 41 Q46 41 32 60Z" fill="'+h+'"/>');
+  if(o.style==='bob')   out.push('<path d="M31 62 Q30 30 60 30 Q90 30 89 62 Q86 46 70 44 Q60 50 48 44 Q36 48 31 62Z" fill="'+h+'"/>');
+  // face
+  var ex = (o.style==='hijab') ? 9.5 : 11;
+  out.push('<path d="M'+(60-ex-5)+' 56 q5 -3.5 10 0 M'+(60+ex-5)+' 56 q5 -3.5 10 0" stroke="#3a2a20" stroke-width="2" fill="none" stroke-linecap="round" opacity=".75"/>');
+  out.push('<circle cx="'+(60-ex)+'" cy="65" r="3.3" fill="#2b2b2b"/><circle cx="'+(60+ex)+'" cy="65" r="3.3" fill="#2b2b2b"/>');
+  out.push('<circle cx="'+(61-ex)+'" cy="64" r="1" fill="#fff"/><circle cx="'+(61+ex)+'" cy="64" r="1" fill="#fff"/>');
+  out.push('<ellipse cx="'+(60-ex-5)+'" cy="74" rx="5" ry="3" fill="#ef8f80" opacity=".45"/><ellipse cx="'+(60+ex+5)+'" cy="74" rx="5" ry="3" fill="#ef8f80" opacity=".45"/>');
+  out.push('<path d="M60 67 q-2 5 1 6" stroke="#000" stroke-opacity=".25" stroke-width="1.6" fill="none" stroke-linecap="round"/>');
+  out.push('<path d="M53 77 Q60 84 67 77 Q60 80 53 77Z" fill="#b5483a" stroke="#b5483a" stroke-width="1.5" stroke-linejoin="round"/>');
+  if(o.glasses) out.push('<g stroke="#333" stroke-width="1.8" fill="none"><circle cx="'+(60-ex)+'" cy="65" r="7"/><circle cx="'+(60+ex)+'" cy="65" r="7"/><path d="M'+(60-ex+7)+' 65 L'+(60+ex-7)+' 65"/></g>');
+  out.push('</svg>');
+  return out.join('');
+}
+
+
+/* ============ icons (same flat style and palette as the characters) ============ */
+var ICON = {
+  hotel:'<rect x="16" y="12" width="32" height="40" rx="2" fill="#8e6cc0"/><g fill="#fff" opacity=".85"><rect x="21" y="17" width="6" height="5"/><rect x="29" y="17" width="6" height="5"/><rect x="37" y="17" width="6" height="5"/><rect x="21" y="26" width="6" height="5"/><rect x="29" y="26" width="6" height="5"/><rect x="37" y="26" width="6" height="5"/></g><rect x="28" y="40" width="8" height="12" fill="#f2b134"/><text x="32" y="38" text-anchor="middle" font-size="8" font-weight="800" fill="#fff" font-family="Arial">H</text>',
+  temple:'<path d="M8 26q24-14 48 0z" fill="#b5483a"/><rect x="16" y="26" width="32" height="6" fill="#e2683f"/><path d="M12 38q20-8 40 0z" fill="#b5483a"/><rect x="18" y="38" width="28" height="14" fill="#f3e3c3"/><rect x="29" y="42" width="6" height="10" fill="#8a6a4a"/>',
+  restaurant:'<path d="M22 12v14a5 5 0 0 0 4 5v21M18 12v10M26 12v10" stroke="#26323a" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M42 12q-7 8-2 20v20" stroke="#26323a" stroke-width="3.5" stroke-linecap="round" fill="none"/><circle cx="33" cy="33" r="1" fill="none"/>',
+  house:'<path d="M10 32L32 14l22 18z" fill="#e2683f"/><rect x="16" y="32" width="32" height="20" fill="#fff" stroke="#26323a" stroke-width="2.5"/><rect x="28" y="38" width="8" height="14" fill="#8a6a4a"/><rect x="19" y="36" width="7" height="6" fill="#9ccbd6"/>',
+  fish:'<path d="M12 32q14-14 32 0q-18 14-32 0z" fill="#3a86a6"/><path d="M44 32l10-8v16z" fill="#3a86a6"/><circle cx="20" cy="30" r="2" fill="#fff"/>',
+  meat:'<path d="M14 32q0-14 18-14t16 14q-2 14-18 14t-16-14z" fill="#c0392b"/><path d="M22 28q10-6 18 2" stroke="#f3c3b3" stroke-width="3" fill="none"/><circle cx="46" cy="44" r="4" fill="#f3e3c3"/><path d="M40 40l4 3" stroke="#f3e3c3" stroke-width="4"/>',
+  veg:'<path d="M32 22q-14 2-14 16 0 10 14 12 14-2 14-12 0-14-14-16z" fill="#3fa66b"/><path d="M32 22v26M24 30l8 6M40 30l-8 6" stroke="#2b8a50" stroke-width="2" fill="none"/>',
+  tea:'<path d="M16 26h32v6a16 16 0 0 1-32 0z" fill="#fff" stroke="#26323a" stroke-width="2.5"/><ellipse cx="32" cy="26" rx="16" ry="3" fill="#7fae5a"/><path d="M27 14q3 4 0 8M35 13q3 4 0 8" stroke="#9fb3ba" stroke-width="2.5" fill="none" stroke-linecap="round"/>',
+  hamburger:'<path d="M14 30q0-14 18-14t18 14z" fill="#e6b06a"/><rect x="13" y="30" width="38" height="5" rx="2" fill="#3fa66b"/><rect x="14" y="35" width="36" height="6" rx="3" fill="#8a4a2a"/><path d="M14 41h36v3a5 5 0 0 1-5 5H19a5 5 0 0 1-5-5z" fill="#e6b06a"/>',
+  game:'<rect x="10" y="24" width="44" height="22" rx="11" fill="#5d6f7e"/><path d="M20 31v8M16 35h8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="42" cy="32" r="3" fill="#e2683f"/><circle cx="48" cy="38" r="3" fill="#f2b134"/>',
+  kid:'<circle cx="32" cy="24" r="10" fill="#f0ceb2"/><path d="M22 22q2-10 10-10t10 10q-5-4-10-3t-10 3z" fill="#3a2a20"/><path d="M20 54q0-16 12-16t12 16z" fill="#f2b134"/><circle cx="28" cy="24" r="1.5" fill="#26323a"/><circle cx="36" cy="24" r="1.5" fill="#26323a"/>',
+  clock2:'<circle cx="32" cy="32" r="18" fill="#fff" stroke="#26323a" stroke-width="3"/><path d="M32 32V20M32 32l8 5" stroke="#e2683f" stroke-width="3" stroke-linecap="round"/>',
+  hat:'<path d="M16 38q0-18 16-18t16 18z" fill="#e2683f"/><ellipse cx="32" cy="40" rx="22" ry="5" fill="#b5483a"/>',
+  music:'<path d="M26 44V18l20-5v26" stroke="#26323a" stroke-width="3" fill="none"/><ellipse cx="21" cy="44" rx="6" ry="4.5" fill="#e2683f"/><ellipse cx="41" cy="39" rx="6" ry="4.5" fill="#e2683f"/>',
+  exam:'<rect x="16" y="12" width="32" height="40" rx="3" fill="#fff" stroke="#26323a" stroke-width="2.5"/><path d="M22 22h20M22 30h20M22 38h12" stroke="#9fb3ba" stroke-width="2.5"/><circle cx="42" cy="44" r="8" fill="none" stroke="#d64541" stroke-width="3"/>',
+  bus:'<rect x="10" y="16" width="44" height="30" rx="6" fill="#3fa66b"/><rect x="14" y="21" width="36" height="11" rx="2" fill="#9ccbd6"/><circle cx="20" cy="47" r="5" fill="#26323a"/><circle cx="44" cy="47" r="5" fill="#26323a"/><rect x="46" y="35" width="5" height="4" rx="1" fill="#f2b134"/>',
+  gift:'<rect x="14" y="26" width="36" height="26" rx="2" fill="#e2683f"/><rect x="11" y="20" width="42" height="8" rx="2" fill="#e25d7f"/><path d="M32 20v32" stroke="#f2b134" stroke-width="5"/><path d="M32 20q-10-10-12-2q2 4 12 2zM32 20q10-10 12-2q-2 4-12 2z" fill="#f2b134"/>',
+  fruit:'<path d="M32 22q-14-6-16 10 0 16 16 20 16-4 16-20-2-16-16-10z" fill="#d64541"/><path d="M32 22q0-6 4-10" stroke="#8a6a4a" stroke-width="3" fill="none"/><path d="M34 16q6-4 10 0q-6 4-10 0z" fill="#3fa66b"/>',
+  book:'<rect x="16" y="15" width="32" height="35" rx="3" fill="#3a86a6"/><rect x="16" y="15" width="6" height="35" fill="#2b6b85"/><rect x="28" y="23" width="14" height="3" rx="1.5" fill="#fff" opacity=".85"/><rect x="28" y="29" width="10" height="3" rx="1.5" fill="#fff" opacity=".6"/>',
+  racket:'<ellipse cx="38" cy="24" rx="12" ry="14" fill="#fff" stroke="#e2683f" stroke-width="4"/><path d="M38 12v24M27 24h22M30 17h16M30 31h16M32 13v22M44 13v22" stroke="#e2683f" stroke-width="1" opacity=".45"/><path d="M31 36L19 52" stroke="#5d6f7e" stroke-width="6" stroke-linecap="round"/>',
+  camera:'<rect x="12" y="22" width="40" height="26" rx="5" fill="#26323a"/><rect x="22" y="17" width="12" height="7" rx="2" fill="#26323a"/><circle cx="32" cy="35" r="9" fill="#9ccbd6"/><circle cx="32" cy="35" r="5" fill="#1d7a8a"/><circle cx="45" cy="27" r="2" fill="#f2b134"/>',
+  laptop:'<rect x="16" y="18" width="32" height="22" rx="2" fill="#5d6f7e"/><rect x="19" y="21" width="26" height="16" fill="#9ccbd6"/><path d="M10 42h44l-4 6H14z" fill="#8a9aa6"/>',
+  coffee:'<path d="M42 28h4a6 6 0 0 1 0 12h-4" fill="none" stroke="#26323a" stroke-width="3"/><path d="M18 24h24v16a10 10 0 0 1-10 10h-4a10 10 0 0 1-10-10z" fill="#fff" stroke="#26323a" stroke-width="3"/><path d="M20 27h20" stroke="#8a6a4a" stroke-width="4"/><path d="M25 12q3 4 0 8M33 11q3 4 0 8" stroke="#9fb3ba" stroke-width="2.5" fill="none" stroke-linecap="round"/>',
+  suitcase:'<rect x="26" y="15" width="12" height="10" rx="2" fill="none" stroke="#26323a" stroke-width="3"/><rect x="13" y="23" width="38" height="28" rx="4" fill="#e2683f"/><path d="M22 23v28M42 23v28" stroke="#b5483a" stroke-width="3"/>',
+  phone:'<rect x="22" y="11" width="20" height="42" rx="4" fill="#26323a"/><rect x="25" y="15" width="14" height="30" fill="#9ccbd6"/><circle cx="32" cy="49" r="1.8" fill="#fff"/>',
+  cup:'<path d="M21 18h22l-3 34H24z" fill="#f2b134"/><path d="M21 18h22l-1 7H22z" fill="#fff" opacity=".6"/><path d="M37 8l-4 14" stroke="#e2683f" stroke-width="3" stroke-linecap="round"/>',
+  pan:'<path d="M43 35h14" stroke="#8a6a4a" stroke-width="5" stroke-linecap="round"/><ellipse cx="27" cy="37" rx="17" ry="9" fill="#26323a"/><ellipse cx="27" cy="35" rx="14" ry="6" fill="#5d6f7e"/><circle cx="23" cy="34" r="3" fill="#f2b134"/><circle cx="31" cy="35" r="3" fill="#e2683f"/><path d="M21 20q3 4 0 8M29 18q3 4 0 8" stroke="#9fb3ba" stroke-width="2.5" fill="none" stroke-linecap="round"/>',
+  mic:'<rect x="25" y="9" width="14" height="23" rx="7" fill="#5d6f7e"/><path d="M20 26a12 12 0 0 0 24 0" fill="none" stroke="#26323a" stroke-width="3"/><path d="M32 38v12M24 52h16" stroke="#26323a" stroke-width="3" stroke-linecap="round"/><path d="M47 13l5-4M49 22h6" stroke="#e2683f" stroke-width="2.5" stroke-linecap="round"/>',
+  broom:'<path d="M42 9L31 35" stroke="#8a6a4a" stroke-width="4" stroke-linecap="round"/><path d="M21 33h20l5 19H16z" fill="#f2b134"/><path d="M23 39l-3 13M30 39v13M37 39l3 13" stroke="#c99a2e" stroke-width="2"/>',
+  shirt:'<path d="M23 14l-11 8 5 8 5-3v25h20V27l5 3 5-8-11-8q-4.5 5-9 0z" fill="#9ccbd6"/><circle cx="17" cy="50" r="3.5" fill="#fff" stroke="#1d7a8a" stroke-width="1.5"/><circle cx="49" cy="12" r="3" fill="#fff" stroke="#1d7a8a" stroke-width="1.5"/><circle cx="53" cy="20" r="2" fill="#fff" stroke="#1d7a8a" stroke-width="1.5"/>',
+  swim:'<circle cx="32" cy="23" r="8" fill="#f0ceb2"/><path d="M24 21h16" stroke="#26323a" stroke-width="3"/><path d="M9 35q5.5-5 11.5 0t11.5 0 11.5 0 11.5 0" stroke="#1d7a8a" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M9 45q5.5-5 11.5 0t11.5 0 11.5 0 11.5 0" stroke="#3a86a6" stroke-width="4" fill="none" stroke-linecap="round"/>',
+  car:'<path d="M11 38l5-12q2-4 6-4h20q4 0 6 4l5 12v8H11z" fill="#e2683f"/><path d="M20 26h24l3 8H17z" fill="#9ccbd6"/><circle cx="21" cy="46" r="5" fill="#26323a"/><circle cx="43" cy="46" r="5" fill="#26323a"/>',
+  alarm:'<circle cx="18" cy="17" r="6" fill="#f2b134"/><circle cx="46" cy="17" r="6" fill="#f2b134"/><path d="M21 51l-4 5M43 51l4 5" stroke="#26323a" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="35" r="17" fill="#fff" stroke="#26323a" stroke-width="3"/><path d="M32 35V24M32 35l7 4" stroke="#e2683f" stroke-width="3" stroke-linecap="round"/>',
+  ball:'<circle cx="32" cy="32" r="17" fill="#fff" stroke="#26323a" stroke-width="2.5"/><path d="M32 23l8 6-3 9h-10l-3-9z" fill="#26323a"/>',
+  bag:'<path d="M24 24v-4a8 8 0 0 1 16 0v4" fill="none" stroke="#26323a" stroke-width="3"/><path d="M15 24h34l-3 28H18z" fill="#3fa66b"/>',
+  food:'<path d="M41 8L31 30M47 11L35 30" stroke="#8a6a4a" stroke-width="3" stroke-linecap="round"/><path d="M12 32h40a20 17 0 0 1-40 0z" fill="#e2683f"/><ellipse cx="32" cy="32" rx="20" ry="4" fill="#fff"/>',
+  chopsticks:'<path d="M18 52L46 12M24 54L52 16" stroke="#8a6a4a" stroke-width="4" stroke-linecap="round"/>',
+  wash:'<path d="M14 50L38 14M20 52L44 18" stroke="#8a6a4a" stroke-width="4" stroke-linecap="round"/><path d="M48 30q-4 6 0 9q4-3 0-9zM40 42q-3 5 0 7q3-2 0-7zM52 44q-3 5 0 7q3-2 0-7z" fill="#3a86a6"/>',
+  tv:'<rect x="10" y="15" width="44" height="31" rx="4" fill="#26323a"/><rect x="14" y="19" width="36" height="23" fill="#9ccbd6"/><path d="M26 53h12M32 46v7" stroke="#26323a" stroke-width="3" stroke-linecap="round"/>',
+  bath:'<path d="M14 34V19a5 5 0 0 1 10 0" fill="none" stroke="#26323a" stroke-width="2.5"/><path d="M10 34h44v6a12 12 0 0 1-12 12H22a12 12 0 0 1-12-12z" fill="#fff" stroke="#26323a" stroke-width="2.5"/><circle cx="34" cy="28" r="3" fill="#9ccbd6"/><circle cx="42" cy="23" r="4" fill="#9ccbd6"/><circle cx="27" cy="27" r="2.5" fill="#9ccbd6"/>',
+  shoes:'<path d="M10 40q0-8 6-10l9-2 5 6q6 2 13 2 11 0 11 6v5H10z" fill="#8a6a4a"/><path d="M10 47h44" stroke="#26323a" stroke-width="3"/>',
+  cigarette:'<rect x="11" y="34" width="34" height="8" fill="#fff" stroke="#26323a" stroke-width="2"/><rect x="37" y="34" width="8" height="8" fill="#f2b134"/><path d="M50 30q-4-5 0-10q4-5 0-10" stroke="#9fb3ba" stroke-width="2.5" fill="none"/>',
+  bottle:'<rect x="26" y="12" width="12" height="7" rx="1" fill="#1d7a8a"/><path d="M25 19h14l3 9v24a3 3 0 0 1-3 3H25a3 3 0 0 1-3-3V28z" fill="#9ccbd6"/><rect x="22" y="33" width="20" height="9" fill="#fff" opacity=".7"/>',
+  window:'<rect x="14" y="12" width="36" height="40" rx="2" fill="#9ccbd6" stroke="#26323a" stroke-width="3"/><path d="M32 12v40M14 32h36" stroke="#26323a" stroke-width="3"/>',
+  aircon:'<rect x="9" y="16" width="46" height="17" rx="4" fill="#fff" stroke="#26323a" stroke-width="2.5"/><path d="M15 28h34" stroke="#9fb3ba" stroke-width="2"/><path d="M20 39q3 4 0 9M32 39q3 4 0 9M44 39q3 4 0 9" stroke="#3a86a6" stroke-width="2.5" fill="none" stroke-linecap="round"/>',
+  friends:'<circle cx="23" cy="25" r="8" fill="#f0ceb2"/><circle cx="41" cy="25" r="8" fill="#c58a63"/><path d="M11 53q0-15 12-15t12 15z" fill="#3a86a6"/><path d="M29 53q0-15 12-15t12 15z" fill="#f2b134"/>',
+  sun:'<g stroke="#f2b134" stroke-width="3.5" stroke-linecap="round"><path d="M32 9v7M32 48v7M9 32h7M48 32h7M16 16l5 5M43 43l5 5M16 48l5-5M43 21l5-5"/></g><circle cx="32" cy="32" r="11" fill="#f2b134"/>',
+  cloud:'<path d="M17 43a9 9 0 0 1 2-18 12 12 0 0 1 23-2 9 9 0 0 1 3 20z" fill="#9fb3ba"/>',
+  rain:'<path d="M17 37a9 9 0 0 1 2-18 12 12 0 0 1 23-2 9 9 0 0 1 3 20z" fill="#8a9aa6"/><path d="M22 44l-3 8M32 44l-3 8M42 44l-3 8" stroke="#3a86a6" stroke-width="3.5" stroke-linecap="round"/>',
+  snow:'<path d="M17 37a9 9 0 0 1 2-18 12 12 0 0 1 23-2 9 9 0 0 1 3 20z" fill="#9fb3ba"/><g fill="#fff" stroke="#3a86a6" stroke-width="1.5"><circle cx="21" cy="47" r="3.5"/><circle cx="32" cy="51" r="3.5"/><circle cx="43" cy="47" r="3.5"/></g>'
+};
+function icon(name, size, sign){
+  var out = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="'+size+'" height="'+size+'" role="img" aria-label="'+name+'">';
+  out += '<circle cx="32" cy="32" r="30" fill="'+(sign ? '#ffffff' : '#e4f2f4')+'"/>' + (ICON[name] || '');
+  if(sign) out += '<circle cx="32" cy="32" r="27" fill="none" stroke="#d64541" stroke-width="5"/><path d="M13 13L51 51" stroke="#d64541" stroke-width="5" stroke-linecap="round"/>';
+  return out + '</svg>';
+}
+
+
+/* ============ vocabulary (GENKI Lesson 5: all 52 words) ============ */
+var VOCAB = [
+ ['名詞{めいし}|Nouns',[
+  ['c','食{た}べ物{もの}','food'],['c','飲{の}み物{もの}','drink'],['c','果物{くだもの}','fruit'],['c','休{やす}み','holiday; day off; absence'],['c','旅行{りょこう}','travel'],['c','海{うみ}','sea'],
+  ['c','お土産{みやげ}','souvenir'],['c','天気{てんき}','weather'],['c','宿題{しゅくだい}','homework'],['c','誕生日{たんじょうび}','birthday'],['c','部屋{へや}','room'],['c','僕{ぼく}','I (used by men)']]],
+ ['カタカナのことば|Katakana words (just understand them)',[['k','サーフィン','surfing'],['k','バス','bus'],['k','テスト','test'],['k','Lサイズ','size L']]],
+ ['い形容詞{けいようし}|い-adjectives',[
+  ['c','新{あたら}しい','new'],['c','古{ふる}い','old (things, not people)'],['c','暑{あつ}い','hot (weather)'],['c','寒{さむ}い','cold (weather)'],['c','熱{あつ}い','hot (things)'],['c','忙{いそが}しい','busy (people / days)'],
+  ['c','大{おお}きい','large'],['c','小{ちい}さい','small'],['c','おもしろい','interesting; funny'],['c','つまらない','boring'],['c','やさしい','easy; kind'],['c','難{むずか}しい','difficult'],
+  ['c','かっこいい','good-looking (like いい)'],['c','こわい','frightening'],['c','楽{たの}しい','fun'],['c','安{やす}い','inexpensive; cheap']]],
+ ['な形容詞{けいようし}|な-adjectives',[
+  ['c','好{す}き（な）','to like (〜が)'],['c','きらい（な）','to dislike (〜が)'],['c','大好{だいす}き（な）','to love (〜が)'],['c','大{だい}きらい（な）','to hate (〜が)'],['c','きれい（な）','beautiful; clean'],
+  ['c','元気{げんき}（な）','healthy; energetic'],['c','静{しず}か（な）','quiet'],['c','にぎやか（な）','lively'],['c','ひま（な）','not busy; free']]],
+ ['動詞{どうし}|Verbs',[['c','泳{およ}ぐ','to swim · う'],['c','聞{き}く','to ask (person に) · う'],['c','乗{の}る','to ride; to board (〜に) · う'],['c','やる','to do; to perform (〜を) · う'],['c','出{で}かける','to go out · る']]],
+ ['そのほか|Other words',[['c','一緒{いっしょ}に','together'],['c','すごく','extremely'],['c','大丈夫{だいじょうぶ}','It\'s okay; no problem'],['c','とても','very'],['c','どんな','what kind of …'],['c','〜枚{まい}','counter for flat things']]]
+];
+
+var ANSWERS = [
+ ['Part 1 ミニ確認{かくにん}',['高{たか}くないです','静{しず}かじゃないです','おもしろくないです','ひまじゃないです','よくないです','かっこよくないです']],
+ ['Part 1 A（例{れい}）',['この 時計{とけい}は とても 高{たか}いです。','この かばんは 安{やす}いです。','今日{きょう}は とても 暑{あつ}いです。','今日{きょう}は 寒{さむ}いです。','この お寺{てら}は とても 古{ふる}いです。','この うちは 新{あたら}しいです。','この ハンバーガーは 大{おお}きいです。','テストは 難{むずか}しかったです。']],
+ ['Part 2 ミニ確認{かくにん}',['楽{たの}しかったです／楽{たの}しくなかったです','ひまでした／ひまじゃなかったです','よかったです／よくなかったです','きれいでした／きれいじゃなかったです']],
+ ['Part 2 A',['北海道{ほっかいどう}は 寒{さむ}かったです。','魚{さかな}は おいしかったです。','ホテルは 新{あたら}しかったです。高{たか}くなかったです。','町{まち}は 静{しず}かでした。','海{うみ}は とても きれいでした。','バスは ちょっと 古{ふる}かったです。','お土産{みやげ}は 安{やす}くなかったです。']],
+ ['Part 3 ミニ確認{かくにん}',['新{あたら}しい ホテルですね。','きれいな 部屋{へや}ですね。','難{むずか}しい 宿題{しゅくだい}ですね。','静{しず}かな 町{まち}ですね。']],
+ ['Part 4 A',['リンさんは 魚{さかな}が 大好{だいす}きです。コーヒーが きらいです。','ゆうきさんは 肉{にく}が 好{す}きです。野菜{やさい}が 大{だい}きらいです。','アミナさんは 果物{くだもの}が 大好{だいす}きです。テストが きらいです。','ラジさんは ゲームが 大好{だいす}きです。お茶{ちゃ}は 好{す}きでも きらいでもないです。','ルーカスさんは スポーツが 好{す}きです。音楽{おんがく}は あまり 好{す}きじゃないです。']],
+ ['Part 5 ミニ確認{かくにん}',['バスに 乗{の}りましょう。','お土産{みやげ}を 買{か}いましょう。','一緒{いっしょ}に 帰{かえ}りましょう。','出{で}かけましょう。']],
+ ['Part 5 A（例{れい}）',['海{うみ}で 泳{およ}ぎましょうか。','お茶{ちゃ}を 飲{の}みましょうか。','昼{ひる}ご飯{はん}を 食{た}べましょうか。','一緒{いっしょ}に 勉強{べんきょう}しましょうか。','お土産{みやげ}を 買{か}いましょうか。','先生{せんせい}に 聞{き}きましょうか。','今晩{こんばん} 行{い}きましょうか。','出{で}かけましょうか。']],
+ ['Reading',['いい 天気{てんき}でした。でも、すごく 寒{さむ}かったです。','魚{さかな}が 大好{だいす}きです。','二枚{にまい} 買{か}いました。一枚{いちまい} 二千円{にせんえん}でした。','いいえ、あまり 高{たか}くなかったです。','海{うみ}が 大好{だいす}きです。','いいえ、楽{たの}しくなかったです。宿題{しゅくだい}でした。']]
+];
+
+/* ============ render ============ */
+document.querySelectorAll('.av[data-who]').forEach(function(el){ el.innerHTML = avatar(el.dataset.who, +(el.dataset.size||90)); });
+document.querySelectorAll('.icon[data-icon]').forEach(function(el){ el.innerHTML = icon(el.dataset.icon, +(el.dataset.size||48), !!el.dataset.sign); });
+var MK = {c:['core','★'], k:['add','カ']};
+document.getElementById('vocabList').innerHTML = VOCAB.map(function(g){
+  var t = g[0].split('|');
+  return '<h3><span class="bi"><span class="ja">'+t[0]+'</span><span class="en">'+t[1]+'</span></span></h3><table>'+g[1].map(function(w){
+    return '<tr><td><span class="mk '+MK[w[0]][0]+'">'+MK[w[0]][1]+'</span></td><td class="kk" style="width:44%;line-height:2.1">'+w[1]+'</td><td>'+w[2]+'</td></tr>';
+  }).join('')+'</table>';
+}).join('');
+document.getElementById('answerList').innerHTML = ANSWERS.map(function(g){
+  var short = g[1].every(function(a){ return a.replace(/\{[^}]*\}/g,'').length < 16; });
+  return '<h3>'+g[0]+'</h3><ol'+(short?' class="cols"':'')+'>'+g[1].map(function(a){ return '<li class="s" style="font-size:1.02rem">'+a+'</li>'; }).join('')+'</ol>';
+}).join('');
+
+/* ============ furigana: 漢字{かんじ} → ruby (all pages) ============ */
+document.querySelectorAll('section.page').forEach(function(sec){
+  sec.innerHTML = sec.innerHTML.replace(/([㐀-鿿々]+)\{([^}]+)\}/g, '<ruby>$1<rt>$2</rt></ruby>');
+});
+
+/* ============ furigana toggle (remembered per viewer) ============ */
+var btn = document.getElementById('furiBtn');
+function setFuri(on){
+  document.body.classList.toggle('no-furi', !on);
+  btn.classList.toggle('on', on);
+  btn.textContent = 'ふりがな: ' + (on ? 'ON' : 'OFF');
+  try{ localStorage.setItem('l5-furi', on ? '1' : '0'); }catch(e){}
+}
+var saved = null; try{ saved = localStorage.getItem('l5-furi'); }catch(e){}
+setFuri(saved !== '0');
+btn.addEventListener('click', function(){ setFuri(document.body.classList.contains('no-furi')); });
+
+/* ============ pagination: split each part into A4 pages and number them ============
+   Measured at the fixed A4 width with romaji shown, so page numbers are the same
+   on a computer, on a phone, and in the printed PDF. */
+/* PAGE_BREAKS: fixed break points (index of the child that starts each new page), written by tools/fix_pages.sh.
+   Using fixed points keeps page numbers identical on every device. Empty = measure in this browser. */
+var PAGE_BREAKS = {"top":[],"cast":[],"p1":[5,12],"p2":[7],"p3":[8],"p4":[8],"p5":[7,11],"p6":[6],"p7":[4,8],"p8":[5],"vocab":[3,7,9,13],"answers":[8,18],"teacher":[]};
+function paginate(){
+  var MM = 96/25.4, MAXH = Math.floor((297-16-14)*MM) - 24;
+  var useFixed = Object.keys(PAGE_BREAKS).length > 0 && !/[?&]measure/.test(location.search), found = {};
+  var body = document.body, romajiOff = body.classList.contains('no-furi');
+  body.classList.remove('no-furi');
+  var measure = document.createElement('section');
+  measure.style.cssText = 'position:absolute;left:-10000px;top:0;visibility:hidden;width:210mm;min-height:0;margin:0;padding:16mm 13mm 14mm';
+  body.appendChild(measure);
+  var isHead = function(el){ return /^H[2-4]$/.test(el.tagName) || el.classList.contains('task') || el.classList.contains('part-head'); };
+  /* keep a chart / example / list of questions together on one page */
+  var block = function(el){ return el.classList.contains('table-wrap') || el.classList.contains('example') || el.classList.contains('cast') || el.classList.contains('phones') || el.classList.contains('items') || el.classList.contains('clocks') || el.classList.contains('cities') || ['pcards','signs','icards','chat','tv','bubbles','party','bags','grid12','tcards','cal','hint','you','legend2','note'].some(function(c){ return el.classList.contains(c); }); };
+  var glue = function(prev, next){ return block(prev) && block(next); };
+  var pages = [];
+  Array.prototype.slice.call(document.querySelectorAll('section.page')).forEach(function(sec){
+    ['vocabList','answerList'].forEach(function(id){
+      var c = sec.querySelector('#'+id);
+      if(c){ while(c.firstChild) c.parentNode.insertBefore(c.firstChild, c); c.parentNode.removeChild(c); }
+    });
+    var badge = sec.querySelector('.badge'), h2 = sec.querySelector('h2');
+    var h2c = h2 ? h2.cloneNode(true) : null; if(h2c) h2c.querySelectorAll('rt,small').forEach(function(x){ x.remove(); });
+    var label = badge ? badge.textContent + (h2c ? ' · ' + h2c.textContent.trim() : '') : '';
+    measure.className = sec.className;
+    var kids = Array.prototype.slice.call(sec.children);
+    kids.forEach(function(k){ measure.appendChild(k); });
+    var top = function(el){ return el.offsetTop - parseFloat(getComputedStyle(el).marginTop || 0); };
+    var groups = [], start = 0, base = kids.length ? top(kids[0]) : 0;
+    if(useFixed){
+      (PAGE_BREAKS[sec.id] || []).forEach(function(b){ groups.push(kids.slice(start, b)); start = b; });
+      groups.push(kids.slice(start));
+    } else {
+    for(var i = 0; i < kids.length; i++){
+      var el = kids[i], bottom = el.offsetTop + el.offsetHeight + parseFloat(getComputedStyle(el).marginBottom || 0);
+      if(bottom - base > MAXH && i > start){
+        var b = i; while(b - 1 > start && (isHead(kids[b-1]) || glue(kids[b-1], kids[b]))) b--;
+        groups.push(kids.slice(start, b)); start = b; base = top(kids[b]);
+        i = b;  // the element that starts the new page always fits
+      }
+    }
+    groups.push(kids.slice(start));
+    }
+    var idx = 0; found[sec.id] = groups.slice(0, -1).map(function(g){ idx += g.length; return idx; });
+    var prev = sec;
+    groups.forEach(function(g, gi){
+      var pg = sec;
+      if(gi > 0){
+        pg = document.createElement('section');
+        pg.className = sec.className.replace(/\bcover\b/, '') + ' cont';
+        prev.parentNode.insertBefore(pg, prev.nextSibling);
+      }
+      g.forEach(function(k){ pg.appendChild(k); });
+      pg.dataset.label = label;
+      pages.push(pg); prev = pg;
+    });
+  });
+  body.removeChild(measure);
+  if(romajiOff) body.classList.add('no-furi');
+  window.FOUND_BREAKS = found;
+  if(/[?&]measure/.test(location.search)) document.title = 'BREAKS ' + JSON.stringify(found);
+  pages.forEach(function(pg, i){
+    pg.dataset.page = i + 1;
+    if(i === 0) return;
+    var run = document.createElement('div');
+    run.className = 'run';
+    run.innerHTML = '<span>Lesson 5' + (pg.dataset.label ? ' · ' + pg.dataset.label : '') + '</span><span class="pno">p. ' + (i + 1) + '</span>';
+    pg.appendChild(run);
+  });
+  document.querySelectorAll('.toc a[href^="#"]').forEach(function(a){
+    var t = document.getElementById(a.getAttribute('href').slice(1));
+    if(t && t.dataset.page) a.insertAdjacentHTML('beforeend', '<span class="tp">p. ' + t.dataset.page + '</span>');
+  });
+}
+(function(){
+  if(!document.fonts || !document.fonts.load) return paginate();
+  var txt = document.body.innerText;
+  Promise.all(['500 17px "Zen Maru Gothic"','700 17px "Zen Maru Gothic"','400 17px Nunito','800 17px Nunito'].map(function(f){ return document.fonts.load(f, txt).catch(function(){}); }))
+    .then(function(){ return document.fonts.ready; }).then(paginate, paginate);
+})();
+</script>
+</body>
+</html>
