@@ -306,7 +306,7 @@ table.hobby td{padding:6px}
   <span class="tt">Lesson 5 · 北海道旅行</span>
   <a href="#toc">Contents</a>
   <button id="furiBtn" class="on" type="button">ふりがな: ON</button>
-  <a href="lesson05.pdf" download>PDF</a>
+  <a href="lesson05_student.pdf" download>PDF</a>
   <a href="./">All lessons</a>
 </div>
 
@@ -739,6 +739,11 @@ function paginate(){
   Promise.all(['500 17px "Zen Maru Gothic"','700 17px "Zen Maru Gothic"','400 17px Nunito','800 17px Nunito'].map(function(f){ return document.fonts.load(f, txt).catch(function(){}); }))
     .then(function(){ return document.fonts.ready; }).then(paginate, paginate);
 })();
+/* student-mode: ?student hides the teacher page (used to make the student PDF) */
+if(/[?&]student/.test(location.search)){
+  var hideT = function(){ document.querySelectorAll('section.page').forEach(function(p){ if((p.dataset.label||'').indexOf('TEACHER')===0 || p.id==='teacher') p.style.display='none'; }); };
+  hideT(); setTimeout(hideT, 300); setTimeout(hideT, 1500);
+}
 </script>
 </body>
 </html>
