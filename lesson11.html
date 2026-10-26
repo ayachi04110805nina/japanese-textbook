@@ -401,10 +401,13 @@ table.hobby td{padding:6px}
 <p><span class="bi"><span class="ja">Part 1〜5で 勉強{べんきょう}したことを 使{つか}って、会話{かいわ}を 読{よ}みましょう。</span><span class="en">Now read conversations that use everything from Parts 1–5.</span></span></p>
 <h3 class="sub"><span class="tag">READING Ⅰ</span><span class="bi"><span class="ja">休{やす}みの あと</span><span class="en">After the vacation</span></span></h3>
 <div class="dlg"><div class="row"><div class="sp s">リン：</div><div class="s">アミナさん、久{ひさ}しぶりですね。休{やす}みは どうでしたか。</div></div><div class="row"><div class="sp s">アミナ：</div><div class="s">すごく 楽{たの}しかったです。北海道{ほっかいどう}で スキーを したり、温泉{おんせん}に 入{はい}ったり しました。</div></div><div class="row"><div class="sp s">リン：</div><div class="s">いいですね。わたしも 温泉{おんせん}に 行{い}きたいです。</div></div><div class="row"><div class="sp s">アミナ：</div><div class="s">リンさんの 休{やす}みは どうでしたか。</div></div><div class="row"><div class="sp s">リン：</div><div class="s">まあまあでした。一日{いちにち}だけ 友{とも}だちと ドライブに 行{い}きましたが、毎日{まいにち} アルバイトを していました。</div></div></div>
+<p class="task"><span class="bi"><span class="ja">質問{しつもん}</span><span class="en">Questions</span></span></p>
+<ol class="items one" data-start="0" style="counter-reset:it 0"><li><div class="s">アミナさんは 休{やす}みに 何{なに}を しましたか。</div></li><li><div class="s">リンさんは 何{なに}を したいですか。</div></li><li><div class="s">リンさんの 休{やす}みは どうでしたか。</div></li></ol>
 <h3 class="sub"><span class="tag">READING Ⅱ</span><span class="bi"><span class="ja">友{とも}だちの 紹介{しょうかい}</span><span class="en">Introducing a friend</span></span></h3>
 <div class="dlg"><div class="row"><div class="sp s">アミナ：</div><div class="s">リンさん、友{とも}だちを 紹介{しょうかい}します。こちらは ルーカスさんです。今学期{こんがっき}、カナダから 来{き}ました。</div></div><div class="row"><div class="sp s">ルーカス：</div><div class="s">はじめまして。</div></div><div class="row"><div class="sp s">リン：</div><div class="s">はじめまして。ワン・リンです。</div></div><div class="row"><div class="sp s">リン：</div><div class="s">ルーカスさん、出身{しゅっしん}は どこですか。</div></div><div class="row"><div class="sp s">ルーカス：</div><div class="s">トロントです。リンさんは トロントに 行{い}ったことが ありますか。</div></div><div class="row"><div class="sp s">リン：</div><div class="s">いいえ、ありません。</div></div><div class="row"><div class="sp s">ルーカス：</div><div class="s">湖{みずうみ}が あって、きれいな 所{ところ}ですよ。リンさんは どこの 出身{しゅっしん}ですか。</div></div><div class="row"><div class="sp s">リン：</div><div class="s">北京{ペキン}です。今度{こんど} 遊{あそ}びに 来{き}てください。料理{りょうり}も おいしいですよ。</div></div><div class="row"><div class="sp s">ルーカス：</div><div class="s">ぜひ、行{い}きたいです。</div></div></div>
+
 <p class="task"><span class="bi"><span class="ja">質問{しつもん}</span><span class="en">Questions</span></span></p>
-<ol class="items one"><li><div class="s">アミナさんは 休{やす}みに 何{なに}を しましたか。</div></li><li><div class="s">リンさんは 何{なに}を したいですか。</div></li><li><div class="s">リンさんの 休{やす}みは どうでしたか。</div></li><li><div class="s">ルーカスさんは いつ 日本{にほん}に 来{き}ましたか。</div></li><li><div class="s">トロントは どんな 所{ところ}ですか。</div></li><li><div class="s">リンさんは トロントに 行{い}ったことが ありますか。</div></li></ol>
+<ol class="items one" data-start="3" style="counter-reset:it 3"><li><div class="s">ルーカスさんは いつ 日本{にほん}に 来{き}ましたか。</div></li><li><div class="s">トロントは どんな 所{ところ}ですか。</div></li><li><div class="s">リンさんは トロントに 行{い}ったことが ありますか。</div></li></ol>
 </section>
 
 <section class="page" id="p7">
@@ -643,8 +646,42 @@ btn.addEventListener('click', function(){ setFuri(document.body.classList.contai
    on a computer, on a phone, and in the printed PDF. */
 /* PAGE_BREAKS: fixed break points (index of the child that starts each new page), written by tools/fix_pages.sh.
    Using fixed points keeps page numbers identical on every device. Empty = measure in this browser. */
-var PAGE_BREAKS = {"top":[],"cast":[],"p1":[6],"p2":[6],"p3":[7],"p4":[],"p5":[4],"p6":[4],"p7":[4],"vocab":[3,4,5,7,9,11],"answers":[8],"teacher":[]};
+var PAGE_BREAKS = {"top":[],"cast":[],"p1":[8,19,29,37,47,57,64,70,85,100],"vocab":[7,13,19,27],"answers":[15],"teacher":[]};
 function paginate(){
+  /* flow all Parts together so short Parts don't leave half-empty pages */
+  (function(){
+    var ps = [].slice.call(document.querySelectorAll('section.page')).filter(function(x){ return /^p\d+$/.test(x.id); });
+    for(var i = 1; i < ps.length; i++){
+      var ph = ps[i].querySelector('.part-head');
+      if(ph){ ph.id = ps[i].id; ph.style.marginTop = '26px'; }
+      while(ps[i].firstChild) ps[0].appendChild(ps[i].firstChild);
+      ps[i].parentNode.removeChild(ps[i]);
+    }
+  })();
+  /* split long lists / dialogues / example grids / tables into small pieces so pages can be filled */
+  (function(){
+    ['vocabList','answerList'].forEach(function(id){ var c = document.getElementById(id); if(c){ while(c.firstChild) c.parentNode.insertBefore(c.firstChild, c); c.parentNode.removeChild(c); } });
+    [].slice.call(document.querySelectorAll('section.page')).forEach(function(sec){
+      [].slice.call(sec.children).forEach(function(el){
+        var parts = [];
+        if(el.matches('ol.items.one') && el.children.length > 1){
+          [].slice.call(el.children).forEach(function(li, k){ var o = el.cloneNode(false); o.style.counterReset = 'it ' + (parseInt(el.getAttribute('data-start') || '0') + k); o.style.margin = '0'; o.appendChild(li); parts.push(o); });
+        } else if(el.matches('.dlg') && el.children.length > 1){
+          [].slice.call(el.children).forEach(function(row){ var o = el.cloneNode(false); o.style.margin = '0'; o.appendChild(row); parts.push(o); });
+        } else if(el.matches('.ex') && el.children.length > 2){
+          var ch = [].slice.call(el.children);
+          for(var k = 0; k < ch.length; k += 2){ var o = el.cloneNode(false); o.style.margin = '0 0 4px'; o.appendChild(ch[k]); if(ch[k+1]) o.appendChild(ch[k+1]); parts.push(o); }
+        } else if(el.tagName === 'TABLE' && el.rows.length > 6){
+          var rows = [].slice.call(el.rows);
+          for(var k = 0; k < rows.length; k += 3){ var t = el.cloneNode(false); t.style.margin = '0'; var tb = document.createElement('tbody'); rows.slice(k, k + 3).forEach(function(r){ tb.appendChild(r); }); t.appendChild(tb); parts.push(t); }
+        } else if(el.tagName === 'OL' && sec.classList.contains('ans') && !el.classList.contains('cols') && el.children.length > 3){
+          var lis = [].slice.call(el.children);
+          for(var k = 0; k < lis.length; k += 2){ var o = el.cloneNode(false); o.setAttribute('start', k + 1); o.style.margin = '0'; lis.slice(k, k + 2).forEach(function(li){ o.appendChild(li); }); parts.push(o); }
+        }
+        if(parts.length){ parts.forEach(function(p){ el.parentNode.insertBefore(p, el); }); el.parentNode.removeChild(el); }
+      });
+    });
+  })();
   var MM = 96/25.4, MAXH = Math.floor((297-16-14)*MM) - 24;
   var useFixed = Object.keys(PAGE_BREAKS).length > 0 && !/[?&]measure/.test(location.search), found = {};
   var body = document.body, romajiOff = body.classList.contains('no-furi');
@@ -677,7 +714,9 @@ function paginate(){
     for(var i = 0; i < kids.length; i++){
       var el = kids[i], bottom = el.offsetTop + el.offsetHeight + parseFloat(getComputedStyle(el).marginBottom || 0);
       if(bottom - base > MAXH && i > start){
-        var b = i; while(b - 1 > start && (isHead(kids[b-1]) || glue(kids[b-1], kids[b]))) b--;
+        var b = i; while(b - 1 > start && isHead(kids[b-1])) b--;
+        var bg = b; while(bg - 1 > start && (isHead(kids[bg-1]) || glue(kids[bg-1], kids[bg]))) bg--;
+        if(bg < b && top(kids[bg]) - base > MAXH * 0.72) b = bg;  /* keep chart+questions together only if the page stays mostly full */
         groups.push(kids.slice(start, b)); start = b; base = top(kids[b]);
         i = b;  // the element that starts the new page always fits
       }
@@ -702,8 +741,11 @@ function paginate(){
   if(romajiOff) body.classList.add('no-furi');
   window.FOUND_BREAKS = found;
   if(/[?&]measure/.test(location.search)) document.title = 'BREAKS ' + JSON.stringify(found);
+  var curLabel = '';
   pages.forEach(function(pg, i){
     pg.dataset.page = i + 1;
+    var phs = pg.querySelectorAll('.part-head'); if(phs.length){ var ph = phs[phs.length-1], bd = ph.querySelector('.badge'), hh = ph.querySelector('h2').cloneNode(true); hh.querySelectorAll('rt,small').forEach(function(x){ x.remove(); }); curLabel = bd ? bd.textContent + ' · ' + hh.textContent.trim() : ''; }
+    if(curLabel) pg.dataset.label = curLabel;
     if(i === 0) return;
     var run = document.createElement('div');
     run.className = 'run';
@@ -712,6 +754,7 @@ function paginate(){
   });
   document.querySelectorAll('.toc a[href^="#"]').forEach(function(a){
     var t = document.getElementById(a.getAttribute('href').slice(1));
+    if(t && !t.dataset.page) t = t.closest('section.page');
     if(t && t.dataset.page) a.insertAdjacentHTML('beforeend', '<span class="tp">p. ' + t.dataset.page + '</span>');
   });
 }

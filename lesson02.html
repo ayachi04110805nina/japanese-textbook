@@ -472,12 +472,17 @@ body.no-romaji .ch .r{display:none}
 <p><span class="bi"><span class="ja">Part 1〜7で 勉強{べんきょう}したことを 使{つか}って、会話{かいわ}を 読{よ}みましょう。</span><span class="en">Now read conversations that use everything from Parts 1–7.</span></span></p>
 <h3 class="sub"><span class="tag">READING Ⅰ</span><span class="bi"><span class="ja">フリーマーケットで</span><span class="en">At a flea market</span></span></h3>
 <div class="dlg"><div class="row"><div class="sp s">ルーカス：</div><div class="s">すみません。これは いくらですか。</div></div><div class="row"><div class="sp s">みせのひと：</div><div class="s">それは にせん えんです。</div></div><div class="row"><div class="sp s">ルーカス：</div><div class="s">そうですか。じゃあ、あの とけいは いくらですか。</div></div><div class="row"><div class="sp s">みせのひと：</div><div class="s">あれは いちまん ごせん えんです。</div></div><div class="row"><div class="sp s">ルーカス：</div><div class="s">たかいですね。その かばんは？</div></div><div class="row"><div class="sp s">みせのひと：</div><div class="s">これは せん ろっぴゃく えんですよ。</div></div><div class="row"><div class="sp s">ルーカス：</div><div class="s">じゃあ、その かばんを ください。</div></div></div>
+<p class="task"><span class="bi"><span class="ja">質問{しつもん}</span><span class="en">Questions</span></span></p>
+<ol class="items one" data-start="0" style="counter-reset:it 0"><li><div class="s">あの とけいは いくらですか。</div></li><li><div class="s">その かばんは いくらですか。</div></li></ol>
 <h3 class="sub"><span class="tag">READING Ⅱ</span><span class="bi"><span class="ja">レストランで</span><span class="en">At a restaurant</span></span></h3>
 <div class="dlg"><div class="row"><div class="sp s">みせのひと：</div><div class="s">いらっしゃいませ。メニューを どうぞ。</div></div><div class="row"><div class="sp s">アミナ：</div><div class="s">どうも。これは なんですか。</div></div><div class="row"><div class="sp s">みせのひと：</div><div class="s">どれですか。ああ、とんかつです。</div></div><div class="row"><div class="sp s">アミナ：</div><div class="s">とんかつ？ さかなですか。</div></div><div class="row"><div class="sp s">みせのひと：</div><div class="s">いいえ、さかなじゃないです。にくです。</div></div><div class="row"><div class="sp s">アミナ：</div><div class="s">そうですか。じゃあ、この やさいを おねがいします。</div></div><div class="row"><div class="sp s"></div><div class="s">＊　　＊　　＊</div></div><div class="row"><div class="sp s">アミナ：</div><div class="s">すみません。トイレは どこですか。</div></div><div class="row"><div class="sp s">みせのひと：</div><div class="s">あそこです。</div></div><div class="row"><div class="sp s">アミナ：</div><div class="s">ありがとう ございます。</div></div></div>
+<p class="task"><span class="bi"><span class="ja">質問{しつもん}</span><span class="en">Questions</span></span></p>
+<ol class="items one" data-start="2" style="counter-reset:it 2"><li><div class="s">とんかつは さかなですか。</div></li><li><div class="s">アミナさんは なにを おねがいしますか。</div></li></ol>
 <h3 class="sub"><span class="tag">READING Ⅲ</span><span class="bi"><span class="ja">教室{きょうしつ}で</span><span class="en">In the classroom</span></span></h3>
 <div class="dlg"><div class="row"><div class="sp s">ゆうき：</div><div class="s">これは だれの さいふですか。</div></div><div class="row"><div class="sp s">ラジ：</div><div class="s">わたしの さいふです。ありがとう ございます。</div></div><div class="row"><div class="sp s">ゆうき：</div><div class="s">あの かさも ラジさんの かさですか。</div></div><div class="row"><div class="sp s">ラジ：</div><div class="s">いいえ、わたしの かさじゃないです。リンさんの かさですよ。</div></div></div>
+
 <p class="task"><span class="bi"><span class="ja">質問{しつもん}</span><span class="en">Questions</span></span></p>
-<ol class="items one"><li><div class="s">あの とけいは いくらですか。</div></li><li><div class="s">その かばんは いくらですか。</div></li><li><div class="s">とんかつは さかなですか。</div></li><li><div class="s">アミナさんは なにを おねがいしますか。</div></li><li><div class="s">さいふは だれの さいふですか。</div></li><li><div class="s">かさは ラジさんの かさですか。</div></li></ol>
+<ol class="items one" data-start="4" style="counter-reset:it 4"><li><div class="s">さいふは だれの さいふですか。</div></li><li><div class="s">かさは ラジさんの かさですか。</div></li></ol>
 </section>
 
 <section class="page" id="p9">
@@ -852,8 +857,42 @@ btn.addEventListener('click', function(){ setFuri(document.body.classList.contai
    on a computer, on a phone, and in the printed PDF. */
 /* PAGE_BREAKS: fixed break points (index of the child that starts each new page), written by tools/fix_pages.sh.
    Using fixed points keeps page numbers identical on every device. Empty = measure in this browser. */
-var PAGE_BREAKS = {"top":[],"cast":[],"p1":[6],"p2":[6],"p3":[7],"p4":[7],"p5":[4],"p6":[7,13],"p7":[6],"p8":[4,6],"p9":[4],"vocab":[4,6,10,12],"answers":[10,20],"teacher":[]};
+var PAGE_BREAKS = {"top":[],"cast":[],"p1":[8,16,25,35,44,52,59,65,75,84,94,103,117,133,143],"vocab":[8,14,20],"answers":[12,24],"teacher":[]};
 function paginate(){
+  /* flow all Parts together so short Parts don't leave half-empty pages */
+  (function(){
+    var ps = [].slice.call(document.querySelectorAll('section.page')).filter(function(x){ return /^p\d+$/.test(x.id); });
+    for(var i = 1; i < ps.length; i++){
+      var ph = ps[i].querySelector('.part-head');
+      if(ph){ ph.id = ps[i].id; ph.style.marginTop = '26px'; }
+      while(ps[i].firstChild) ps[0].appendChild(ps[i].firstChild);
+      ps[i].parentNode.removeChild(ps[i]);
+    }
+  })();
+  /* split long lists / dialogues / example grids / tables into small pieces so pages can be filled */
+  (function(){
+    ['vocabList','answerList'].forEach(function(id){ var c = document.getElementById(id); if(c){ while(c.firstChild) c.parentNode.insertBefore(c.firstChild, c); c.parentNode.removeChild(c); } });
+    [].slice.call(document.querySelectorAll('section.page')).forEach(function(sec){
+      [].slice.call(sec.children).forEach(function(el){
+        var parts = [];
+        if(el.matches('ol.items.one') && el.children.length > 1){
+          [].slice.call(el.children).forEach(function(li, k){ var o = el.cloneNode(false); o.style.counterReset = 'it ' + (parseInt(el.getAttribute('data-start') || '0') + k); o.style.margin = '0'; o.appendChild(li); parts.push(o); });
+        } else if(el.matches('.dlg') && el.children.length > 1){
+          [].slice.call(el.children).forEach(function(row){ var o = el.cloneNode(false); o.style.margin = '0'; o.appendChild(row); parts.push(o); });
+        } else if(el.matches('.ex') && el.children.length > 2){
+          var ch = [].slice.call(el.children);
+          for(var k = 0; k < ch.length; k += 2){ var o = el.cloneNode(false); o.style.margin = '0 0 4px'; o.appendChild(ch[k]); if(ch[k+1]) o.appendChild(ch[k+1]); parts.push(o); }
+        } else if(el.tagName === 'TABLE' && el.rows.length > 6){
+          var rows = [].slice.call(el.rows);
+          for(var k = 0; k < rows.length; k += 3){ var t = el.cloneNode(false); t.style.margin = '0'; var tb = document.createElement('tbody'); rows.slice(k, k + 3).forEach(function(r){ tb.appendChild(r); }); t.appendChild(tb); parts.push(t); }
+        } else if(el.tagName === 'OL' && sec.classList.contains('ans') && !el.classList.contains('cols') && el.children.length > 3){
+          var lis = [].slice.call(el.children);
+          for(var k = 0; k < lis.length; k += 2){ var o = el.cloneNode(false); o.setAttribute('start', k + 1); o.style.margin = '0'; lis.slice(k, k + 2).forEach(function(li){ o.appendChild(li); }); parts.push(o); }
+        }
+        if(parts.length){ parts.forEach(function(p){ el.parentNode.insertBefore(p, el); }); el.parentNode.removeChild(el); }
+      });
+    });
+  })();
   var MM = 96/25.4, MAXH = Math.floor((297-16-14)*MM) - 24;
   var useFixed = Object.keys(PAGE_BREAKS).length > 0 && !/[?&]measure/.test(location.search), found = {};
   var body = document.body, romajiOff = body.classList.contains('no-furi'), rmOff = body.classList.contains('no-romaji');
@@ -886,7 +925,9 @@ function paginate(){
     for(var i = 0; i < kids.length; i++){
       var el = kids[i], bottom = el.offsetTop + el.offsetHeight + parseFloat(getComputedStyle(el).marginBottom || 0);
       if(bottom - base > MAXH && i > start){
-        var b = i; while(b - 1 > start && (isHead(kids[b-1]) || glue(kids[b-1], kids[b]))) b--;
+        var b = i; while(b - 1 > start && isHead(kids[b-1])) b--;
+        var bg = b; while(bg - 1 > start && (isHead(kids[bg-1]) || glue(kids[bg-1], kids[bg]))) bg--;
+        if(bg < b && top(kids[bg]) - base > MAXH * 0.72) b = bg;  /* keep chart+questions together only if the page stays mostly full */
         groups.push(kids.slice(start, b)); start = b; base = top(kids[b]);
         i = b;  // the element that starts the new page always fits
       }
@@ -911,8 +952,11 @@ function paginate(){
   if(romajiOff) body.classList.add('no-furi'); if(rmOff) body.classList.add('no-romaji');
   window.FOUND_BREAKS = found;
   if(/[?&]measure/.test(location.search)) document.title = 'BREAKS ' + JSON.stringify(found);
+  var curLabel = '';
   pages.forEach(function(pg, i){
     pg.dataset.page = i + 1;
+    var phs = pg.querySelectorAll('.part-head'); if(phs.length){ var ph = phs[phs.length-1], bd = ph.querySelector('.badge'), hh = ph.querySelector('h2').cloneNode(true); hh.querySelectorAll('rt,small').forEach(function(x){ x.remove(); }); curLabel = bd ? bd.textContent + ' · ' + hh.textContent.trim() : ''; }
+    if(curLabel) pg.dataset.label = curLabel;
     if(i === 0) return;
     var run = document.createElement('div');
     run.className = 'run';
@@ -921,6 +965,7 @@ function paginate(){
   });
   document.querySelectorAll('.toc a[href^="#"]').forEach(function(a){
     var t = document.getElementById(a.getAttribute('href').slice(1));
+    if(t && !t.dataset.page) t = t.closest('section.page');
     if(t && t.dataset.page) a.insertAdjacentHTML('beforeend', '<span class="tp">p. ' + t.dataset.page + '</span>');
   });
 }
