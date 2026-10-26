@@ -697,18 +697,8 @@ btn.addEventListener('click', function(){ setFuri(document.body.classList.contai
    on a computer, on a phone, and in the printed PDF. */
 /* PAGE_BREAKS: fixed break points (index of the child that starts each new page), written by tools/fix_pages.sh.
    Using fixed points keeps page numbers identical on every device. Empty = measure in this browser. */
-var PAGE_BREAKS = {"top":[],"cast":[],"p1":[5,11,19,27,37,46,54,59,65,75,81,91,101,109,114,122,132,140,159,171,178],"vocab":[8,14,20],"answers":[12,24,37],"teacher":[]};
+var PAGE_BREAKS = {"top":[],"cast":[],"p1":[5],"p2":[8,16],"p3":[12,17],"p4":[9],"p5":[10,16],"p6":[13,20],"p7":[8],"p8":[10],"p9":[15,29],"p10":[7],"vocab":[8,14,20],"answers":[12,24,37],"teacher":[]};
 function paginate(){
-  /* flow all Parts together so short Parts don't leave half-empty pages */
-  (function(){
-    var ps = [].slice.call(document.querySelectorAll('section.page')).filter(function(x){ return /^p\d+$/.test(x.id); });
-    for(var i = 1; i < ps.length; i++){
-      var ph = ps[i].querySelector('.part-head');
-      if(ph){ ph.id = ps[i].id; ph.style.marginTop = '26px'; }
-      while(ps[i].firstChild) ps[0].appendChild(ps[i].firstChild);
-      ps[i].parentNode.removeChild(ps[i]);
-    }
-  })();
   /* split long lists / dialogues / example grids / tables into small pieces so pages can be filled */
   (function(){
     ['vocabList','answerList'].forEach(function(id){ var c = document.getElementById(id); if(c){ while(c.firstChild) c.parentNode.insertBefore(c.firstChild, c); c.parentNode.removeChild(c); } });
@@ -768,6 +758,7 @@ function paginate(){
         var b = i; while(b - 1 > start && isHead(kids[b-1])) b--;
         var bg = b; while(bg - 1 > start && (isHead(kids[bg-1]) || glue(kids[bg-1], kids[bg]))) bg--;
         if(bg < b && top(kids[bg]) - base > MAXH * 0.72) b = bg;  /* keep chart+questions together only if the page stays mostly full */
+        for(var t = b - 1; t > start; t--){ var kt = kids[t]; if(kt.classList.contains('talk') || kt.classList.contains('part-head') || (kt.classList.contains('sub') && /READING/.test(kt.textContent))){ if(top(kt) - base > MAXH * 0.35) b = t; break; } }  /* a 話してみよう section / reading that doesn't fit starts on a new page */
         groups.push(kids.slice(start, b)); start = b; base = top(kids[b]);
         i = b;  // the element that starts the new page always fits
       }

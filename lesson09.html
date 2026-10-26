@@ -346,7 +346,9 @@ table.forms td,table.forms th{padding-top:3px;padding-bottom:3px}
 <div class="example"><span class="lbl">Example</span><div class="s">行{い}く → 行{い}った／行{い}かなかった</div></div>
 <ol class="items "><li><div class="s">飲{の}む</div></li><li><div class="s">来{く}る</div></li><li><div class="s">弾{ひ}く</div></li><li><div class="s">覚{おぼ}える</div></li><li><div class="s">寂{さび}しい</div></li><li><div class="s">病気{びょうき}</div></li></ol>
 
-<div class="part-head" id="p2" style="margin-top:22px"><span class="badge">PART 2</span><h2>くだけた話{はな}し方{かた}<small>Casual speech</small></h2></div>
+</section>
+<section class="page" id="p2">
+<div class="part-head"><span class="badge">PART 2</span><h2>くだけた話{はな}し方{かた}<small>Casual speech</small></h2></div>
 <h3 class="sub"><span class="tag">GRAMMAR 2</span><span class="bi"><span class="ja">くだけた話{はな}し方{かた}（過去{かこ}）</span><span class="en">Past short forms in casual speech</span></span></h3>
 <p><span class="bi"><span class="ja">友{とも}だちとは、過去{かこ}のことも 普通形{ふつうけい}で 話{はな}します。質問{しつもん}の「か」は 言{い}いません。「だった」は 省略{しょうりゃく}しません。</span><span class="en">With friends, talk about the past in short forms too. Drop the question か. Unlike だ, だった is not dropped.</span></span></p>
 <div class="example" style="display:block"><div class="s" style="line-height:2.2">A：きのう、何{なに}を した？↗<br>B：映画{えいが}を 見{み}た。<br>A：へえ。どんな 映画{えいが}を 見{み}た？<br>B：日本{にほん}の 映画{えいが}。<br>A：どうだった？<br>B：すごく おもしろかったよ。でも、ちょっと 長{なが}かった。<br>A：だれと 行{い}った？<br>B：一人{ひとり}で 行{い}った。ゆうきは 忙{いそが}しかったから。<br>A：そう。チケットは 高{たか}かった？。<br>B：ううん、高{たか}くなかった。千円{せんえん}だった。</div></div>
@@ -688,18 +690,8 @@ btn.addEventListener('click', function(){ setFuri(document.body.classList.contai
    on a computer, on a phone, and in the printed PDF. */
 /* PAGE_BREAKS: fixed break points (index of the child that starts each new page), written by tools/fix_pages.sh.
    Using fixed points keeps page numbers identical on every device. Empty = measure in this browser. */
-var PAGE_BREAKS = {"top":[],"cast":[],"p1":[4,11,21,32,40,47,54,62,70,80,92,101,111,128,138,141],"vocab":[8,17,25],"answers":[11,24],"teacher":[]};
+var PAGE_BREAKS = {"top":[],"cast":[],"p1":[4],"p2":[8],"p3":[11],"p4":[7],"p5":[8],"p6":[11],"p7":[12],"p8":[7],"p9":[12],"p10":[3],"vocab":[8,17,25],"answers":[11,24],"teacher":[]};
 function paginate(){
-  /* flow all Parts together so short Parts don't leave half-empty pages */
-  (function(){
-    var ps = [].slice.call(document.querySelectorAll('section.page')).filter(function(x){ return /^p\d+$/.test(x.id); });
-    for(var i = 1; i < ps.length; i++){
-      var ph = ps[i].querySelector('.part-head');
-      if(ph){ ph.id = ps[i].id; ph.style.marginTop = '26px'; }
-      while(ps[i].firstChild) ps[0].appendChild(ps[i].firstChild);
-      ps[i].parentNode.removeChild(ps[i]);
-    }
-  })();
   /* split long lists / dialogues / example grids / tables into small pieces so pages can be filled */
   (function(){
     ['vocabList','answerList'].forEach(function(id){ var c = document.getElementById(id); if(c){ while(c.firstChild) c.parentNode.insertBefore(c.firstChild, c); c.parentNode.removeChild(c); } });
@@ -759,6 +751,7 @@ function paginate(){
         var b = i; while(b - 1 > start && isHead(kids[b-1])) b--;
         var bg = b; while(bg - 1 > start && (isHead(kids[bg-1]) || glue(kids[bg-1], kids[bg]))) bg--;
         if(bg < b && top(kids[bg]) - base > MAXH * 0.72) b = bg;  /* keep chart+questions together only if the page stays mostly full */
+        for(var t = b - 1; t > start; t--){ var kt = kids[t]; if(kt.classList.contains('talk') || kt.classList.contains('part-head') || (kt.classList.contains('sub') && /READING/.test(kt.textContent))){ if(top(kt) - base > MAXH * 0.35) b = t; break; } }  /* a 話してみよう section / reading that doesn't fit starts on a new page */
         groups.push(kids.slice(start, b)); start = b; base = top(kids[b]);
         i = b;  // the element that starts the new page always fits
       }

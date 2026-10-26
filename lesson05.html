@@ -666,18 +666,8 @@ btn.addEventListener('click', function(){ setFuri(document.body.classList.contai
    on a computer, on a phone, and in the printed PDF. */
 /* PAGE_BREAKS: fixed break points (index of the child that starts each new page), written by tools/fix_pages.sh.
    Using fixed points keeps page numbers identical on every device. Empty = measure in this browser. */
-var PAGE_BREAKS = {"top":[],"cast":[],"p1":[5,12,17,22,29,40,48,58,66,75,79,87,95,113,128,133],"vocab":[8,15,21],"answers":[14,29],"teacher":[]};
+var PAGE_BREAKS = {"top":[],"cast":[],"p1":[5,12],"p2":[8],"p3":[11],"p4":[10],"p5":[9,13],"p6":[6],"p7":[15,23],"p8":[5],"vocab":[8,15,21],"answers":[14,29],"teacher":[]};
 function paginate(){
-  /* flow all Parts together so short Parts don't leave half-empty pages */
-  (function(){
-    var ps = [].slice.call(document.querySelectorAll('section.page')).filter(function(x){ return /^p\d+$/.test(x.id); });
-    for(var i = 1; i < ps.length; i++){
-      var ph = ps[i].querySelector('.part-head');
-      if(ph){ ph.id = ps[i].id; ph.style.marginTop = '26px'; }
-      while(ps[i].firstChild) ps[0].appendChild(ps[i].firstChild);
-      ps[i].parentNode.removeChild(ps[i]);
-    }
-  })();
   /* split long lists / dialogues / example grids / tables into small pieces so pages can be filled */
   (function(){
     ['vocabList','answerList'].forEach(function(id){ var c = document.getElementById(id); if(c){ while(c.firstChild) c.parentNode.insertBefore(c.firstChild, c); c.parentNode.removeChild(c); } });
@@ -737,6 +727,7 @@ function paginate(){
         var b = i; while(b - 1 > start && isHead(kids[b-1])) b--;
         var bg = b; while(bg - 1 > start && (isHead(kids[bg-1]) || glue(kids[bg-1], kids[bg]))) bg--;
         if(bg < b && top(kids[bg]) - base > MAXH * 0.72) b = bg;  /* keep chart+questions together only if the page stays mostly full */
+        for(var t = b - 1; t > start; t--){ var kt = kids[t]; if(kt.classList.contains('talk') || kt.classList.contains('part-head') || (kt.classList.contains('sub') && /READING/.test(kt.textContent))){ if(top(kt) - base > MAXH * 0.35) b = t; break; } }  /* a 話してみよう section / reading that doesn't fit starts on a new page */
         groups.push(kids.slice(start, b)); start = b; base = top(kids[b]);
         i = b;  // the element that starts the new page always fits
       }
