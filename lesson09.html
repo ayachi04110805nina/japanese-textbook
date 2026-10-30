@@ -301,6 +301,13 @@ table.hobby td{padding:6px}
 
 .rules td,.rules th{padding:3px 8px;line-height:1.9}
 table.forms td,table.forms th{padding-top:3px;padding-bottom:3px}
+.mm td{text-align:left;vertical-align:top}
+.mm th{text-align:center}
+.hl2{color:var(--accent)}
+.en2{display:block;font-family:var(--en);font-size:.72em;color:var(--muted);line-height:1.4}
+li .en2{display:inline;margin-left:8px}
+ul.pts{margin:10px 0 6px;padding-left:1.3em}
+ul.pts li{margin:2px 0;line-height:2}
 </style>
 </head>
 <body>
@@ -410,8 +417,14 @@ table.forms td,table.forms th{padding-top:3px;padding-bottom:3px}
 <section class="page" id="p6">
 <div class="part-head"><span class="badge">PART 6</span><h2>もう・まだ<small>Already / not yet</small></h2></div>
 <h3 class="sub"><span class="tag">GRAMMAR 6</span><span class="bi"><span class="ja">もう〜ました・まだ〜ていません</span><span class="en">Already / not yet</span></span></h3>
-<p><span class="bi"><span class="ja">「もう」は “already”。終{お}わったことは「もう〜ました」と 言{い}います。まだ 終{お}わっていないことは「まだ〜ていません」と 言{い}います。「まだ〜ませんでした」とは 言{い}いません。</span><span class="en">もう〜ました = have already done. まだ〜ていません = have not done yet. Don't say まだ〜ませんでした.</span></span></p>
-<div class="ex"><div class="s">A：もう 昼{ひる}ご飯{はん}を 食{た}べましたか。<br>B：はい、もう 食{た}べました。／いいえ、まだ 食{た}べていません。</div><div class="e">Have you eaten lunch yet? — Yes, already. / No, not yet.</div></div>
+<div class="table-wrap"><table class="forms mm"><tr><th>質問{しつもん}</th><th>はい</th><th>いいえ</th></tr>
+<tr><td class="s"><b class="hl2">もう</b> 昼{ひる}ご飯{はん}を 食{た}べましたか。<div class="en2">Have you eaten lunch yet?</div></td><td class="s">はい、<b class="hl2">もう</b> 食{た}べ<b class="hl2">ました</b>。<div class="en2">Yes, I already ate.</div></td><td class="s">いいえ、<b class="hl2">まだ</b> 食{た}べ<b class="hl2">ていません</b>。<div class="en2">No, not yet.</div></td></tr></table></div>
+<ul class="pts">
+<li class="s"><b>もう ＋ 〜ました</b> ＝ 終{お}わった <span class="en2">already did</span></li>
+<li class="s"><b>まだ ＋ 〜ていません</b> ＝ まだ 終{お}わっていない <span class="en2">haven't done yet</span></li>
+<li class="s"><span class="ng">×</span> まだ 食{た}べませんでした　→　<span class="ok">○</span> まだ 食{た}べていません</li>
+<li class="s">「いいえ、まだです。」だけでも OK <span class="en2">Short answer: いいえ、まだです。</span></li>
+</ul>
 <h3 class="check"><span class="stage chk">ミニ確認{かくにん}</span><span class="bi"><span class="ja">リンさんの パーティーの 準備{じゅんび}です。答{こた}えましょう。</span><span class="en">Lin is getting ready for her party. Answer.</span></span></h3>
 <div class="note" style="max-width:420px"><h4><span class="bi"><span class="ja">リンさんの「することリスト」</span><span class="en">Lin's to-do list</span></span></h4><div style="display:grid;gap:4px"><div class="s">☑ 部屋{へや}を 掃除{そうじ}する</div><div class="s">☑ 飲{の}み物{もの}を 買{か}う</div><div class="s">☐ ピザを 作{つく}る</div><div class="s">☑ みんなに メールを 書{か}く</div><div class="s">☐ 花{はな}を 買{か}う</div><div class="s">☐ はしを 洗{あら}う</div></div></div>
 <div class="example"><span class="lbl">Example</span><div class="s">もう 部屋{へや}を 掃除{そうじ}しましたか。→ はい、もう 掃除{そうじ}しました。</div></div>
@@ -690,7 +703,7 @@ btn.addEventListener('click', function(){ setFuri(document.body.classList.contai
    on a computer, on a phone, and in the printed PDF. */
 /* PAGE_BREAKS: fixed break points (index of the child that starts each new page), written by tools/fix_pages.sh.
    Using fixed points keeps page numbers identical on every device. Empty = measure in this browser. */
-var PAGE_BREAKS = {"top":[],"cast":[],"p1":[4],"p2":[8],"p3":[11],"p4":[7],"p5":[8],"p6":[11],"p7":[12],"p8":[7],"p9":[12],"p10":[3],"vocab":[8,17,25],"answers":[11,24],"teacher":[]};
+var PAGE_BREAKS = {"top":[],"cast":[],"p1":[4],"p2":[8],"p3":[11],"p4":[7],"p5":[8],"p6":[9],"p7":[12],"p8":[7],"p9":[12],"p10":[3],"vocab":[8,17,25],"answers":[11,24],"teacher":[]};
 function paginate(){
   /* split long lists / dialogues / example grids / tables into small pieces so pages can be filled */
   (function(){
