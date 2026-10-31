@@ -325,7 +325,7 @@ ul.pts li{margin:2px 0;line-height:2}
   <span class="tt">Lesson 9 · コンサート</span>
   <a href="#toc">Contents</a>
   <button id="furiBtn" class="on" type="button">ふりがな: ON</button>
-  <a href="lesson09_student.pdf?v=202610311124" target="_blank" rel="noopener">PDF</a>
+  <a href="lesson09_student.pdf?v=202610311126" target="_blank" rel="noopener">PDF</a>
   <a href="./">All lessons</a>
 </div>
 
@@ -828,5 +828,6 @@ if(/[?&]student/.test(location.search)){
   hideT(); setTimeout(hideT, 300); setTimeout(hideT, 1500);
 }
 </script>
+<script>/* always open the newest PDF (avoid browser cache) */document.querySelectorAll("a[href*=\x27.pdf\x27]").forEach(function(a){a.addEventListener("click",function(){a.href=a.href.split("?")[0]+"?v="+Date.now();});});</script>
 </body>
 </html>

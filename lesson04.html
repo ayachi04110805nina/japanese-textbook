@@ -337,7 +337,7 @@ body.no-romaji .ch .r{display:none}
   <a href="#toc">Contents</a>
   <button id="rmBtn" class="on" type="button">Romaji: ON</button>
   <button id="furiBtn" class="on" type="button">ふりがな: ON</button>
-  <a href="lesson04_student.pdf?v=202610311111" target="_blank" rel="noopener">PDF</a>
+  <a href="lesson04_student.pdf?v=202610311126" target="_blank" rel="noopener">PDF</a>
   <a href="./">All lessons</a>
 </div>
 
@@ -1001,5 +1001,6 @@ if(/[?&]student/.test(location.search)){
   hideT(); setTimeout(hideT, 300); setTimeout(hideT, 1500);
 }
 </script>
+<script>/* always open the newest PDF (avoid browser cache) */document.querySelectorAll("a[href*=\x27.pdf\x27]").forEach(function(a){a.addEventListener("click",function(){a.href=a.href.split("?")[0]+"?v="+Date.now();});});</script>
 </body>
 </html>
