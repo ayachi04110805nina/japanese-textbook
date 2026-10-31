@@ -329,6 +329,8 @@ body.no-romaji .ch .r{display:none}
 .pts2 li{font-family:var(--jp);line-height:2;margin:1px 0}
 .pts2 .en3{font-size:.82em;color:var(--muted);margin:2px 0 0 .2em;line-height:1.5}
 .hl3{color:var(--accent);font-weight:700}
+table.forms.cmp td b{background:linear-gradient(transparent 55%,#ffe58a 55%)}
+table.forms.cmp .en3{font-family:var(--en,inherit);font-size:.72rem;color:var(--muted);line-height:1.4}
 </style>
 </head>
 <body>
@@ -337,7 +339,7 @@ body.no-romaji .ch .r{display:none}
   <a href="#toc">Contents</a>
   <button id="rmBtn" class="on" type="button">Romaji: ON</button>
   <button id="furiBtn" class="on" type="button">ふりがな: ON</button>
-  <a href="lesson04_student.pdf?v=202610312013" target="_blank" rel="noopener">PDF</a>
+  <a href="lesson04_student.pdf?v=202610312019" target="_blank" rel="noopener">PDF</a>
   <a href="./">All lessons</a>
 </div>
 
@@ -409,7 +411,8 @@ body.no-romaji .ch .r{display:none}
 <div class="part-head"><span class="badge">PART 3</span><h2>〜でした<small>Past of です</small></h2></div>
 <h3 class="sub"><span class="tag">GRAMMAR 3</span><span class="bi"><span class="ja">「です」の 過去{かこ}</span><span class="en">Past tense of です</span></span></h3>
 <p><span class="bi"><span class="ja">「です」の 過去形{かこけい}は「でした」、否定{ひてい}は「じゃなかったです」です。</span><span class="en">The past of です is でした. The negative is じゃなかったです.</span></span></p>
-<div class="table-wrap"><table class="forms"><tr><th></th><th><span class="bi"><span class="ja">肯定{こうてい}</span><span class="en">affirmative</span></span></th><th><span class="bi"><span class="ja">否定{ひてい}</span><span class="en">negative</span></span></th></tr><tr><th><span class="bi"><span class="ja">今{いま}</span><span class="en">present</span></span></th><td>〜です</td><td>〜じゃないです</td></tr><tr><th><span class="bi"><span class="ja">過去{かこ}</span><span class="en">past</span></span></th><td><b>〜でした</b></td><td><b>〜じゃなかったです</b></td></tr></table></div>
+<div class="table-wrap"><table class="forms cmp"><tr><th></th><th><span class="bi"><span class="ja">現在{げんざい}・未来{みらい}</span><span class="en">present / future</span></span></th><th><span class="bi"><span class="ja">過去{かこ}</span><span class="en">past</span></span></th></tr><tr><th><span class="bi"><span class="ja">名詞{めいし}・な形容詞{けいようし}</span><span class="en">nouns / な-adjectives</span></span></th><td>学生{がくせい}です／学生{がくせい}じゃないです<div class="en3">I am a student. / I am not a student.</div></td><td>学生{がくせい}<b>でした</b>／学生{がくせい}<b>じゃなかったです</b><div class="en3">I was a student. / I was not a student.</div></td></tr><tr><th><span class="bi"><span class="ja">動詞{どうし}</span><span class="en">verbs</span></span></th><td>食{た}べます／食{た}べません<div class="en3">I eat (will eat). / I don't eat (won't eat).</div></td><td>食{た}べ<b>ました</b>／食{た}べ<b>ませんでした</b><div class="en3">I ate. / I didn't eat.</div></td></tr></table></div>
+<div class="pts2"><ul><li>日本語{にほんご}の<span class="hl3">「ます」</span>は、<b>現在{げんざい}と 未来{みらい}の 両方{りょうほう}</b>です。過去{かこ}だけ 形{かたち}が 変{か}わります。</li></ul><div class="en3">In Japanese, the ます form is used for both the present and the future. Only the past has a different form.</div></div>
 <div class="ex"><div class="s">きのうの 晩{ばん}ご飯{はん}は とんかつでした。</div><div class="e">Yesterday's dinner was tonkatsu.</div><div class="s">おがわ先生{せんせい}は 子供{こども}の時{とき}、いい 学生{がくせい}でした。</div><div class="e">Ms. Ogawa was a good student as a child.</div><div class="s">あの 映画{えいが}は 日本{にほん}の 映画{えいが}じゃなかったです。</div><div class="e">That movie was not a Japanese movie.</div></div>
 <div class="tip"><h4><span class="bi"><span class="ja">「〜の時{とき}」</span><span class="en">"When I was …"</span></span></h4><p><span class="bi"><span class="ja">子供{こども}の時{とき}・高校{こうこう}の時{とき}・大学{だいがく}一年生{いちねんせい}の時{とき} のように 使{つか}います。</span><span class="en">Use 〜の時 for "when I was …": 子供の時, 高校の時.</span></span></p></div>
 <h3 class="check"><span class="stage chk">ミニ確認{かくにん}</span><span class="bi"><span class="ja">過去{かこ}の 文{ぶん}に しましょう。</span><span class="en">Change to the past.</span></span></h3>
@@ -886,8 +889,8 @@ btn.addEventListener('click', function(){ setFuri(document.body.classList.contai
    on a computer, on a phone, and in the printed PDF. */
 /* PAGE_BREAKS: fixed break points (index of the child that starts each new page), written by tools/fix_pages.sh.
    Using fixed points keeps page numbers identical on every device. Empty = measure in this browser. */
-var PAGE_KEEP = {"p3":[8,15]};  /* p.11 keeps the Example, p.12 starts with B */
-var PAGE_BREAKS = {"top":[],"cast":[],"p1":[10,16],"p2":[9,12,16],"p3":[8,15],"p4":[8,15],"p5":[9],"p6":[9],"p7":[12],"p8":[8,18],"p9":[5,12],"vocab":[8,14,22,30],"answers":[13,25,35,47],"teacher":[]};
+var PAGE_KEEP = {"p3":[9,16]};  /* p.11 keeps the Example, p.12 starts with B */
+var PAGE_BREAKS = {"top":[],"cast":[],"p1":[10,16],"p2":[9,12,16],"p3":[9,16],"p4":[8,15],"p5":[9],"p6":[9],"p7":[12],"p8":[8,18],"p9":[5,12],"vocab":[8,14,22,30],"answers":[13,25,35,47],"teacher":[]};
 function paginate(){
   /* split long lists / dialogues / example grids / tables into small pieces so pages can be filled */
   (function(){
