@@ -311,7 +311,7 @@ table.hobby td{padding:6px}
   <span class="tt">Lesson 10 · 冬休みの予定</span>
   <a href="#toc">Contents</a>
   <button id="furiBtn" class="on" type="button">ふりがな: ON</button>
-  <a href="lesson10_student.pdf?v=202610311050" target="_blank" rel="noopener">PDF</a>
+  <a href="lesson10_student.pdf?v=202610311111" target="_blank" rel="noopener">PDF</a>
   <a href="./">All lessons</a>
 </div>
 
@@ -692,7 +692,7 @@ function paginate(){
           [].slice.call(el.children).forEach(function(row){ var o = el.cloneNode(false); o.style.margin = '0'; o.appendChild(row); parts.push(o); });
         } else if(el.matches('.ex') && el.children.length > 2){
           var ch = [].slice.call(el.children);
-          for(var k = 0; k < ch.length; k += 2){ var o = el.cloneNode(false); o.style.margin = '0 0 4px'; o.appendChild(ch[k]); if(ch[k+1]) o.appendChild(ch[k+1]); parts.push(o); }
+          for(var k = 0; k < ch.length; k += 2){ var o = el.cloneNode(false); o.style.margin = '0 0 4px'; if(/<br|class="qa"/i.test(ch[k].outerHTML)){ o.classList.add('conv'); if(k > 0) o.style.marginTop = '1.6em'; } o.appendChild(ch[k]); if(ch[k+1]) o.appendChild(ch[k+1]); parts.push(o); }  /* separate conversations get a blank line */
         } else if(el.tagName === 'TABLE' && el.rows.length > 6){
           var rows = [].slice.call(el.rows);
           for(var k = 0; k < rows.length; k += 3){ var t = el.cloneNode(false); t.style.margin = '0'; var tb = document.createElement('tbody'); rows.slice(k, k + 3).forEach(function(r){ tb.appendChild(r); }); t.appendChild(tb); parts.push(t); }
