@@ -337,7 +337,7 @@ body.no-romaji .ch .r{display:none}
   <a href="#toc">Contents</a>
   <button id="rmBtn" class="on" type="button">Romaji: ON</button>
   <button id="furiBtn" class="on" type="button">ふりがな: ON</button>
-  <a href="lesson04_student.pdf?v=202610311126" target="_blank" rel="noopener">PDF</a>
+  <a href="lesson04_student.pdf?v=202610312013" target="_blank" rel="noopener">PDF</a>
   <a href="./">All lessons</a>
 </div>
 
@@ -886,7 +886,8 @@ btn.addEventListener('click', function(){ setFuri(document.body.classList.contai
    on a computer, on a phone, and in the printed PDF. */
 /* PAGE_BREAKS: fixed break points (index of the child that starts each new page), written by tools/fix_pages.sh.
    Using fixed points keeps page numbers identical on every device. Empty = measure in this browser. */
-var PAGE_BREAKS = {"top":[],"cast":[],"p1":[10,16],"p2":[9,12,16],"p3":[8,14],"p4":[8,15],"p5":[9],"p6":[9],"p7":[12],"p8":[8,18],"p9":[5,12],"vocab":[8,14,22,30],"answers":[13,25,35,47],"teacher":[]};
+var PAGE_KEEP = {"p3":[8,15]};  /* p.11 keeps the Example, p.12 starts with B */
+var PAGE_BREAKS = {"top":[],"cast":[],"p1":[10,16],"p2":[9,12,16],"p3":[8,15],"p4":[8,15],"p5":[9],"p6":[9],"p7":[12],"p8":[8,18],"p9":[5,12],"vocab":[8,14,22,30],"answers":[13,25,35,47],"teacher":[]};
 function paginate(){
   /* split long lists / dialogues / example grids / tables into small pieces so pages can be filled */
   (function(){
