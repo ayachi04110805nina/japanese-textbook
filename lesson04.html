@@ -342,6 +342,10 @@ ruby rt{font-size:.56em;color:#3d4a53;font-weight:500}
 .hint b{color:#3d4a53}
 .pts2 .en3,table.forms.cmp .en3{color:#36434c}
 /* end readability */
+/* chunk-align: words with and without furigana sit on the same line */
+.s .ch,.you li .ch,.tcard .ch,.icard .t .ch,.hint .ch{vertical-align:bottom}
+.ex.stack{grid-template-columns:1fr;gap:0}
+.ex.stack .e{padding:0 0 12px}
 .toki .tk{margin-top:8px;background:#fff;border-radius:10px;overflow:hidden}
 .toki .tkrow{display:grid;grid-template-columns:34% 1fr;border-top:1px solid #f3d3c6}
 .toki .tkrow:first-child{border-top:0}
@@ -358,7 +362,7 @@ ruby rt{font-size:.56em;color:#3d4a53;font-weight:500}
   <a href="#toc">Contents</a>
   <button id="rmBtn" class="on" type="button">Romaji: ON</button>
   <button id="furiBtn" class="on" type="button">ふりがな: ON</button>
-  <a href="lesson04_student.pdf?v=202611111109" target="_blank" rel="noopener">PDF</a>
+  <a href="lesson04_student.pdf?v=202611111114" target="_blank" rel="noopener">PDF</a>
   <a href="./">All lessons</a>
 </div>
 
@@ -449,8 +453,7 @@ ruby rt{font-size:.56em;color:#3d4a53;font-weight:500}
 <h3 class="sub"><span class="tag">GRAMMAR 4</span><span class="bi"><span class="ja">動詞{どうし}の 過去{かこ}</span><span class="en">Past tense of verbs</span></span></h3>
 <p><span class="bi"><span class="ja">動詞{どうし}の 過去形{かこけい}は「〜ました」、否定{ひてい}は「〜ませんでした」です。</span><span class="en">The past of a verb is 〜ました. The negative is 〜ませんでした.</span></span></p>
 <div class="table-wrap"><table class="forms"><tr><th></th><th><span class="bi"><span class="ja">肯定{こうてい}</span><span class="en">affirmative</span></span></th><th><span class="bi"><span class="ja">否定{ひてい}</span><span class="en">negative</span></span></th></tr><tr><th><span class="bi"><span class="ja">今{いま}・これから</span><span class="en">present / future</span></span></th><td>行{い}きます</td><td>行{い}きません</td></tr><tr><th><span class="bi"><span class="ja">過去{かこ}</span><span class="en">past</span></span></th><td><b>行{い}きました</b></td><td><b>行{い}きませんでした</b></td></tr></table></div>
-<div class="ex"><div class="s">アミナさんは 九時{くじ}ごろ うちに 帰{かえ}りました。</div><div class="e">Amina went home at about nine.</div><div class="s">わたしは きのう 日本語{にほんご}を 勉強{べんきょう}しませんでした。</div><div class="e">I didn't study Japanese yesterday.</div><div class="s">先週{せんしゅう}、お寺{てら}で 写真{しゃしん}を 撮{と}りました。</div><div class="e">Last week I took pictures at a temple.</div></div>
-<div class="table-wrap"><table class="forms"><tr><th>月曜日{げつようび}</th><th>火曜日{かようび}</th><th>水曜日{すいようび}</th><th>木曜日{もくようび}</th><th>金曜日{きんようび}</th><th>土曜日{どようび}</th><th>日曜日{にちようび}</th></tr></table></div>
+<div class="ex stack"><div class="s">アミナさんは 九時{くじ}ごろ うちに 帰{かえ}りました。</div><div class="e">Amina went home at about nine.</div><div class="s">わたしは きのう 日本語{にほんご}を 勉強{べんきょう}しませんでした。</div><div class="e">I didn't study Japanese yesterday.</div><div class="s">先週{せんしゅう}、お寺{てら}で 写真{しゃしん}を 撮{と}りました。</div><div class="e">Last week I took pictures at a temple.</div></div>
 <h3 class="check"><span class="stage chk">ミニ確認{かくにん}</span><span class="bi"><span class="ja">「〜ました」と「〜ませんでした」に しましょう。</span><span class="en">Make the past affirmative and negative.</span></span></h3>
 <div class="example"><span class="lbl">Example</span><div class="s">食{た}べる → 食{た}べました／食{た}べませんでした</div></div>
 <ol class="items "><li><div class="s">会{あ}う</div></li><li><div class="s">書{か}く</div></li><li><div class="s">来{く}る</div></li><li><div class="s">わかる</div></li></ol>
@@ -908,7 +911,7 @@ btn.addEventListener('click', function(){ setFuri(document.body.classList.contai
 /* PAGE_BREAKS: fixed break points (index of the child that starts each new page), written by tools/fix_pages.sh.
    Using fixed points keeps page numbers identical on every device. Empty = measure in this browser. */
 var PAGE_KEEP = {"p3":[9,16]};  /* p.11 keeps the Example, p.12 starts with B */
-var PAGE_BREAKS = {"top":[],"cast":[],"p1":[10,16],"p2":[9,12,16],"p3":[9,16],"p4":[8,15],"p5":[9],"p6":[9],"p7":[12],"p8":[8,18],"p9":[5,12],"vocab":[8,14,22,30],"answers":[11,21,30,41],"teacher":[]};
+var PAGE_BREAKS = {"top":[],"cast":[],"p1":[10,16],"p2":[9,12,16],"p3":[9,16],"p4":[10],"p5":[9],"p6":[9],"p7":[12],"p8":[8,18],"p9":[5,12],"vocab":[8,14,22,30],"answers":[11,21,30,41],"teacher":[]};
 function paginate(){
   /* split long lists / dialogues / example grids / tables into small pieces so pages can be filled */
   (function(){
