@@ -322,6 +322,18 @@ ruby rt{font-size:.56em;color:#3d4a53;font-weight:500}
 .cover .toc a .bi>.en{font-size:.82em}
 @container (max-width:600px){.cover .toc{grid-template-columns:1fr}.cover .toc li{grid-column:auto!important;grid-row:auto!important}}
 /* end cover contents */
+/* cast page: 2 columns, larger (2026-11-23) */
+.cast.people{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+.cast.people .card{grid-template-columns:84px 1fr;gap:2px 14px;padding:14px 16px;align-items:start}
+.cast.people .card .av{grid-row:1 / span 3}
+.cast.people .card .nm{font-size:1.2rem}
+.cast.people .card .rm{font-size:.86rem}
+.cast.people .card .bio{grid-column:2;margin-top:6px}
+.cast.people .card .bio .bi>.ja{font-size:1rem;line-height:1.75}
+.cast.people .card .bio .bi>.en{font-size:.86rem}
+@container (max-width:600px){.cast.people{grid-template-columns:1fr}}
+.cover .toc .tp{color:var(--accent)}
+/* end cast page */
 </style>
 </head>
 <body>
@@ -329,7 +341,7 @@ ruby rt{font-size:.56em;color:#3d4a53;font-weight:500}
   <span class="tt">Lesson 5 · 北海道旅行</span>
   <a href="#toc">Contents</a>
   <button id="furiBtn" class="on" type="button">ふりがな: ON</button>
-  <a href="lesson05_student.pdf?v=202611231036" target="_blank" rel="noopener">PDF</a>
+  <a href="lesson05_student.pdf?v=202611231107" target="_blank" rel="noopener">PDF</a>
   <a href="./">All lessons</a>
 </div>
 
@@ -353,7 +365,7 @@ ruby rt{font-size:.56em;color:#3d4a53;font-weight:500}
 
 <section class="page" id="cast">
 <div class="part-head"><span class="badge">CHARACTERS</span><h2>登場人物{とうじょうじんぶつ}<small>Characters</small></h2></div>
-<p><span class="bi"><span class="ja">このテキストには 毎回{まいかい}、この6人{にん}が 出{で}てきます。</span><span class="en">These six people appear in every lesson of this book.</span></span></p><div class="cast people"><div class="card"><div class="av" data-who="lin" data-size="64"></div><div class="nm">ワン・リン</div><div class="rm">Wang Lin</div><div class="bio"><span class="bi"><span class="ja">中国{ちゅうごく}から来{き}た 留学生{りゅうがくせい}。あおばだいがくの2年生{ねんせい}。</span><span class="en">An international student from China. 2nd year at Aoba University.</span></span></div></div><div class="card"><div class="av" data-who="yuuki" data-size="64"></div><div class="nm">もりた ゆうき</div><div class="rm">Morita Yuuki</div><div class="bio"><span class="bi"><span class="ja">あおばだいがくの3年生{ねんせい}。日本人{にほんじん}。</span><span class="en">A 3rd-year student at Aoba University. Japanese.</span></span></div></div><div class="card"><div class="av" data-who="amina" data-size="64"></div><div class="nm">アミナ・ハッサン</div><div class="rm">Amina Hassan</div><div class="bio"><span class="bi"><span class="ja">エジプトから来{き}た 留学生{りゅうがくせい}。1年生{ねんせい}。</span><span class="en">An international student from Egypt. 1st year.</span></span></div></div><div class="card"><div class="av" data-who="raj" data-size="64"></div><div class="nm">ラジ・クマール</div><div class="rm">Raj Kumar</div><div class="bio"><span class="bi"><span class="ja">インドから来{き}た 留学生{りゅうがくせい}。4年生{ねんせい}。</span><span class="en">An international student from India. 4th year.</span></span></div></div><div class="card"><div class="av" data-who="lucas" data-size="64"></div><div class="nm">ルーカス・ミラー</div><div class="rm">Lucas Miller</div><div class="bio"><span class="bi"><span class="ja">カナダから来{き}た 留学生{りゅうがくせい}。日本{にほん}の家族{かぞく}のうちに 住{す}んでいる。</span><span class="en">An international student from Canada. Lives with a Japanese host family.</span></span></div></div><div class="card"><div class="av" data-who="ogawa" data-size="64"></div><div class="nm">おがわ先生{せんせい}</div><div class="rm">Ogawa sensee</div><div class="bio"><span class="bi"><span class="ja">あおばだいがくの 日本語{にほんご}の先生{せんせい}。</span><span class="en">A Japanese teacher at Aoba University.</span></span></div></div></div>
+<p><span class="bi"><span class="ja">このテキストには 毎回{まいかい}、この6人{にん}が 出{で}てきます。</span><span class="en">These six people appear in every lesson of this book.</span></span></p><div class="cast people"><div class="card"><div class="av" data-who="lin" data-size="84"></div><div class="nm">ワン・リン</div><div class="rm">Wang Lin</div><div class="bio"><span class="bi"><span class="ja">中国{ちゅうごく}から来{き}た 留学生{りゅうがくせい}。あおばだいがくの2年生{ねんせい}。</span><span class="en">An international student from China. 2nd year at Aoba University.</span></span></div></div><div class="card"><div class="av" data-who="yuuki" data-size="84"></div><div class="nm">もりた ゆうき</div><div class="rm">Morita Yuuki</div><div class="bio"><span class="bi"><span class="ja">あおばだいがくの3年生{ねんせい}。日本人{にほんじん}。</span><span class="en">A 3rd-year student at Aoba University. Japanese.</span></span></div></div><div class="card"><div class="av" data-who="amina" data-size="84"></div><div class="nm">アミナ・ハッサン</div><div class="rm">Amina Hassan</div><div class="bio"><span class="bi"><span class="ja">エジプトから来{き}た 留学生{りゅうがくせい}。1年生{ねんせい}。</span><span class="en">An international student from Egypt. 1st year.</span></span></div></div><div class="card"><div class="av" data-who="raj" data-size="84"></div><div class="nm">ラジ・クマール</div><div class="rm">Raj Kumar</div><div class="bio"><span class="bi"><span class="ja">インドから来{き}た 留学生{りゅうがくせい}。4年生{ねんせい}。</span><span class="en">An international student from India. 4th year.</span></span></div></div><div class="card"><div class="av" data-who="lucas" data-size="84"></div><div class="nm">ルーカス・ミラー</div><div class="rm">Lucas Miller</div><div class="bio"><span class="bi"><span class="ja">カナダから来{き}た 留学生{りゅうがくせい}。日本{にほん}の家族{かぞく}のうちに 住{す}んでいる。</span><span class="en">An international student from Canada. Lives with a Japanese host family.</span></span></div></div><div class="card"><div class="av" data-who="ogawa" data-size="84"></div><div class="nm">おがわ先生{せんせい}</div><div class="rm">Ogawa sensee</div><div class="bio"><span class="bi"><span class="ja">あおばだいがくの 日本語{にほんご}の先生{せんせい}。</span><span class="en">A Japanese teacher at Aoba University.</span></span></div></div></div>
 <p class="legend" style="margin:14px 0 0"><span class="bi"><span class="ja">復習{ふくしゅう}するときは、上{うえ}の「ふりがな」ボタンで ふりがなを かくせます。</span><span class="en">Tip: Use the <b>Furigana</b> button at the top to hide the furigana when you review.</span></span></p>
 </section>
 

@@ -224,6 +224,18 @@ ruby rt{font-size:.56em;color:#3d4a53;font-weight:500}
 .cover .toc a .bi>.en{font-size:.82em}
 @container (max-width:600px){.cover .toc{grid-template-columns:1fr}.cover .toc li{grid-column:auto!important;grid-row:auto!important}}
 /* end cover contents */
+/* cast page: 2 columns, larger (2026-11-23) */
+.cast.people{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+.cast.people .card{grid-template-columns:84px 1fr;gap:2px 14px;padding:14px 16px;align-items:start}
+.cast.people .card .av{grid-row:1 / span 3}
+.cast.people .card .nm{font-size:1.2rem}
+.cast.people .card .rm{font-size:.86rem}
+.cast.people .card .bio{grid-column:2;margin-top:6px}
+.cast.people .card .bio .bi>.ja{font-size:1rem;line-height:1.75}
+.cast.people .card .bio .bi>.en{font-size:.86rem}
+@container (max-width:600px){.cast.people{grid-template-columns:1fr}}
+.cover .toc .tp{color:var(--accent)}
+/* end cast page */
 </style>
 </head>
 <body>
@@ -232,7 +244,7 @@ ruby rt{font-size:.56em;color:#3d4a53;font-weight:500}
   <span class="tt">Lesson 1 · はじめまして</span>
   <a href="#toc">Contents</a>
   <button id="rmBtn" class="on" type="button">Romaji: ON</button>
-  <a href="lesson01.pdf?v=202611231036" target="_blank" rel="noopener">PDF</a>
+  <a href="lesson01.pdf?v=202611231107" target="_blank" rel="noopener">PDF</a>
   <a href="./">All lessons</a>
 </div>
 
@@ -278,12 +290,12 @@ ruby rt{font-size:.56em;color:#3d4a53;font-weight:500}
   <div class="part-head"><span class="badge">CHARACTERS</span><h2>とうじょうじんぶつ<small>Meet the Characters</small></h2></div>
   <div class="pts2"><ul class="ja"><li>この人{ひと}たちは 毎回{まいかい} 出{で}てきます。</li><li>日本{にほん}の<span class="hl3">「あおばだいがく」</span>の 新入生{しんにゅうせい}オリエンテーションで 出会{であ}います。</li></ul><div class="en3">These people appear in every lesson. They meet at the orientation for new students at <b>Aoba University</b> in Japan.</div></div>
   <div class="cast people">
-    <div class="card"><div class="av" data-who="lin" data-size="64"></div><div class="nm">ワン・リン</div><div class="rm">Wang Lin</div><div class="bio"><span class="bi"><span class="ja">中国{ちゅうごく}から 来{き}ました。あおばだいがくの 留学生{りゅうがくせい}です。経済{けいざい}を 勉強{べんきょう}しています。</span><span class="en">From China. An international student at Aoba University. Studies economics.</span></span></div></div>
-    <div class="card"><div class="av" data-who="yuuki" data-size="64"></div><div class="nm">もりた ゆうき</div><div class="rm">Morita Yuuki</div><div class="bio"><span class="bi"><span class="ja">日本人{にほんじん}です。あおばだいがくの 学生{がくせい}です。歴史{れきし}を 勉強{べんきょう}しています。</span><span class="en">Japanese. A student at Aoba University. Studies history.</span></span></div></div>
-    <div class="card"><div class="av" data-who="amina" data-size="64"></div><div class="nm">アミナ・ハッサン</div><div class="rm">Amina Hassan</div><div class="bio"><span class="bi"><span class="ja">エジプトから 来{き}ました。カイロ大学{だいがく}の 学生{がくせい}で、今{いま}は 日本{にほん}に 1年間{ねんかん} 留学{りゅうがく}しています。</span><span class="en">From Egypt. A student at Cairo University, now studying in Japan for one year.</span></span></div></div>
-    <div class="card"><div class="av" data-who="raj" data-size="64"></div><div class="nm">ラジ・クマール</div><div class="rm">Raj Kumar</div><div class="bio"><span class="bi"><span class="ja">インドから 来{き}ました。デリー大学{だいがく}の 学生{がくせい}で、今{いま}は 日本{にほん}に 1年間{ねんかん} 留学{りゅうがく}しています。</span><span class="en">From India. A student at Delhi University, now studying in Japan for one year.</span></span></div></div>
-    <div class="card"><div class="av" data-who="lucas" data-size="64"></div><div class="nm">ルーカス・ミラー</div><div class="rm">Lucas Miller</div><div class="bio"><span class="bi"><span class="ja">カナダから 来{き}ました。トロント大学{だいがく}の 学生{がくせい}で、今{いま}は 日本{にほん}に 1年間{ねんかん} 留学{りゅうがく}しています。</span><span class="en">From Canada. A student at the University of Toronto, now studying in Japan for one year.</span></span></div></div>
-    <div class="card"><div class="av" data-who="ogawa" data-size="64"></div><div class="nm">おがわせんせい</div><div class="rm">Ogawa sensee</div><div class="bio"><span class="bi"><span class="ja">日本人{にほんじん}です。あおばだいがくで 日本語{にほんご}を 教{おし}えています。</span><span class="en">Japanese. Teaches Japanese at Aoba University.</span></span></div></div>
+    <div class="card"><div class="av" data-who="lin" data-size="84"></div><div class="nm">ワン・リン</div><div class="rm">Wang Lin</div><div class="bio"><span class="bi"><span class="ja">中国{ちゅうごく}から 来{き}ました。あおばだいがくの 留学生{りゅうがくせい}です。経済{けいざい}を 勉強{べんきょう}しています。</span><span class="en">From China. An international student at Aoba University. Studies economics.</span></span></div></div>
+    <div class="card"><div class="av" data-who="yuuki" data-size="84"></div><div class="nm">もりた ゆうき</div><div class="rm">Morita Yuuki</div><div class="bio"><span class="bi"><span class="ja">日本人{にほんじん}です。あおばだいがくの 学生{がくせい}です。歴史{れきし}を 勉強{べんきょう}しています。</span><span class="en">Japanese. A student at Aoba University. Studies history.</span></span></div></div>
+    <div class="card"><div class="av" data-who="amina" data-size="84"></div><div class="nm">アミナ・ハッサン</div><div class="rm">Amina Hassan</div><div class="bio"><span class="bi"><span class="ja">エジプトから 来{き}ました。カイロ大学{だいがく}の 学生{がくせい}で、今{いま}は 日本{にほん}に 1年間{ねんかん} 留学{りゅうがく}しています。</span><span class="en">From Egypt. A student at Cairo University, now studying in Japan for one year.</span></span></div></div>
+    <div class="card"><div class="av" data-who="raj" data-size="84"></div><div class="nm">ラジ・クマール</div><div class="rm">Raj Kumar</div><div class="bio"><span class="bi"><span class="ja">インドから 来{き}ました。デリー大学{だいがく}の 学生{がくせい}で、今{いま}は 日本{にほん}に 1年間{ねんかん} 留学{りゅうがく}しています。</span><span class="en">From India. A student at Delhi University, now studying in Japan for one year.</span></span></div></div>
+    <div class="card"><div class="av" data-who="lucas" data-size="84"></div><div class="nm">ルーカス・ミラー</div><div class="rm">Lucas Miller</div><div class="bio"><span class="bi"><span class="ja">カナダから 来{き}ました。トロント大学{だいがく}の 学生{がくせい}で、今{いま}は 日本{にほん}に 1年間{ねんかん} 留学{りゅうがく}しています。</span><span class="en">From Canada. A student at the University of Toronto, now studying in Japan for one year.</span></span></div></div>
+    <div class="card"><div class="av" data-who="ogawa" data-size="84"></div><div class="nm">おがわせんせい</div><div class="rm">Ogawa sensee</div><div class="bio"><span class="bi"><span class="ja">日本人{にほんじん}です。あおばだいがくで 日本語{にほんご}を 教{おし}えています。</span><span class="en">Japanese. Teaches Japanese at Aoba University.</span></span></div></div>
   </div>
   <p class="legend" style="margin:14px 0 0"><span class="bi"><span class="ja">復習{ふくしゅう}するときは、上{うえ}の「Romaji」ボタンで ローマ字{じ}を かくせます。</span><span class="en">Tip: Use the <b>Romaji</b> button at the top to hide the romaji when you review.</span></span></p>
   <h3 class="sub"><span class="bi"><span class="ja">人物{じんぶつ}の 表{ひょう}</span><span class="en">Character Chart</span></span></h3>
@@ -1277,6 +1289,7 @@ btn.addEventListener('click', function(){ setRomaji(document.body.classList.cont
    on a computer, on a phone, and in the printed PDF. */
 /* PAGE_BREAKS: fixed break points (index of the child that starts each new page), written by tools/fix_pages.sh.
    Using fixed points keeps page numbers identical on every device. Empty = measure in this browser. */
+var PAGE_KEEP = {"cast":[4,6]};  /* character cards stay on the first cast page */
 var PAGE_BREAKS = {"top":[],"cast":[4,6],"vocab":[17,40,62,85],"p0":[10],"p1":[13,17,23],"p2":[11,18],"p3":[10,14,17,22,29,36],"p4":[11,18,23],"p5":[6,14,20],"p6":[14,19],"p7":[9],"answers":[12,25,34]};
 function paginate(){
   /* split long lists / dialogues / example grids / tables into small pieces so pages can be filled */
