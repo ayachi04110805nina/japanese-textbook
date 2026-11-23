@@ -315,6 +315,13 @@ ruby rt{font-size:.56em;color:#3d4a53;font-weight:500}
 .hint b{color:#3d4a53}
 .pts2 .en3,table.forms.cmp .en3{color:#36434c}
 /* end readability */
+/* cover contents: 2 columns, read top to bottom (2026-11-23) */
+.cover .toc{display:grid;grid-template-columns:1fr 1fr;column-gap:32px;columns:auto;max-width:none}
+.cover .toc li{min-width:0}
+.cover .toc a .bi{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:10px}
+.cover .toc a .bi>.en{font-size:.82em}
+@container (max-width:600px){.cover .toc{grid-template-columns:1fr}.cover .toc li{grid-column:auto!important;grid-row:auto!important}}
+/* end cover contents */
 </style>
 </head>
 <body>
@@ -322,7 +329,7 @@ ruby rt{font-size:.56em;color:#3d4a53;font-weight:500}
   <span class="tt">Lesson 7 · 家族の写真</span>
   <a href="#toc">Contents</a>
   <button id="furiBtn" class="on" type="button">ふりがな: ON</button>
-  <a href="lesson07_student.pdf?v=202611211122" target="_blank" rel="noopener">PDF</a>
+  <a href="lesson07_student.pdf?v=202611231036" target="_blank" rel="noopener">PDF</a>
   <a href="./">All lessons</a>
 </div>
 
@@ -662,7 +669,7 @@ btn.addEventListener('click', function(){ setFuri(document.body.classList.contai
    on a computer, on a phone, and in the printed PDF. */
 /* PAGE_BREAKS: fixed break points (index of the child that starts each new page), written by tools/fix_pages.sh.
    Using fixed points keeps page numbers identical on every device. Empty = measure in this browser. */
-var PAGE_BREAKS = {"top":[],"cast":[],"vocab":[7,14,21],"p1":[9],"p2":[5,9],"p3":[7],"p4":[9],"p5":[8],"p6":[6],"p7":[13],"p8":[4],"answers":[14],"teacher":[]};
+var PAGE_BREAKS = {"top":[],"cast":[],"vocab":[16,35,55],"p1":[9],"p2":[5,9],"p3":[7],"p4":[9],"p5":[8],"p6":[6],"p7":[13],"p8":[],"answers":[14],"teacher":[]};
 function paginate(){
   /* split long lists / dialogues / example grids / tables into small pieces so pages can be filled */
   (function(){
@@ -677,9 +684,10 @@ function paginate(){
         } else if(el.matches('.ex') && el.children.length > 2){
           var ch = [].slice.call(el.children);
           for(var k = 0; k < ch.length; k += 2){ var o = el.cloneNode(false); o.style.margin = '0 0 4px'; if(/<br|class="qa"/i.test(ch[k].outerHTML)){ o.classList.add('conv'); if(k > 0) o.style.marginTop = '1.6em'; } o.appendChild(ch[k]); if(ch[k+1]) o.appendChild(ch[k+1]); parts.push(o); }  /* separate conversations get a blank line */
-        } else if(el.tagName === 'TABLE' && el.rows.length > 6){
+        } else if(el.tagName === 'TABLE' && (el.rows.length > 6 || (sec.classList.contains('vocab') && el.rows.length > 2))){
           var rows = [].slice.call(el.rows);
-          for(var k = 0; k < rows.length; k += 3){ var t = el.cloneNode(false); t.style.margin = '0'; var tb = document.createElement('tbody'); rows.slice(k, k + 3).forEach(function(r){ tb.appendChild(r); }); t.appendChild(tb); parts.push(t); }
+          var st = sec.classList.contains('vocab') ? 1 : 3;  /* vocab lists may break after any row */
+          for(var k = 0; k < rows.length; k += st){ var t = el.cloneNode(false); t.style.margin = '0'; var tb = document.createElement('tbody'); rows.slice(k, k + st).forEach(function(r){ tb.appendChild(r); }); t.appendChild(tb); parts.push(t); }
         } else if(el.tagName === 'OL' && sec.classList.contains('ans') && !el.classList.contains('cols') && el.children.length > 3){
           var lis = [].slice.call(el.children);
           for(var k = 0; k < lis.length; k += 2){ var o = el.cloneNode(false); o.setAttribute('start', k + 1); o.style.margin = '0'; lis.slice(k, k + 2).forEach(function(li){ o.appendChild(li); }); parts.push(o); }
@@ -688,7 +696,7 @@ function paginate(){
       });
     });
   })();
-  var MM = 96/25.4, MAXH = Math.floor((297-16-14)*MM) - 24;
+  var MM = 96/25.4, MAXH = Math.floor((297-16-14)*MM) - 10;
   var useFixed = Object.keys(PAGE_BREAKS).length > 0 && !/[?&]measure/.test(location.search), found = {};
   var body = document.body, romajiOff = body.classList.contains('no-furi');
   body.classList.remove('no-furi');
@@ -721,6 +729,11 @@ function paginate(){
       var el = kids[i], bottom = el.offsetTop + el.offsetHeight + parseFloat(getComputedStyle(el).marginBottom || 0);
       if(bottom - base > MAXH && i > start){
         var b = i; while(b - 1 > start && isHead(kids[b-1])) b--;
+        if(sec.classList.contains('vocab')){  /* vocab: no category with just one word left at a page's end or start */
+          var one = function(e){ return e && e.tagName === 'TABLE' && e.rows.length === 1; };
+          if(b - 2 > start && one(kids[b-1]) && /^H3$/.test(kids[b-2].tagName)) b -= 2;
+          else if(one(kids[b]) && kids[b+1] && /^H3$/.test(kids[b+1].tagName) && b - 1 > start && one(kids[b-1])) b -= 1;
+        }
         var bg = b; while(bg - 1 > start && (isHead(kids[bg-1]) || glue(kids[bg-1], kids[bg]))) bg--;
         if(bg < b && top(kids[bg]) - base > MAXH * 0.72) b = bg;  /* keep chart+questions together only if the page stays mostly full */
         for(var t = b - 1; t > start; t--){ var kt = kids[t]; if(kt.classList.contains('talk') || kt.classList.contains('part-head') || (kt.classList.contains('sub') && /READING/.test(kt.textContent))){ if(top(kt) - base > MAXH * 0.35) b = t; break; } }  /* a 話してみよう section / reading that doesn't fit starts on a new page */
@@ -759,6 +772,8 @@ function paginate(){
     run.innerHTML = '<span>Lesson 7' + (pg.dataset.label ? ' · ' + pg.dataset.label : '') + '</span><span class="pno">p. ' + (i + 1) + '</span>';
     pg.appendChild(run);
   });
+  (function(){ var toc = document.querySelector('.cover .toc'); if(!toc) return; var li = toc.children, h = Math.floor(li.length / 2);  /* left column: first half (rounded down) */
+    for(var i = 0; i < li.length; i++){ li[i].style.gridColumn = i < h ? '1' : '2'; li[i].style.gridRow = String((i < h ? i : i - h) + 1); } })();
   document.querySelectorAll('.toc a[href^="#"]').forEach(function(a){
     var t = document.getElementById(a.getAttribute('href').slice(1));
     if(t && !t.dataset.page) t = t.closest('section.page');
